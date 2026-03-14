@@ -1,161 +1,46 @@
-/* LUXURY BRAND STYLING - ONYX & ADIRE */
 :root {
-    --brand-red: #c61a21;     /* The rich crimson from your reference */
-    --pure-white: #ffffff;
-    --soft-cream: #f9f9f9;
-    --text-dark: #1a1a1a;
-    --gold-accent: #c5a059;
+    --brand-red: #c61a21;
+    --brand-white: #ffffff;
+    --dark-onyx: #1a1a1a;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'serif'; }
 
-body {
-    font-family: 'Playfair Display', serif; /* Elegant fashion font */
-    background-color: var(--pure-white);
-    color: var(--text-dark);
-    line-height: 1.6;
-}
+/* Marquee */
+.marquee-container { background: var(--brand-red); color: white; padding: 10px 0; overflow: hidden; }
+.marquee-text { display: inline-block; white-space: nowrap; animation: scroll 20s linear infinite; font-weight: bold; }
+@keyframes scroll { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
 
-/* MARQUEE SECTION - Crimson Red */
-.marquee-container {
-    background: var(--brand-red);
-    color: var(--pure-white);
-    padding: 10px 0;
-    overflow: hidden;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
+/* Header */
+header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid #eee; }
+.menu-icon { font-size: 28px; cursor: pointer; color: var(--dark-onyx); }
+.logo { font-weight: bold; color: var(--brand-red); font-size: 20px; letter-spacing: 2px; }
 
-.marquee-text {
-    display: inline-block;
-    white-space: nowrap;
-    animation: scroll 25s linear infinite;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 0.8rem;
-}
-
-@keyframes scroll {
-    from { transform: translateX(100%); }
-    to { transform: translateX(-100%); }
-}
-
-/* HEADER & NAVIGATION */
-header {
-    background: var(--pure-white);
-    padding: 20px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #eee;
-}
-
-.menu-icon {
-    font-size: 28px;
-    cursor: pointer;
-    color: var(--text-dark);
-    display: block;
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 25px;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--text-dark);
-    font-weight: bold;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    transition: 0.3s;
-}
-
-.nav-links a:hover {
-    color: var(--brand-red);
-}
-
-/* HERO & BUTTONS */
-.hero {
-    padding: 60px 20px;
-    text-align: center;
-    background: var(--soft-cream);
-}
-
-.btn-red {
-    background: var(--brand-red);
-    color: var(--pure-white);
-    padding: 15px 35px;
-    text-decoration: none;
-    font-weight: bold;
-    display: inline-block;
-    margin-top: 20px;
-    transition: 0.3s;
-}
-
-.btn-red:hover {
-    background: #a51419;
-}
-
-/* FOOTER */
-footer {
-    background: var(--text-dark);
-    color: var(--pure-white);
-    text-align: center;
-    padding: 40px 20px;
-    margin-top: 50px;
-}
-/* Sidebar Menu Styling */
+/* Hidden Sidebar */
 .mobile-nav {
     height: 100%;
-    width: 0; /* Starts hidden */
+    width: 0; /* Hidden */
     position: fixed;
-    z-index: 2000;
+    z-index: 1000;
     top: 0;
     left: 0;
-    background-color: #1a1a1a; /* Onyx Black */
+    background-color: var(--dark-onyx);
     overflow-x: hidden;
-    transition: 0.5s; /* Sliding effect */
+    transition: 0.4s;
     padding-top: 60px;
-    display: flex;
-    flex-direction: column;
 }
 
-.mobile-nav a {
+.nav-content a {
     padding: 15px 30px;
     text-decoration: none;
-    font-size: 1.5rem;
-    color: #ffffff;
+    font-size: 1.2rem;
+    color: white;
     display: block;
-    transition: 0.3s;
     text-transform: uppercase;
 }
 
-.mobile-nav a:hover {
-    color: #c61a21; /* Crimson Red from your reference */
-}
+.close-btn { position: absolute; top: 15px; right: 25px; font-size: 36px; color: white; cursor: pointer; }
 
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 25px;
-    font-size: 36px;
-    color: white;
-    cursor: pointer;
-}
-// Function to open the hamburger menu
-document.getElementById("hamburger-btn").addEventListener("click", () => {
-    document.getElementById("mobile-menu").style.width = "250px";
-});
-
-// Function to close the hamburger menu
-document.getElementById("close-btn").addEventListener("click", () => {
-    document.getElementById("mobile-menu").style.width = "0";
-});
+/* Hero Section */
+.hero { text-align: center; padding: 80px 20px; background: #f9f9f9; }
+.btn-red { background: var(--brand-red); color: white; padding: 15px 30px; text-decoration: none; display: inline-block; margin-top: 20px; font-weight: bold; }
