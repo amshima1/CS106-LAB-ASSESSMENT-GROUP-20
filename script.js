@@ -4,11 +4,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeBtn = document.getElementById("close-btn");
     const welcomeMsg = document.getElementById("welcome-text");
 
-    // 1. Hamburger Controls
-    openBtn.onclick = () => { menu.style.width = "250px"; };
-    closeBtn.onclick = () => { menu.style.width = "0"; };
+    // Hamburger Controls
+    if(openBtn) openBtn.onclick = () => { menu.style.width = "250px"; };
+    if(closeBtn) closeBtn.onclick = () => { menu.style.width = "0"; };
 
-    // 2. Greeting Logic
+    // Dynamic Greeting
     const hour = new Date().getHours();
     if (hour < 12) welcomeMsg.textContent = "Good Morning";
     else if (hour < 18) welcomeMsg.textContent = "Good Afternoon";
