@@ -43,17 +43,18 @@ header { display: flex; justify-content: space-between; align-items: center; pad
 .hero {
     text-align: center;
     padding: 120px 20px;
-    /* Change 'hero.jpg' to match the exact name of the file you uploaded */
-    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('hero.jpg'); 
+    /* Use the exact name of your uploaded file here */
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('todun-adri-iro-and-buba.jpg'); 
     background-size: cover;
     background-position: center;
-    color: white; /* This makes "Good Morning" white so it stands out */
-    min-height: 70vh;
+    color: white; 
+    min-height: 75vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
 
 
 .btn-red {
