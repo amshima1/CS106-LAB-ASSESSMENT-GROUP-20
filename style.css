@@ -43,7 +43,8 @@ header { display: flex; justify-content: space-between; align-items: center; pad
 .hero {
     text-align: center;
     padding: 120px 20px;
-    /* Use the exact name of your uploaded file here */
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('todun-adri-iro-and-buba.jpg');
+
     background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('todun-adri-iro-and-buba.jpg'); 
     background-size: cover;
     background-position: center;
