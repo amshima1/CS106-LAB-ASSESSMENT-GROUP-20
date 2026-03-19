@@ -144,3 +144,22 @@ header { display: flex; justify-content: space-between; align-items: center; pad
     color: #000;
     margin: 0;
 }
+/* Ensure the menu starts hidden */
+#mobile-menu {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white; /* Or your preferred color */
+    z-index: 2000; /* Must be higher than everything else */
+}
+
+/* Optional: styling for the close button */
+#close-btn {
+    font-size: 40px;
+    padding: 20px;
+    cursor: pointer;
+    float: right;
+}
