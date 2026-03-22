@@ -5,21 +5,40 @@
     --white: #ffffff;
 }
 
-/* --- RED & BORDERED ANNOUNCEMENT BAR --- */
+/* FORCE RED MARQUEE AND BORDERED HEADING */
+
 .marquee-container {
-    background-color: #ff0000;    /* Pure Bold Red */
-    color: #ffffff;               /* White Text for contrast */
-    padding: 12px 0;              /* Makes the bar thicker */
-    font-weight: 900;             /* Extra Bold Text */
-    text-transform: uppercase;    /* Professional Luxury Look */
-    
-    /* THE BORDER */
-    border-top: 5px solid #ffffff;    /* Thick White Top Border */
-    border-bottom: 5px solid #ffffff; /* Thick White Bottom Border */
-    
-    /* Box Shadow for depth (Optional) */
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.5);
+    background-color: #ff0000 !important; /* Pure Bold Red */
+    color: #ffffff !important;           /* White Text */
+    padding: 15px 0 !important;
+    border-top: 6px solid #ffffff !important;    /* Thick White Top Border */
+    border-bottom: 6px solid #ffffff !important; /* Thick White Bottom Border */
+    font-weight: 900 !important;
+    text-transform: uppercase !important;
+    display: block !important;
 }
+
+h1 {
+    color: #ff0000 !important;           /* Red Text */
+    font-size: 2.8rem !important;
+    font-weight: 900 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 3px !important;
+    
+    /* THE RED BORDER BOX */
+    display: inline-block !important;
+    padding: 20px 40px !important;
+    border: 8px solid #ff0000 !important; /* Extra Thick Red Border */
+    background-color: transparent !important;
+    margin-top: 30px !important;
+}
+
+/* Ensure the text inside the marquee is visible */
+marquee {
+    font-weight: 900 !important;
+    color: #ffffff !important;
+}
+
 
 /* Ensure the marquee text inside is also bold */
 marquee {
