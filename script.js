@@ -1,19 +1,30 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const openMenu = document.getElementById('menu-icon');
-    const closeMenu = document.getElementById('close-nav');
-    const sideNav = document.getElementById('side-nav');
-
-    if (openMenu) {
-        openMenu.onclick = () => {
-            sideNav.style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Stop page scroll
-        };
+// Feature: DOM Clock for all Footers
+function updateClock() {
+    const clockElement = document.getElementById('footer-date');
+    if (clockElement) {
+        const now = new Date();
+        clockElement.innerText = now.toLocaleString();
     }
+}
+setInterval(updateClock, 1000);
 
-    if (closeMenu) {
-        closeMenu.onclick = () => {
-            sideNav.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Resume scroll
-        };
-    }
+// Feature: Smooth Scroll Reveal
+window.addEventListener('scroll', () => {
+    const elements = document.querySelectorAll('.card');
+    elements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight) {
+            el.style.opacity = "1";
+            el.style.transform = "translateY(0)";
+        }
+    });
 });
+
+// Form Logic
+const bForm = document.getElementById('bookingForm');
+if(bForm) {
+    bForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert("Onyx-Adire has received your request. We will reach out shortly!");
+    });
+}
