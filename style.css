@@ -5,17 +5,28 @@
     --white: #ffffff;
 }
 
-/* 1. The Announcement Bar (Marquee) */
+/* --- RED & BORDERED ANNOUNCEMENT BAR --- */
 .marquee-container {
-    background-color: var(--luxury-red);
-    color: var(--white);
-    border-top: 3px solid var(--white);
-    border-bottom: 3px solid var(--white);
-    padding: 10px 0;
-    font-weight: 900;
-    text-transform: uppercase;
+    background-color: #ff0000;    /* Pure Bold Red */
+    color: #ffffff;               /* White Text for contrast */
+    padding: 12px 0;              /* Makes the bar thicker */
+    font-weight: 900;             /* Extra Bold Text */
+    text-transform: uppercase;    /* Professional Luxury Look */
+    
+    /* THE BORDER */
+    border-top: 5px solid #ffffff;    /* Thick White Top Border */
+    border-bottom: 5px solid #ffffff; /* Thick White Bottom Border */
+    
+    /* Box Shadow for depth (Optional) */
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.5);
+}
+
+/* Ensure the marquee text inside is also bold */
+marquee {
+    font-size: 1.1rem;
     letter-spacing: 2px;
 }
+
 
 /* 2. The Main Heading */
 h1 {
