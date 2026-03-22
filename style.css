@@ -1,100 +1,73 @@
-/* General Setup */
+/* Base Reset */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Helvetica Neue', Arial, sans-serif; background: #fff; color: #111; overflow-x: hidden; }
+body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; background: #fff; color: #000; }
 
-/* Announcement Bar */
-.announcement-bar {
+/* Top Promo Bar */
+.promo-bar {
     background: #000;
     color: #fff;
     font-size: 10px;
     text-align: center;
-    padding: 10px 0;
+    padding: 12px 0;
     letter-spacing: 2px;
     text-transform: uppercase;
 }
 
-/* Luxury Header */
-.main-header {
+/* Centered Header */
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 20px 6%;
+    border-bottom: 1px solid #f2f2f2;
     background: #fff;
-    border-bottom: 1px solid #eee;
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 100;
 }
 
-.header-left, .header-right { flex: 1; display: flex; }
-.header-right { justify-content: flex-end; gap: 20px; }
-.header-center { flex: 2; text-align: center; }
+.nav-left, .nav-right { flex: 1; display: flex; align-items: center; }
+.nav-right { justify-content: flex-end; gap: 20px; }
+.nav-center { flex: 2; text-align: center; }
 
-.logo {
+.brand-logo {
     font-family: serif;
-    font-size: 22px;
-    letter-spacing: 4px;
-    color: #8b0000;
-    text-transform: uppercase;
+    font-size: 20px;
+    letter-spacing: 5px;
+    color: #8b0000; /* Signature Red */
 }
 
-.icon, #hamburger-btn { font-size: 22px; cursor: pointer; }
+/* Custom Hamburger */
+#menu-icon { width: 22px; cursor: pointer; }
+#menu-icon span { display: block; width: 100%; height: 1px; background: #000; margin: 6px 0; }
 
-/* Product Grid */
-.home-grid {
+/* Grid Layout */
+.content-wrapper { max-width: 1200px; margin: 0 auto; padding: 20px 4%; }
+
+.product-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 per row like DFL */
-    gap: 10px;
-    padding: 15px;
+    grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+    gap: 15px;
 }
 
-.grid-item { text-decoration: none; color: inherit; }
+.card { text-decoration: none; color: inherit; margin-bottom: 25px; }
+.card img { width: 100%; height: 400px; object-fit: cover; }
 
-.grid-item img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    display: block;
-}
+.card-text { padding: 15px 0; text-align: center; }
+.card-text h3 { font-size: 11px; font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 5px; }
+.card-text p { font-size: 12px; font-weight: bold; color: #555; }
 
-.product-info {
-    padding: 15px 5px;
-    text-align: center;
-}
-
-.product-info h3 {
-    font-size: 12px;
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 5px;
-}
-
-.price {
-    font-size: 13px;
-    font-weight: bold;
-    color: #444;
-}
-
-/* Mobile Menu Overlay */
-#mobile-menu {
+/* Side Menu Overlay */
+#side-nav {
     display: none;
     position: fixed;
     inset: 0;
-    background: white;
-    z-index: 3000;
+    background: #fff;
+    z-index: 1000;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-#close-btn { position: absolute; top: 20px; right: 30px; font-size: 40px; cursor: pointer; }
-
-.nav-links a {
-    font-size: 22px;
-    text-decoration: none;
-    color: black;
-    margin: 15px 0;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-}
+.links a { font-size: 20px; text-decoration: none; color: #000; margin: 20px 0; letter-spacing: 4px; }
+#close-nav { position: absolute; top: 20px; right: 30px; font-size: 40px; cursor: pointer; }
