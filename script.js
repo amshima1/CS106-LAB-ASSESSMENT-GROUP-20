@@ -1,26 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const menuBtn = document.getElementById('hamburger-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const closeBtn = document.getElementById('close-btn');
+    const openMenu = document.getElementById('menu-icon');
+    const closeMenu = document.getElementById('close-nav');
+    const sideNav = document.getElementById('side-nav');
 
-    // Menu Toggle
-    if (menuBtn && mobileMenu) {
-        menuBtn.onclick = () => {
-            mobileMenu.style.display = 'flex';
+    if (openMenu) {
+        openMenu.onclick = () => {
+            sideNav.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Stop page scroll
         };
     }
 
-    if (closeBtn) {
-        closeBtn.onclick = () => {
-            mobileMenu.style.display = 'none';
+    if (closeMenu) {
+        closeMenu.onclick = () => {
+            sideNav.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Resume scroll
         };
     }
-
-    // Optional: Auto-close menu when a link is clicked
-    const links = document.querySelectorAll('.nav-links a');
-    links.forEach(link => {
-        link.onclick = () => {
-            mobileMenu.style.display = 'none';
-        };
-    });
 });
