@@ -116,7 +116,7 @@
             </div>
 
             <div class="product-card">
-                <img src="vibrant-batik-shirtdress.jpg" alt="Vibrant Batik Shirtress">
+                <img src="vibrant-batik-shirtdress.jpg" alt="Vibrant Batik Shirtdress">
                 <div class="product-info">
                     <h3>Batik Shirt Dress</h3>
                     <p class="price">₦60,000</p>
@@ -125,6 +125,24 @@
             </div>
         </div>
     </main>
+
+    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-float" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+
+    <div class="chatbot-container" id="chatbot">
+        <div class="chatbot-header" onclick="toggleChat()">
+            <span>Onyx-Adire Assistant</span>
+            <span id="chat-icon">▲</span>
+        </div>
+        <div class="chat-body" id="chat-body">
+            <div class="message bot">Welcome to Onyx-Adire! How can I help you with your luxury traditional wear today?</div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="user-input" placeholder="Type a message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
 
     <footer>
         <p>&copy; 2026 ONYX-ADIRE | <span id="clock"></span></p>
