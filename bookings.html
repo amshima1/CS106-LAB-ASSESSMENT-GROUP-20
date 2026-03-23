@@ -1,27 +1,133 @@
-<nav>
-    <div class="logo">ONYX-ADIRE</div>
-    <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="gallery.html">Showcase</a>
-        <a href="trustees.html">Trustees</a>
-        <a href="events.html">Events</a>
-        <a href="bookings.html">Inquiries</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inquiries & Bookings | Onyx-Adire</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Specific Form Styling for Bookings Page */
+        .booking-form-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 2px solid var(--brand-red);
+            background: var(--white);
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            color: var(--brand-red);
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            font-family: serif;
+            font-size: 1rem;
+        }
+        .submit-btn {
+            width: 100%;
+            background-color: var(--brand-red);
+            color: var(--white);
+            border: none;
+            padding: 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="announcement-bar">
+        <marquee scrollamount="7">
+            BOOK YOUR CUSTOM FITTING • WORLDWIDE SHIPPING AVAILABLE • LUXURY ADIRE CRAFTSMANSHIP
+        </marquee>
     </div>
-</nav>
 
-<div class="marquee-container">
-    <marquee behavior="scroll" direction="left">
-        EXQUISITE ADIRE HERITAGE • NEW ARRIVALS: HERITAGE AGBADA GOLD • LUXURY SILK TUNICS • BOOK YOUR FITTING TODAY
-    </marquee>
-</div>
+    <nav>
+        <div class="nav-left">
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="nav-centre">
+            <h1 class="logo">ONYX-ADIRE</h1>
+        </div>
 
-<main class="container">
-    <h1>Private Appointments</h1>
-    <form id="bookingForm" style="max-width: 500px; margin: 0 auto;">
-        <input type="text" placeholder="Full Name" required>
-        <input type="email" placeholder="Email Address" required>
-        <input type="date" required>
-        <textarea placeholder="Tell us about your bespoke needs..." rows="5"></textarea>
-        <button type="submit">Request Fitting</button>
-    </form>
-</main>
+        <div class="nav-right"></div>
+
+        <div id="nav-menu" class="menu-links">
+            <a href="index.html">HOME</a>
+            <a href="gallery.html">SHOWCASE</a>
+            <a href="trustees.html">TRUSTEES</a>
+            <a href="events.html">EVENTS</a>
+            <a href="bookings.html">INQUIRIES</a>
+        </div>
+    </nav>
+
+    <header class="luxury-header">
+        <h2 class="red-white-box">MAKE AN INQUIRY</h2>
+    </header>
+
+    <main class="container">
+        <div class="booking-form-container">
+            <form id="inquiryForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label for="name">FULL NAME</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="service">INTERESTED IN</label>
+                    <select id="service" name="service">
+                        <option value="bespoke">Bespoke Tailoring</option>
+                        <option value="ready-to-wear">Ready-to-Wear Collection</option>
+                        <option value="bridal">Bridal Adire</option>
+                        <option value="bulk">Bulk/Wholesale Orders</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">YOUR MESSAGE / MEASUREMENTS</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Tell us about your style preference..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">SEND INQUIRY</button>
+            </form>
+        </div>
+    </main>
+
+    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-bar" target="_blank">
+        <div class="whatsapp-content">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+            <span>Chat Via Whatsapp</span>
+        </div>
+    </a>
+
+    <footer>
+        <p>&copy; 2026 ONYX-ADIRE | <span id="clock"></span></p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Simple function to simulate sending
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            alert("Thank you! Your inquiry has been sent to Onyx-Adire. We will contact you shortly.");
+            document.getElementById('inquiryForm').reset();
+        }
+    </script>
+</body>
+</html>
