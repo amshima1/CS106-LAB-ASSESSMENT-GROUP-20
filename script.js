@@ -1,66 +1,101 @@
-/**
- * ONYX-ADIRE INTERACTIVE SCRIPT
- * Functionality: Mobile Menu, Digital Clock, and Image Interactions
- */
-
-// 1. HAMBURGER MENU TOGGLE
-// This opens and closes the menu when the 3-line icon is clicked
+/* --- 1. MOBILE NAVIGATION LOGIC --- */
 function toggleMenu() {
-    const menu = document.getElementById('nav-menu');
-    if (menu) {
-        menu.classList.toggle('show-menu');
+    const navMenu = document.getElementById('nav-menu');
+    // Toggles the 'active' class which controls visibility in your style.css
+    if (navMenu) {
+        navMenu.classList.toggle('active');
     }
 }
 
-// 2. CLOSE MENU ON OUTSIDE CLICK
-// If the user clicks anywhere else on the screen, the menu closes automatically
-window.addEventListener('click', function(event) {
-    const menu = document.getElementById('nav-menu');
-    const menuIcon = document.querySelector('.menu-icon');
-    
-    // Check if the click was outside the menu and the hamburger icon
-    if (menu && menu.classList.contains('show-menu')) {
-        if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
-            menu.classList.remove('show-menu');
-        }
-    }
-});
-
-// 3. REAL-TIME DIGITAL CLOCK
-// Displays the current time in the footer as seen in your layout
+/* --- 2. LIVE FOOTER CLOCK --- */
 function updateClock() {
     const clockElement = document.getElementById('clock');
     if (clockElement) {
         const now = new Date();
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        const seconds = String(now.getSeconds()).padStart(2, '0');
-        
-        clockElement.textContent = `${hours}:${minutes}:${seconds}`;
+        // Formats time to match the 24-hour style seen on your Android status bar
+        const timeString = now.toLocaleTimeString([], { 
+            hour: '2-digit', 
+            minute: '2-digit', 
+            second: '2-digit',
+            hour12: false 
+        });
+        clockElement.textContent = timeString;
+    }
+}
+// Update every second
+setInterval(updateClock, 1000);
+updateClock();
+
+/* --- 3. CHATBOT INTERACTION --- */
+function toggleChat() {
+    const chatBody = document.getElementById('chat-body');
+    const chatFooter = document.querySelector('.chat-footer');
+    const chatIcon = document.getElementById('chat-icon');
+    
+    if (chatBody && chatFooter) {
+        // Toggle display between none and block/flex
+        if (chatBody.style.display === "none" || chatBody.style.display === "") {
+            chatBody.style.display = "block";
+            chatFooter.style.display = "flex";
+            chatIcon.innerText = "▼";
+        } else {
+            chatBody.style.display = "none";
+            chatFooter.style.display = "none";
+            chatIcon.innerText = "▲";
+        }
     }
 }
 
-// Update the clock every second
-setInterval(updateClock, 1000);
+function sendMessage() {
+    const input = document.getElementById('user-input');
+    const chatBody = document.getElementById('chat-body');
+    
+    if (!input || !chatBody || input.value.trim() === "") return;
 
-// 4. MARQUEE HOVER EFFECT
-// Slows down the announcement bar when the user wants to read it
-const marquee = document.querySelector('marquee');
-if (marquee) {
-    marquee.addEventListener('mouseover', () => marquee.stop());
-    marquee.addEventListener('mouseout', () => marquee.start());
+    const userText = input.value.trim();
+
+    // Append User Message
+    const userDiv = document.createElement('div');
+    userDiv.style.cssText = "background: #cc0000; color: white; margin: 8px; padding: 10px; border-radius: 10px; align-self: flex-end; text-align: right; margin-left: auto; max-width: 85%; font-size: 0.85rem;";
+    userDiv.innerText = userText;
+    chatBody.appendChild(userDiv);
+
+    // Clear the input field
+    input.value = "";
+
+    // Bot Response Logic
+    setTimeout(() => {
+        const botDiv = document.createElement('div');
+        botDiv.style.cssText = "background: #eeeeee; color: #333; margin: 8px; padding: 10px; border-radius: 10px; align-self: flex-start; margin-right: auto; max-width: 85%; font-size: 0.85rem;";
+        
+        const lowerText = userText.toLowerCase();
+
+        // Custom responses based on Onyx-Adire's services
+        if (lowerText.includes("price") || lowerText.includes("cost")) {
+            botDiv.innerText = "Our luxury Adire pieces range from ₦45,000 to ₦150,000. Which item can I price for you?";
+        } else if (lowerText.includes("shipping") || lowerText.includes("delivery")) {
+            botDiv.innerText = "We ship across Nigeria and internationally! Delivery times depend on your location.";
+        } else if (lowerText.includes("appointment") || lowerText.includes("bespoke")) {
+            botDiv.innerText = "You can book a fitting session via our 'Inquiries' page or message us directly on WhatsApp.";
+        } else {
+            botDiv.innerText = "Thanks for contacting Onyx-Adire! A member of our team will be with you shortly.";
+        }
+
+        chatBody.appendChild(botDiv);
+        // Auto-scroll to the bottom of the chat
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }, 700);
 }
 
-// 5. INITIALIZE ON LOAD
+/* --- 4. EVENT LISTENERS --- */
 document.addEventListener('DOMContentLoaded', () => {
-    updateClock(); // Start clock immediately
-    
-    // Optional: Log interest in items for your freelance portfolio metrics
-    const productCards = document.querySelectorAll('.product-card');
-    productCards.forEach(card => {
-        card.addEventListener('click', () => {
-            const productName = card.querySelector('h3').innerText;
-            console.log("Customer viewing:", productName);
+    const userInput = document.getElementById('user-input');
+    if (userInput) {
+        // Allows sending messages by pressing 'Enter' on mobile keyboards
+        userInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
         });
-    });
+    }
 });
