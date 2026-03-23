@@ -1,18 +1,23 @@
-/* --- 1. MOBILE NAVIGATION LOGIC --- */
+/**
+ * 1. MOBILE NAVIGATION LOGIC
+ * Toggles the 'active' class on the menu-links drawer.
+ * Positioned for the top-left hamburger icon.
+ */
 function toggleMenu() {
     const navMenu = document.getElementById('nav-menu');
-    // Toggles the 'active' class which controls visibility in your style.css
     if (navMenu) {
         navMenu.classList.toggle('active');
     }
 }
 
-/* --- 2. LIVE FOOTER CLOCK --- */
+/**
+ * 2. LIVE FOOTER CLOCK
+ * Updates every second to display the current time.
+ */
 function updateClock() {
     const clockElement = document.getElementById('clock');
     if (clockElement) {
         const now = new Date();
-        // Formats time to match the 24-hour style seen on your Android status bar
         const timeString = now.toLocaleTimeString([], { 
             hour: '2-digit', 
             minute: '2-digit', 
@@ -22,18 +27,19 @@ function updateClock() {
         clockElement.textContent = timeString;
     }
 }
-// Update every second
 setInterval(updateClock, 1000);
 updateClock();
 
-/* --- 3. CHATBOT INTERACTION --- */
+/**
+ * 3. CHATBOT INTERACTION
+ * Manages the visibility and automated responses of the Onyx-Adire Assistant.
+ */
 function toggleChat() {
     const chatBody = document.getElementById('chat-body');
     const chatFooter = document.querySelector('.chat-footer');
     const chatIcon = document.getElementById('chat-icon');
     
     if (chatBody && chatFooter) {
-        // Toggle display between none and block/flex
         if (chatBody.style.display === "none" || chatBody.style.display === "") {
             chatBody.style.display = "block";
             chatFooter.style.display = "flex";
@@ -54,48 +60,54 @@ function sendMessage() {
 
     const userText = input.value.trim();
 
-    // Append User Message
+    // Create User Message Bubble
     const userDiv = document.createElement('div');
-    userDiv.style.cssText = "background: #cc0000; color: white; margin: 8px; padding: 10px; border-radius: 10px; align-self: flex-end; text-align: right; margin-left: auto; max-width: 85%; font-size: 0.85rem;";
+    userDiv.className = "message user";
+    // Inline styling to ensure Red & White theme consistency
+    userDiv.style.cssText = "background: #cc0000; color: #ffffff; margin: 8px; padding: 10px; border-radius: 10px; align-self: flex-end; text-align: right; margin-left: auto; max-width: 80%; font-size: 0.85rem; font-family: sans-serif;";
     userDiv.innerText = userText;
     chatBody.appendChild(userDiv);
 
-    // Clear the input field
     input.value = "";
 
-    // Bot Response Logic
+    // Automated Bot Response
     setTimeout(() => {
         const botDiv = document.createElement('div');
-        botDiv.style.cssText = "background: #eeeeee; color: #333; margin: 8px; padding: 10px; border-radius: 10px; align-self: flex-start; margin-right: auto; max-width: 85%; font-size: 0.85rem;";
+        botDiv.className = "message bot";
+        botDiv.style.cssText = "background: #f4f4f4; color: #cc0000; border: 1px solid #cc0000; margin: 8px; padding: 10px; border-radius: 10px; align-self: flex-start; margin-right: auto; max-width: 80%; font-size: 0.85rem; font-family: sans-serif;";
         
         const lowerText = userText.toLowerCase();
 
-        // Custom responses based on Onyx-Adire's services
-        if (lowerText.includes("price") || lowerText.includes("cost")) {
-            botDiv.innerText = "Our luxury Adire pieces range from ₦45,000 to ₦150,000. Which item can I price for you?";
-        } else if (lowerText.includes("shipping") || lowerText.includes("delivery")) {
-            botDiv.innerText = "We ship across Nigeria and internationally! Delivery times depend on your location.";
-        } else if (lowerText.includes("appointment") || lowerText.includes("bespoke")) {
-            botDiv.innerText = "You can book a fitting session via our 'Inquiries' page or message us directly on WhatsApp.";
+        if (lowerText.includes("price") || lowerText.includes("how much")) {
+            botDiv.innerText = "Our luxury Adire pieces range from ₦45,000 to ₦150,000. Check the catalog for specific prices!";
+        } else if (lowerText.includes("delivery") || lowerText.includes("ship")) {
+            botDiv.innerText = "We offer nationwide delivery within Nigeria and international shipping for our diaspora clients.";
+        } else if (lowerText.includes("bespoke") || lowerText.includes("custom")) {
+            botDiv.innerText = "We love creating custom pieces! Please use the 'Book Appointment' button or WhatsApp us for measurements.";
         } else {
-            botDiv.innerText = "Thanks for contacting Onyx-Adire! A member of our team will be with you shortly.";
+            botDiv.innerText = "Welcome to Onyx-Adire. A stylist will be with you shortly. You can also click the WhatsApp icon for instant chat!";
         }
 
         chatBody.appendChild(botDiv);
-        // Auto-scroll to the bottom of the chat
         chatBody.scrollTop = chatBody.scrollHeight;
-    }, 700);
+    }, 600);
 }
 
-/* --- 4. EVENT LISTENERS --- */
+/**
+ * 4. EVENT LISTENERS
+ * Ensures the 'Enter' key works on mobile keyboards.
+ */
 document.addEventListener('DOMContentLoaded', () => {
     const userInput = document.getElementById('user-input');
     if (userInput) {
-        // Allows sending messages by pressing 'Enter' on mobile keyboards
         userInput.addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
                 sendMessage();
             }
         });
     }
+    
+    // Ensure Chatbot starts hidden
+    const chatBody = document.getElementById('chat-body');
+    if (chatBody) chatBody.style.display = "none";
 });
