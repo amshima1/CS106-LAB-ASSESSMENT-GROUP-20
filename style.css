@@ -1,8 +1,12 @@
-/* --- ONYX-ADIRE OFFICIAL STYLE GUIDE --- */
+/* ONYX-ADIRE OFFICIAL STYLESHEET 
+   Theme: Red & White Luxury 
+   Fix: Full Image Visibility & Responsive Grid
+*/
+
 :root {
     --brand-red: #cc0000;
     --pure-white: #ffffff;
-    --dark-text: #333333;
+    --bg-light: #fdfdfd;
 }
 
 * {
@@ -16,10 +20,10 @@ body {
     background-color: var(--pure-white);
     color: var(--brand-red);
     text-align: center;
-    line-height: 1.6;
+    line-height: 1.5;
 }
 
-/* --- 1. NAVIGATION (TOP LEFT HAMBURGER) --- */
+/* --- NAVIGATION & BIG HAMBURGER --- */
 nav {
     background-color: var(--brand-red);
     height: 80px;
@@ -36,14 +40,13 @@ nav {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    width: 50px; /* Big clickable area */
-    z-index: 2001;
+    width: 50px;
 }
 
 .menu-icon span {
     display: block;
     width: 35px;
-    height: 5px; /* Thicker lines for visibility */
+    height: 5px;
     background-color: var(--pure-white);
     border-radius: 4px;
 }
@@ -57,9 +60,9 @@ nav {
     letter-spacing: 2px;
 }
 
-/* --- 2. THE SLIDE-OUT MENU --- */
+/* --- SLIDE-OUT MENU --- */
 .menu-links {
-    display: none; /* Hidden until clicked */
+    display: none;
     position: absolute;
     top: 80px;
     left: 0;
@@ -84,7 +87,7 @@ nav {
     display: flex !important;
 }
 
-/* --- 3. BIG ANNOUNCEMENT BAR --- */
+/* --- ANNOUNCEMENT BAR --- */
 .marquee-container {
     background-color: var(--brand-red);
     color: var(--pure-white);
@@ -94,12 +97,11 @@ nav {
 }
 
 marquee {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 900;
-    text-transform: uppercase;
 }
 
-/* --- 4. THE PRODUCT GRID (THE FIX) --- */
+/* --- PRODUCT GRID & FULL IMAGE FIX --- */
 h1 {
     display: inline-block;
     border: 6px solid var(--brand-red);
@@ -110,56 +112,77 @@ h1 {
 
 .product-grid {
     display: grid;
-    /* This creates the 3-column layout on PC and 1-column on mobile */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
     padding: 20px;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
 .product-card {
-    background-color: var(--pure-white);
+    background-color: var(--bg-light);
     border: 3px solid var(--brand-red);
-    padding-bottom: 20px;
-    transition: 0.3s;
+    display: flex;
+    flex-direction: column; /* Stacks image top, text bottom */
+    transition: 0.3s ease;
 }
 
 .product-card img {
     width: 100%;
-    height: 450px; /* Uniform height for all 9 images */
-    object-fit: cover; /* Prevents stretching */
-    border-bottom: 3px solid var(--brand-red);
+    height: auto; /* CRITICAL: Allows the full dress to show without cropping */
+    display: block;
+    object-fit: contain; /* Ensures the image fits inside without being cut */
+    background-color: #fff;
 }
 
-.product-card h3 {
-    margin: 15px 0 5px;
-    font-size: 1.2rem;
+.product-info {
+    padding: 20px;
+    border-top: 3px solid var(--brand-red);
+    flex-grow: 1; /* Pushes the button to the bottom if cards vary in height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-info h3 {
+    margin-bottom: 10px;
+    font-size: 1.3rem;
     text-transform: uppercase;
 }
 
 .price {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-weight: 900;
-    color: var(--dark-text);
-    margin-bottom: 15px;
+    color: #333;
+    margin-bottom: 20px;
 }
 
 .book-btn {
-    display: inline-block;
+    display: block;
     background-color: var(--brand-red);
     color: var(--pure-white) !important;
-    padding: 10px 20px;
+    padding: 15px;
     text-decoration: none;
     font-weight: bold;
     text-transform: uppercase;
-    font-size: 0.9rem;
+    border: 2px solid var(--brand-red);
 }
 
-/* --- 5. FOOTER --- */
+.book-btn:hover {
+    background-color: var(--pure-white);
+    color: var(--brand-red) !important;
+}
+
+/* --- FOOTER --- */
 footer {
     background-color: var(--brand-red);
     color: var(--pure-white);
-    padding: 30px;
-    margin-top: 50px;
+    padding: 40px;
+    margin-top: 60px;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 600px) {
+    .logo { font-size: 1.2rem; }
+    h1 { font-size: 1.5rem; width: 90%; }
 }
