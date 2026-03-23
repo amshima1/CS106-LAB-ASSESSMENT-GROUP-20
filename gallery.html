@@ -1,28 +1,181 @@
-<nav>
-    <div class="logo">ONYX-ADIRE</div>
-    <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="gallery.html">Showcase</a>
-        <a href="trustees.html">Trustees</a>
-        <a href="events.html">Events</a>
-        <a href="bookings.html">Inquiries</a>
-    </div>
-</nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Showcase | Onyx-Adire Full Collection</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-<div class="marquee-container">
-    <marquee behavior="scroll" direction="left">
-        EXQUISITE ADIRE HERITAGE • NEW ARRIVALS: HERITAGE AGBADA GOLD • LUXURY SILK TUNICS • BOOK YOUR FITTING TODAY
-    </marquee>
-</div>
-
-<main class="container">
-    <h1>Our Collections</h1>
-    <div class="plain-grid">
-        <div class="card"><img src="adesewa-adire-set.jpg"></div>
-        <div class="card"><img src="adire-silk-tunic.jpg"></div>
-        <div class="card"><img src="ebony-silk-boubou.jpg"></div>
-        <div class="card"><img src="floral-adire-kaftan.jpg"></div>
-        <div class="card"><img src="luxury-lace-iro-and-buba.jpg"></div>
-        <div class="card"><img src="modern-adire-shirtdress.jpg"></div>
+    <div class="announcement-bar">
+        <marquee scrollamount="7">
+            EXPLORE THE FULL ONYX-ADIRE COLLECTION • LUXURY REDEFINED • NATIONWIDE DELIVERY
+        </marquee>
     </div>
-</main>
+
+    <nav>
+        <div class="nav-left">
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="nav-centre">
+            <h1 class="logo">ONYX-ADIRE</h1>
+        </div>
+
+        <div class="nav-right"></div>
+
+        <div id="nav-menu" class="menu-links">
+            <a href="index.html">HOME</a>
+            <a href="gallery.html">SHOWCASE</a>
+            <a href="trustees.html">TRUSTEES</a>
+            <a href="events.html">EVENTS</a>
+            <a href="bookings.html">INQUIRIES</a>
+        </div>
+    </nav>
+
+    <header class="luxury-header">
+        <h2 class="red-white-box">THE FULL SHOWCASE</h2>
+    </header>
+
+    <main class="container">
+        <div class="product-grid" id="galleryGrid">
+            
+            <div class="product-card">
+                <img src="adesewa-adire-pants-set.jpg" alt="Adesewa Pants Set">
+                <h3>Adesewa Pants Set</h3>
+                <p class="price">₦75,000</p>
+                <a href="bookings.html" class="book-btn">INQUIRE</a>
+            </div>
+
+            <div class="product-card">
+                <img src="asymmetric-adire-tunic.jpg" alt="Asymmetric Tunic">
+                <h3>Asymmetric Tunic</h3>
+                <p class="price">₦45,000</p>
+                <a href="bookings.html" class="book-btn">INQUIRE</a>
+            </div>
+
+            <div class="product-card">
+                <img src="bespoke-velvet-caftan.jpg" alt="Velvet Caftan">
+                <h3>Velvet Caftan</h3>
+                <p class="price">₦95,000</p>
+                <a href="bookings.html" class="book-btn">INQUIRE</a>
+            </div>
+
+            <div class="product-card">
+                <img src="boubou-and-abaya.jpg" alt="Boubou and Abaya">
+                <h3>Boubou & Abaya</h3>
+                <p class="price">₦85,000</p>
+                <a href="bookings.html" class="book-btn">INQUIRE</a>
+            </div>
+
+            <div class="product-card">
+                <img src="embroidered-aso-oke-set.jpg" alt="Embroidered Aso-Oke">
+                <h3>Embroidered Aso-Oke</h3>
+                <p class="price">₦130,000</p>
+                <a href="bookings.html" class="book-btn">INQUIRE</a>
+            </div>
+
+            <div class="product-card">
+                <img src="galaxy-print-jumpsuit.jpg" alt="Galaxy Jumpsuit">
+                <h3>Galaxy Jumpsuit</h3>
+                <p class="price">₦70,000</p>
+                <a href="bookings.html" class="book-btn">INQUIRE</a>
+            </div>
+
+            <div class="product-card">
+                <img src="geometric-print-boubou.jpg" alt="Geometric Boubou">
+                <h3>Geometric Boubou</h3>
+                <p class="price">₦80,000</p>
+                <a href="bookings.html" class="book-btn">INQUIRE</a>
+            </div>
+
+            <div class="product-card">
+                <img src="maroon-palazzo-trousers.jpg" alt="Maroon Palazzo">
+                <h3>Maroon Palazzo</h3>
+                <p class="price">₦35,000</p>
+                <a href="bookings.html" class="book-btn">INQUIRE</a>
+            </div>
+
+            <div class="product-card">
+                <img src="modern-agbada-fusion.jpg" alt="Modern Agbada Fusion">
+                <h3>Agbada Fusion</h3>
+                <p class="price">₦115,000</p>
+                <a href="bookings.html" class="book-btn">INQUIRE</a>
+            </div>
+
+            <div class="product-card">
+                <img src="monochrome-pattern-set.jpg" alt="Monochrome Set">
+                <h3>Monochrome Set</h3>
+                <p class="price">₦60,000</p>
+                <a href="bookings.html" class="book-btn">INQUIRE</a>
+            </div>
+
+            <div class="product-card">
+                <img src="navy-lace-shirt.jpg" alt="Navy Lace Shirt">
+                <h3>Navy Lace Shirt</h3>
+                <p class="price">₦40,000</p>
+                <a href="bookings.html" class="book-btn">INQUIRE</a>
+            </div>
+
+            <div class="product-card">
+                <img src="patchwork-adire-tunic.jpg" alt="Patchwork Tunic">
+                <h3>Patchwork Tunic</h3>
+                <p class="price">₦50,000</p>
+                <a href="bookings.html" class="book-btn">INQUIRE</a>
+            </div>
+
+            <div class="product-card">
+                <img src="silk-wrap-dress.jpg" alt="Silk Wrap Dress">
+                <h3>Silk Wrap Dress</h3>
+                <p class="price">₦90,000</p>
+                <a href="bookings.html" class="book-btn">INQUIRE</a>
+            </div>
+
+            <div class="product-card">
+                <img src="stripe-mix-palazzo.jpg" alt="Stripe Mix Palazzo">
+                <h3>Stripe Mix Palazzo</h3>
+                <p class="price">₦38,000</p>
+                <a href="bookings.html" class="book-btn">INQUIRE</a>
+            </div>
+
+            <div class="product-card">
+                <img src="tailored-bespoke-suit.jpg" alt="Tailored Suit">
+                <h3>Tailored Bespoke Suit</h3>
+                <p class="price">₦145,000</p>
+                <a href="bookings.html" class="book-btn">INQUIRE</a>
+            </div>
+
+            <div class="product-card">
+                <img src="teniola-adire-dress.jpg" alt="Teniola Adire Dress">
+                <h3>Teniola Adire Dress</h3>
+                <p class="price">₦85,000</p>
+                <a href="bookings.html" class="book-btn">INQUIRE</a>
+            </div>
+
+        </div>
+    </main>
+
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="fullImage">
+    </div>
+
+    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-bar" target="_blank">
+        <div class="whatsapp-content">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+            <span>Chat Via Whatsapp</span>
+        </div>
+    </a>
+
+    <footer>
+        <p>&copy; 2026 ONYX-ADIRE | <span id="clock"></span></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
