@@ -1,56 +1,66 @@
-// Feature: DOM Clock for all Footers
-function updateClock() {
-    const clockElement = document.getElementById('footer-date');
-    if (clockElement) {
-        const now = new Date();
-        clockElement.innerText = now.toLocaleString();
-    }
-}
-setInterval(updateClock, 1000);
+/**
+ * ONYX-ADIRE INTERACTIVE SCRIPT
+ * Functionality: Mobile Menu, Digital Clock, and Image Interactions
+ */
 
-// Feature: Smooth Scroll Reveal
-window.addEventListener('scroll', () => {
-    const elements = document.querySelectorAll('.card');
-    elements.forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight) {
-            el.style.opacity = "1";
-            el.style.transform = "translateY(0)";
-        }
-    });
-});
-
-// Form Logic
-const bForm = document.getElementById('bookingForm');
-if(bForm) {
-    bForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert("Onyx-Adire has received your request. We will reach out shortly!");
-    });
-}
-const bigMarquee = document.querySelector('marquee');
-
-if (bigMarquee) {
-    bigMarquee.addEventListener('mouseover', () => {
-        bigMarquee.scrollAmount = 20; // Speed up on hover
-    });
-
-    bigMarquee.addEventListener('mouseout', () => {
-        bigMarquee.scrollAmount = 12; // Normal speed
-    });
-}
-// Toggle Hamburger Menu
+// 1. HAMBURGER MENU TOGGLE
+// This opens and closes the menu when the 3-line icon is clicked
 function toggleMenu() {
     const menu = document.getElementById('nav-menu');
-    menu.classList.toggle('show-menu');
+    if (menu) {
+        menu.classList.toggle('show-menu');
+    }
 }
 
-// Close menu if user clicks outside of it
-window.onclick = function(event) {
-    if (!event.target.matches('.menu-icon') && !event.target.matches('.menu-icon span')) {
-        const menu = document.getElementById('nav-menu');
-        if (menu.classList.contains('show-menu')) {
+// 2. CLOSE MENU ON OUTSIDE CLICK
+// If the user clicks anywhere else on the screen, the menu closes automatically
+window.addEventListener('click', function(event) {
+    const menu = document.getElementById('nav-menu');
+    const menuIcon = document.querySelector('.menu-icon');
+    
+    // Check if the click was outside the menu and the hamburger icon
+    if (menu && menu.classList.contains('show-menu')) {
+        if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
             menu.classList.remove('show-menu');
         }
     }
+});
+
+// 3. REAL-TIME DIGITAL CLOCK
+// Displays the current time in the footer as seen in your layout
+function updateClock() {
+    const clockElement = document.getElementById('clock');
+    if (clockElement) {
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        
+        clockElement.textContent = `${hours}:${minutes}:${seconds}`;
+    }
 }
+
+// Update the clock every second
+setInterval(updateClock, 1000);
+
+// 4. MARQUEE HOVER EFFECT
+// Slows down the announcement bar when the user wants to read it
+const marquee = document.querySelector('marquee');
+if (marquee) {
+    marquee.addEventListener('mouseover', () => marquee.stop());
+    marquee.addEventListener('mouseout', () => marquee.start());
+}
+
+// 5. INITIALIZE ON LOAD
+document.addEventListener('DOMContentLoaded', () => {
+    updateClock(); // Start clock immediately
+    
+    // Optional: Log interest in items for your freelance portfolio metrics
+    const productCards = document.querySelectorAll('.product-card');
+    productCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const productName = card.querySelector('h3').innerText;
+            console.log("Customer viewing:", productName);
+        });
+    });
+});
