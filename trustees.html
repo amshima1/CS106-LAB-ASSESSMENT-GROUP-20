@@ -1,23 +1,92 @@
-<nav>
-    <div class="logo">ONYX-ADIRE</div>
-    <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="gallery.html">Showcase</a>
-        <a href="trustees.html">Trustees</a>
-        <a href="events.html">Events</a>
-        <a href="bookings.html">Inquiries</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board of Trustees | Onyx-Adire</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="announcement-bar">
+        <marquee scrollamount="7">
+            MEET THE VISIONARIES BEHIND ONYX-ADIRE • PRESERVING AFRICAN HERITAGE THROUGH LUXURY FASHION
+        </marquee>
     </div>
-</nav>
 
-<div class="marquee-container">
-    <marquee behavior="scroll" direction="left">
-        EXQUISITE ADIRE HERITAGE • NEW ARRIVALS: HERITAGE AGBADA GOLD • LUXURY SILK TUNICS • BOOK YOUR FITTING TODAY
-    </marquee>
-</div>
-
-<main class="container">
-    <h1>The Board of Trustees</h1>
-    <div class="plain-grid">
-        <div class="card"><img src="trustee1.jpg"><h3>Amshima Amshima</h3><p>Founder & CEO</p></div>
+    <nav>
+        <div class="nav-left">
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-</main>
+        
+        <div class="nav-centre">
+            <h1 class="logo">ONYX-ADIRE</h1>
+        </div>
+
+        <div class="nav-right"></div>
+
+        <div id="nav-menu" class="menu-links">
+            <a href="index.html">HOME</a>
+            <a href="gallery.html">SHOWCASE</a>
+            <a href="trustees.html">TRUSTEES</a>
+            <a href="events.html">EVENTS</a>
+            <a href="bookings.html">INQUIRIES</a>
+        </div>
+    </nav>
+
+    <header class="luxury-header">
+        <h2 class="red-white-box">BOARD OF TRUSTEES</h2>
+    </header>
+
+    <main class="container">
+        <div class="product-grid">
+            
+            <div class="product-card">
+                <img src="victor-amshima.jpg" alt="Victor Amshima">
+                <h3>VICTOR AMSHIMA</h3>
+                <p class="price">CHAIRMAN</p>
+                <a href="https://wa.me/234XXXXXXXXXX" class="book-btn">CONTACT CHAIR</a>
+            </div>
+
+            <div class="product-card">
+                <img src="paul-gbawuan.jpg" alt="Paul Gbawuan">
+                <h3>PAUL GBAWUAN</h3>
+                <p class="price">TRUSTEE MEMBER</p>
+                <a href="https://wa.me/234XXXXXXXXXX" class="book-btn">CONTACT TRUSTEE</a>
+            </div>
+
+            <div class="product-card" style="opacity: 0.6; border-style: dashed;">
+                <div style="height: 200px; display: flex; align-items: center; justify-content: center; background: #f9f9f9; color: #cc0000; font-weight: bold;">
+                    BOARD SEAT
+                </div>
+                <h3>VACANT</h3>
+                <p class="price">EXECUTIVE</p>
+                <a href="#" class="book-btn" style="background: #999;">PENDING</a>
+            </div>
+
+        </div>
+    </main>
+
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="fullImage">
+    </div>
+
+    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-bar" target="_blank">
+        <div class="whatsapp-content">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+            <span>Chat Via Whatsapp</span>
+        </div>
+    </a>
+
+    <footer>
+        <p>&copy; 2026 ONYX-ADIRE | <span id="clock"></span></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
