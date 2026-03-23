@@ -1,69 +1,123 @@
-/* GLOBAL RESET TO RED & WHITE */
+/* ONYX-ADIRE OFFICIAL RED & WHITE THEME 
+   Guaranteed Override for GitHub Pages 
+*/
+
 :root {
-    --primary-red: #cc0000;
+    --brand-red: #cc0000;
     --pure-white: #ffffff;
+    --text-dark: #333333;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
     background-color: var(--pure-white) !important;
-    color: var(--primary-red) !important;
+    color: var(--brand-red) !important;
     font-family: 'Garamond', serif;
     margin: 0;
+    text-align: center;
 }
 
-/* 1. Navigation Bar */
+/* 1. Navigation Bar (Red Background, White Links) */
 nav {
-    background-color: var(--primary-red) !important;
-    border-bottom: 5px solid var(--primary-red);
-    padding: 15px 5%;
+    background-color: var(--brand-red) !important;
+    padding: 15px 20px !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 4px solid var(--brand-red);
 }
 
-nav a, .logo {
+.logo {
+    color: var(--pure-white) !important;
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+}
+
+.nav-links a {
     color: var(--pure-white) !important;
     text-decoration: none;
-    font-weight: 900;
+    margin-left: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+/* 2. Announcement Bar (White Background, Red Border & Text) */
+.marquee-container {
+    background-color: var(--pure-white) !important;
+    color: var(--brand-red) !important;
+    border-top: 5px solid var(--brand-red) !important;
+    border-bottom: 5px solid var(--brand-red) !important;
+    padding: 10px 0 !important;
+    font-weight: 900 !important;
     text-transform: uppercase;
 }
 
-/* 2. The Announcement Bar (Marquee) */
-.marquee-container, .marquee-bar {
-    background-color: var(--pure-white) !important;
-    color: var(--primary-red) !important;
-    border-top: 4px solid var(--primary-red) !important;
-    border-bottom: 4px solid var(--primary-red) !important;
-    padding: 10px 0 !important;
-}
-
-marquee {
-    font-weight: 900 !important;
-    font-size: 1.1rem;
-}
-
-/* 3. The Main Heading & Borders */
+/* 3. The Main Heading (Red Border Box) */
 h1 {
-    color: var(--primary-red) !important;
-    border: 6px solid var(--primary-red) !important; /* Bold Red Border */
-    padding: 20px 40px !important;
-    display: inline-block !important;
-    background-color: var(--pure-white) !important;
+    color: var(--brand-red) !important;
+    font-size: 2.2rem !important;
     font-weight: 900 !important;
-    margin-top: 40px !important;
-}
-
-/* 4. Product Showcase & Images */
-.card img, .main-image img {
-    border: 5px solid var(--primary-red) !important; /* Red border on photos */
-    background-color: var(--pure-white);
-}
-
-.plain-grid {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    
+    display: inline-block;
+    margin: 40px auto 10px auto !important;
+    padding: 15px 30px !important;
+    border: 7px solid var(--brand-red) !important;
     background-color: var(--pure-white) !important;
 }
 
-/* 5. Footer */
+p {
+    color: var(--text-dark);
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+/* 4. Images & Product Showcase */
+img {
+    max-width: 90%;
+    height: auto;
+    border: 6px solid var(--brand-red) !important;
+    margin-top: 20px;
+}
+
+/* Grid for Gallery and Trustees */
+.plain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 40px;
+}
+
+/* 5. Forms (Inquiries/Bookings) */
+input, textarea, button {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px;
+    margin: 10px auto;
+    display: block;
+    border: 2px solid var(--brand-red);
+    border-radius: 0;
+}
+
+button {
+    background-color: var(--brand-red);
+    color: var(--pure-white);
+    font-weight: 900;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+/* 6. Footer */
 footer {
-    background-color: var(--primary-red) !important;
-    color: var(--pure-white) !important;
+    background-color: var(--brand-red);
+    color: var(--pure-white);
     padding: 20px;
-    margin-top: 50px;
+    margin-top: 60px;
+    font-weight: bold;
 }
