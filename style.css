@@ -1,7 +1,7 @@
-/* --- 1. GLOBAL SETTINGS --- */
+/* --- 1. CORE BRANDING & FONTS --- */
 :root {
     --brand-red: #cc0000;
-    --brand-orange: #ff8c00; /* Goal color from cite: 14362.jpg */
+    --brand-orange: #ff8c00; /* Luxury orange for Chat button */
     --white: #ffffff;
     --black: #000000;
 }
@@ -19,103 +19,155 @@ body {
     overflow-x: hidden;
 }
 
-/* --- 2. NAVIGATION & MARQUEE --- */
-.announcement-bar {
-    background: var(--brand-red);
-    color: white;
-    padding: 8px 0;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    text-align: center;
-}
-
+/* --- 2. NAVIGATION (Fixes 14382.jpg) --- */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 5%;
     border-bottom: 2px solid var(--brand-red);
+    background: white;
     position: sticky;
     top: 0;
-    background: white;
     z-index: 1000;
 }
 
 .logo {
     color: var(--brand-red);
     font-family: 'Playfair Display', serif;
-    font-weight: 800;
     font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-decoration: none;
 }
 
-/* --- 3. LAYOUT GRID (2 Columns for Mobile) --- */
+/* For Mobile Hamburger */
+.hamburger {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--brand-red);
+}
+
+.menu-links {
+    display: none; /* Controlled by JS toggle */
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.menu-links.active {
+    display: flex;
+}
+
+.menu-links a {
+    padding: 15px;
+    text-align: center;
+    color: var(--brand-red);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid #eee;
+}
+
+/* --- 3. LUXURY BRANDING BOX (Fixes 14380.jpg & 14382.jpg) --- */
+.luxury-header {
+    text-align: center;
+    padding: 30px 0;
+}
+
+.red-white-box {
+    display: inline-block;
+    border: 2px solid var(--brand-red);
+    padding: 10px 25px;
+    color: var(--brand-red);
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- 4. GRID SYSTEM (2 Columns Mobile) --- */
 .container {
     padding: 20px 10px;
 }
 
 .product-grid, .trustee-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Side-by-side as in cite: 14378.jpg */
+    grid-template-columns: 1fr 1fr; /* Matches 14378.jpg & 14380.jpg */
     gap: 15px;
 }
 
-.product-card, .trustee-card {
+.product-card {
     border: 1px solid #eee;
     text-align: center;
     padding-bottom: 15px;
+    background: #fff;
 }
 
-.product-card img, .trustee-card img {
+.product-card img {
     width: 100%;
     height: auto;
     display: block;
+    object-fit: cover;
 }
 
-/* --- 4. THE UNIVERSAL WHATSAPP FIX (CRITICAL) --- */
+.product-card h3 {
+    font-size: 0.85rem;
+    margin: 10px 5px;
+    color: var(--brand-red);
+}
 
-/* This styles the button "pill" container globally */
-.whatsapp-fixed-btn, 
-.whatsapp-floating-btn, 
-a[href*="wa.me"] {
+/* --- 5. THE GLOBAL WHATSAPP PILL FIX (Fixes 14364.jpg & 14368.jpg) --- */
+
+.whatsapp-fixed-btn {
     position: fixed !important;
     bottom: 20px !important;
     right: 15px !important;
     background-color: var(--brand-orange) !important;
-    color: white !important;
-    text-decoration: none !important;
     padding: 10px 18px !important;
     border-radius: 50px !important;
     z-index: 9999 !important;
     display: flex !important;
     align-items: center !important;
+    text-decoration: none !important;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3) !important;
-    width: auto !important; /* Prevents it from filling the screen */
 }
 
-/* THIS SPECIFICALLY STOPS THE GIANT LOGO ON ALL PAGES */
-.whatsapp-fixed-btn img, 
-.whatsapp-floating-btn img, 
-a[href*="wa.me"] img {
-    width: 25px !important; /* Force small size globally */
+.whatsapp-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* CRITICAL: Prevents giant logo across ALL sub-pages */
+.whatsapp-content img {
+    width: 25px !important; 
     height: 25px !important;
-    display: inline-block !important;
-    margin-right: 8px !important;
+    display: block !important;
 }
 
-/* Styles the "Chat Via Whatsapp" text */
-.whatsapp-fixed-btn span, 
-.whatsapp-floating-btn span,
-a[href*="wa.me"] span {
+.whatsapp-content span {
+    color: white !important;
     font-size: 14px !important;
     font-weight: bold !important;
-    color: white !important;
 }
 
-/* --- 5. FOOTER --- */
+/* --- 6. FOOTER --- */
 footer {
     background: var(--brand-red);
     color: white;
     text-align: center;
     padding: 20px;
     margin-top: 40px;
+    font-size: 0.8rem;
 }
