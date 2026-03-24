@@ -12,75 +12,37 @@
         .menu-icon { position: absolute; left: 20px; font-size: 28px; cursor: pointer; color: #800020; }
         .logo { text-decoration: none; color: #800020; font-family: 'Playfair Display', serif; font-size: 26px; font-style: italic; }
 
-        /* FIXED: Top-Side Menu Overlay (30-35% Height) */
+        /* Top-Side Menu Overlay (33% Height) */
         .menu-overlay { 
-            display: none; 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 33vh; /* Covers exactly 33% of the viewport height */
-            background: #fffcf9; 
-            z-index: 1000000; 
-            flex-direction: column; 
-            padding: 30px 20px; /* Padding for left-side alignment */
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-            animation: slideDown 0.35s ease-out;
-            box-sizing: border-box;
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 33vh; 
+            background: #fffcf9; z-index: 1000000; flex-direction: column; padding: 30px 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03); animation: slideDown 0.35s ease-out; box-sizing: border-box;
         }
 
-        @keyframes slideDown {
-            from { transform: translateY(-100%); }
-            to { transform: translateY(0); }
-        }
+        @keyframes slideDown { from { transform: translateY(-100%); } to { transform: translateY(0); } }
 
-        /* Full Background Tint */
-        .menu-tint {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.3); z-index: 999999;
-        }
+        .menu-tint { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); z-index: 999999; }
 
-        /* FIXED: Left-Aligned Menu Items - Matches Cite 14530.jpg */
-        .menu-overlay a { 
-            margin: 8px 0; 
-            font-size: 13px; 
-            text-decoration: none; 
-            color: #800020; 
-            text-transform: uppercase; 
-            letter-spacing: 1.5px; 
-            font-weight: 500; 
-            text-align: left; /* Aligns write-up to the left */
-        }
+        .menu-overlay a { margin: 8px 0; font-size: 13px; text-decoration: none; color: #800020; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 500; text-align: left; }
 
-        /* Product Grid */
+        /* Product Grid Styling */
         .section-title { font-family: 'Playfair Display', serif; text-align: center; font-style: italic; margin: 40px 0 20px; color: #800020; }
-        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 0 15px 40px; max-width: 1200px; margin: 0 auto; }
-        .card { background: #fff; cursor: pointer; }
-        .card img { width: 100%; height: 350px; object-fit: cover; }
+        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 0 15px 40px; max-width: 1200px; margin: 0 auto; min-height: 200px; }
+        .card { background: #fff; cursor: pointer; border: 1px solid #eee; }
+        .card img { width: 100%; height: 350px; object-fit: cover; background: #f9f9f9; }
         .meta { padding: 10px; text-align: left; }
         .meta h4 { font-family: 'Playfair Display', serif; font-size: 14px; margin: 0; font-style: italic; }
         .meta p { font-size: 12px; font-weight: bold; margin: 5px 0; }
 
         /* Expand View Modal */
-        #imageModal {
-            display: none; position: fixed; z-index: 2000000; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 255, 255, 0.98); justify-content: center; align-items: center; flex-direction: column;
-        }
+        #imageModal { display: none; position: fixed; z-index: 2000000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.98); justify-content: center; align-items: center; flex-direction: column; }
         #modalImg { max-width: 90%; max-height: 70vh; }
         .close-modal { position: absolute; top: 20px; right: 30px; font-size: 40px; cursor: pointer; color: #800020; }
         .view-btn { margin-top: 30px; background: #000; color: #fff; padding: 15px 40px; text-decoration: none; font-size: 11px; letter-spacing: 2px; }
 
-        /* WhatsApp Button */
-        .whatsapp-sticky { 
-            position: fixed; bottom: 25px; right: 20px; background-color: #e85d43; color: white; 
-            text-decoration: none; border-radius: 50px; padding: 12px 22px; display: flex; align-items: center; 
-            z-index: 9999; font-size: 13px;
-        }
+        .whatsapp-sticky { position: fixed; bottom: 25px; right: 20px; background-color: #e85d43; color: white; text-decoration: none; border-radius: 50px; padding: 12px 22px; display: flex; align-items: center; z-index: 9999; font-size: 13px; }
 
-        @media (min-width: 768px) {
-            .grid { grid-template-columns: repeat(4, 1fr); }
-            .card img { height: 450px; }
-        }
+        @media (min-width: 768px) { .grid { grid-template-columns: repeat(4, 1fr); } .card img { height: 450px; } }
     </style>
 </head>
 <body>
@@ -90,4 +52,87 @@
         <a href="index.html" class="logo">Onyx—Adire</a>
         <div id="menuTint" class="menu-tint" onclick="toggleMenu()"></div>
 
-        
+        <div id="mobileMenu" class="menu-overlay">
+            <a href="index.html">The Home</a>
+            <a href="products.html" style="font-weight: bold;">The Collection</a>
+            <a href="trustees.html">The Visionaries</a> 
+            <a href="events.html">The Runway</a> 
+            <a href="bookings.html">The Atelier</a>
+        </div>
+    </nav>
+
+    <h3 class="section-title">The Debut Edit</h3>
+    <div class="grid" id="main-grid">
+        </div>
+
+    <h3 class="section-title">You May Also Like</h3>
+    <div class="grid" id="random-grid">
+        </div>
+
+    <div id="imageModal">
+        <span class="close-modal" onclick="closeExpand()">&times;</span>
+        <img id="modalImg" src="">
+        <a href="#" id="modalLink" class="view-btn">VIEW FULL DETAILS</a>
+    </div>
+
+    <a href="https://wa.me/2347077978711" class="whatsapp-sticky" target="_blank">
+        <span style="margin-right:10px;">💬</span> Chat Via Whatsapp
+    </a>
+
+    <script>
+        // IMPORTANT: Ensure these filenames match what you uploaded to GitHub!
+        const coreItems = [
+            { name: "Galaxy Print Jumpsuit", price: "₦58,500.00", img: "14506.jpg" },
+            { name: "Bespoke Traditional Agbada", price: "₦95,000.00", img: "14518.jpg" },
+            { name: "Adire Silk Tunic", price: "₦45,000.00", img: "14520.jpg" },
+            { name: "Floral Adire Kaftan", price: "₦52,000.00", img: "14526.jpg" }
+        ];
+
+        const discoveryAssets = [
+            { name: "Adesewa Adire Set", price: "₦55,000.00", img: "14530.jpg" },
+            { name: "Luxury Lace Iro & Buba", price: "₦110,000.00", img: "14528.jpg" }
+        ];
+
+        function createCard(item) {
+            return `
+                <div class="card" onclick="openExpand('${item.img}', '${encodeURIComponent(item.name)}', '${encodeURIComponent(item.price)}')">
+                    <img src="${item.img}" onerror="this.src='https://via.placeholder.com/400x600?text=Image+Loading...'">
+                    <div class="meta">
+                        <h4>${item.name}</h4>
+                        <p>${item.price}</p>
+                    </div>
+                </div>`;
+        }
+
+        function openExpand(img, name, price) {
+            document.getElementById('modalImg').src = img;
+            document.getElementById('modalLink').href = `product-detail.html?name=${name}&price=${price}&img=${img}`;
+            document.getElementById('imageModal').style.display = 'flex';
+        }
+
+        function closeExpand() { document.getElementById('imageModal').style.display = 'none'; }
+
+        function toggleMenu() {
+            const m = document.getElementById("mobileMenu");
+            const t = document.getElementById("menuTint");
+            const isOpen = m.style.display === "flex";
+            m.style.display = isOpen ? "none" : "flex";
+            t.style.display = isOpen ? "none" : "block";
+        }
+
+        window.onload = function() {
+            const mGrid = document.getElementById('main-grid');
+            const rGrid = document.getElementById('random-grid');
+            
+            // Clear existing content just in case
+            mGrid.innerHTML = "";
+            rGrid.innerHTML = "";
+
+            coreItems.forEach(item => { mGrid.innerHTML += createCard(item); });
+            discoveryAssets.forEach(item => { rGrid.innerHTML += createCard(item); });
+            
+            console.log("Collection Loaded");
+        };
+    </script>
+</body>
+</html>
