@@ -1,34 +1,140 @@
-<section class="product-grid">
-    <a href="product-detail.html?name=Galaxy+Print+Jumpsuit&price=₦58,500.00&img=galaxy-print-jumpsuit.jpg" class="product-card">
-        <img src="galaxy-print-jumpsuit.jpg" alt="Galaxy Print Jumpsuit">
-        <div class="product-meta"><h4>Galaxy Print Jumpsuit</h4><p>₦58,500.00</p></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Collection | Onyx—Adire</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; margin: 0; background-color: #fff; color: #333; }
+        
+        /* Navigation */
+        nav { padding: 25px; text-align: center; border-bottom: 1px solid #f4f4f4; }
+        .logo { text-decoration: none; color: #800020; font-family: 'Playfair Display', serif; font-size: 26px; font-style: italic; }
+
+        /* Header */
+        header { text-align: center; padding: 60px 20px 40px; }
+        header h1 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: 2.5rem; margin: 0; color: #333; }
+        header p { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: #999; margin-top: 10px; }
+
+        /* Product Grid - 8 Items */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card { text-decoration: none; color: inherit; transition: 0.3s; }
+        .product-card:hover { transform: translateY(-5px); }
+        
+        .image-wrapper { width: 100%; background: #f9f9f9; overflow: hidden; }
+        .product-card img {
+            width: 100%;
+            height: 380px; /* Consistent height for all 8 pictures */
+            object-fit: cover;
+            display: block;
+        }
+
+        .product-meta { padding: 15px 0; text-align: center; }
+        .product-meta h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 15px;
+            margin: 5px 0;
+            font-style: italic;
+            color: #800020;
+        }
+        .product-meta p { font-size: 13px; font-weight: 600; color: #444; margin: 0; }
+
+        /* FIXED WhatsApp Button - Onyx Orange */
+        .whatsapp-sticky { 
+            position: fixed !important; 
+            bottom: 30px !important; 
+            right: 30px !important; 
+            background-color: #e85d43 !important; 
+            color: white !important; 
+            text-decoration: none !important; 
+            border-radius: 50px !important; 
+            padding: 15px 25px !important; 
+            display: flex !important; 
+            align-items: center !important; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3) !important; 
+            z-index: 999999 !important; 
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        @media (min-width: 768px) {
+            .product-grid { grid-template-columns: repeat(4, 1fr); } /* 4 columns on desktop */
+            .product-card img { height: 450px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">Onyx—Adire</a>
+    </nav>
+
+    <header>
+        <h1>The Debut Edit</h1>
+        <p>8 Timeless Heritage Pieces</p>
+    </header>
+
+    <main>
+        <section class="product-grid">
+            
+            <a href="product-detail.html?name=Galaxy+Print+Jumpsuit&price=₦58,500.00&img=galaxy-print-jumpsuit.jpg" class="product-card">
+                <div class="image-wrapper"><img src="galaxy-print-jumpsuit.jpg" alt="Galaxy Print Jumpsuit"></div>
+                <div class="product-meta"><h4>Galaxy Print Jumpsuit</h4><p>₦58,500.00</p></div>
+            </a>
+
+            <a href="product-detail.html?name=Bespoke+Traditional+Agbada&price=₦95,000.00&img=bespoke-traditional-agbada.jpg" class="product-card">
+                <div class="image-wrapper"><img src="bespoke-traditional-agbada.jpg" alt="Bespoke Traditional Agbada"></div>
+                <div class="product-meta"><h4>Bespoke Traditional Agbada</h4><p>₦95,000.00</p></div>
+            </a>
+
+            <a href="product-detail.html?name=Uwata+Dashiki+Set&price=₦62,500.00&img=uwata-dashiki-set.jpg" class="product-card">
+                <div class="image-wrapper"><img src="uwata-dashiki-set.jpg" alt="Uwata Dashiki Set"></div>
+                <div class="product-meta"><h4>Uwata Dashiki Set</h4><p>₦62,500.00</p></div>
+            </a>
+
+            <a href="product-detail.html?name=Adesewa+Adire+Set&price=₦65,000.00&img=adesewa-adire-set.jpg" class="product-card">
+                <div class="image-wrapper"><img src="adesewa-adire-set.jpg" alt="Adesewa Adire Set"></div>
+                <div class="product-meta"><h4>Adesewa Adire Set</h4><p>₦65,000.00</p></div>
+            </a>
+
+            <a href="product-detail.html?name=Floral+Adire+Kaftan&price=₦52,000.00&img=floral-adire-kaftan.jpg" class="product-card">
+                <div class="image-wrapper"><img src="floral-adire-kaftan.jpg" alt="Floral Adire Kaftan"></div>
+                <div class="product-meta"><h4>Floral Adire Kaftan</h4><p>₦52,000.00</p></div>
+            </a>
+
+            <a href="product-detail.html?name=Adire+Silk+Tunic&price=₦45,000.00&img=adire-silk-tunic.jpg" class="product-card">
+                <div class="image-wrapper"><img src="adire-silk-tunic.jpg" alt="Adire Silk Tunic"></div>
+                <div class="product-meta"><h4>Adire Silk Tunic</h4><p>₦45,000.00</p></div>
+            </a>
+
+            <a href="product-detail.html?name=Sadiya+Adire+Long+Dress&price=₦60,000.00&img=sadiya-adire-long-dress.jpg" class="product-card">
+                <div class="image-wrapper"><img src="sadiya-adire-long-dress.jpg" alt="Sadiya Long Dress"></div>
+                <div class="product-meta"><h4>Sadiya Long Dress</h4><p>₦60,000.00</p></div>
+            </a>
+
+            <a href="product-detail.html?name=Asymmetric+Adire+Tunic&price=₦48,000.00&img=asymmetric-adire-tunic.jpg" class="product-card">
+                <div class="image-wrapper"><img src="asymmetric-adire-tunic.jpg" alt="Asymmetric Tunic"></div>
+                <div class="product-meta"><h4>Asymmetric Tunic</h4><p>₦48,000.00</p></div>
+            </a>
+
+        </section>
+    </main>
+
+    <a href="https://wa.me/2347077978711" class="whatsapp-sticky" target="_blank">
+        <span style="margin-right:10px;">💬</span> Chat with Atelier
     </a>
-    <a href="product-detail.html?name=Bespoke+Traditional+Agbada&price=₦95,000.00&img=bespoke-traditional-agbada.jpg" class="product-card">
-        <img src="bespoke-traditional-agbada.jpg" alt="Bespoke Traditional Agbada">
-        <div class="product-meta"><h4>Bespoke Traditional Agbada</h4><p>₦95,000.00</p></div>
-    </a>
-    <a href="product-detail.html?name=Uwata+Dashiki+Set&price=₦62,500.00&img=uwata-dashiki-set.jpg" class="product-card">
-        <img src="uwata-dashiki-set.jpg" alt="Uwata Dashiki Set">
-        <div class="product-meta"><h4>Uwata Dashiki Set</h4><p>₦62,500.00</p></div>
-    </a>
-    <a href="product-detail.html?name=Adesewa+Adire+Set&price=₦65,000.00&img=adesewa-adire-set.jpg" class="product-card">
-        <img src="adesewa-adire-set.jpg" alt="Adesewa Adire Set">
-        <div class="product-meta"><h4>Adesewa Adire Set</h4><p>₦65,000.00</p></div>
-    </a>
-    <a href="product-detail.html?name=Floral+Adire+Kaftan&price=₦52,000.00&img=floral-adire-kaftan.jpg" class="product-card">
-        <img src="floral-adire-kaftan.jpg" alt="Floral Adire Kaftan">
-        <div class="product-meta"><h4>Floral Adire Kaftan</h4><p>₦52,000.00</p></div>
-    </a>
-    <a href="product-detail.html?name=Adire+Silk+Tunic&price=₦45,000.00&img=adire-silk-tunic.jpg" class="product-card">
-        <img src="adire-silk-tunic.jpg" alt="Adire Silk Tunic">
-        <div class="product-meta"><h4>Adire Silk Tunic</h4><p>₦45,000.00</p></div>
-    </a>
-    <a href="product-detail.html?name=Sadiya+Adire+Long+Dress&price=₦60,000.00&img=sadiya-adire-long-dress.jpg" class="product-card">
-        <img src="sadiya-adire-long-dress.jpg" alt="Sadiya Long Dress">
-        <div class="product-meta"><h4>Sadiya Long Dress</h4><p>₦60,000.00</p></div>
-    </a>
-    <a href="product-detail.html?name=Asymmetric+Adire+Tunic&price=₦48,000.00&img=asymmetric-adire-tunic.jpg" class="product-card">
-        <img src="asymmetric-adire-tunic.jpg" alt="Asymmetric Tunic">
-        <div class="product-meta"><h4>Asymmetric Tunic</h4><p>₦48,000.00</p></div>
-    </a>
-</section>
+
+    <footer style="text-align: center; padding: 80px 20px 40px; font-size: 10px; letter-spacing: 2px; color: #bbb; text-transform: uppercase;">
+        &copy; 2026 Onyx—Adire Heritage
+    </footer>
+
+</body>
+</html>
