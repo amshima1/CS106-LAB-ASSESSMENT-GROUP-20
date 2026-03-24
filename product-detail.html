@@ -1,1 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | Onyx—Adire</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Onyx—Adire</a>
+            <div class="nav-links">
+                <a href="index.html">THE HOME</a>
+                <a href="products.html">THE COLLECTION</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="product-detail-container">
+        <section class="detail-main">
+            <div class="detail-gallery">
+                <img src="" id="main-img" class="featured-image">
+            </div>
+
+            <div class="detail-info">
+                <h1 id="p-name">Product Name</h1>
+                <p id="p-price" class="product-price">₦0.00 NGN</p>
+                
+                <div class="purchase-options">
+                    <label>Size</label>
+                    <select>
+                        <option>8</option><option>10</option><option>12</option><option>14</option>
+                    </select>
+
+                    <label>Quantity</label>
+                    <div class="quantity-selector">
+                        <button onclick="changeQty(-1)">-</button>
+                        <input type="number" id="qty" value="1" min="1">
+                        <button onclick="changeQty(1)">+</button>
+                    </div>
+
+                    <button class="btn-cart">Add to cart</button>
+                    <button class="btn-buy">Buy it now</button>
+                </div>
+                <p class="product-description" id="p-desc"></p>
+            </div>
+        </section>
+
+        <section class="recommendations">
+            <h2 class="edit-title centralized">You May Also Like</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="floral-adire-kaftan.jpg">
+                    <div class="product-meta"><h4>Floral Adire Kaftan</h4><p>₦52,000.00</p></div>
+                </div>
+                <div class="product-card">
+                    <img src="galaxy-print-jumpsuit.jpg">
+                    <div class="product-meta"><h4>Galaxy Print Jumpsuit</h4><p>₦58,000.00</p></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // SMART DATA LOADER
+        const params = new URLSearchParams(window.location.search);
+        const name = params.get('name');
+        const price = params.get('price');
+        const img = params.get('img');
+
+        document.getElementById('p-name').innerText = name;
+        document.getElementById('p-price').innerText = price;
+        document.getElementById('main-img').src = img;
+
+        // Add special description for Uwata
+        if(name.includes("Uwata")) {
+            document.getElementById('p-desc').innerHTML = "Named <strong>Uwata</strong>, meaning 'My Mother,' this piece is a tribute to heritage.";
+        }
+
+        function changeQty(val) {
+            let q = document.getElementById('qty');
+            q.value = Math.max(1, parseInt(q.value) + val);
+        }
+    </script>
+</body>
+</html>
