@@ -1,5 +1,5 @@
 /* ONYX—ADIRE OFFICIAL STYLE SHEET 
-   Update: Full Image Display & Minimalist Typography 
+   Update: 2026-03 - Full Picture Display & Minimalist Typography 
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
@@ -8,6 +8,7 @@
     --romantic-red: #9e1b32; 
     --wa-terracotta: #d84b32; 
     --champagne: #fffcf5;    
+    --black: #000000;
     --transition: 0.3s ease-in-out;
 }
 
@@ -35,7 +36,7 @@ body {
     letter-spacing: 2px;
 }
 
-/* --- 3. NAVIGATION (LEFT-SIDE HAMBURGER) --- */
+/* --- 3. NAVIGATION (TOP LEFT HAMBURGER) --- */
 nav {
     background: var(--champagne);
     padding: 15px 5%;
@@ -53,6 +54,7 @@ nav {
     gap: 20px;
 }
 
+/* Hamburger Icon */
 .hamburger {
     display: flex;
     flex-direction: column;
@@ -78,6 +80,7 @@ nav {
     margin-right: auto; 
 }
 
+/* Navigation Links Logic */
 .nav-links {
     display: flex;
     gap: 25px;
@@ -92,7 +95,6 @@ nav {
     text-transform: uppercase;
 }
 
-/* Mobile Menu Toggle Logic */
 @media (max-width: 1023px) {
     .nav-links {
         display: none;
@@ -110,7 +112,7 @@ nav {
     }
 }
 
-/* --- 4. HERO & BRAND STORY --- */
+/* --- 4. BRAND STORY & SECTIONS --- */
 .hero-section img {
     width: 100%;
     height: auto;
@@ -157,18 +159,18 @@ nav {
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile */
+    grid-template-columns: repeat(2, 1fr); /* 2 columns mobile */
     gap: 20px;
     padding: 0 5%;
 }
 
 @media (min-width: 1024px) {
     .product-grid {
-        grid-template-columns: repeat(4, 1fr); /* 4 columns for desktop */
+        grid-template-columns: repeat(4, 1fr); /* 4 columns desktop */
     }
 }
 
-/* --- 6. FULL IMAGE DISPLAY & STYLISH TEXT --- */
+/* --- 6. FULL IMAGE & TINY STYLISH TEXT --- */
 .product-card {
     display: flex;
     flex-direction: column;
@@ -177,20 +179,20 @@ nav {
 
 .full-image-wrapper {
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .product-card img {
     width: 100%;
-    height: auto; /* Ensures the full picture appears */
+    height: auto; 
     display: block;
-    object-fit: contain; 
+    object-fit: contain; /* Ensures the full picture appears without cropping */
 }
 
-/* Tiny Black Stylish Product Name */
+/* Tiny Black Stylish Name */
 .product-meta h4 {
     font-size: 0.65rem; /* Tiny */
-    color: #000; /* Black */
+    color: var(--black); /* Black */
     font-weight: 400;
     text-transform: capitalize;
     letter-spacing: 0.5px;
@@ -201,7 +203,7 @@ nav {
 /* Tiny Black Stylish Price */
 .product-meta p {
     font-size: 0.7rem; /* Tiny */
-    color: #000; /* Black */
+    color: var(--black); /* Black */
     font-weight: 600;
     font-family: 'Montserrat', sans-serif;
 }
@@ -239,4 +241,5 @@ footer {
     font-family: 'Playfair Display', serif;
     font-size: 1.2rem;
     letter-spacing: 3px;
+    color: var(--romantic-red);
 }
