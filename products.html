@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Collection | Onyx—Adire</title>
+    <title>The Collection | Royal Thread</title>
     <style>
         body { font-family: 'Inter', sans-serif; margin: 0; background-color: #fffcf9; color: #333; overflow-x: hidden; }
         
@@ -79,7 +79,7 @@
     </a>
 
     <script>
-        // Filenames and Prices matched to your repository screenshot
+        // 1. DATA SOURCE: Filenames must match your folder EXACTLY
         const productList = [
             { name: "Galaxy Print Jumpsuit", price: "₦58,500.00", img: "galaxy-print-jumpsuit.jpg" },
             { name: "Bespoke Traditional Agbada", price: "₦95,000.00", img: "bespoke-traditional-agbada.jpg" },
@@ -94,7 +94,7 @@
         function createCard(item) {
             return `
                 <div class="card" onclick="productAction('${item.img}', '${encodeURIComponent(item.name)}', '${encodeURIComponent(item.price)}')">
-                    <img src="${item.img}" onerror="this.src='https://via.placeholder.com/400x600?text=Check+Filename'">
+                    <img src="${item.img}" onerror="this.src='https://via.placeholder.com/400x600?text=Check+Path'">
                     <div class="meta">
                         <h4>${item.name}</h4>
                         <p>${item.price}</p>
@@ -103,7 +103,6 @@
         }
 
         function productAction(img, name, price) {
-            // Updated logic to ensure entire object is stored correctly for Recent View
             let recent = JSON.parse(localStorage.getItem('onyx_recent')) || [];
             recent = recent.filter(i => i.img !== img);
             recent.unshift({name: decodeURIComponent(name), price: decodeURIComponent(price), img: img});
@@ -137,10 +136,8 @@
 
         window.onload = function() {
             document.getElementById('main-grid').innerHTML = productList.map(item => createCard(item)).join('');
-            
             const discovery = [...productList].sort(() => 0.5 - Math.random()).slice(0, 4);
             document.getElementById('discovery-grid').innerHTML = discovery.map(item => createCard(item)).join('');
-            
             renderRecent();
         };
     </script>
