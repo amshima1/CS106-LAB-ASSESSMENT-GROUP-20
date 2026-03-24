@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Onyx—Adire | Heritage & Luxury</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
 </head>
 <body>
 
@@ -15,13 +14,15 @@
 
     <nav>
         <div class="nav-container">
-            <div class="hamburger" id="hamburger">
-                <span></span><span></span><span></span>
+            <div class="hamburger" id="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
 
             <a href="index.html" class="logo">Onyx—Adire</a>
 
-            <div class="nav-links">
+            <div class="nav-links" id="nav-links">
                 <a href="index.html">THE HOME</a>
                 <a href="products.html">THE COLLECTION</a>
                 <a href="trustees.html">THE VISIONARIES</a>
@@ -48,28 +49,23 @@
         </section>
 
         <section class="product-showcase">
-            <h2 class="edit-title">The Debut Edit</h2>
+            <h2 class="edit-title centered">The Debut Edit</h2>
             
             <div class="product-grid">
-                <div class="product-card">
-                    <a href="product-details.html">
-                        <img src="uwata-dashiki-set.jpg" alt="Uwata Dashiki set">
-                    </a>
-                    <div class="product-meta">
-                        <h4>Uwata Dashiki set</h4>
-                        <p>₦62,500.00 NGN</p>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <a href="product-details.html">
-                        <img src="yarinya-shorts-set.jpg" alt="Yarinya Shorts Set">
-                    </a>
-                    <div class="product-meta">
-                        <h4>Yarinya Shorts Set</h4>
-                        <p>₦47,500.00 NGN</p>
-                    </div>
-                </div>
+                <div class="product-card"><img src="adesewa-adire-pants-set.jpg"><h4>Adesewa Adire Pants Set</h4><p>₦60,500.00 NGN</p></div>
+                <div class="product-card"><img src="adesewa-adire-set.jpg"><h4>Adesewa Adire Set</h4><p>₦62,500.00 NGN</p></div>
+                <div class="product-card"><img src="adire-silk-tunic.jpg"><h4>Adire Silk Tunic</h4><p>₦45,000.00 NGN</p></div>
+                <div class="product-card"><img src="asymmetric-adire-tunic.jpg"><h4>Asymmetric Adire Tunic</h4><p>₦48,000.00 NGN</p></div>
+                <div class="product-card"><img src="bespoke-traditional-agbada.jpg"><h4>Bespoke Traditional Agbada</h4><p>₦95,000.00 NGN</p></div>
+                <div class="product-card"><img src="bespoke-velvet-caftan.jpg"><h4>Bespoke Velvet Caftan</h4><p>₦85,000.00 NGN</p></div>
+                <div class="product-card"><img src="boubou-and-abaya.jpg"><h4>Boubou and Abaya</h4><p>₦70,000.00 NGN</p></div>
+                <div class="product-card"><img src="capes.jpg"><h4>Heritage Capes</h4><p>₦35,000.00 NGN</p></div>
+                <div class="product-card"><img src="ebony-silk-boubou.jpg"><h4>Ebony Silk Boubou</h4><p>₦78,000.00 NGN</p></div>
+                <div class="product-card"><img src="embroidered-aso-oke-set.jpg"><h4>Embroidered Aso Oke Set</h4><p>₦110,000.00 NGN</p></div>
+                <div class="product-card"><img src="floral-adire-kaftan.jpg"><h4>Floral Adire Kaftan</h4><p>₦52,000.00 NGN</p></div>
+                <div class="product-card"><img src="floral-chiffon-maxi.jpg"><h4>Floral Chiffon Maxi</h4><p>₦55,000.00 NGN</p></div>
+                <div class="product-card"><img src="galaxy-print-jumpsuit.jpg"><h4>Galaxy Print Jumpsuit</h4><p>₦58,000.00 NGN</p></div>
+                <div class="product-card"><img src="geometric-print-boubou.jpg"><h4>Geometric Print Boubou</h4><p>₦65,000.00 NGN</p></div>
             </div>
         </section>
     </main>
@@ -83,6 +79,15 @@
         <h2 class="footer-logo">ONYX—ADIRE</h2>
         <p>&copy; 2026 ONYX-ADIRE INTERNATIONAL</p>
     </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
 
 </body>
 </html>
