@@ -1,38 +1,44 @@
 /* ONYX-ADIRE OFFICIAL STYLESHEET 
-   Theme: Romantic International Luxury (Rosewood & Champagne)
-   Design: Edge-to-Edge Minimalist with Precision Cropping
+   Theme: Romantic International Luxury
+   Layout: Edge-to-Edge Full Width (No Side Gaps)
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap');
 
 :root {
-    --romantic-red: #9e1b32; /* Deep Rosewood */
-    --champagne: #fffcf5;    /* Soft Creamy White */
+    --romantic-red: #9e1b32; 
+    --champagne: #fffcf5;    
     --transition: 0.4s ease;
 }
 
-/* --- Reset & Base --- */
+/* --- 1. THE CRITICAL RESET (Fixes the white gap) --- */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-body {
-    font-family: 'Montserrat', sans-serif;
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevents the horizontal scroll/gap */
     background-color: var(--champagne);
-    color: var(--romantic-red);
-    line-height: 1.6;
-    overflow-x: hidden;
 }
 
-/* --- Stylish Alphabet (Headings & Statements) --- */
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--romantic-red);
+    line-height: 1.6;
+}
+
+/* --- 2. TYPOGRAPHY --- */
 h1, h2, h3, .logo, .nav-links a, .crimson-statement p {
     font-family: 'Playfair Display', serif;
     font-style: italic;
 }
 
-/* --- Required Marquee --- */
+/* --- 3. ANNOUNCEMENT BAR --- */
 .marquee-bar {
     background-color: var(--romantic-red);
     color: var(--champagne);
@@ -40,11 +46,11 @@ h1, h2, h3, .logo, .nav-links a, .crimson-statement p {
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 3px;
-    font-weight: 300;
 }
 
-/* --- Navigation & Left Hamburger --- */
+/* --- 4. NAVIGATION (TOP LEFT HAMBURGER) --- */
 nav {
+    width: 100%;
     display: flex;
     align-items: center;
     padding: 20px 5%;
@@ -71,17 +77,15 @@ nav {
     width: 100%;
     height: 1px;
     background-color: var(--romantic-red);
-    transition: var(--transition);
 }
 
 .logo {
     font-size: 1.8rem;
     text-decoration: none;
     color: var(--romantic-red);
-    font-weight: 400;
 }
 
-/* --- Hidden Menu (DOM Target) --- */
+/* --- 5. HIDDEN MENU --- */
 .nav-links {
     display: none; 
     flex-direction: column;
@@ -95,9 +99,7 @@ nav {
     z-index: 999;
 }
 
-.nav-links.active {
-    display: flex !important;
-}
+.nav-links.active { display: flex !important; }
 
 .nav-links a {
     padding: 20px 30px;
@@ -106,47 +108,40 @@ nav {
     font-size: 1.2rem;
 }
 
-.nav-links a:hover {
-    background-color: var(--romantic-red);
-    color: var(--champagne);
-}
-
-/* --- THE KNEE-LENGTH HERO CROP --- */
+/* --- 6. THE EDGE-TO-EDGE HERO (Fixes Image Framing) --- */
 .edge-to-edge-hero {
-    width: 100%;
-    height: 65vh; /* This sets the "frame" to end at the knees on mobile */
+    width: 100vw; /* Forces image to touch both sides of screen */
+    height: 65vh; 
     margin: 0;
     padding: 0;
     overflow: hidden;
-    position: relative;
     line-height: 0;
 }
 
 .edge-to-edge-hero img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Keeps the women from looking squashed */
-    object-position: center top; /* Keeps the heads/faces at the top of the frame */
-    display: block;
+    object-fit: cover;
+    object-position: center top; /* Keeps faces visible */
 }
 
-/* --- THE CRIMSON STATEMENT (Fills from Knee down) --- */
+/* --- 7. THE CRIMSON STATEMENT (Fixes Red Section Gap) --- */
 .crimson-statement {
+    width: 100vw; /* Forces red to touch both sides */
     background-color: var(--romantic-red);
     color: var(--champagne);
     padding: 80px 10%;
     text-align: center;
-    margin-top: -1px; /* Prevents a tiny white line between sections */
+    margin: 0;
+    margin-top: -1px; /* Overlap to prevent thin white line */
 }
 
 .crimson-statement p {
     font-size: 1.4rem;
     max-width: 800px;
     margin: 0 auto 40px;
-    font-weight: 400;
 }
 
-/* --- Stylish Button --- */
 .btn-romance {
     border: 1px solid var(--champagne);
     color: var(--champagne);
@@ -155,32 +150,53 @@ nav {
     text-transform: uppercase;
     font-size: 0.8rem;
     letter-spacing: 2px;
-    transition: var(--transition);
-    display: inline-block;
 }
 
-.btn-romance:hover {
-    background-color: var(--champagne);
-    color: var(--romantic-red);
+/* --- 8. THE PRODUCT GRID (2 Columns on Mobile) --- */
+.product-collection {
+    width: 100%;
+    padding: 60px 0;
+    background: var(--champagne);
 }
 
-/* --- Grid System --- */
-.grid {
+.product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1px;
-    background-color: var(--romantic-red);
+    grid-template-columns: 1fr 1fr; /* Side-by-side products */
+    gap: 15px;
+    padding: 0 15px;
 }
 
-.card {
-    background-color: var(--champagne);
-    padding: 40px;
-    text-align: center;
+.product-card {
+    margin-bottom: 20px;
 }
 
-/* --- Footer --- */
+.product-image {
+    width: 100%;
+    aspect-ratio: 2/3;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 10px 0;
+}
+
+.product-info h3 {
+    font-size: 0.85rem;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    text-transform: uppercase;
+    color: #333;
+}
+
+/* --- 9. FOOTER --- */
 footer {
-    padding: 80px 20px;
+    padding: 60px 20px;
     text-align: center;
     background-color: var(--champagne);
 }
