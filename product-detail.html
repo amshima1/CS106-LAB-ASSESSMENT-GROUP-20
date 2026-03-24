@@ -5,96 +5,169 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Details | Onyx—Adire</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Specific styling for the detail page to ensure perfect alignment */
+        .detail-main {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .featured-image-container {
+            width: 100%;
+            background-color: #f9f9f9;
+            margin-bottom: 20px;
+        }
+        #main-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+        .detail-info {
+            padding: 10px;
+        }
+        .product-title {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            text-transform: capitalize;
+        }
+        .product-price {
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+        }
+        .selector-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            display: block;
+            margin-bottom: 8px;
+        }
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #000;
+            margin-bottom: 20px;
+            font-family: inherit;
+        }
+        .btn-buy-now {
+            background: #000;
+            color: #fff;
+            width: 100%;
+            padding: 18px;
+            border: none;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+        .btn-whatsapp {
+            display: block;
+            text-align: center;
+            border: 1px solid #000;
+            color: #000;
+            padding: 15px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+        @media (min-width: 768px) {
+            .detail-main { flex-direction: row; gap: 50px; padding: 60px 20px; }
+            .featured-image-container { width: 55%; }
+            .detail-info { width: 40%; }
+        }
+    </style>
 </head>
 <body>
 
     <nav>
         <div class="nav-container">
-            <div class="hamburger" id="hamburger-menu">
-                <span></span><span></span><span></span>
-            </div>
             <a href="index.html" class="logo">Onyx—Adire</a>
-            <div class="nav-links" id="nav-links">
+            <div class="nav-links">
                 <a href="index.html">THE HOME</a>
                 <a href="products.html">THE COLLECTION</a>
             </div>
         </div>
     </nav>
 
-    <main class="product-detail-container">
-        <section class="detail-main">
-            <div class="detail-gallery">
-                <img src="" id="main-img" class="featured-image">
+    <main>
+        <div class="detail-main">
+            <div class="featured-image-container">
+                <img src="" id="main-img" alt="Loading Product...">
             </div>
 
             <div class="detail-info">
-                <h1 id="p-name" style="font-family: 'Playfair Display'; italic; font-size: 1.8rem; color: #000;">Loading...</h1>
-                <p id="p-price" class="product-price" style="font-size: 1.1rem; color: #000; font-weight: 600; margin: 15px 0;">₦0.00 NGN</p>
+                <h1 id="p-name" class="product-title">Loading...</h1>
+                <p id="p-price" class="product-price">₦0.00 NGN</p>
                 
-                <div class="purchase-options">
-                    <label style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px;">Size</label>
-                    <select style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #eee;">
-                        <option>8</option><option>10</option><option>12</option><option>14</option><option>16</option>
+                <div class="purchase-area">
+                    <span class="selector-label">Size</span>
+                    <select id="size-dropdown">
+                        <option>8</option>
+                        <option>10</option>
+                        <option>12</option>
+                        <option>14</option>
+                        <option>16</option>
                     </select>
 
-                    <button class="btn-buy" style="background: #000; color: #fff; width: 100%; padding: 15px; border: none; letter-spacing: 2px; font-size: 0.8rem; cursor: pointer;">BUY IT NOW</button>
-                    
-                    <a href="#" id="wa-order-btn" class="btn-outline" style="display: block; text-align: center; margin-top: 15px; border: 1px solid #000; color: #000; padding: 12px;">ORDER VIA WHATSAPP</a>
+                    <button class="btn-buy-now">BUY IT NOW</button>
+                    <a href="#" id="wa-order-link" class="btn-whatsapp">ORDER VIA WHATSAPP</a>
                 </div>
-                
-                <div class="product-description" style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">
-                    <p id="p-desc" style="font-size: 0.85rem; line-height: 1.6; color: #333;"></p>
+
+                <div style="margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px;">
+                    <span class="selector-label">Description</span>
+                    <p id="p-desc" style="font-size: 0.9rem; line-height: 1.6; color: #444; margin-top: 10px;">
+                        A masterpiece from the Onyx—Adire collection, handcrafted with premium heritage textiles.
+                    </p>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <section class="recommendations">
-            <h2 class="edit-title centralized" style="margin-top: 60px;">You May Also Like</h2>
+        <section class="recommendations" style="padding: 40px 20px;">
+            <h2 class="edit-title centralized" style="margin-bottom: 30px;">You May Also Like</h2>
             <div class="product-grid">
                 <div class="product-card">
                     <img src="floral-adire-kaftan.jpg">
-                    <div class="product-meta"><h4>Floral Adire Kaftan</h4><p>₦52,000.00</p></div>
+                    <div class="product-meta"><h4>Floral Kaftan</h4><p>₦52,000.00</p></div>
                 </div>
                 <div class="product-card">
                     <img src="galaxy-print-jumpsuit.jpg">
-                    <div class="product-meta"><h4>Galaxy Print Jumpsuit</h4><p>₦58,000.00</p></div>
+                    <div class="product-meta"><h4>Galaxy Jumpsuit</h4><p>₦58,500.00</p></div>
                 </div>
             </div>
         </section>
     </main>
 
     <script>
-        const params = new URLSearchParams(window.location.search);
-        const name = params.get('name') || "Exquisite Piece";
-        const price = params.get('price') || "Contact for Price";
-        const img = params.get('img');
+        // 1. Get URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        // 2. Extract and Decode (removes the + signs and special codes)
+        const name = urlParams.get('name');
+        const price = urlParams.get('price');
+        const img = urlParams.get('img');
 
-        document.getElementById('p-name').innerText = name;
-        document.getElementById('p-price').innerText = price;
-        document.getElementById('main-img').src = img;
+        if (name && price && img) {
+            // Fill the page data
+            document.getElementById('p-name').innerText = decodeURIComponent(name.replace(/\+/g, ' '));
+            document.getElementById('p-price').innerText = decodeURIComponent(price.replace(/\+/g, ' '));
+            document.getElementById('main-img').src = img;
 
-        // Custom WhatsApp Message
-        const waNumber = "234XXXXXXXXXX"; // Replace with your number
-        const waMessage = `Hello Onyx-Adire, I am interested in ordering the ${name} (${price}).`;
-        document.getElementById('wa-order-btn').href = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMessage)}`;
-
-        // Dynamic Descriptions
-        const descriptions = {
-            "Uwata": "Named Uwata, meaning 'My Mother,' this piece is a tribute to the timeless strength of African heritage.",
-            "Adesewa": "The Adesewa set blends bold traditional patterns with a sophisticated modern silhouette.",
-            "Bespoke": "Our signature agbada, hand-crafted with premium textiles for the discerning visionary."
-        };
-
-        let foundDesc = "A curated masterpiece from the Onyx—Adire Heritage Collection, designed for elegance and cultural pride.";
-        for (let key in descriptions) {
-            if (name.includes(key)) foundDesc = descriptions[key];
+            // 3. Update WhatsApp Link with specific details
+            const myNumber = "234XXXXXXXXXX"; // REPLACED WITH YOUR REAL NUMBER
+            const cleanName = decodeURIComponent(name.replace(/\+/g, ' '));
+            const message = `Hello Onyx-Adire, I'm interested in the ${cleanName} (${price}). Is it available?`;
+            document.getElementById('wa-order-link').href = `https://wa.me/${myNumber}?text=${encodeURIComponent(message)}`;
+            
+            // 4. Update Description based on name
+            if (name.includes("Uwata")) {
+                document.getElementById('p-desc').innerText = "The Uwata Set is a tribute to heritage, featuring hand-dyed silk designed to command grace and attention.";
+            }
         }
-        document.getElementById('p-desc').innerText = foundDesc;
-
-        // Hamburger
-        const hamburger = document.getElementById('hamburger-menu');
-        const navLinks = document.getElementById('nav-links');
-        hamburger.addEventListener('click', () => { navLinks.classList.toggle('active'); });
     </script>
 </body>
 </html>
