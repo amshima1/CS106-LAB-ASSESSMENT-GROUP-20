@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Onyx-Adire | Home</title>
+    <title>Onyx-Adire | Weaving the Future</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
 
-    <marquee class="marquee-bar">
-        ONYX-ADIRE ✦ REDEFINING NIGERIAN HERITAGE ✦ BOOK YOUR APPOINTMENT NOW ✦ RED RUNWAY SHOW MARCH 30TH
+    <marquee class="marquee-bar" scrollamount="6">
+        ✦ Weaving the Soul of Heritage into the Fabric of Tomorrow ✦ Every Thread Tells a Story of Power ✦ Onyx-Adire: Where Tradition Meets Modern Elegance ✦
     </marquee>
 
     <nav>
-        <button class="hamburger" id="hamburger">
+        <button class="hamburger" id="hamburger" aria-label="Menu">
             <span></span>
             <span></span>
             <span></span>
@@ -32,11 +32,47 @@
     </nav>
 
     <main class="container">
-        <h1 style="font-size: 3.5rem; text-transform: uppercase;">Bold. Red. <br>Artisan.</h1>
-        <p>Premium Adire fabrics crafted for the modern individual.</p>
-        <br>
-        <a href="products.html" class="btn-red">Explore the Collection</a>
+        <section class="hero">
+            <h1 id="main-title">The Crimson <br>Legacy</h1>
+            <p>
+                Onyx-Adire is more than a fashion house; it is a movement. 
+                We are dedicated to preserving the ancient art of Yoruba indigo dyeing 
+                while emboldening the modern silhouette with the power of Red.
+            </p>
+            
+            <div style="margin-top: 40px;">
+                <a href="products.html" class="btn-red">Explore the Collection</a>
+                <a href="booking.html" class="btn-red" style="background: white; color: #D2122E; margin-left: 10px;">Book a Consultation</a>
+            </div>
+        </section>
+
+        <section class="grid" style="margin-top: 80px;">
+            <div class="card">
+                <div style="height: 200px; background: #D2122E; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+                    HERITAGE
+                </div>
+                <h3>Artisanal Roots</h3>
+                <p>Sourced directly from master dyers in Abeokuta.</p>
+            </div>
+            <div class="card">
+                <div style="height: 200px; background: #eee; border: 2px solid #D2122E; display: flex; align-items: center; justify-content: center; color: #D2122E; font-weight: bold;">
+                    MODERNITY
+                </div>
+                <h3>Contemporary Cut</h3>
+                <p>Traditional fabrics tailored for the global stage.</p>
+            </div>
+        </section>
     </main>
+
+    <footer style="padding: 60px 20px; text-align: center; border-top: 4px solid #D2122E; background: #fff;">
+        <h2 style="margin-bottom: 20px;">ONYX-ADIRE</h2>
+        <p style="font-size: 0.9rem; letter-spacing: 1px;">CREATING A NEW NARRATIVE IN NIGERIAN FASHION.</p>
+        <div style="margin-top: 20px;">
+            <a href="#" style="color: #D2122E; margin: 0 10px; text-decoration: none; font-weight: bold;">Instagram</a>
+            <a href="#" style="color: #D2122E; margin: 0 10px; text-decoration: none; font-weight: bold;">Twitter</a>
+        </div>
+        <p style="margin-top: 40px; font-size: 0.7rem; opacity: 0.7;">&copy; 2026 Onyx-Adire Group. Developed for Fashion House Project.</p>
+    </footer>
 
 </body>
 </html>
