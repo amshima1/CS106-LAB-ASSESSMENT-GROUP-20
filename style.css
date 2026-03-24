@@ -1,9 +1,10 @@
-/* --- 1. CORE BRANDING --- */
+/* --- 1. BRAND VARIABLES & RESET --- */
 :root {
     --brand-red: #cc0000;
     --brand-orange: #ff8c00;
     --white: #ffffff;
     --black: #000000;
+    --text-grey: #555555;
 }
 
 * {
@@ -13,7 +14,25 @@
     font-family: 'Poppins', sans-serif;
 }
 
-/* --- 2. LUXURY NAVIGATION (Fixes 14396.jpg, 14402.jpg) --- */
+body {
+    background-color: var(--white);
+    color: var(--black);
+    overflow-x: hidden;
+}
+
+/* --- 2. TOP ANNOUNCEMENT BAR (Matches 14404.jpg) --- */
+.announcement-bar {
+    background: var(--brand-red);
+    color: var(--white);
+    text-align: center;
+    padding: 8px 0;
+    font-size: 0.75rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* --- 3. CLEAN STICKY NAVIGATION (Fixes 14382.jpg, 14392.jpg) --- */
 nav {
     display: flex;
     justify-content: space-between;
@@ -29,100 +48,120 @@ nav {
 .logo {
     color: var(--brand-red);
     font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 900;
     text-decoration: none;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
 }
 
 .menu-links {
     display: flex;
-    gap: 12px;
+    gap: 15px;
 }
 
 .menu-links a {
     text-decoration: none;
     color: var(--brand-red);
-    font-weight: 600;
-    font-size: 0.75rem;
+    font-weight: 700;
+    font-size: 0.8rem;
     text-transform: uppercase;
 }
 
-/* --- 3. THE BRANDING BOX (Fixes 14396.jpg, 14400.jpg) --- */
+/* --- 4. THE LUXURY BRANDING BOX (Matches 14380.jpg, 14404.jpg) --- */
 .luxury-header {
     text-align: center;
-    padding: 25px 0 10px 0;
+    padding: 30px 0 15px 0;
 }
 
-/* Apply this class to your <h2> on every sub-page */
 .red-white-box {
     display: inline-block;
     border: 2px solid var(--brand-red);
-    padding: 10px 20px;
+    padding: 10px 25px;
     color: var(--brand-red);
     font-weight: 800;
-    font-size: 1rem;
+    font-size: 1.1rem;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
 }
 
-/* --- 4. GRID CONSISTENCY (Fixes 14394.jpg, 14398.jpg) --- */
+/* --- 5. 2-COLUMN MOBILE GRID (Matches 14378.jpg, 14380.jpg) --- */
 .container {
     padding: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.product-grid, .trustee-grid {
+.product-grid, .trustee-grid, .event-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Solid 2-column mobile layout */
+    grid-template-columns: 1fr 1fr; /* Two columns on mobile */
     gap: 15px;
 }
 
-.product-card, .trustee-card {
-    border: 1px solid #eee;
+.card {
+    border: 1px solid #eeeeee;
+    background: #ffffff;
     text-align: center;
-    padding-bottom: 12px;
-    background: #fff;
+    padding-bottom: 15px;
+    transition: transform 0.3s ease;
 }
 
-.product-card img, .trustee-card img {
+.card img {
     width: 100%;
     height: auto;
     display: block;
 }
 
-/* --- 5. WHATSAPP BUTTON (Fixes 14364.jpg, 14368.jpg) --- */
+.card h3 {
+    font-size: 0.9rem;
+    margin: 10px 5px 5px 5px;
+    color: var(--brand-red);
+}
+
+.card p {
+    font-size: 0.8rem;
+    color: var(--text-grey);
+    padding: 0 5px;
+}
+
+/* --- 6. GLOBAL WHATSAPP PILL (Fixes 14364.jpg, 14368.jpg) --- */
 .whatsapp-fixed-btn {
     position: fixed !important;
     bottom: 20px !important;
     right: 15px !important;
     background-color: var(--brand-orange) !important;
-    padding: 12px 18px !important;
+    padding: 12px 20px !important;
     border-radius: 50px !important;
     z-index: 9999 !important;
     display: flex !important;
     align-items: center !important;
     text-decoration: none !important;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
 }
 
+.whatsapp-content {
+    display: flex;
+    align-items: center;
+}
+
+/* CRITICAL: Prevents giant logo in sub-pages */
 .whatsapp-content img {
-    width: 22px !important; /* Fixed size across all pages */
-    height: 22px !important;
-    margin-right: 8px;
+    width: 25px !important; 
+    height: 25px !important;
+    margin-right: 10px;
 }
 
 .whatsapp-content span {
     color: var(--white) !important;
-    font-size: 13px !important;
+    font-size: 14px !important;
     font-weight: 700 !important;
 }
 
-/* --- 6. FOOTER --- */
+/* --- 7. FOOTER --- */
 footer {
     background: var(--brand-red);
-    color: white;
+    color: var(--white);
     text-align: center;
-    padding: 15px;
-    font-size: 0.8rem;
-    margin-top: 30px;
+    padding: 20px;
+    margin-top: 40px;
+    font-size: 0.85rem;
 }
