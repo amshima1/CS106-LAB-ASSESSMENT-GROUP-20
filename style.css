@@ -1,104 +1,205 @@
-/* External CSS: Onyx-Adire Red & White (Left-Nav Edition) */
+/* ONYX-ADIRE OFFICIAL STYLESHEET 
+   Theme: Crimson Red & Pure White
+*/
+
 :root {
-    --brand-red: #e60000;
-    --pure-white: #ffffff;
+    --brand-red: #D2122E; /* Professional Crimson */
+    --pure-white: #FFFFFF;
+    --hover-red: #8B0000;
+    --transition: 0.3s ease-in-out;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--pure-white);
+    color: var(--brand-red);
+    overflow-x: hidden;
+}
+
+/* --- Required Marquee --- */
+.marquee-bar {
+    background-color: var(--brand-red);
+    color: var(--pure-white);
+    padding: 12px 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    border-bottom: 2px solid var(--hover-red);
+}
+
+/* --- Navigation & Left Hamburger --- */
+nav {
+    display: flex;
+    align-items: center;
+    padding: 20px 5%;
+    background: var(--pure-white);
+    border-bottom: 4px solid var(--brand-red);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    margin-right: 25px;
+    z-index: 1100;
+}
+
+.hamburger span {
+    width: 30px;
+    height: 4px;
+    background-color: var(--brand-red);
+    border-radius: 10px;
+    transition: var(--transition);
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 900;
+    text-decoration: none;
+    color: var(--brand-red);
+    letter-spacing: -1px;
+    text-transform: uppercase;
+}
+
+/* --- The Hidden Menu (Critical for JS) --- */
+.nav-links {
+    display: none; /* Initially Hidden */
+    flex-direction: column;
+    position: absolute;
+    top: 100%; /* Drops down from nav */
+    left: 0;
+    width: 280px;
+    background-color: var(--pure-white);
+    border-right: 4px solid var(--brand-red);
+    border-bottom: 4px solid var(--brand-red);
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.1);
+}
+
+/* This class is added/removed by JavaScript */
+.nav-links.active {
+    display: flex !important;
+}
+
+.nav-links a {
+    padding: 20px 30px;
+    text-decoration: none;
+    color: var(--brand-red);
+    font-weight: 700;
+    border-bottom: 1px solid #ffeded;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    background-color: var(--brand-red);
+    color: var(--pure-white);
+}
+
+/* --- Main Layout --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #444;
+}
+
+/* --- Buttons --- */
+.btn-red {
+    background-color: var(--brand-red);
+    color: var(--pure-white);
+    padding: 18px 45px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border: 2px solid var(--brand-red);
+    display: inline-block;
+    transition: var(--transition);
+}
+
+.btn-red:hover {
     background-color: var(--pure-white);
     color: var(--brand-red);
 }
 
-/* Global Marquee Requirement */
-.marquee-bar {
-    background: var(--brand-red);
-    color: var(--pure-white);
-    padding: 10px 0;
-    font-weight: bold;
+/* --- Grid System (Trustees & Products) --- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.card {
+    border: 4px solid var(--brand-red);
+    padding: 20px;
+    background: var(--pure-white);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 1px solid var(--brand-red);
+}
+
+.card h3 {
+    margin: 10px 0;
     text-transform: uppercase;
-    border-bottom: 2px solid #800000;
 }
 
-/* Navigation Container */
-nav {
-    display: flex;
-    align-items: center;
-    padding: 15px 5%;
-    border-bottom: 3px solid var(--brand-red);
-    background: var(--pure-white);
-}
-
-/* Hamburger - Positioned Left */
-.hamburger {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    padding: 10px;
-    margin-right: 20px; /* Space between menu and logo */
-    z-index: 1001;
-}
-
-.hamburger span {
-    display: block;
-    width: 30px;
-    height: 4px;
-    background-color: var(--brand-red);
-    transition: 0.3s;
-}
-
-/* The Hidden Menu (Triggered by JS) */
-.nav-links {
-    display: none; 
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 250px; /* Sidebar style width */
-    background: var(--pure-white);
-    border: 3px solid var(--brand-red);
-    box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
-    z-index: 1000;
-}
-
-.nav-links.active {
-    display: flex;
-}
-
-.nav-links a {
-    padding: 15px 25px;
-    text-decoration: none;
-    color: var(--brand-red);
-    font-weight: bold;
-    border-bottom: 1px solid #ffcccc;
+/* --- Forms (Bookings) --- */
+form {
+    max-width: 500px;
+    margin: 0 auto;
     text-align: left;
 }
 
-.nav-links a:hover {
-    background: var(--brand-red);
-    color: var(--pure-white);
-}
-
-.logo {
-    font-size: 1.6rem;
-    font-weight: 900;
-    text-decoration: none;
-    color: var(--brand-red);
-    letter-spacing: 1px;
-}
-
-/* Page Content */
-.container { padding: 60px 10%; text-align: center; }
-.btn-red {
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0 25px 0;
     border: 2px solid var(--brand-red);
-    background: var(--brand-red);
-    color: white;
-    padding: 15px 40px;
-    text-decoration: none;
-    font-weight: bold;
-    display: inline-block;
+    outline: none;
+}
+
+input:focus {
+    background-color: #fff8f8;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    h1 { font-size: 2.5rem; }
+    .nav-links { width: 100%; }
 }
