@@ -1,103 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Royal Thread | Luxury Adire</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* --- BRANDING & RESET --- */
-        :root { --brand-red: #cc0000; --white: #ffffff; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        
-        /* --- ANNOUNCEMENT BAR --- */
-        .announcement-bar {
-            background: var(--brand-red);
-            color: var(--white);
-            padding: 10px 0;
-            font-size: 0.75rem;
-            text-align: center;
-            font-weight: 700;
-        }
-
-        /* --- NAVIGATION --- */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 5%;
-            background: var(--white);
-            border-bottom: 2px solid var(--brand-red);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .logo {
-            color: var(--brand-red);
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            text-decoration: none;
-            font-weight: 900;
-        }
-        .hamburger { cursor: pointer; display: flex; flex-direction: column; gap: 4px; }
-        .hamburger span { width: 25px; height: 3px; background: var(--brand-red); }
-
-        /* --- HIDDEN MENU --- */
-        #nav-menu {
-            display: none;
-            flex-direction: column;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            background: white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        #nav-menu.active { display: flex; }
-        #nav-menu a { padding: 15px; color: var(--brand-red); text-decoration: none; text-align: center; border-bottom: 1px solid #eee; }
-
-        /* --- THE STORY HERO --- */
-        .story-hero img { width: 100%; display: block; }
-        .story-box {
-            background: var(--brand-red);
-            color: var(--white);
-            text-align: center;
-            padding: 40px 20px;
-        }
-        .story-box h2 { font-family: 'Playfair Display', serif; margin-bottom: 10px; }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>Onyx-Adire | Home</title>
 </head>
 <body>
-
-    <div class="announcement-bar">WORLDWIDE SHIPPING • ROYAL THREAD 2026</div>
+    <marquee class="event-marquee"> ✦ NEXT SHOWCASE: LAGOS FASHION WEEK 2026 ✦ NEW ARRIVALS DROPPING FRIDAY ✦ </marquee>
 
     <nav>
-        <div class="hamburger" onclick="toggleMenu()">
-            <span></span><span></span><span></span>
-        </div>
-        <a href="index.html" class="logo">ROYAL THREAD</a>
-        <div style="width:25px;"></div> <div id="nav-menu">
-            <a href="index.html">HOME</a>
-            <a href="gallery.html">COLLECTION</a>
-            <a href="trustees.html">TRUSTEES</a>
-            <a href="bookings.html">INQUIRIES</a>
+        <div class="logo">ONYX-ADIRE</div>
+        <div class="links">
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="trustees.html">Trustees</a>
+            <a href="events.html">Events</a>
+            <a href="booking.html">Bookings</a>
         </div>
     </nav>
 
-    <section class="story-hero">
-        <img src="hero-campaign.jpg" alt="Campaign">
-        <div class="story-box">
-            <p style="letter-spacing:2px; font-size:0.7rem;">THREE GENERATIONS. ONE STORY.</p>
-            <h2>HERITAGE EDIT</h2>
-            <p>Celebrating the women who shape our legacy.</p>
-        </div>
-    </section>
-
-    <script>
-        function toggleMenu() {
-            document.getElementById('nav-menu').classList.toggle('active');
-        }
-    </script>
+    <main class="container">
+        <h1>Welcome to the House of Onyx-Adire</h1>
+        <p>Merging the deep mystery of Onyx with the soul of Adire textiles.</p>
+        <a href="products.html" class="btn">Explore Collection</a>
+    </main>
 </body>
 </html>
