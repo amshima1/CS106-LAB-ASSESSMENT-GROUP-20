@@ -3,91 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Board of Trustees | Onyx-Adire</title>
+    <title>Onyx-Adire | Board of Trustees</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
 
-    <div class="announcement-bar">
-        <marquee scrollamount="7">
-            ONYX-ADIRE LEADERSHIP • PRESERVING TRADITION • DEFINING MODERN AFRICAN LUXURY
-        </marquee>
-    </div>
+    <marquee class="marquee-bar" scrollamount="6">
+        ✦ Weaving the Soul of Heritage into the Fabric of Tomorrow ✦ Every Thread Tells a Story of Power ✦
+    </marquee>
 
     <nav>
-        <div class="nav-left">
-            <div class="hamburger" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-        
-        <div class="nav-centre">
-            <h1 class="logo">ONYX-ADIRE</h1>
-        </div>
-
-        <div class="nav-right"></div>
-
-        <div id="nav-menu" class="menu-links">
-            <a href="index.html">HOME</a>
-            <a href="gallery.html">SHOWCASE</a>
-            <a href="trustees.html">TRUSTEES</a>
-            <a href="events.html">EVENTS</a>
-            <a href="bookings.html">INQUIRIES</a>
+        <button class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <a href="index.html" class="logo">ONYX-ADIRE</a>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="products.html">Showcase</a>
+            <a href="trustees.html">Trustees</a>
+            <a href="events.html">Events</a>
+            <a href="booking.html">Book Now</a>
         </div>
     </nav>
 
-    <header class="luxury-header">
-        <h2 class="red-white-box">BOARD OF TRUSTEES</h2>
-    </header>
-
     <main class="container">
-        <div class="product-grid">
-            
-            <div class="product-card">
-                <img src="victor-amshima.jpg" alt="Victor Amshima">
-                <h3>VICTOR AMSHIMA</h3>
-                <p class="role-title">CHAIRMAN</p>
-                <div class="bio-container">
-                    <p class="bio-text">
-                        A visionary leader with a deep passion for African textiles. Victor oversees the strategic direction of Onyx-Adire, ensuring every piece reflects authentic cultural heritage and premium craftsmanship.
-                    </p>
-                </div>
-                <a href="https://wa.me/234XXXXXXXXXX" class="book-btn">CONTACT CHAIR</a>
+        <h1>The Visionaries</h1>
+        <p>Meet the Board of Trustees behind the Onyx-Adire movement.</p>
+
+        <div class="grid">
+            <div class="card">
+                <img src="member1.jpg" alt="Group Member 1">
+                <h3>[Name 1]</h3>
+                <p>Chairman & Creative Director</p>
             </div>
 
-            <div class="product-card">
-                <img src="paul-gbawuan.jpg" alt="Paul Gbawuan">
-                <h3>PAUL GBAWUAN</h3>
-                <p class="role-title">TRUSTEE MEMBER</p>
-                <div class="bio-container">
-                    <p class="bio-text">
-                        Expert in sustainable fashion and operational excellence. Paul ensures that our traditional hand-dyeing processes meet modern luxury standards for our discerning global clientele.
-                    </p>
-                </div>
-                <a href="https://wa.me/234XXXXXXXXXX" class="book-btn">CONTACT TRUSTEE</a>
+            <div class="card">
+                <img src="member2.jpg" alt="Group Member 2">
+                <h3>[Name 2]</h3>
+                <p>Lead Technical Architect</p>
             </div>
 
+            <div class="card">
+                <img src="member3.jpg" alt="Group Member 3">
+                <h3>[Name 3]</h3>
+                <p>Director of Operations</p>
+            </div>
+
+            <div class="card">
+                <img src="member4.jpg" alt="Group Member 4">
+                <h3>[Name 4]</h3>
+                <p>Head of Heritage Research</p>
+            </div>
         </div>
     </main>
 
-    <div id="imageModal" class="modal" onclick="closeModal()">
-        <span class="close-modal">&times;</span>
-        <img class="modal-content" id="fullImage">
-    </div>
-
-    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-bar" target="_blank">
-        <div class="whatsapp-content">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-            <span>Chat Via Whatsapp</span>
-        </div>
-    </a>
-
-    <footer>
-        <p>&copy; 2026 ONYX-ADIRE | <span id="clock"></span></p>
+    <footer style="padding: 40px; text-align: center; border-top: 2px solid #D2122E; margin-top: 50px;">
+        <p>&copy; 2026 Onyx-Adire Collective. All Rights Reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
 </body>
 </html>
