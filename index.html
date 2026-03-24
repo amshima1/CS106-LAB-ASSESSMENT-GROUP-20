@@ -1,140 +1,214 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Onyx-Adire | Luxury African Fashion</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-</head>
-<body>
+/* --- 1. CORE BRANDING & RESET --- */
+:root {
+    --brand-red: #cc0000;
+    --brand-orange: #ff8c00;
+    --white: #ffffff;
+    --black: #000000;
+    --grey: #555555;
+}
 
-    <div class="announcement-bar">
-        <marquee scrollamount="7">
-            ONYX-ADIRE • AUTHENTIC AFRICAN HERITAGE • NEW ARRIVALS: SADIYA SILK & EBONY BOUBOU • WORLDWIDE SHIPPING
-        </marquee>
-    </div>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
 
-    <nav>
-        <div class="nav-left">
-            <div class="hamburger" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-        
-        <div class="nav-centre">
-            <h1 class="logo">ONYX-ADIRE</h1>
-        </div>
+body {
+    background-color: var(--white);
+    color: var(--black);
+    overflow-x: hidden;
+}
 
-        <div class="nav-right"></div>
+/* --- 2. RED & WHITE ANNOUNCEMENT BAR (Matches 14404.jpg) --- */
+.announcement-bar {
+    background: var(--brand-red);
+    color: var(--white);
+    padding: 10px 0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
 
-        <div id="nav-menu" class="menu-links">
-            <a href="index.html">HOME</a>
-            <a href="gallery.html">SHOWCASE</a>
-            <a href="trustees.html">TRUSTEES</a>
-            <a href="events.html">EVENTS</a>
-            <a href="bookings.html">INQUIRIES</a>
-        </div>
-    </nav>
+/* --- 3. CENTERED NAVIGATION & HAMBURGER --- */
+nav {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr; /* Centers the logo perfectly */
+    align-items: center;
+    padding: 15px 5%;
+    background: var(--white);
+    border-bottom: 2px solid var(--brand-red);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 
-    <header class="luxury-header">
-        <h2 class="red-white-box">THE HERITAGE COLLECTION</h2>
-    </header>
+.logo {
+    color: var(--brand-red);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    text-decoration: none;
+    letter-spacing: 3px;
+}
 
-    <main class="container">
-        <div class="product-grid">
-            
-            <div class="product-card">
-                <img src="sadiya-adire-long-dress.jpg" alt="Sadiya Gown" onclick="openModal(this.src)">
-                <h3>Sadiya Silk Gown</h3>
-                <p class="price">₦85,000</p>
-                <a href="bookings.html" class="order-btn">ORDER NOW</a>
-            </div>
+.hamburger {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
 
-            <div class="product-card">
-                <img src="ebony-silk-boubou.jpg" alt="Ebony Boubou" onclick="openModal(this.src)">
-                <h3>Ebony Silk Boubou</h3>
-                <p class="price">₦95,000</p>
-                <a href="bookings.html" class="order-btn">ORDER NOW</a>
-            </div>
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background: var(--brand-red);
+}
 
-            <div class="product-card">
-                <img src="galaxy-print-jumpsuit.jpg" alt="Galaxy Jumpsuit" onclick="openModal(this.src)">
-                <h3>Galaxy Jumpsuit</h3>
-                <p class="price">₦70,000</p>
-                <a href="bookings.html" class="order-btn">ORDER NOW</a>
-            </div>
+/* Hides all pages/links by default on Mobile */
+.menu-links {
+    display: none; 
+    flex-direction: column;
+    position: absolute;
+    top: 100%; /* Sits right below the nav */
+    left: 0;
+    width: 100%;
+    background: var(--white);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
 
-            <div class="product-card">
-                <img src="midnight-lace-tunic.jpg" alt="Midnight Tunic" onclick="openModal(this.src)">
-                <h3>Midnight Lace</h3>
-                <p class="price">₦50,000</p>
-                <a href="bookings.html" class="order-btn">ORDER NOW</a>
-            </div>
+/* Triggered by JS to show the menu */
+.menu-links.active {
+    display: flex;
+}
 
-            <div class="product-card">
-                <img src="modern-agbada-fusion.jpg" alt="Modern Agbada" onclick="openModal(this.src)">
-                <h3>Imperial Agbada</h3>
-                <p class="price">₦120,000</p>
-                <a href="bookings.html" class="order-btn">ORDER NOW</a>
-            </div>
+.menu-links a {
+    padding: 18px;
+    text-align: center;
+    color: var(--brand-red);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #f0f0f0;
+    text-transform: uppercase;
+}
 
-            <div class="product-card">
-                <img src="silk-wrap-dress.jpg" alt="Silk Wrap" onclick="openModal(this.src)">
-                <h3>Silk Wrap Dress</h3>
-                <p class="price">₦75,000</p>
-                <a href="bookings.html" class="order-btn">ORDER NOW</a>
-            </div>
+/* --- 4. THE STORY HERO BOX (Matches 14128.jpg) --- */
+.story-hero {
+    width: 100%;
+}
 
-            <div class="product-card">
-                <img src="floral-chiffon-maxi.jpg" alt="Floral Maxi" onclick="openModal(this.src)">
-                <h3>Floral Chiffon</h3>
-                <p class="price">₦65,000</p>
-                <a href="bookings.html" class="order-btn">ORDER NOW</a>
-            </div>
+.hero-image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
 
-            <div class="product-card">
-                <img src="heritage-agbada-gold.jpg" alt="Heritage Gold" onclick="openModal(this.src)">
-                <h3>Heritage Gold</h3>
-                <p class="price">₦135,000</p>
-                <a href="bookings.html" class="order-btn">ORDER NOW</a>
-            </div>
+.story-red-box {
+    background-color: var(--brand-red);
+    color: var(--white);
+    text-align: center;
+    padding: 40px 25px;
+}
 
-            <div class="product-card">
-                <img src="teniola-adire-dress.jpg" alt="Teniola Dress" onclick="openModal(this.src)">
-                <h3>Teniola Dress</h3>
-                <p class="price">₦55,000</p>
-                <a href="bookings.html" class="order-btn">ORDER NOW</a>
-            </div>
+.story-subtitle {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
 
-            <div class="product-card">
-                <img src="adesewa-adire-set.jpg" alt="Adesewa Set" onclick="openModal(this.src)">
-                <h3>Adesewa Set</h3>
-                <p class="price">₦60,000</p>
-                <a href="bookings.html" class="order-btn">ORDER NOW</a>
-            </div>
+.story-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
 
-        </div>
-    </main>
+.story-description {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto 20px auto;
+}
 
-    <div id="imageModal" class="modal" onclick="closeModal()">
-        <span class="close-modal">&times;</span>
-        <img class="modal-content" id="fullImage">
-    </div>
+.story-cta {
+    font-size: 0.8rem;
+    font-style: italic;
+    font-weight: 600;
+}
 
-    <a href="https://wa.me/2348137663447" class="whatsapp-fixed-btn" target="_blank">
-        <div class="whatsapp-content">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Icon">
-            <span>Chat Via Whatsapp</span>
-        </div>
-    </a>
+/* --- 5. LUXURY BRANDING BOX --- */
+.luxury-header {
+    text-align: center;
+    padding: 40px 0 20px 0;
+}
 
-    <footer>
-        <p>&copy; 2026 ONYX-ADIRE | <span id="clock"></span></p>
-    </footer>
+.red-white-box {
+    display: inline-block;
+    border: 2px solid var(--brand-red);
+    padding: 12px 30px;
+    color: var(--brand-red);
+    font-weight: 800;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
 
-    <script src="script.js"></script>
-</body>
-</html>
+/* --- 6. 2-COLUMN GRID --- */
+.container {
+    padding: 20px 15px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.product-card {
+    border: 1px solid #eee;
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- 7. WHATSAPP PILL --- */
+.whatsapp-fixed-btn {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 15px !important;
+    background-color: var(--brand-orange) !important;
+    padding: 12px 18px !important;
+    border-radius: 50px !important;
+    z-index: 9999 !important;
+    display: flex !important;
+    align-items: center !important;
+    text-decoration: none !important;
+}
+
+.whatsapp-content img {
+    width: 25px !important;
+    height: 25px !important;
+    margin-right: 10px;
+}
+
+.whatsapp-content span {
+    color: var(--white) !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+}
+
+/* --- 8. FOOTER --- */
+footer {
+    background: var(--brand-red);
+    color: var(--white);
+    text-align: center;
+    padding: 25px;
+    font-size: 0.85rem;
+}
