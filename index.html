@@ -4,139 +4,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Onyx—Adire | Heritage & Luxury</title>
-    <style>
-        :root { --brand-red: #800020; --bg-cream: #fffcf9; }
-
-        body { font-family: 'Inter', sans-serif; margin: 0; background-color: var(--bg-cream); color: #333; overflow-x: hidden; }
-        
-        /* Marquee */
-        .marquee-bar { background: var(--brand-red); color: white; padding: 10px 0; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; }
-
-        /* Navigation: Hamburger Left, Logo Center */
-        nav { 
-            display: flex; align-items: center; justify-content: center; 
-            padding: 20px 25px; border-bottom: 1px solid #f4f4f4; position: relative; background: var(--bg-cream); 
-        }
-        .hamburger { 
-            position: absolute; left: 20px; cursor: pointer; display: flex; flex-direction: column; gap: 5px; 
-        }
-        .hamburger span { width: 22px; height: 1.5px; background: var(--brand-red); }
-        .logo { 
-            text-decoration: none; color: var(--brand-red); font-family: 'Playfair Display', serif; 
-            font-size: 24px; font-style: italic; font-weight: bold; 
-        }
-
-        /* Menu Overlay */
-        .menu-overlay { 
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 35vh; 
-            background: var(--bg-cream); z-index: 1000000; flex-direction: column; padding: 40px 30px; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05); animation: slideDown 0.4s ease-out; box-sizing: border-box;
-        }
-        @keyframes slideDown { from { transform: translateY(-100%); } to { transform: translateY(0); } }
-        .menu-overlay a { margin: 10px 0; font-size: 12px; text-decoration: none; color: var(--brand-red); text-transform: uppercase; letter-spacing: 2px; }
-        .menu-tint { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 999999; }
-
-        /* Hero Banner */
-        .hero-section { width: 100%; height: 80vh; overflow: hidden; position: relative; }
-        .hero-section img { width: 100%; height: 100%; object-fit: cover; }
-        .hero-text { position: absolute; bottom: 40px; left: 25px; color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
-        .hero-text h1 { font-family: 'Playfair Display', serif; font-size: 32px; font-style: italic; margin: 0; }
-
-        /* Story & Grids */
-        .brand-story { padding: 50px 20px; text-align: center; max-width: 650px; margin: 0 auto; line-height: 1.8; font-style: italic; color: #555; }
-        .section-title { font-family: 'Playfair Display', serif; text-align: center; font-style: italic; margin: 40px 0 20px; color: var(--brand-red); }
-        
-        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 0 15px 50px; max-width: 1200px; margin: 0 auto; }
-        .card { background: #fff; cursor: pointer; transition: 0.3s; border: 1px solid #eee; }
-        .card img { width: 100%; height: 320px; object-fit: cover; }
-        .meta { padding: 12px; }
-        .meta h4 { font-family: 'Playfair Display', serif; font-size: 13px; margin: 0; color: var(--brand-red); font-style: italic; }
-        .meta p { font-size: 11px; font-weight: bold; margin: 5px 0; }
-
-        /* WhatsApp Button */
-        .whatsapp-float { position: fixed; bottom: 25px; right: 20px; background: #e85d43; color: white; text-decoration: none; padding: 12px 22px; border-radius: 50px; font-size: 13px; z-index: 9999; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-
-        @media (min-width: 768px) { .grid { grid-template-columns: repeat(4, 1fr); } }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="marquee-bar">
-        <marquee scrollamount="4">✦ WEAVING HERITAGE INTO THE FABRIC OF TOMORROW ✦ SHOP ONYX—ADIRE ✦</marquee>
-    </div>
+    <marquee class="marquee-bar" scrollamount="4">
+        ✦ WEAVING THE SOUL OF HERITAGE INTO THE FABRIC OF TOMORROW ✦ LIMITED PIECES AVAILABLE SHOP IN-STORE & ONLINE ✦
+    </marquee>
 
     <nav>
-        <div class="hamburger" onclick="toggleMenu()">
-            <span></span><span></span><span></span>
-        </div>
-        <a href="index.html" class="logo">Onyx—Adire</a>
-        
-        <div id="menuTint" class="menu-tint" onclick="toggleMenu()"></div>
-        <div id="mobileMenu" class="menu-overlay">
-            <a href="index.html" style="font-weight: bold;">THE HOME</a>
-            <a href="products.html">THE COLLECTION</a>
-            <a href="visionaries.html">THE VISIONARIES</a>
-            <a href="runway.html">THE RUNWAY</a>
-            <a href="bookings.html">THE ATELIER</a>
+        <div class="nav-container">
+            <div class="hamburger" id="hamburger-menu">
+                <span></span><span></span><span></span>
+            </div>
+
+            <a href="index.html" class="logo">Onyx—Adire</a>
+
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">THE HOME</a>
+                <a href="products.html">THE COLLECTION</a>
+                <a href="trustees.html">THE VISIONARIES</a>
+                <a href="events.html">THE RUNWAY</a>
+                <a href="bookings.html">THE ATELIER</a>
+            </div>
         </div>
     </nav>
 
     <main>
         <section class="hero-section">
-            <img src="14465.jpg" alt="Onyx-Adire Banner">
-            <div class="hero-text"><h1>Heritage & Luxury.</h1></div>
+            <img src="todun-adri-iro-and-buba.jpg" alt="Onyx-Adire Heritage">
         </section>
 
         <section class="brand-story">
-            <p>Onyx-Adire is more than a fashion house; it is a movement. We preserve prestigious textile traditions while emboldening the modern silhouette.</p>
+            <div class="story-box">
+                <p>
+                    Onyx-Adire is more than a fashion house; it is a movement. 
+                    We are dedicated to preserving the world's most prestigious textile 
+                    traditions while emboldening the modern silhouette with the power of Red.
+                </p>
+                <a href="gallery.html" class="btn-outline">EXPLORE THE HERITAGE</a>
+            </div>
         </section>
 
-        <h3 class="section-title">The Debut Edit</h3>
-        <div class="grid" id="featured-grid"></div>
+        <section class="product-showcase">
+            <h2 class="edit-title centralized">The Debut Edit</h2>
+            
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="full-image-wrapper"><img src="adesewa-adire-pants-set.jpg" alt="Adesewa Adire Pants set"></div>
+                    <div class="product-meta"><h4>Adesewa Adire Pants set</h4><p>₦60,500.00 NGN</p></div>
+                </div>
 
-        <div id="recent-view-section" style="display:none;">
-            <h3 class="section-title">Recently Viewed</h3>
-            <div class="grid" id="recent-grid"></div>
-        </div>
+                <div class="product-card">
+                    <div class="full-image-wrapper"><img src="adesewa-adire-set.jpg" alt="Adesewa Adire Set"></div>
+                    <div class="product-meta"><h4>Adesewa Adire Set</h4><p>₦62,500.00 NGN</p></div>
+                </div>
 
-        <h3 class="section-title">You May Also Like</h3>
-        <div class="grid" id="discovery-grid"></div>
-    </main>
+                <div class="product-card">
+                    <div class="full-image-wrapper"><img src="adire-silk-tunic.jpg" alt="Adire Silk Tunic"></div>
+                    <div class="product-meta"><h4>Adire Silk Tunic</h4><p>₦45,000.00 NGN</p></div>
+                </div>
 
-    <a href="https://wa.me/2347077978711" class="whatsapp-float" target="_blank">💬 Chat Via Whatsapp</a>
+                <div class="product-card">
+                    <div class="full-image-wrapper"><img src="asymmetric-adire-tunic.jpg" alt="Asymmetric Adire Tunic"></div>
+                    <div class="product-meta"><h4>Asymmetric Adire Tunic</h4><p>₦48,000.00 NGN</p></div>
+                </div>
 
-    <script>
-        const products = [
-            { name: "Adesewa Adire Set", price: "₦62,500.00", img: "14534.jpg" },
-            { name: "Adire Silk Tunic", price: "₦45,000.00", img: "14481.jpg" },
-            { name: "Bespoke Agbada", price: "₦95,000.00", img: "14540.jpg" },
-            { name: "Floral Adire Kaftan", price: "₦52,000.00", img: "14451.jpg" }
-        ];
+                <div class="product-card">
+                    <div class="full-image-wrapper"><img src="bespoke-traditional-agbada.jpg" alt="Bespoke Traditional Agbada"></div>
+                    <div class="product-meta"><h4>Bespoke Traditional Agbada</h4><p>₦95,000.00 NGN</p></div>
+                </div>
 
-        function createCard(item) {
-            return `
-                <div class="card" onclick="window.location.href='product-detail.html?img=${item.img}&name=${item.name}'">
-                    <img src="${item.img}">
-                    <div class="meta">
-                        <h4>${item.name}</h4>
-                        <p>${item.price}</p>
-                    </div>
-                </div>`;
-        }
+                <div class="product-card">
+                    <div class="full-image-wrapper"><img src="bespoke-velvet-caftan.jpg" alt="Bespoke Velvet Caftan"></div>
+                    <div class="product-meta"><h4>Bespoke Velvet Caftan</h4><p>₦85,000.00 NGN</p></div>
+                </div>
 
-        function toggleMenu() {
-            const m = document.getElementById("mobileMenu");
-            const t = document.getElementById("menuTint");
-            const isOpen = m.style.display === "flex";
-            m.style.display = isOpen ? "none" : "flex";
-            t.style.display = isOpen ? "none" : "block";
-        }
+                <div class="product-card">
+                    <div class="full-image-wrapper"><img src="boubou-and-abaya.jpg" alt="Boubou and Abaya"></div>
+                    <div class="product-meta"><h4>Boubou and Abaya</h4><p>₦70,000.00 NGN</p></div>
+                </div>
 
-        window.onload = function() {
-            document.getElementById('featured-grid').innerHTML = products.map(item => createCard(item)).join('');
-            const shuffled = [...products].sort(() => 0.5 - Math.random());
-            document.getElementById('discovery-grid').innerHTML = shuffled.map(item => createCard(item)).join('');
-        };
-    </script>
-</body>
-</html>
+                <div class="product-card">
+                    <div class="full-image-wrapper"><img src="capes.jpg" alt="Heritage Capes"></div>
+                    <div class="product-meta"><h4>Heritage Capes</h4><p>₦35,000.00 NGN</p></div>
+                </div>
+
+                
