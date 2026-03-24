@@ -226,3 +226,24 @@ footer {
     margin-top: 40px;
     font-size: 0.75rem;
 }
+/* UNIVERSAL ICON FIX - Forces all WhatsApp images to stay small */
+.whatsapp-content img, 
+.whatsapp-fixed-btn img,
+a[href*="wa.me"] img {
+    width: 25px !important;
+    height: 25px !important;
+    display: inline-block !important;
+}
+
+/* FIXES THE PILL SHAPE ON ALL PAGES */
+.whatsapp-fixed-btn, .whatsapp-floating-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 15px;
+    background-color: #ff8c00;
+    padding: 10px 18px;
+    border-radius: 50px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+}
