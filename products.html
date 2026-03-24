@@ -7,19 +7,44 @@
     <style>
         body { font-family: 'Inter', sans-serif; margin: 0; background-color: #fffcf9; color: #333; overflow-x: hidden; }
         
-        /* Navigation & Full Hamburger Menu */
+        /* Navigation */
         nav { display: flex; align-items: center; justify-content: center; padding: 25px; border-bottom: 1px solid #f4f4f4; position: relative; background: #fffcf9; }
         .menu-icon { position: absolute; left: 20px; font-size: 28px; cursor: pointer; color: #800020; }
         .logo { text-decoration: none; color: #800020; font-family: 'Playfair Display', serif; font-size: 26px; font-style: italic; }
 
-        /* Full Navigation Overlay - Matches Cites 14518.jpg, 14520.jpg, 14526.jpg */
+        /* FIXED: Side-Panel Menu (Left Side Only) */
         .menu-overlay { 
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background: #fffcf9; z-index: 1000000; flex-direction: column; padding: 80px 40px; 
+            display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 75%; /* Covers 75% of the screen instead of 100% */
+            max-width: 320px; /* Limits width on larger screens */
+            height: 100%; 
+            background: #fffcf9; 
+            z-index: 1000000; 
+            flex-direction: column; 
+            padding: 40px 30px; 
+            box-shadow: 5px 0 15px rgba(0,0,0,0.05); /* Adds shadow for depth */
+            animation: slideIn 0.3s ease-out;
         }
-        .menu-overlay a { margin: 15px 0; font-size: 14px; text-decoration: none; color: #800020; text-transform: uppercase; letter-spacing: 2px; font-weight: 500; }
 
-        /* Grid Layouts */
+        /* Slide-in Animation */
+        @keyframes slideIn {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+
+        /* Black Screen Tint when Menu is Open */
+        .menu-tint {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.3); z-index: 999999;
+        }
+
+        .menu-overlay a { margin: 15px 0; font-size: 14px; text-decoration: none; color: #800020; text-transform: uppercase; letter-spacing: 2px; font-weight: 500; }
+        .close-btn { font-size: 35px; cursor: pointer; color: #800020; margin-bottom: 30px; }
+
+        /* Product Grid */
         .section-title { font-family: 'Playfair Display', serif; text-align: center; font-style: italic; margin: 40px 0 20px; color: #800020; }
         .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 0 15px 40px; max-width: 1200px; margin: 0 auto; }
         
@@ -38,12 +63,10 @@
         .close-expand { position: absolute; top: 20px; right: 30px; font-size: 40px; cursor: pointer; color: #800020; }
         .view-btn { margin-top: 30px; background: #000; color: #fff; padding: 15px 40px; text-decoration: none; font-size: 12px; letter-spacing: 2px; }
 
-        /* Sticky WhatsApp Button - Matches Cite 14518.jpg */
+        /* WhatsApp Button */
         .whatsapp-sticky { 
-            position: fixed !important; bottom: 25px !important; right: 20px !important; 
-            background-color: #e85d43 !important; color: white !important; 
-            text-decoration: none !important; border-radius: 50px !important; 
-            padding: 12px 22px !important; display: flex !important; align-items: center !important; 
+            position: fixed; bottom: 25px; right: 20px; background-color: #e85d43; color: white; 
+            text-decoration: none; border-radius: 50px; padding: 12px 22px; display: flex; align-items: center; 
             z-index: 9999; font-size: 14px;
         }
 
@@ -59,13 +82,13 @@
         <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
         <a href="index.html" class="logo">Onyx—Adire</a>
         
+        <div id="menuTint" class="menu-tint" onclick="toggleMenu()"></div>
+
         <div id="mobileMenu" class="menu-overlay">
-            <span onclick="toggleMenu()" class="close-expand" style="position: static; margin-bottom: 40px;">&times;</span>
+            <span onclick="toggleMenu()" class="close-btn">&times;</span>
             <a href="index.html">The Home</a>
             <a href="products.html" style="font-weight: bold;">The Collection</a>
-            <a href="visionaries.html">The Visionaries</a>
-            <a href="runway.html">The Runway</a>
-            <a href="bookings.html">The Atelier</a>
+            <a href="trustees.html">The Visionaries</a> <a href="events.html">The Runway</a> <a href="bookings.html">The Atelier</a>
         </div>
     </nav>
 
@@ -91,7 +114,6 @@
     </a>
 
     <script>
-        // Data for 8 Main Collection items
         const coreItems = [
             { name: "Galaxy Print Jumpsuit", price: "₦58,500.00", img: "galaxy-print-jumpsuit.jpg" },
             { name: "Bespoke Traditional Agbada", price: "₦95,000.00", img: "bespoke-traditional-agbada.jpg" },
@@ -103,7 +125,6 @@
             { name: "Midnight Lace Tunic", price: "₦47,000.00", img: "midnight-lace-tunic.jpg" }
         ];
 
-        // Assets for random discovery
         const discoveryAssets = [
             { name: "Adesewa Adire Set", price: "₦55,000.00", img: "adesewa-adire-set.jpg" },
             { name: "Bespoke Velvet Caftan", price: "₦75,000.00", img: "bespoke-velvet-caftan.jpg" },
@@ -112,11 +133,7 @@
         ];
 
         function createCard(item) {
-            return `
-                <div class="card" onclick="openExpand('${item.img}', '${encodeURIComponent(item.name)}', '${encodeURIComponent(item.price)}')">
-                    <img src="${item.img}">
-                    <div class="meta"><h4>${item.name}</h4><p>${item.price}</p></div>
-                </div>`;
+            return `<div class="card" onclick="openExpand('${item.img}', '${encodeURIComponent(item.name)}', '${encodeURIComponent(item.price)}')"><img src="${item.img}"><div class="meta"><h4>${item.name}</h4><p>${item.price}</p></div></div>`;
         }
 
         function openExpand(img, name, price) {
@@ -132,9 +149,13 @@
 
         function closeExpand() { document.getElementById('imageModal').style.display = 'none'; }
 
+        // FIXED: Side-Panel Toggle Logic
         function toggleMenu() {
             const m = document.getElementById("mobileMenu");
-            m.style.display = (m.style.display === "flex") ? "none" : "flex";
+            const t = document.getElementById("menuTint");
+            const isOpen = m.style.display === "flex";
+            m.style.display = isOpen ? "none" : "flex";
+            t.style.display = isOpen ? "none" : "block";
         }
 
         window.onload = function() {
