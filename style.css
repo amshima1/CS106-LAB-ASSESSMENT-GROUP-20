@@ -3,35 +3,41 @@
     --onyx: #1a1a1a;        
     --gold: #c5a059;        
     --white: #ffffff;
-    --light-gray: #f4f4f4;
+    --light-gray: #f9f9f9;
     --border-color: #eeeeee;
-    --text-muted: #666;
-    --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition: all 0.3s ease;
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    -webkit-tap-highlight-color: transparent; /* Fixes blue flash on mobile click */
 }
 
-body {
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
     font-family: 'Playfair Display', serif;
     background-color: var(--white);
     color: var(--onyx);
-    line-height: 1.6;
+    /* Essential for mobile scrolling */
     overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
-/* --- Header & Navigation --- */
+/* --- Navigation & Header --- */
 .announcement-bar {
     background: var(--onyx);
     color: white;
-    padding: 10px 0;
-    font-size: 11px;
+    padding: 8px 0;
+    font-size: 10px;
     text-align: center;
     letter-spacing: 2px;
     text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
 }
 
 nav {
@@ -42,37 +48,37 @@ nav {
     background: white;
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
     border-bottom: 1px solid var(--border-color);
 }
 
 .logo {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
     text-decoration: none;
     color: var(--onyx);
-    letter-spacing: -1px;
+    font-style: italic;
 }
 
 .menu-icon {
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 5px;
 }
 
 .menu-icon div {
-    width: 28px;
+    width: 25px;
     height: 1.5px;
     background-color: var(--onyx);
 }
 
-/* --- Side Navigation (Hamburger) --- */
+/* --- Hamburger Sidenav --- */
 .sidenav {
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 2001;
+    z-index: 3000;
     top: 0;
     left: 0;
     background-color: var(--onyx);
@@ -82,193 +88,143 @@ nav {
 }
 
 .sidenav a {
-    padding: 15px 40px;
+    padding: 15px 35px;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 16px;
     color: #999;
     display: block;
-    transition: var(--transition);
     font-family: 'Inter', sans-serif;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 
-.sidenav a:hover {
-    color: var(--white);
-    padding-left: 50px;
-}
-
-/* --- Hero & Sections --- */
+/* --- Hero Section --- */
 .hero-section {
     width: 100%;
-    background-color: var(--light-gray);
+    height: 70vh; /* Controlled height for mobile */
+    overflow: hidden;
 }
 
 .hero-section img {
-    display: block;
-}
-
-.debut-header {
-    text-align: center;
-    padding: 60px 20px 20px;
-}
-
-.debut-header h2 {
-    font-size: 2rem;
-    font-weight: 400;
-    letter-spacing: 1px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* --- Gallery Grids --- */
+.debut-header {
+    text-align: center;
+    padding: 40px 20px 10px;
+}
+
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 30px;
-    padding: 20px 5%;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile */
+    gap: 15px;
+    padding: 15px;
 }
 
 .gallery-card {
+    background: white;
     cursor: pointer;
-    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
 }
 
 .gallery-card img {
     width: 100%;
     aspect-ratio: 3/4;
     object-fit: cover;
-    transition: var(--transition);
-}
-
-.gallery-card:hover img {
-    opacity: 0.8;
+    display: block;
 }
 
 .card-info {
-    margin-top: 15px;
+    padding: 10px 0;
     display: flex;
-    justify-content: space-between;
-    font-family: 'Inter', sans-serif;
+    flex-direction: column;
+    gap: 4px;
 }
 
 .item-name {
-    font-size: 13px;
-    font-weight: 600;
+    font-size: 11px;
+    font-family: 'Inter', sans-serif;
     text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
 .item-price {
-    font-size: 13px;
-    color: var(--text-muted);
+    font-size: 12px;
+    color: var(--gold);
+    font-weight: bold;
 }
 
-/* --- Modal (Product Popup) --- */
+/* --- Recently Viewed Section --- */
+.suggestion-title {
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+    color: #888;
+}
+
+#recent-section {
+    border-top: 1px solid var(--border-color);
+    margin-top: 40px;
+    background: var(--light-gray);
+}
+
+/* --- Product Modal (Popup) --- */
 .modal {
     display: none;
     position: fixed;
-    z-index: 3000;
+    z-index: 4000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.85);
-    backdrop-filter: blur(5px);
+    background-color: rgba(0,0,0,0.8);
     overflow-y: auto;
 }
 
 .modal-content {
-    background-color: var(--white);
-    margin: 2% auto;
+    background-color: white;
+    margin: 5% auto;
     width: 90%;
-    max-width: 700px;
+    max-width: 500px;
     position: relative;
-    padding-bottom: 40px;
-    animation: slideUp 0.4s ease;
-}
-
-@keyframes slideUp {
-    from { transform: translateY(50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    padding: 20px;
 }
 
 .close-modal {
     position: absolute;
-    right: 20px;
-    top: 15px;
-    font-size: 35px;
-    cursor: pointer;
-    z-index: 10;
+    right: 15px;
+    top: 10px;
+    font-size: 30px;
     color: var(--onyx);
-}
-
-.modal-body {
-    padding: 20px;
-}
-
-.modal-body h2 {
-    margin-top: 20px;
-    font-size: 1.8rem;
-}
-
-/* --- Recent & Suggestions --- */
-#recent-section {
-    border-top: 1px solid var(--border-color);
-    background: #fafafa;
-}
-
-.suggestion-title {
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-/* --- Footer & Buttons --- */
-.footer-cta {
-    background-color: var(--onyx);
-    color: white;
-    padding: 80px 20px;
-    text-align: center;
-}
-
-.subscribe-container {
-    margin: 30px auto;
-    max-width: 400px;
-    display: flex;
-}
-
-.email-input {
-    flex-grow: 1;
-    padding: 15px;
-    border: none;
-    outline: none;
-}
-
-.subscribe-btn {
-    padding: 15px 30px;
-    background: var(--gold);
-    color: white;
-    border: none;
     cursor: pointer;
+}
+
+/* --- Buttons & Footer --- */
+.subscribe-btn {
+    background: var(--onyx);
+    color: white;
+    border: none;
+    padding: 15px;
+    font-family: 'Inter', sans-serif;
     text-transform: uppercase;
-    font-weight: 600;
-    transition: var(--transition);
-}
-
-.subscribe-btn:hover {
-    background: #a68549;
-}
-
-/* --- Floating Elements --- */
-#overlay {
-    position: fixed;
-    display: none;
+    font-size: 12px;
+    letter-spacing: 1px;
+    cursor: pointer;
     width: 100%;
-    height: 100%;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 2000;
+}
+
+.footer-cta {
+    padding: 60px 20px;
+    text-align: center;
+    background: #fff;
 }
 
 .whatsapp-link {
@@ -277,26 +233,29 @@ nav {
     right: 20px;
     background: #25D366;
     color: white;
-    padding: 12px 25px;
+    padding: 12px 20px;
     border-radius: 50px;
     text-decoration: none;
     font-family: 'Inter', sans-serif;
+    font-size: 12px;
     font-weight: 600;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    z-index: 100;
+    z-index: 2000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* --- Responsive Media Queries --- */
-@media (max-width: 768px) {
+#overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0; left: 0; background: rgba(0,0,0,0.5);
+    z-index: 2500;
+}
+
+/* Desktop Adjustment */
+@media (min-width: 768px) {
     .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-    }
-    .modal-content {
-        width: 95%;
-        margin: 10% auto;
-    }
-    .hero-section {
-        height: 60vh;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
     }
 }
