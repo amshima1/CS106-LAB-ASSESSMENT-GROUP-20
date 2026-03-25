@@ -23,12 +23,11 @@
             overflow-x: hidden;
         }
 
-        /* --- FIXED HEADER (ALWAYS TOP LAYER) --- */
+        /* --- HEADER (Z-INDEX 9000: ALWAYS ON TOP) --- */
         .header-container {
             position: fixed;
             top: 0;
             width: 100%;
-            /* Highest Z-Index to stay above the menu and overlay */
             z-index: 9000; 
             background: var(--bg-cream);
         }
@@ -67,19 +66,17 @@
         .menu-icon div { height: 2px; width: 25px; background-color: var(--brand-red); margin: 6px 0; }
         .logo { font-family: 'Playfair Display', serif; font-size: 24px; font-style: italic; font-weight: 700; text-decoration: none; color: var(--brand-red); }
 
-        /* --- SIDE NAVIGATION (Pushed Down to avoid Logo) --- */
+        /* --- SIDENAV (Pushed down 120px to show header) --- */
         #mySidenav {
             height: 100%;
             width: 0;
             position: fixed;
-            /* Lower than Header (9000) so it slides "under" the logo bar */
             z-index: 8000; 
             top: 0;
             left: 0;
             background-color: var(--bg-cream);
             overflow-x: hidden;
             transition: 0.4s ease-in-out;
-            /* This padding ensures menu items start below the fixed header */
             padding-top: 120px; 
             text-align: left;
         }
@@ -101,28 +98,76 @@
             height: 100%;
             top: 0; left: 0;
             background: rgba(0,0,0,0.5);
-            /* Sits between menu and content */
             z-index: 7500; 
         }
 
-        /* --- CONTENT --- */
+        /* --- TRUSTEE CONTENT --- */
         main { padding-top: 110px; }
-
         .trustee-section { width: 100%; margin-bottom: 60px; }
-        .full-width-img { width: 100vw; height: auto; display: block; }
-
+        .full-width-img { width: 100vw; height: auto; display: block; object-fit: cover; }
         .trustee-info { padding: 40px 25px; }
         .trustee-name { font-family: 'Playfair Display', serif; font-size: 28px; font-style: italic; font-weight: bold; }
         .trustee-title { font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-dark); display: block; margin-bottom: 15px; }
         .inspiring-text { font-family: 'Playfair Display', serif; font-size: 18px; line-height: 1.6; font-style: italic; max-width: 600px; margin: 0 auto; }
 
-        /* --- FOOTER --- */
-        .footer-cta { background-color: var(--brand-red); color: white; padding: 60px 20px 100px 20px; }
-        .footer-cta h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 24px; margin-bottom: 25px; }
-        .subscribe-box input { width: 100%; max-width: 300px; padding: 14px; border: 1px solid white; background: transparent; color: white; text-align: center; margin-bottom: 15px; }
-        .subscribe-box button { background: white; color: var(--brand-red); border: none; padding: 12px 60px; font-weight: bold; cursor: pointer; text-transform: uppercase; }
+        /* --- RED FOOTER --- */
+        .footer-cta {
+            background-color: var(--brand-red);
+            color: white;
+            padding: 60px 20px 100px 20px;
+        }
 
-        /* --- WHATSAPP (TOP LAYER) --- */
+        .footer-cta h2 {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 24px;
+            margin-bottom: 25px;
+        }
+
+        .subscribe-box input {
+            width: 100%;
+            max-width: 300px;
+            padding: 14px;
+            border: 1px solid white;
+            background: transparent;
+            color: white;
+            text-align: center;
+            margin-bottom: 15px;
+            border-radius: 0;
+        }
+
+        .subscribe-box button {
+            background: white;
+            color: var(--brand-red);
+            border: none;
+            padding: 12px 60px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .social-section {
+            margin-top: 40px;
+        }
+
+        .social-handle {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 22px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .social-platforms {
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
+
+        /* --- WHATSAPP (TOP LAYER 9999) --- */
         .whatsapp-link {
             position: fixed;
             bottom: 25px;
@@ -135,7 +180,6 @@
             font-weight: bold;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             text-decoration: none;
-            /* Highest Z-Index so it is always clickable */
             z-index: 9999; 
         }
     </style>
@@ -161,7 +205,7 @@
         <a href="javascript:void(0)" onclick="toggleNav(false)" style="font-size: 40px; text-align: right; padding-right: 30px;">&times;</a>
         <a href="index.html">Home</a>
         <a href="index.html#shop">Collections</a>
-        <a href="trustees.html">Board of Trustees</a>
+        <a href="trustees.html">Trustees</a>
         <a href="events.html">Events</a>
         <a href="bookings.html">Bookings</a>
     </div>
@@ -197,7 +241,11 @@
                 <br>
                 <button type="submit">Join Now</button>
             </div>
-            <p style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 20px; margin-top: 40px;">@OnyxAdire_</p>
+            
+            <div class="social-section">
+                <span class="social-handle">@OnyxAdire_</span>
+                <span class="social-platforms">Instagram | TikTok</span>
+            </div>
         </section>
     </main>
 
