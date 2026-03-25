@@ -24,13 +24,16 @@
             overflow-x: hidden;
         }
 
-        /* --- 1. Working Announcement Bar (Scrolling Marquee) --- */
+        /* --- Announcement Bar --- */
         .announcement-wrapper {
             background-color: var(--brand-red);
             color: white;
             overflow: hidden;
             white-space: nowrap;
             padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 3000;
         }
 
         .announcement-content {
@@ -47,69 +50,28 @@
             100% { transform: translate(-100%, 0); }
         }
 
-        /* --- 2. Functional Hamburger Menu --- */
+        /* --- Header --- */
         header {
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 15px 20px;
             position: sticky;
-            top: 0;
+            top: 35px;
             background: var(--bg-cream);
-            z-index: 100;
+            z-index: 2500;
+            border-bottom: 1px solid rgba(139, 29, 29, 0.05);
         }
 
         .menu-icon {
             width: 24px;
             cursor: pointer;
-            z-index: 1002;
         }
 
         .menu-icon div {
             height: 2px;
             background-color: var(--brand-red);
             margin: 5px 0;
-            transition: 0.3s;
-        }
-
-        /* Side Nav Drawer */
-        .side-nav {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 1001;
-            top: 0;
-            left: 0;
-            background-color: var(--bg-cream);
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 80px;
-            text-align: left;
-            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-        }
-
-        .side-nav a {
-            padding: 15px 32px;
-            text-decoration: none;
-            font-family: 'Playfair Display', serif;
-            font-size: 22px;
-            color: var(--brand-red);
-            display: block;
-            transition: 0.3s;
-            font-style: italic;
-        }
-
-        .side-nav a:hover { color: var(--text-dark); }
-
-        /* Overlay background when menu is open */
-        .overlay {
-            display: none;
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0; left: 0;
-            background: rgba(0,0,0,0.4);
-            z-index: 1000;
         }
 
         .logo {
@@ -119,12 +81,43 @@
             font-weight: 700;
         }
 
-        /* --- 3. Images in Full --- */
-        .hero-image {
-            width: 100%;
-            height: auto;
-            display: block;
+        /* --- Navigation --- */
+        .side-nav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 2600;
+            top: 0;
+            left: 0;
+            background-color: var(--bg-cream);
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 120px;
+            text-align: left;
         }
+
+        .side-nav a {
+            padding: 15px 32px;
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: var(--brand-red);
+            display: block;
+            font-style: italic;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0; left: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 2550;
+        }
+
+        /* --- Content Sections --- */
+        .hero-image { width: 100%; display: block; }
 
         .statement-section {
             background-color: var(--deep-red-bg);
@@ -137,7 +130,6 @@
             font-style: italic;
             font-size: 18px;
             line-height: 1.6;
-            margin-bottom: 35px;
         }
 
         .section-heading {
@@ -147,17 +139,19 @@
             margin: 60px 0 30px 0;
         }
 
+        /* --- Gallery --- */
         .product-gallery {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 30px 15px;
+            gap: 35px 15px;
             padding: 0 15px 50px 15px;
         }
 
         .product-item img {
             width: 100%;
-            height: auto; /* Ensures full picture appears without cropping */
+            height: auto;
             border-radius: 2px;
+            display: block;
         }
 
         .product-name {
@@ -169,10 +163,12 @@
             margin: 12px 0 4px 0;
         }
 
-        /* --- 4. Footer Logo --- */
+        .product-price { font-size: 14px; color: var(--brand-red); margin: 0; }
+
+        /* --- Footer & Newsletter --- */
         footer {
-            padding: 60px 0 120px 0;
-            border-top: 1px solid #eee;
+            padding: 60px 0 0 0;
+            background-color: var(--bg-cream);
         }
 
         .footer-logo {
@@ -180,10 +176,54 @@
             font-size: 28px;
             font-style: italic;
             font-weight: 700;
-            color: var(--brand-red);
+            margin-bottom: 30px;
         }
 
-        /* Floating WhatsApp */
+        .newsletter-section {
+            background-color: var(--brand-red);
+            color: white;
+            padding: 40px 20px 120px 20px; /* Extra bottom padding for WhatsApp space */
+        }
+
+        .newsletter-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 400;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .newsletter-form input {
+            width: 100%;
+            max-width: 300px;
+            padding: 12px;
+            border: 1px solid white;
+            background: transparent;
+            color: white;
+            text-align: center;
+        }
+
+        .newsletter-form input::placeholder { color: rgba(255,255,255,0.7); }
+
+        .newsletter-form button {
+            background: white;
+            color: var(--brand-red);
+            border: none;
+            padding: 10px 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+
+        /* --- WhatsApp --- */
         .whatsapp-float {
             position: fixed;
             bottom: 25px;
@@ -198,7 +238,7 @@
             font-weight: bold;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             text-decoration: none;
-            z-index: 1000;
+            z-index: 4000;
         }
     </style>
 </head>
@@ -206,12 +246,13 @@
 
     <div class="announcement-wrapper">
         <div class="announcement-content">
-            ✦ WEAVING THE SOUL OF HERITAGE INTO YOUR CLOSET &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ✦ NEW DESIGNS ADDED TO THE DEBUT EDIT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ✦ GLOBAL SHIPPING AVAILABLE
+            ✦ WEAVING THE SOUL OF HERITAGE INTO YOUR CLOSET &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ✦ GLOBAL SHIPPING AVAILABLE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ✦ SHOP THE DEBUT EDIT NOW
         </div>
     </div>
 
     <div id="mySidenav" class="side-nav">
-        <a href="javascript:void(0)" onclick="closeNav()" style="font-size: 40px; position: absolute; top: 10px; right: 25px;">&times;</a>
+        <a href="javascript:void(0)" onclick="closeNav()" style="font-size: 35px; text-align: right; padding-right: 30px;">&times;</a>
+        <a href="index.html">Home</a>
         <a href="#">Collections</a>
         <a href="trustees.html">Trustees</a>
         <a href="events.html">Events</a>
@@ -227,7 +268,7 @@
         <div style="width: 24px;"></div> 
     </header>
 
-    <img src="todun-adri-iro-and-buba.jpg" alt="Banner" class="hero-image">
+    <img src="todun-adri-iro-and-buba.jpg" alt="Hero Banner" class="hero-image">
 
     <div class="statement-section">
         <p class="statement-text">
@@ -241,80 +282,87 @@
         <div class="product-item">
             <img src="adesewa-adire-pants-set.jpg" alt="Adesewa Set">
             <p class="product-name">Adesewa Pants Set</p>
-            <p>₦45,000</p>
+            <p class="product-price">₦45,000</p>
         </div>
         <div class="product-item">
             <img src="adire-silk-tunic.jpg" alt="Silk Tunic">
             <p class="product-name">Adire Silk Tunic</p>
-            <p>₦35,000</p>
+            <p class="product-price">₦35,000</p>
         </div>
         <div class="product-item">
             <img src="asymmetric-adire-tunic.jpg" alt="Asymmetric Tunic">
             <p class="product-name">Asymmetric Tunic</p>
-            <p>₦38,500</p>
+            <p class="product-price">₦38,500</p>
         </div>
         <div class="product-item">
             <img src="bespoke-traditional-agbada.jpg" alt="Agbada">
             <p class="product-name">Traditional Agbada</p>
-            <p>₦85,000</p>
+            <p class="product-price">₦85,000</p>
         </div>
         <div class="product-item">
             <img src="ebony-silk-boubou.jpg" alt="Ebony Boubou">
             <p class="product-name">Ebony Silk Boubou</p>
-            <p>₦55,000</p>
+            <p class="product-price">₦55,000</p>
         </div>
         <div class="product-item">
             <img src="floral-adire-kaftan.jpg" alt="Floral Kaftan">
             <p class="product-name">Floral Adire Kaftan</p>
-            <p>₦42,000</p>
+            <p class="product-price">₦42,000</p>
         </div>
         <div class="product-item">
             <img src="geometric-print-boubou.jpg" alt="Geometric Boubou">
             <p class="product-name">Geometric Boubou</p>
-            <p>₦48,000</p>
+            <p class="product-price">₦48,000</p>
         </div>
         <div class="product-item">
             <img src="heritage-agbada-gold.jpg" alt="Gold Agbada">
             <p class="product-name">Heritage Gold Agbada</p>
-            <p>₦95,000</p>
+            <p class="product-price">₦95,000</p>
         </div>
         <div class="product-item">
             <img src="indigo-oversized-kimono.jpg" alt="Kimono">
             <p class="product-name">Indigo Kimono</p>
-            <p>₦32,000</p>
+            <p class="product-price">₦32,000</p>
         </div>
         <div class="product-item">
             <img src="lace-overlay-boubou.jpg" alt="Lace Boubou">
             <p class="product-name">Lace Overlay Boubou</p>
-            <p>₦60,000</p>
+            <p class="product-price">₦60,000</p>
         </div>
         <div class="product-item">
             <img src="modern-adire-shirtdress.jpg" alt="Shirtdress">
             <p class="product-name">Adire Shirtdress</p>
-            <p>₦36,500</p>
+            <p class="product-price">₦36,500</p>
         </div>
         <div class="product-item">
             <img src="sadiya-adire-long-dress.jpg" alt="Sadiya Dress">
             <p class="product-name">Sadiya Long Dress</p>
-            <p>₦52,000</p>
+            <p class="product-price">₦52,000</p>
         </div>
         <div class="product-item">
             <img src="safiya-adire-pants-set.jpg" alt="Safiya Set">
             <p class="product-name">Safiya Pants Set</p>
-            <p>₦45,000</p>
+            <p class="product-price">₦45,000</p>
         </div>
         <div class="product-item">
             <img src="torera-adire-and-aso-oke.jpg" alt="Torera Set">
             <p class="product-name">Torera Adire Set</p>
-            <p>₦75,000</p>
+            <p class="product-price">₦75,000</p>
         </div>
     </section>
 
     <footer>
         <div class="footer-logo">Onyx—Adire</div>
+        <div class="newsletter-section">
+            <h3>Subscribe to our newsletter</h3>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
     </footer>
 
-    <a href="#" class="whatsapp-float">
+    <a href="https://wa.me/YOURNUMBER" class="whatsapp-float">
         <span>💬</span> Chat Via Whatsapp
     </a>
 
@@ -323,7 +371,6 @@
             document.getElementById("mySidenav").style.width = "280px";
             document.getElementById("overlay").style.display = "block";
         }
-
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0";
             document.getElementById("overlay").style.display = "none";
