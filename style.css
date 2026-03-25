@@ -1,114 +1,179 @@
-/* 1. Global Reset & Body */
+/* 1. Reset & Typography */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Inter', sans-serif; /* Or your preferred font */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+:root {
+    --brand-red: #800000;
+    --announcement-height: 40px;
+    --header-height: 70px;
+    --total-offset: 110px; /* Announcement + Header */
 }
 
 body {
-  overflow-x: hidden;
+    background-color: #fff;
+    line-height: 1.6;
 }
 
-/* 2. Fixed Header & Announcement Bar */
-/* This stays at the top and NEVER gets covered */
+/* 2. Fixed Top Navigation (Announcement + Header) */
+.announcement-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: var(--announcement-height);
+    background-color: var(--brand-red);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    letter-spacing: 2px;
+    font-weight: 500;
+    z-index: 1001; /* Highest layer for the top bar */
+}
+
 header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 70px; /* Adjust this to match your logo/nav height */
-  background-color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
-  border-bottom: 1px solid #e1e4e8;
-  z-index: 1000; /* High priority */
+    position: fixed;
+    top: var(--announcement-height);
+    width: 100%;
+    height: var(--header-height);
+    background: white;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 1px solid #eee;
+    z-index: 1001; /* Keeps logo and hamburger above the sliding menu */
 }
 
 .logo {
-  font-family: serif;
-  font-weight: bold;
-  font-style: italic;
-  color: #800000; /* Onyx—Adire Red */
-  font-size: 1.5rem;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 24px;
+    color: var(--brand-red);
+    margin-left: 15px;
+    flex-grow: 1;
+    text-align: center;
 }
 
-/* 3. The Side Drawer (Hamburger Menu) */
+/* 3. Hamburger Icon Styling */
+.hamburger-icon {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.line {
+    width: 25px;
+    height: 2px;
+    background-color: var(--brand-red);
+    transition: 0.3s;
+}
+
+/* 4. Side Drawer Menu (The GitHub Style) */
 .side-menu {
-  position: fixed;
-  top: 70px; /* Must match the height of your header */
-  left: -100%; /* Hidden by default */
-  width: 280px; /* Standard drawer width */
-  height: calc(100vh - 70px); /* Fill screen minus header height */
-  background-color: #ffffff;
-  transition: transform 0.3s ease-in-out;
-  border-right: 1px solid #e1e4e8;
-  z-index: 900; /* Below Header, Above Content */
-  padding: 20px 0;
-  display: flex;
-  flex-direction: column;
+    position: fixed;
+    top: var(--total-offset); /* Starts exactly under the header */
+    left: -100%; /* Hidden off-screen */
+    width: 280px;
+    height: calc(100vh - var(--total-offset));
+    background: white;
+    z-index: 999; /* Below header, above main content */
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding-top: 20px;
+    border-right: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Toggle Class for JavaScript */
+/* When the menu is active */
 .side-menu.active {
-  transform: translateX(100%); /* Slides into view */
-  left: 0;
+    transform: translateX(100%);
+    left: 0;
 }
 
-.side-menu a {
-  padding: 15px 25px;
-  text-decoration: none;
-  color: #24292e;
-  font-size: 14px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  border-bottom: 1px solid #f6f8fa;
+/* Menu Links */
+.menu-links {
+    list-style: none;
 }
 
-.side-menu a:hover {
-  background-color: #f3f4f6;
+.menu-links li a {
+    display: block;
+    padding: 18px 30px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--brand-red);
+    text-decoration: none;
+    transition: 0.2s;
 }
 
-/* 4. The Overlay (Dims the background when menu is open) */
+.menu-links li a:hover {
+    background-color: #f9f9f9;
+    padding-left: 35px;
+}
+
+/* 5. Close Button (X) inside the menu */
+.close-area {
+    padding-right: 20px;
+    text-align: right;
+}
+
+.close-icon {
+    font-size: 35px;
+    color: #ccc;
+    cursor: pointer;
+    font-weight: 200;
+}
+
+/* 6. Dimmable Background Overlay */
 .menu-overlay {
-  position: fixed;
-  top: 70px;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.3);
-  display: none; /* Hidden by default */
-  z-index: 850;
+    position: fixed;
+    top: var(--total-offset);
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    z-index: 998;
 }
 
 .menu-overlay.active {
-  display: block;
+    opacity: 1;
+    visibility: visible;
 }
 
-/* 5. Floating WhatsApp Button */
-/* This stays on top of EVERYTHING */
-.whatsapp-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #ff9800; /* Your orange color */
-  color: white;
-  padding: 12px 20px;
-  border-radius: 50px;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  z-index: 1100; /* Highest layer */
+/* 7. Floating WhatsApp Button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    background-color: #f05a41; /* Your custom orange-red */
+    color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    z-index: 1100; /* Stays above the menu and everything else */
+    transition: 0.3s transform;
 }
 
-/* 6. Main Content Area */
+.whatsapp-float:hover {
+    transform: scale(1.05);
+}
+
+/* 8. Main Content Container */
 main {
-  margin-top: 70px; /* Offset for the fixed header */
-  padding: 20px;
-  z-index: 1;
+    padding-top: var(--total-offset); /* Prevents content from hiding behind fixed header */
 }
