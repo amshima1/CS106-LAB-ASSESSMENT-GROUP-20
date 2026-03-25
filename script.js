@@ -1,115 +1,113 @@
 /**
- * Onyx—Adire Official Script
- * Handles: Navigation, Modal Popups, Recently Viewed Persistence, and WhatsApp Orders
+ * Onyx—Adire Official Performance Script
+ * Features: Optimized Hamburger, Full-Image Modal, and Smart "Recently Viewed"
  */
 
-// 1. SIDE NAVIGATION (HAMBURGER)
+// 1. IMPROVED NAVIGATION PERFORMANCE
 function toggleNav() {
     const sideNav = document.getElementById("mySidenav");
     const overlay = document.getElementById("overlay");
+    const mainContent = document.getElementById("main-content");
     
-    // Check current width to toggle
+    // Check current state
     if (sideNav.style.width === "280px") {
         sideNav.style.width = "0";
         overlay.style.display = "none";
+        if (mainContent) mainContent.style.filter = "none"; // Remove blur
         document.body.style.overflow = "auto"; // Re-enable scroll
     } else {
         sideNav.style.width = "280px";
         overlay.style.display = "block";
-        document.body.style.overflow = "hidden"; // Lock scroll when menu is open
+        if (mainContent) mainContent.style.filter = "blur(4px)"; // Performance focus blur
+        document.body.style.overflow = "hidden"; // Prevent background scroll
     }
 }
 
-// 2. PRODUCT MODAL (POPUP)
+// 2. PRODUCT MODAL (POPUP) LOGIC
 function openProduct(name, price, img) {
     const modal = document.getElementById('productModal');
     const modalImg = document.getElementById('modalImg');
     const modalName = document.getElementById('modalName');
     const modalPrice = document.getElementById('modalPrice');
     
-    // Update content
+    // Update Content
     modalImg.src = img;
     modalName.innerText = name;
     modalPrice.innerText = price;
 
-    // Configure WhatsApp Button inside Modal
+    // Configure WhatsApp Ordering
     const whatsappBtn = document.querySelector('#productModal .subscribe-btn');
     const myNumber = "234XXXXXXXXXX"; // REPLACEME: Your actual WhatsApp number
-    const text = encodeURIComponent(`Hello Onyx—Adire, I'm interested in the ${name} (${price}). Is it available?`);
+    const text = encodeURIComponent(`Hello Onyx—Adire, I'm interested in ordering: ${name} (${price}). Is it available?`);
     
     whatsappBtn.onclick = () => {
         window.open(`https://wa.me/${myNumber}?text=${text}`, '_blank');
     };
 
-    // Show Modal & Disable background scroll
+    // Show Modal & Lock Scroll
     modal.style.display = "block";
     document.body.style.overflow = "hidden";
 
-    // Save this click to "Recently Viewed"
-    saveToRecent(name, img);
+    // Save to Recently Viewed
+    saveRecent(name, img);
 }
 
 function closeModal() {
-    document.getElementById('productModal').style.display = "none";
-    document.body.style.overflow = "auto"; // Re-enable scrolling
+    const modal = document.getElementById('productModal');
+    modal.style.display = "none";
+    document.body.style.overflow = "auto"; // Re-enable scroll
 }
 
-// 3. RECENTLY VIEWED LOGIC
-function saveToRecent(name, img) {
-    // SECURITY CHECK: Only save if it's a valid Onyx-Adire image 
-    // This prevents the "broken" images from your screenshot from saving.
+// 3. SMART RECENTLY VIEWED (NO BROKEN IMAGES)
+function saveRecent(name, img) {
+    // Only save if it's a valid Onyx-Adire product image
     if (!img.toLowerCase().includes('onyx-adire')) return;
 
-    let items = JSON.parse(localStorage.getItem('onyx_recent_v2')) || [];
+    let items = JSON.parse(localStorage.getItem('onyx_v3_recent')) || [];
 
-    // Check if it's already in the list
-    const isDuplicate = items.find(i => i.name === name);
-
-    if (!isDuplicate) {
-        // Add to front of list
+    // Avoid duplicates
+    const exists = items.find(i => i.name === name);
+    if (!exists) {
         items.unshift({ name, img });
-        
-        // Only keep the most recent 2 items (matching your design)
-        if (items.length > 2) items.pop();
-        
-        localStorage.setItem('onyx_recent_v2', JSON.stringify(items));
-        renderRecentSection();
+        if (items.length > 2) items.pop(); // Keep only the latest 2 pieces
+        localStorage.setItem('onyx_v3_recent', JSON.stringify(items));
+        renderRecent();
     }
 }
 
-function renderRecentSection() {
-    const items = JSON.parse(localStorage.getItem('onyx_recent_v2')) || [];
+function renderRecent() {
+    const items = JSON.parse(localStorage.getItem('onyx_v3_recent')) || [];
     const section = document.getElementById('recent-section');
     const grid = document.getElementById('recent-grid');
 
-    // If no items, hide the whole section
+    // Only show section if there are valid items
     if (items.length === 0) {
         if (section) section.style.display = "none";
         return;
     }
 
-    // Show section and build HTML
     if (section) section.style.display = "block";
     if (grid) {
         grid.innerHTML = items.map(item => `
             <div class="gallery-card" onclick="openProduct('${item.name}', 'View Piece', '${item.img}')">
                 <img src="${item.img}" style="height: 140px; object-fit: cover; border-radius: 2px;">
                 <div class="card-info" style="text-align: center;">
-                    <span class="item-name" style="font-size: 10px;">${item.name}</span>
+                    <span class="item-name" style="font-size: 10px; color: #1a1a1a;">${item.name}</span>
                 </div>
             </div>
         `).join('');
     }
 }
 
-// 4. INITIALIZE ON LOAD
+// 4. GLOBAL INITIALIZATION
 document.addEventListener('DOMContentLoaded', () => {
-    renderRecentSection();
-    
-    // Close modal if user clicks outside the content box
+    renderRecent();
+
+    // Close elements when clicking the dark overlay
     window.onclick = function(event) {
         const modal = document.getElementById('productModal');
         const overlay = document.getElementById('overlay');
+        
         if (event.target == modal) closeModal();
         if (event.target == overlay) toggleNav();
     };
