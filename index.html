@@ -24,34 +24,92 @@
             overflow-x: hidden;
         }
 
-        /* Top Announcement Bar */
-        .announcement {
+        /* --- 1. Working Announcement Bar (Scrolling Marquee) --- */
+        .announcement-wrapper {
             background-color: var(--brand-red);
             color: white;
+            overflow: hidden;
+            white-space: nowrap;
             padding: 10px 0;
-            font-size: 10px;
+        }
+
+        .announcement-content {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 20s linear infinite;
+            font-size: 11px;
             letter-spacing: 2px;
             text-transform: uppercase;
         }
 
-        /* Header Navigation */
+        @keyframes marquee {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+
+        /* --- 2. Functional Hamburger Menu --- */
         header {
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            background: var(--bg-cream);
+            z-index: 100;
         }
 
         .menu-icon {
             width: 24px;
             cursor: pointer;
+            z-index: 1002;
         }
 
         .menu-icon div {
             height: 2px;
             background-color: var(--brand-red);
             margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        /* Side Nav Drawer */
+        .side-nav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1001;
+            top: 0;
+            left: 0;
+            background-color: var(--bg-cream);
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 80px;
+            text-align: left;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+
+        .side-nav a {
+            padding: 15px 32px;
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: var(--brand-red);
+            display: block;
+            transition: 0.3s;
+            font-style: italic;
+        }
+
+        .side-nav a:hover { color: var(--text-dark); }
+
+        /* Overlay background when menu is open */
+        .overlay {
+            display: none;
+            position: fixed;
             width: 100%;
+            height: 100%;
+            top: 0; left: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 1000;
         }
 
         .logo {
@@ -61,21 +119,17 @@
             font-weight: 700;
         }
 
-        /* Hero Image - The Main Banner */
+        /* --- 3. Images in Full --- */
         .hero-image {
             width: 100%;
             height: auto;
             display: block;
         }
 
-        /* Red Statement Section */
         .statement-section {
             background-color: var(--deep-red-bg);
             color: white;
             padding: 60px 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
         .statement-text {
@@ -84,49 +138,26 @@
             font-size: 18px;
             line-height: 1.6;
             margin-bottom: 35px;
-            max-width: 500px;
         }
 
-        .explore-btn {
-            background-color: transparent;
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            padding: 12px 30px;
-            font-size: 12px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        /* Product Gallery Title */
         .section-heading {
             font-family: 'Playfair Display', serif;
             font-size: 32px;
             font-style: italic;
             margin: 60px 0 30px 0;
-            font-weight: 700;
         }
 
-        /* The 14-Image Product Grid */
         .product-gallery {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 30px 15px;
-            padding: 0 15px 120px 15px; /* Extra bottom padding for floating button */
-        }
-
-        .product-item {
-            text-align: center;
+            padding: 0 15px 50px 15px;
         }
 
         .product-item img {
             width: 100%;
-            height: auto;
-            aspect-ratio: 3 / 4;
-            object-fit: cover;
+            height: auto; /* Ensures full picture appears without cropping */
             border-radius: 2px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
         .product-name {
@@ -138,14 +169,21 @@
             margin: 12px 0 4px 0;
         }
 
-        .product-price {
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--brand-red);
-            margin: 0;
+        /* --- 4. Footer Logo --- */
+        footer {
+            padding: 60px 0 120px 0;
+            border-top: 1px solid #eee;
         }
 
-        /* Floating WhatsApp Button */
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-style: italic;
+            font-weight: 700;
+            color: var(--brand-red);
+        }
+
+        /* Floating WhatsApp */
         .whatsapp-float {
             position: fixed;
             bottom: 25px;
@@ -162,128 +200,134 @@
             text-decoration: none;
             z-index: 1000;
         }
-
-        .whatsapp-icon {
-            margin-right: 8px;
-            font-size: 18px;
-        }
     </style>
 </head>
 <body>
 
-    <div class="announcement">
-        ✦ WEAVING THE SOUL OF HERITAGE INTO YOUR CLOSET
+    <div class="announcement-wrapper">
+        <div class="announcement-content">
+            ✦ WEAVING THE SOUL OF HERITAGE INTO YOUR CLOSET &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ✦ NEW DESIGNS ADDED TO THE DEBUT EDIT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ✦ GLOBAL SHIPPING AVAILABLE
+        </div>
     </div>
 
+    <div id="mySidenav" class="side-nav">
+        <a href="javascript:void(0)" onclick="closeNav()" style="font-size: 40px; position: absolute; top: 10px; right: 25px;">&times;</a>
+        <a href="#">Collections</a>
+        <a href="trustees.html">Trustees</a>
+        <a href="events.html">Events</a>
+        <a href="bookings.html">Inquiries</a>
+    </div>
+    <div id="overlay" class="overlay" onclick="closeNav()"></div>
+
     <header>
-        <div class="menu-icon">
+        <div class="menu-icon" onclick="openNav()">
             <div></div><div></div><div></div>
         </div>
         <div class="logo">Onyx—Adire</div>
-        <div style="width: 24px;"></div> </header>
+        <div style="width: 24px;"></div> 
+    </header>
 
-    <img src="todun-adri-iro-and-buba.jpg" alt="Onyx-Adire Banner" class="hero-image">
+    <img src="todun-adri-iro-and-buba.jpg" alt="Banner" class="hero-image">
 
     <div class="statement-section">
         <p class="statement-text">
             Onyx-Adire is more than a fashion house; it is a movement. We are dedicated to preserving the world's most prestigious textile traditions while emboldening the modern silhouette with the power of Red.
         </p>
-        <button class="explore-btn">Explore the Heritage</button>
     </div>
 
     <h2 class="section-heading">The Debut Edit</h2>
 
     <section class="product-gallery">
-        
         <div class="product-item">
-            <img src="adesewa-adire-pants-set.jpg" alt="Adesewa Adire Pants Set">
+            <img src="adesewa-adire-pants-set.jpg" alt="Adesewa Set">
             <p class="product-name">Adesewa Pants Set</p>
-            <p class="product-price">₦45,000</p>
+            <p>₦45,000</p>
         </div>
-
         <div class="product-item">
-            <img src="adire-silk-tunic.jpg" alt="Adire Silk Tunic">
+            <img src="adire-silk-tunic.jpg" alt="Silk Tunic">
             <p class="product-name">Adire Silk Tunic</p>
-            <p class="product-price">₦35,000</p>
+            <p>₦35,000</p>
         </div>
-
         <div class="product-item">
-            <img src="asymmetric-adire-tunic.jpg" alt="Asymmetric Adire Tunic">
+            <img src="asymmetric-adire-tunic.jpg" alt="Asymmetric Tunic">
             <p class="product-name">Asymmetric Tunic</p>
-            <p class="product-price">₦38,500</p>
+            <p>₦38,500</p>
         </div>
-
         <div class="product-item">
-            <img src="bespoke-traditional-agbada.jpg" alt="Bespoke Traditional Agbada">
+            <img src="bespoke-traditional-agbada.jpg" alt="Agbada">
             <p class="product-name">Traditional Agbada</p>
-            <p class="product-price">₦85,000</p>
+            <p>₦85,000</p>
         </div>
-
         <div class="product-item">
-            <img src="ebony-silk-boubou.jpg" alt="Ebony Silk Boubou">
+            <img src="ebony-silk-boubou.jpg" alt="Ebony Boubou">
             <p class="product-name">Ebony Silk Boubou</p>
-            <p class="product-price">₦55,000</p>
+            <p>₦55,000</p>
         </div>
-
         <div class="product-item">
-            <img src="floral-adire-kaftan.jpg" alt="Floral Adire Kaftan">
+            <img src="floral-adire-kaftan.jpg" alt="Floral Kaftan">
             <p class="product-name">Floral Adire Kaftan</p>
-            <p class="product-price">₦42,000</p>
+            <p>₦42,000</p>
         </div>
-
         <div class="product-item">
-            <img src="geometric-print-boubou.jpg" alt="Geometric Print Boubou">
+            <img src="geometric-print-boubou.jpg" alt="Geometric Boubou">
             <p class="product-name">Geometric Boubou</p>
-            <p class="product-price">₦48,000</p>
+            <p>₦48,000</p>
         </div>
-
         <div class="product-item">
-            <img src="heritage-agbada-gold.jpg" alt="Heritage Agbada Gold">
+            <img src="heritage-agbada-gold.jpg" alt="Gold Agbada">
             <p class="product-name">Heritage Gold Agbada</p>
-            <p class="product-price">₦95,000</p>
+            <p>₦95,000</p>
         </div>
-
         <div class="product-item">
-            <img src="indigo-oversized-kimono.jpg" alt="Indigo Oversized Kimono">
+            <img src="indigo-oversized-kimono.jpg" alt="Kimono">
             <p class="product-name">Indigo Kimono</p>
-            <p class="product-price">₦32,000</p>
+            <p>₦32,000</p>
         </div>
-
         <div class="product-item">
-            <img src="lace-overlay-boubou.jpg" alt="Lace Overlay Boubou">
+            <img src="lace-overlay-boubou.jpg" alt="Lace Boubou">
             <p class="product-name">Lace Overlay Boubou</p>
-            <p class="product-price">₦60,000</p>
+            <p>₦60,000</p>
         </div>
-
         <div class="product-item">
-            <img src="modern-adire-shirtdress.jpg" alt="Modern Adire Shirtdress">
+            <img src="modern-adire-shirtdress.jpg" alt="Shirtdress">
             <p class="product-name">Adire Shirtdress</p>
-            <p class="product-price">₦36,500</p>
+            <p>₦36,500</p>
         </div>
-
         <div class="product-item">
-            <img src="sadiya-adire-long-dress.jpg" alt="Sadiya Adire Long Dress">
+            <img src="sadiya-adire-long-dress.jpg" alt="Sadiya Dress">
             <p class="product-name">Sadiya Long Dress</p>
-            <p class="product-price">₦52,000</p>
+            <p>₦52,000</p>
         </div>
-
         <div class="product-item">
-            <img src="safiya-adire-pants-set.jpg" alt="Safiya Adire Pants Set">
+            <img src="safiya-adire-pants-set.jpg" alt="Safiya Set">
             <p class="product-name">Safiya Pants Set</p>
-            <p class="product-price">₦45,000</p>
+            <p>₦45,000</p>
         </div>
-
         <div class="product-item">
-            <img src="torera-adire-and-aso-oke.jpg" alt="Torera Adire and Aso Oke">
+            <img src="torera-adire-and-aso-oke.jpg" alt="Torera Set">
             <p class="product-name">Torera Adire Set</p>
-            <p class="product-price">₦75,000</p>
+            <p>₦75,000</p>
         </div>
-
     </section>
 
-    <a href="https://wa.me/YOURNUMBER" class="whatsapp-float">
-        <span class="whatsapp-icon">💬</span> Chat Via Whatsapp
+    <footer>
+        <div class="footer-logo">Onyx—Adire</div>
+    </footer>
+
+    <a href="#" class="whatsapp-float">
+        <span>💬</span> Chat Via Whatsapp
     </a>
 
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "280px";
+            document.getElementById("overlay").style.display = "block";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("overlay").style.display = "none";
+        }
+    </script>
 </body>
 </html>
