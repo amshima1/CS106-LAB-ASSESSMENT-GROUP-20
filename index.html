@@ -2,101 +2,121 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Onyx—Adire Experience</title>
+  <title>Onyx—Adire</title>
   <style>
     body {
+      margin: 0;
       font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f9f9f9;
-    }
-    header {
-      background: black;
-      color: white;
-      text-align: center;
-      padding: 30px 10px;
-    }
-    header h1 {
-      font-size: 28px;
-      margin: 0;
-    }
-    .section-title {
-      text-align: center;
-      margin: 30px 0 10px;
-      font-size: 24px;
-      font-weight: bold;
-    }
-    .products {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      padding: 20px;
-    }
-    .product {
       background: white;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      width: 250px;
-      padding: 15px;
-      text-align: center;
+      color: black;
     }
-    .product img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 6px;
-      margin-bottom: 10px;
-    }
-    .product h3 {
-      margin: 10px 0 5px;
-      font-size: 18px;
-    }
-    .product p {
-      color: #555;
-      font-weight: bold;
-    }
-    /* Floating WhatsApp button */
-    .whatsapp {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #25D366;
+
+    /* Announcement bar */
+    .announcement {
+      background: red;
       color: white;
+      padding: 10px;
+      text-align: center;
+      font-weight: bold;
+      overflow: hidden;
+      white-space: nowrap;
+      animation: scrollText 15s linear infinite;
+    }
+    @keyframes scrollText {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* Header with logo and hamburger */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: white;
       padding: 15px;
-      border-radius: 50%;
+      border-bottom: 2px solid red;
+      position: relative;
+    }
+    .logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .logo img {
+      height: 50px;
+    }
+    .hamburger {
+      font-size: 28px;
+      cursor: pointer;
+      color: red;
+    }
+
+    /* Sidebar menu */
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: red;
+      overflow-x: hidden;
+      transition: 0.3s;
+      padding-top: 60px;
+    }
+    .sidebar a {
+      padding: 10px 20px;
       text-decoration: none;
       font-size: 20px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      color: white;
+      display: block;
+    }
+    .sidebar a:hover {
+      background: white;
+      color: red;
+    }
+    .closebtn {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>THE ONYX—ADIRE EXPERIENCE</h1>
-  </header>
 
-  <div class="section-title">The Debut Edit</div>
-
-  <div class="products">
-    <div class="product">
-      <img src="https://via.placeholder.com/250x200" alt="Todun Adri Iro and Buba">
-      <h3>Todun Adri Iro and Buba</h3>
-      <p>₦60,000</p>
-    </div>
-    <div class="product">
-      <img src="https://via.placeholder.com/250x200" alt="Adesewa Pants Set">
-      <h3>Adesewa Pants Set</h3>
-      <p>₦55,000</p>
-    </div>
-    <div class="product">
-      <img src="https://via.placeholder.com/250x200" alt="Adesewa Set">
-      <h3>Adesewa Set</h3>
-      <p>₦48,000</p>
-    </div>
+  <!-- Announcement bar -->
+  <div class="announcement">
+    Welcome to Onyx—Adire | Authentic Adire Fashion | New Collection Out Now!
   </div>
 
-  <!-- WhatsApp chat button -->
-  <a href="https://wa.me/2348012345678" class="whatsapp">💬</a>
+  <!-- Header -->
+  <header>
+    <span class="hamburger" onclick="openNav()">☰</span>
+    <div class="logo">
+      <img src="https://via.placeholder.com/150x50?text=Onyx-Adire" alt="Onyx-Adire Logo">
+    </div>
+  </header>
+
+  <!-- Sidebar menu -->
+  <div id="mySidebar" class="sidebar">
+    <span class="closebtn" onclick="closeNav()">×</span>
+    <a href="#">Home</a>
+    <a href="#">Collections</a>
+    <a href="#">Trustee</a>
+    <a href="#">Events</a>
+    <a href="#">Inquiries</a>
+  </div>
+
+  <script>
+    function openNav() {
+      document.getElementById("mySidebar").style.width = "250px";
+    }
+    function closeNav() {
+      document.getElementById("mySidebar").style.width = "0";
+    }
+  </script>
+
 </body>
 </html>
