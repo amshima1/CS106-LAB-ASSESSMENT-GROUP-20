@@ -3,143 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Onyx—Adire | Nigerian Luxury Fashion</title>
+    <title>Onyx—Adire | Luxury Nigerian Fashion</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body style="display: flex; flex-direction: column; min-height: 100vh; margin: 0;">
 
-    <header id="main-header">
-        <div class="announcement-bar">
+    <header id="main-header" style="position: sticky; top: 0; z-index: 4000; background: white; width: 100%;">
+        <div class="announcement-bar" style="background: #a30000; color: white; height: 35px; display: flex; align-items: center; overflow: hidden;">
             <div class="ticker-wrapper">
-                <span class="ticker-text">✦ THE ONYX—ADIRE EXPERIENCE ✦ WORLDWIDE SHIPPING ✦ NEW DESIGNS WEEKLY ✦ SHOP NOW ✦</span>
+                <span class="ticker-text" style="display: inline-block; white-space: nowrap; animation: marquee 15s linear infinite; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px;">
+                    ✦ THE ONYX—ADIRE EXPERIENCE ✦ WORLDWIDE SHIPPING ✦ NEW ARRIVALS WEEKLY ✦ SHOP NOW ✦
+                </span>
             </div>
         </div>
         
-        <nav class="navbar">
-            <div class="menu-icon" onclick="toggleNav()">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
+        <nav class="navbar" style="height: 60px; display: flex; justify-content: center; align-items: center; border-bottom: 1px solid #eee; position: relative;">
+            <div class="menu-icon" onclick="toggleNav()" style="position: absolute; left: 20px; cursor: pointer;">
+                <div style="width: 22px; height: 2px; background: #000; margin: 4px 0;"></div>
+                <div style="width: 22px; height: 2px; background: #000; margin: 4px 0;"></div>
+                <div style="width: 22px; height: 2px; background: #000; margin: 4px 0;"></div>
             </div>
             
-            <a href="index.html" class="logo">Onyx—Adire</a>
-            
-            <div style="width: 30px;"></div> </nav>
+            <a href="index.html" style="color: #a30000; font-family: 'Playfair Display'; font-weight: bold; font-style: italic; font-size: 24px; text-decoration: none;">Onyx—Adire</a>
+        </nav>
     </header>
 
-    <div id="mySidenav" class="sidenav">
-        <div class="menu-links">
-            <a href="index.html">Home</a>
-            <a href="collections.html">Collections</a>
-            <a href="trustees.html">Trustees</a>
-            <a href="events.html">Events</a>
-            <a href="inquiries.html">Inquiries</a>
+    <div id="mySidenav" class="sidenav" style="height: 100%; width: 0; position: fixed; z-index: 3000; left: 0; background-color: white; overflow-x: hidden; transition: 0.4s; box-shadow: 4px 0 15px rgba(0,0,0,0.05);">
+        <div class="menu-links" style="padding-top: 20px;">
+            <a href="index.html" style="padding: 20px 35px; text-decoration: none; font-size: 15px; color: #1a1a1a; display: block; text-transform: uppercase; border-bottom: 1px solid #f9f9f9;">Home</a>
+            <a href="collections.html" style="padding: 20px 35px; text-decoration: none; font-size: 15px; color: #1a1a1a; display: block; text-transform: uppercase; border-bottom: 1px solid #f9f9f9;">Collections</a>
+            <a href="trustees.html" style="padding: 20px 35px; text-decoration: none; font-size: 15px; color: #1a1a1a; display: block; text-transform: uppercase; border-bottom: 1px solid #f9f9f9;">Trustees</a>
+            <a href="events.html" style="padding: 20px 35px; text-decoration: none; font-size: 15px; color: #1a1a1a; display: block; text-transform: uppercase; border-bottom: 1px solid #f9f9f9;">Events</a>
+            <a href="inquiries.html" style="padding: 20px 35px; text-decoration: none; font-size: 15px; color: #1a1a1a; display: block; text-transform: uppercase; border-bottom: 1px solid #f9f9f9;">Inquiries</a>
         </div>
     </div>
 
-    <div id="overlay" onclick="toggleNav()"></div>
+    <div id="overlay" onclick="toggleNav()" style="position: fixed; display: none; width: 100%; height: 100%; top: 0; left: 0; background: rgba(0,0,0,0.3); z-index: 2500;"></div>
 
-    <main id="main-content">
+    <main id="main-content" style="flex: 1 0 auto; width: 100%;">
         <section class="hero-section">
-            <img src="Onyx-Adire18.jpg" alt="Featured Onyx Adire Piece">
+            <img src="Onyx-Adire18.jpg" alt="Featured Piece" style="width: 100%; max-height: 80vh; object-fit: contain;">
         </section>
 
-        <div class="gallery-grid">
+        <div class="gallery-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 15px;">
             <div class="gallery-card" onclick="openProduct('Todun Iro & Buba', '₦95,000', 'Onyx-Adire1.jpg')">
-                <img src="Onyx-Adire1.jpg" alt="Todun Iro & Buba">
-                <div class="card-info"><span class="item-name">Todun Iro & Buba</span><span class="item-price">₦95,000</span></div>
+                <img src="Onyx-Adire1.jpg" alt="Product" style="width: 100%; aspect-ratio: 3/4; object-fit: contain; background: #fdfdfd;">
+                <div style="text-align: center; padding: 10px;">
+                    <span style="font-size: 10px; font-weight: 600;">Todun Iro & Buba</span>
+                </div>
             </div>
-            <div class="gallery-card" onclick="openProduct('Adesewa Set', '₦48,000', 'Onyx-Adire2.jpg')">
-                <img src="Onyx-Adire2.jpg" alt="Adesewa Set">
-                <div class="card-info"><span class="item-name">Adesewa Set</span><span class="item-price">₦48,000</span></div>
             </div>
-            <div class="gallery-card" onclick="openProduct('Asymmetric Tunic', '₦42,000', 'Onyx-Adire3.jpg')">
-                <img src="Onyx-Adire3.jpg" alt="Asymmetric Tunic">
-                <div class="card-info"><span class="item-name">Asymmetric Tunic</span><span class="item-price">₦42,000</span></div>
-            </div>
-            <div class="gallery-card" onclick="openProduct('Patchwork Tunic', '₦38,000', 'Onyx-Adire4.jpg')">
-                <img src="Onyx-Adire4.jpg" alt="Patchwork Tunic">
-                <div class="card-info"><span class="item-name">Patchwork Tunic</span><span class="item-price">₦38,000</span></div>
-            </div>
-            <div class="gallery-card" onclick="openProduct('Midnight Lace', '₦45,000', 'Onyx-Adire5.jpg')">
-                <img src="Onyx-Adire5.jpg" alt="Midnight Lace">
-                <div class="card-info"><span class="item-name">Midnight Lace</span><span class="item-price">₦45,000</span></div>
-            </div>
-            <div class="gallery-card" onclick="openProduct('Traditional Agbada', '₦120,000', 'Onyx-Adire6.jpg')">
-                <img src="Onyx-Adire6.jpg" alt="Traditional Agbada">
-                <div class="card-info"><span class="item-name">Traditional Agbada</span><span class="item-price">₦120,000</span></div>
-            </div>
-            <div class="gallery-card" onclick="openProduct('Gold Agbada', '₦135,000', 'Onyx-Adire7.jpg')">
-                <img src="Onyx-Adire7.jpg" alt="Gold Agbada">
-                <div class="card-info"><span class="item-name">Gold Agbada</span><span class="item-price">₦135,000</span></div>
-            </div>
-            <div class="gallery-card" onclick="openProduct('Velvet Caftan', '₦85,000', 'Onyx-Adire8.jpg')">
-                <img src="Onyx-Adire8.jpg" alt="Velvet Caftan">
-                <div class="card-info"><span class="item-name">Velvet Caftan</span><span class="item-price">₦85,000</span></div>
-            </div>
-            <div class="gallery-card" onclick="openProduct('Fusion Agbada', '₦110,000', 'Onyx-Adire9.jpg')">
-                <img src="Onyx-Adire9.jpg" alt="Fusion Agbada">
-                <div class="card-info"><span class="item-name">Fusion Agbada</span><span class="item-price">₦110,000</span></div>
-            </div>
-            <div class="gallery-card" onclick="openProduct('Boubou Abaya', '₦65,000', 'Onyx-Adire10.jpg')">
-                <img src="Onyx-Adire10.jpg" alt="Boubou Abaya">
-                <div class="card-info"><span class="item-name">Boubou Abaya</span><span class="item-price">₦65,000</span></div>
-            </div>
-            <div class="gallery-card" onclick="openProduct('Ebony Silk', '₦75,000', 'Onyx-Adire11.jpg')">
-                <img src="Onyx-Adire11.jpg" alt="Ebony Silk">
-                <div class="card-info"><span class="item-name">Ebony Silk</span><span class="item-price">₦75,000</span></div>
-            </div>
-            <div class="gallery-card" onclick="openProduct('Geo Boubou', '₦58,000', 'Onyx-Adire12.jpg')">
-                <img src="Onyx-Adire12.jpg" alt="Geo Boubou">
-                <div class="card-info"><span class="item-name">Geo Boubou</span><span class="item-price">₦58,000</span></div>
-            </div>
-            <div class="gallery-card" onclick="openProduct('Lace Overlay', '₦70,000', 'Onyx-Adire13.jpg')">
-                <img src="Onyx-Adire13.jpg" alt="Lace Overlay">
-                <div class="card-info"><span class="item-name">Lace Overlay</span><span class="item-price">₦70,000</span></div>
-            </div>
-            <div class="gallery-card" onclick="openProduct('Galaxy Jumpsuit', '₦52,000', 'Onyx-Adire14.jpg')">
-                <img src="Onyx-Adire14.jpg" alt="Galaxy Jumpsuit">
-                <div class="card-info"><span class="item-name">Galaxy Jumpsuit</span><span class="item-price">₦52,000</span></div>
-            </div>
-            <div class="gallery-card" onclick="openProduct('Aso Oke Set', '₦150,000', 'Onyx-Adire15.jpg')">
-                <img src="Onyx-Adire15.jpg" alt="Aso Oke Set">
-                <div class="card-info"><span class="item-name">Aso Oke Set</span><span class="item-price">₦150,000</span></div>
-            </div>
-            <div class="gallery-card" onclick="openProduct('Vibrant Jumpsuit', '₦45,000', 'Onyx-Adire16.jpg')">
-                <img src="Onyx-Adire16.jpg" alt="Vibrant Jumpsuit">
-                <div class="card-info"><span class="item-name">Vibrant Jumpsuit</span><span class="item-price">₦45,000</span></div>
-            </div>
-        </div>
 
-        <section id="recent-section" class="recent-viewed-container" style="display: none;">
-            <h3 class="suggestion-title">Recently Viewed</h3>
-            <div id="recent-grid" class="gallery-grid"></div>
+        <section id="recent-section" style="display: none; padding: 20px 15px;">
+            <h3 style="font-family: 'Playfair Display'; text-align: center; margin-bottom: 15px;">Recently Viewed</h3>
+            <div id="recent-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;"></div>
         </section>
-
-        <footer class="main-footer-red">
-            <h2 class="footer-title">The Onyx Society</h2>
-            <p class="footer-subtitle">Luxury Crafted for the Bold.</p>
-            <div class="subscribe-form">
-                <input type="email" placeholder="Email Address">
-                <button type="submit">Join</button>
-            </div>
-        </footer>
     </main>
 
-    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-float" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-        <span>Order via WhatsApp</span>
+    <footer class="main-footer-red" style="background: #a30000; color: white; padding: 60px 20px; text-align: center; width: 100%; flex-shrink: 0;">
+        <h2 style="font-family: 'Playfair Display'; margin-bottom: 10px;">The Onyx Society</h2>
+        <p style="font-size: 14px; opacity: 0.8; margin-bottom: 25px;">Luxury Crafted for the Bold.</p>
+        <div style="max-width: 320px; margin: 0 auto; display: flex; border-bottom: 1px solid rgba(255,255,255,0.4);">
+            <input type="email" placeholder="Email Address" style="flex: 1; background: transparent; border: none; padding: 10px; color: white; outline: none;">
+            <button style="background: transparent; border: none; color: white; font-weight: bold; padding: 10px; cursor: pointer;">JOIN</button>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-float" target="_blank" style="position: fixed; bottom: 25px; right: 20px; background: #FF8C00; color: white; padding: 12px 20px; border-radius: 50px; display: flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 600; font-size: 13px; z-index: 5000; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA" style="width: 18px; filter: brightness(0) invert(1);">
+        <span>Order Now</span>
     </a>
 
-    <div id="productModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
-            <div class="modal-body">
-                <img id="modalImg" src="" alt="Full Product Detail">
-                <h2 id="modalName"></h2>
-                <p id="modalPrice"></p>
-                <button class="order-btn">Order Now</button>
+    <div id="productModal" class="modal" style="display: none; position: fixed; z-index: 6000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); overflow-y: auto;">
+        <div class="modal-content" style="background: white; margin: 5% auto; padding: 20px; width: 90%; max-width: 500px; position: relative; border-radius: 8px;">
+            <span onclick="closeModal()" style="position: absolute; right: 15px; top: 10px; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
+            <div class="modal-body" style="text-align: center;">
+                <img id="modalImg" src="" alt="Full View" style="width: 100%; max-height: 60vh; object-fit: contain; margin-bottom: 15px;">
+                <h2 id="modalName" style="font-family: 'Playfair Display'; margin-bottom: 5px;"></h2>
+                <p id="modalPrice" style="color: #a30000; font-weight: bold; margin-bottom: 20px;"></p>
+                <button class="order-btn" style="width: 100%; background: #FF8C00; color: white; border: none; padding: 15px; font-weight: bold; border-radius: 5px; cursor: pointer; margin-bottom: 30px;">Chat to Purchase</button>
+                
+                <hr style="border: 0; border-top: 1px solid #eee; margin-bottom: 20px;">
+                
+                <h3 style="font-family: 'Playfair Display'; font-size: 18px; margin-bottom: 15px;">You May Also Like</h3>
+                <div id="suggestion-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+                    </div>
             </div>
         </div>
     </div>
