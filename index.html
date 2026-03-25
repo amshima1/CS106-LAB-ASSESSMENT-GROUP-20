@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Onyx—Adire | Home</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <title>Onyx—Adire | Luxury Nigerian Fashion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <div id="overlay" onclick="toggleNav()"></div>
+
     <header>
         <div class="announcement-bar">
-            <span class="announcement-text">✦ THE ONYX—ADIRE EXPERIENCE ✦ WORLDWIDE SHIPPING AVAILABLE ✦ NEW DROP COMING SOON ✦</span>
+            <span class="announcement-text">✦ THE ONYX—ADIRE EXPERIENCE ✦ WORLDWIDE SHIPPING ✦</span>
         </div>
         <nav>
             <div class="menu-icon" onclick="toggleNav()">
@@ -23,60 +25,65 @@
     </header>
 
     <div id="mySidenav" class="sidenav">
-        <a href="index.html">Home</a>
+        <a href="index.html" style="color: white; font-weight: bold;">Home</a>
         <a href="collections.html">Collections</a>
         <a href="trustees.html">Trustees</a>
         <a href="events.html">Events</a>
         <a href="bookings.html">Bookings</a>
     </div>
 
-    <div id="overlay" onclick="toggleNav()"></div>
-
     <main>
-        <section class="hero-banner">
-            <img src="july-collections-2026.jpg" alt="July 2026 Collection" class="hero-img">
+        <section class="hero-section" style="position: relative; height: 80vh; overflow: hidden;">
+            <img src="Onyx-Adire1.jpg" alt="Featured Collection" style="width: 100%; height: 100%; object-fit: cover; filter: brightness(70%);">
+            <div class="hero-text" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; width: 90%;">
+                <h1 style="font-size: 3rem; margin-bottom: 20px;">Heritage Meets Modernity</h1>
+                <a href="collections.html" class="subscribe-btn" style="text-decoration: none; display: inline-block;">Shop Collection</a>
+            </div>
+        </section>
+
+        <section class="debut-header">
+            <h2>Featured Arrivals</h2>
+            <p style="font-style: italic; color: #666;">Explore our latest handcrafted pieces</p>
         </section>
 
         <div class="gallery-grid">
-            <div class="gallery-card"><img src="lace-overlay-boubou.jpg"><div class="card-info"><span class="item-name">Lace Overlay Boubou</span><span class="item-price">₦65,000</span></div></div>
-            <div class="gallery-card"><img src="luxury-lace-iro-and-buba.jpg"><div class="card-info"><span class="item-name">Luxury Lace Iro & Buba</span><span class="item-price">₦95,000</span></div></div>
-            <div class="gallery-card"><img src="maroon-palazzo-trousers.jpg"><div class="card-info"><span class="item-name">Maroon Palazzo Trousers</span><span class="item-price">₦28,000</span></div></div>
-            <div class="gallery-card"><img src="modern-agbada-fusion.jpg"><div class="card-info"><span class="item-name">Modern Agbada Fusion</span><span class="item-price">₦110,000</span></div></div>
+            <div class="gallery-card">
+                <img src="Onyx-Adire2.jpg" alt="New Arrival" loading="lazy">
+                <div class="card-info"><span class="item-name">The Adesewa Set</span><span class="item-price">₦48,000</span></div>
+            </div>
+            
+            <div class="gallery-card">
+                <img src="Onyx-Adire10.jpg" alt="Boubou Series" loading="lazy">
+                <div class="card-info"><span class="item-name">Onyx Boubou</span><span class="item-price">₦65,000</span></div>
+            </div>
+
+            <div class="gallery-card">
+                <img src="Onyx-Adire6.jpg" alt="Agbada Series" loading="lazy">
+                <div class="card-info"><span class="item-name">Bespoke Agbada</span><span class="item-price">₦120,000</span></div>
+            </div>
+
+            <div class="gallery-card">
+                <img src="Onyx-Adire11.jpg" alt="Silk Series" loading="lazy">
+                <div class="card-info"><span class="item-name">Ebony Silk Boubou</span><span class="item-price">₦75,000</span></div>
+            </div>
+        </div>
+
+        <div style="text-align: center; padding: 40px;">
+            <a href="collections.html" style="color: var(--onyx); text-transform: uppercase; letter-spacing: 2px; font-weight: 600; font-size: 14px;">View All 30+ Pieces —</a>
         </div>
 
         <section class="footer-cta">
+            <h2>Subscribe to our newsletter</h2>
             <div class="subscribe-container">
-                <h2>Join the Movement</h2>
                 <input type="email" class="email-input" placeholder="Enter your email">
-                <button class="subscribe-btn">Subscribe</button>
-            </div>
-
-            <div class="social-links-container">
-                <a href="https://instagram.com/Onyx_Adire" target="_blank" class="social-link">Instagram</a>
-                <span class="divider">|</span>
-                <a href="https://tiktok.com/@Onyx_Adire" target="_blank" class="social-link">TikTok</a>
+                <button class="subscribe-btn">Join the Movement</button>
             </div>
             <span class="social-handle">@Onyx_Adire</span>
         </section>
     </main>
 
-    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-link" target="_blank">💬 Chat Via Whatsapp</a>
+    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-link" target="_blank">💬 Chat with us</a>
 
-    <script>
-        let navOpen = false;
-        function toggleNav() {
-            const sidenav = document.getElementById("mySidenav");
-            const overlay = document.getElementById("overlay");
-            navOpen = !navOpen;
-            
-            if (navOpen) {
-                sidenav.style.width = "280px";
-                overlay.style.display = "block";
-            } else {
-                sidenav.style.width = "0";
-                overlay.style.display = "none";
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
