@@ -14,6 +14,11 @@
             --text-dark: #333333;
         }
 
+        /* Enable smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
             padding: 0;
@@ -50,7 +55,7 @@
             100% { transform: translate(-100%, 0); }
         }
 
-        /* --- Header --- */
+        /* --- Header & Logo --- */
         header {
             display: flex;
             align-items: center;
@@ -61,6 +66,12 @@
             background: var(--bg-cream);
             z-index: 2500;
             border-bottom: 1px solid rgba(139, 29, 29, 0.05);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
 
         .menu-icon {
@@ -74,14 +85,28 @@
             margin: 5px 0;
         }
 
-        .logo {
+        .nav-link-main {
+            text-decoration: none;
+            color: var(--brand-red);
             font-family: 'Playfair Display', serif;
-            font-size: 26px;
             font-style: italic;
             font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* --- Navigation --- */
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-style: italic;
+            font-weight: 700;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* --- Navigation Drawer --- */
         .side-nav {
             height: 100%;
             width: 0;
@@ -116,7 +141,7 @@
             z-index: 2550;
         }
 
-        /* --- Content Sections --- */
+        /* --- Sections --- */
         .hero-image { width: 100%; display: block; }
 
         .statement-section {
@@ -139,7 +164,7 @@
             margin: 60px 0 30px 0;
         }
 
-        /* --- Gallery --- */
+        /* --- Product Gallery --- */
         .product-gallery {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -166,10 +191,7 @@
         .product-price { font-size: 14px; color: var(--brand-red); margin: 0; }
 
         /* --- Footer & Newsletter --- */
-        footer {
-            padding: 60px 0 0 0;
-            background-color: var(--bg-cream);
-        }
+        footer { padding: 60px 0 0 0; background-color: var(--bg-cream); }
 
         .footer-logo {
             font-family: 'Playfair Display', serif;
@@ -182,45 +204,7 @@
         .newsletter-section {
             background-color: var(--brand-red);
             color: white;
-            padding: 40px 20px 120px 20px; /* Extra bottom padding for WhatsApp space */
-        }
-
-        .newsletter-section h3 {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-weight: 400;
-            margin-bottom: 20px;
-            font-size: 20px;
-        }
-
-        .newsletter-form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .newsletter-form input {
-            width: 100%;
-            max-width: 300px;
-            padding: 12px;
-            border: 1px solid white;
-            background: transparent;
-            color: white;
-            text-align: center;
-        }
-
-        .newsletter-form input::placeholder { color: rgba(255,255,255,0.7); }
-
-        .newsletter-form button {
-            background: white;
-            color: var(--brand-red);
-            border: none;
-            padding: 10px 30px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
+            padding: 40px 20px 120px 20px;
         }
 
         /* --- WhatsApp --- */
@@ -246,26 +230,30 @@
 
     <div class="announcement-wrapper">
         <div class="announcement-content">
-            ✦ WEAVING THE SOUL OF HERITAGE INTO YOUR CLOSET &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ✦ GLOBAL SHIPPING AVAILABLE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ✦ SHOP THE DEBUT EDIT NOW
+            ✦ WEAVING THE SOUL OF HERITAGE INTO YOUR CLOSET &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ✦ GLOBAL SHIPPING AVAILABLE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ✦ SHOP THE DEBUT EDIT
         </div>
     </div>
 
     <div id="mySidenav" class="side-nav">
         <a href="javascript:void(0)" onclick="closeNav()" style="font-size: 35px; text-align: right; padding-right: 30px;">&times;</a>
-        <a href="index.html">Home</a>
-        <a href="#">Collections</a>
-        <a href="trustees.html">Trustees</a>
-        <a href="events.html">Events</a>
-        <a href="bookings.html">Inquiries</a>
+        <a href="#" onclick="closeNav()">Home</a>
+        <a href="#debut-edit" onclick="closeNav()">Collections</a>
+        <a href="#">Trustees</a>
+        <a href="#">Events</a>
+        <a href="#">Inquiries</a>
     </div>
     <div id="overlay" class="overlay" onclick="closeNav()"></div>
 
     <header>
-        <div class="menu-icon" onclick="openNav()">
-            <div></div><div></div><div></div>
+        <div class="header-left">
+            <div class="menu-icon" onclick="openNav()">
+                <div></div><div></div><div></div>
+            </div>
+            <a href="#debut-edit" class="nav-link-main">Collections</a>
         </div>
+        
         <div class="logo">Onyx—Adire</div>
-        <div style="width: 24px;"></div> 
+        <div style="width: 80px;"></div> 
     </header>
 
     <img src="todun-adri-iro-and-buba.jpg" alt="Hero Banner" class="hero-image">
@@ -276,79 +264,23 @@
         </p>
     </div>
 
-    <h2 class="section-heading">The Debut Edit</h2>
+    <h2 id="debut-edit" class="section-heading">The Debut Edit</h2>
 
     <section class="product-gallery">
-        <div class="product-item">
-            <img src="adesewa-adire-pants-set.jpg" alt="Adesewa Set">
-            <p class="product-name">Adesewa Pants Set</p>
-            <p class="product-price">₦45,000</p>
-        </div>
-        <div class="product-item">
-            <img src="adire-silk-tunic.jpg" alt="Silk Tunic">
-            <p class="product-name">Adire Silk Tunic</p>
-            <p class="product-price">₦35,000</p>
-        </div>
-        <div class="product-item">
-            <img src="asymmetric-adire-tunic.jpg" alt="Asymmetric Tunic">
-            <p class="product-name">Asymmetric Tunic</p>
-            <p class="product-price">₦38,500</p>
-        </div>
-        <div class="product-item">
-            <img src="bespoke-traditional-agbada.jpg" alt="Agbada">
-            <p class="product-name">Traditional Agbada</p>
-            <p class="product-price">₦85,000</p>
-        </div>
-        <div class="product-item">
-            <img src="ebony-silk-boubou.jpg" alt="Ebony Boubou">
-            <p class="product-name">Ebony Silk Boubou</p>
-            <p class="product-price">₦55,000</p>
-        </div>
-        <div class="product-item">
-            <img src="floral-adire-kaftan.jpg" alt="Floral Kaftan">
-            <p class="product-name">Floral Adire Kaftan</p>
-            <p class="product-price">₦42,000</p>
-        </div>
-        <div class="product-item">
-            <img src="geometric-print-boubou.jpg" alt="Geometric Boubou">
-            <p class="product-name">Geometric Boubou</p>
-            <p class="product-price">₦48,000</p>
-        </div>
-        <div class="product-item">
-            <img src="heritage-agbada-gold.jpg" alt="Gold Agbada">
-            <p class="product-name">Heritage Gold Agbada</p>
-            <p class="product-price">₦95,000</p>
-        </div>
-        <div class="product-item">
-            <img src="indigo-oversized-kimono.jpg" alt="Kimono">
-            <p class="product-name">Indigo Kimono</p>
-            <p class="product-price">₦32,000</p>
-        </div>
-        <div class="product-item">
-            <img src="lace-overlay-boubou.jpg" alt="Lace Boubou">
-            <p class="product-name">Lace Overlay Boubou</p>
-            <p class="product-price">₦60,000</p>
-        </div>
-        <div class="product-item">
-            <img src="modern-adire-shirtdress.jpg" alt="Shirtdress">
-            <p class="product-name">Adire Shirtdress</p>
-            <p class="product-price">₦36,500</p>
-        </div>
-        <div class="product-item">
-            <img src="sadiya-adire-long-dress.jpg" alt="Sadiya Dress">
-            <p class="product-name">Sadiya Long Dress</p>
-            <p class="product-price">₦52,000</p>
-        </div>
-        <div class="product-item">
-            <img src="safiya-adire-pants-set.jpg" alt="Safiya Set">
-            <p class="product-name">Safiya Pants Set</p>
-            <p class="product-price">₦45,000</p>
-        </div>
-        <div class="product-item">
-            <img src="torera-adire-and-aso-oke.jpg" alt="Torera Set">
-            <p class="product-name">Torera Adire Set</p>
-            <p class="product-price">₦75,000</p>
-        </div>
+        <div class="product-item"><img src="adesewa-adire-pants-set.jpg"><p class="product-name">Adesewa Pants Set</p><p class="product-price">₦45,000</p></div>
+        <div class="product-item"><img src="adire-silk-tunic.jpg"><p class="product-name">Adire Silk Tunic</p><p class="product-price">₦35,000</p></div>
+        <div class="product-item"><img src="asymmetric-adire-tunic.jpg"><p class="product-name">Asymmetric Tunic</p><p class="product-price">₦38,500</p></div>
+        <div class="product-item"><img src="bespoke-traditional-agbada.jpg"><p class="product-name">Traditional Agbada</p><p class="product-price">₦85,000</p></div>
+        <div class="product-item"><img src="ebony-silk-boubou.jpg"><p class="product-name">Ebony Silk Boubou</p><p class="product-price">₦55,000</p></div>
+        <div class="product-item"><img src="floral-adire-kaftan.jpg"><p class="product-name">Floral Adire Kaftan</p><p class="product-price">₦42,000</p></div>
+        <div class="product-item"><img src="geometric-print-boubou.jpg"><p class="product-name">Geometric Boubou</p><p class="product-price">₦48,000</p></div>
+        <div class="product-item"><img src="heritage-agbada-gold.jpg"><p class="product-name">Heritage Gold Agbada</p><p class="product-price">₦95,000</p></div>
+        <div class="product-item"><img src="indigo-oversized-kimono.jpg"><p class="product-name">Indigo Kimono</p><p class="product-price">₦32,000</p></div>
+        <div class="product-item"><img src="lace-overlay-boubou.jpg"><p class="product-name">Lace Overlay Boubou</p><p class="product-price">₦60,000</p></div>
+        <div class="product-item"><img src="modern-adire-shirtdress.jpg"><p class="product-name">Adire Shirtdress</p><p class="product-price">₦36,500</p></div>
+        <div class="product-item"><img src="sadiya-adire-long-dress.jpg"><p class="product-name">Sadiya Long Dress</p><p class="product-price">₦52,000</p></div>
+        <div class="product-item"><img src="safiya-adire-pants-set.jpg"><p class="product-name">Safiya Pants Set</p><p class="product-price">₦45,000</p></div>
+        <div class="product-item"><img src="torera-adire-and-aso-oke.jpg"><p class="product-name">Torera Adire Set</p><p class="product-price">₦75,000</p></div>
     </section>
 
     <footer>
