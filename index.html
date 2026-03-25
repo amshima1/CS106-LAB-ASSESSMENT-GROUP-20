@@ -3,18 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Onyx—Adire | Heritage Fashion</title>
+    <title>Onyx—Adire | Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <style>
         :root {
             --brand-red: #8B1D1D;
-            --deep-red-bg: #961926;
             --bg-cream: #FFFBF7;
             --whatsapp-orange: #E65137; 
             --text-dark: #333333;
         }
-
-        html { scroll-behavior: smooth; }
 
         body {
             margin: 0;
@@ -26,17 +23,21 @@
             overflow-x: hidden;
         }
 
-        /* --- Fixed Navigation Layout --- */
-        .announcement-wrapper {
+        /* --- HEADER (STAYS ON TOP) --- */
+        .header-container {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 9000; 
+            background: var(--bg-cream);
+        }
+
+        .announcement-bar {
             background-color: var(--brand-red);
             color: white;
             overflow: hidden;
             white-space: nowrap;
             padding: 10px 0;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 6000;
         }
 
         .announcement-content {
@@ -53,44 +54,30 @@
             100% { transform: translate(-100%, 0); }
         }
 
-        header {
+        nav {
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 15px 20px;
-            position: fixed;
-            top: 35px;
-            width: 100%;
-            box-sizing: border-box;
-            background: var(--bg-cream);
-            z-index: 5500;
-            border-bottom: 1px solid rgba(139, 29, 29, 0.05);
+            border-bottom: 1px solid rgba(139, 29, 29, 0.1);
         }
 
         .menu-icon { width: 30px; cursor: pointer; }
         .menu-icon div { height: 2px; width: 25px; background-color: var(--brand-red); margin: 6px 0; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 24px; font-style: italic; font-weight: 700; text-decoration: none; color: var(--brand-red); }
 
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
-            font-style: italic;
-            font-weight: 700;
-            flex-grow: 1;
-            text-align: center;
-        }
-
-        /* --- Side Navigation --- */
+        /* --- SIDE NAVIGATION --- */
         #mySidenav {
             height: 100%;
             width: 0;
             position: fixed;
-            z-index: 5000;
+            z-index: 8000; 
             top: 0;
             left: 0;
             background-color: var(--bg-cream);
             overflow-x: hidden;
             transition: 0.4s ease-in-out;
-            padding-top: 100px;
+            padding-top: 120px; 
             text-align: left;
         }
 
@@ -98,7 +85,7 @@
             padding: 15px 32px;
             text-decoration: none;
             font-family: 'Playfair Display', serif;
-            font-size: 22px;
+            font-size: 20px;
             color: var(--brand-red);
             display: block;
             font-style: italic;
@@ -111,202 +98,152 @@
             height: 100%;
             top: 0; left: 0;
             background: rgba(0,0,0,0.5);
-            z-index: 4500;
+            z-index: 7500; 
         }
 
-        main { padding-top: 100px; }
-        .hero-image { width: 100%; display: block; }
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 160px 20px 80px 20px;
+            background: var(--bg-cream);
+        }
 
-        .section-heading {
+        .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 32px;
+            font-size: 42px;
             font-style: italic;
-            margin: 60px 0 30px 0;
-        }
-
-        /* --- 14 Product Gallery --- */
-        .product-gallery {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 35px 15px;
-            padding: 0 15px 50px 15px;
-        }
-
-        .product-item img {
-            width: 100%;
-            height: auto;
-            border-radius: 2px;
-            display: block;
-        }
-
-        .product-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 13px;
-            font-style: italic;
-            font-weight: bold;
-            color: var(--text-dark);
-            margin: 12px 0 4px 0;
-        }
-
-        .product-price { font-size: 14px; color: var(--brand-red); margin: 0; }
-
-        /* --- Newsletter & Socials (Red Background / White Text) --- */
-        .footer-cta-section {
-            background-color: var(--brand-red);
-            color: white;
-            padding: 60px 20px;
-            margin-top: 40px;
-        }
-
-        .footer-cta-section h3 {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 24px;
             margin-bottom: 20px;
         }
 
-        .newsletter-form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
+        .hero p {
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-dark);
+            margin-bottom: 40px;
         }
 
-        .newsletter-form input {
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: var(--brand-red);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* --- FOOTER (RED & WHITE) --- */
+        .footer-cta {
+            background-color: var(--brand-red);
+            color: white;
+            padding: 60px 20px 100px 20px;
+        }
+
+        .footer-cta h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 24px; margin-bottom: 25px; }
+        
+        .subscribe-box input {
             width: 100%;
             max-width: 300px;
-            padding: 12px;
+            padding: 14px;
             border: 1px solid white;
             background: transparent;
             color: white;
             text-align: center;
+            margin-bottom: 15px;
+            border-radius: 0;
         }
 
-        .newsletter-form input::placeholder { color: rgba(255,255,255,0.7); }
-
-        .newsletter-form button {
+        .subscribe-box button {
             background: white;
             color: var(--brand-red);
             border: none;
-            padding: 10px 40px;
+            padding: 14px;
             font-weight: bold;
             cursor: pointer;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            width: 100%;
+            max-width: 300px;
         }
 
-        .social-handle {
-            margin-top: 40px;
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 18px;
-            letter-spacing: 1px;
-        }
+        .social-section { margin-top: 40px; }
+        .social-handle { font-family: 'Playfair Display', serif; font-style: italic; font-size: 22px; display: block; margin-bottom: 10px; }
+        .social-platforms { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; opacity: 0.9; }
 
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-top: 15px;
-        }
-
-        .social-icons a { color: white; text-decoration: none; }
-        .social-icons svg { width: 24px; height: 24px; fill: currentColor; }
-
-        /* --- WhatsApp --- */
-        .whatsapp-float {
+        /* --- FLOATING WHATSAPP --- */
+        .whatsapp-link {
             position: fixed;
             bottom: 25px;
             right: 20px;
             background-color: var(--whatsapp-orange);
             color: white;
             padding: 12px 22px;
-            border-radius: 30px;
-            display: flex;
-            align-items: center;
+            border-radius: 50px;
             font-size: 14px;
             font-weight: bold;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             text-decoration: none;
-            z-index: 7000;
+            z-index: 9999; 
         }
     </style>
 </head>
 <body>
 
-    <div class="announcement-wrapper">
-        <div class="announcement-content">
-            ✦ WEAVING THE SOUL OF HERITAGE INTO YOUR CLOSET &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ✦ GLOBAL SHIPPING AVAILABLE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ✦ SHOP THE DEBUT EDIT
+    <div class="header-container">
+        <div class="announcement-bar">
+            <div class="announcement-content">
+                ✦ TRADITION REIMAGINED &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ✦ THE ONYX—ADIRE EXPERIENCE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ✦ SHOP THE COLLECTION
+            </div>
         </div>
+        <nav>
+            <div class="menu-icon" onclick="toggleNav(true)">
+                <div></div><div></div><div></div>
+            </div>
+            <a href="index.html" class="logo">Onyx—Adire</a>
+            <div style="width: 30px;"></div> 
+        </nav>
     </div>
-
-    <header>
-        <div class="menu-icon" onclick="openNav()">
-            <div></div><div></div><div></div>
-        </div>
-        <div class="logo">Onyx—Adire</div>
-        <div style="width: 30px;"></div> 
-    </header>
 
     <div id="mySidenav">
-        <a href="javascript:void(0)" onclick="closeNav()" style="font-size: 40px; text-align: right; padding-right: 30px;">&times;</a>
-        <a href="#" onclick="closeNav()">Home</a>
-        <a href="#collections">Collections</a>
+        <a href="javascript:void(0)" onclick="toggleNav(false)" style="font-size: 40px; text-align: right; padding-right: 30px;">&times;</a>
+        <a href="index.html">Home</a>
+        <a href="collections.html">Collections</a>
         <a href="trustees.html">Trustees</a>
         <a href="events.html">Events</a>
-        <a href="bookings.html">Inquiries</a>
+        <a href="bookings.html">Bookings</a>
     </div>
-    <div id="overlay" onclick="closeNav()"></div>
+    <div id="overlay" onclick="toggleNav(false)"></div>
 
     <main>
-        <img src="todun-adri-iro-and-buba.jpg" alt="Hero" class="hero-image">
-
-        <h2 id="collections" class="section-heading">The Collection</h2>
-
-        <section class="product-gallery">
-            <div class="product-item"><img src="adesewa-adire-pants-set.jpg"><p class="product-name">Adesewa Pants Set</p><p class="product-price">₦45,000</p></div>
-            <div class="product-item"><img src="adire-silk-tunic.jpg"><p class="product-name">Adire Silk Tunic</p><p class="product-price">₦35,000</p></div>
-            <div class="product-item"><img src="asymmetric-adire-tunic.jpg"><p class="product-name">Asymmetric Tunic</p><p class="product-price">₦38,500</p></div>
-            <div class="product-item"><img src="bespoke-traditional-agbada.jpg"><p class="product-name">Heritage Agbada</p><p class="product-price">₦85,000</p></div>
-            <div class="product-item"><img src="ebony-silk-boubou.jpg"><p class="product-name">Ebony Silk Boubou</p><p class="product-price">₦55,000</p></div>
-            <div class="product-item"><img src="floral-adire-kaftan.jpg"><p class="product-name">Floral Kaftan</p><p class="product-price">₦42,000</p></div>
-            <div class="product-item"><img src="premium-linen-two-piece.jpg"><p class="product-name">Premium Linen Set</p><p class="product-price">₦48,000</p></div>
-            <div class="product-item"><img src="sadiya-adire-long-dress.jpg"><p class="product-name">Sadiya Long Dress</p><p class="product-price">₦50,000</p></div>
-            <div class="product-item"><img src="safiya-adire-pants-set.jpg"><p class="product-name">Safiya Pants Set</p><p class="product-price">₦45,000</p></div>
-            <div class="product-item"><img src="silk-wrap-dress.jpg"><p class="product-name">Silk Wrap Dress</p><p class="product-price">₦40,000</p></div>
-            <div class="product-item"><img src="stripe-mix-palazzo.jpg"><p class="product-name">Stripe Mix Palazzo</p><p class="product-price">₦28,000</p></div>
-            <div class="product-item"><img src="teniola-adire-dress.jpg"><p class="product-name">Teniola Adire Dress</p><p class="product-price">₦45,000</p></div>
-            <div class="product-item"><img src="tope-adire-dress.jpg"><p class="product-name">Tope Adire Dress</p><p class="product-price">₦42,000</p></div>
-            <div class="product-item"><img src="torera-adire-and-aso-oke.jpg"><p class="product-name">Torera Aso-Oke Set</p><p class="product-price">₦65,000</p></div>
+        <section class="hero">
+            <h1>Hand-Dyed Elegance</h1>
+            <p>Timeless Heritage for the Modern Spirit</p>
+            <a href="collections.html" class="cta-button">View Collections</a>
         </section>
 
-        <section class="footer-cta-section">
-            <h3>Subscribe to our newsletter</h3>
-            <form class="newsletter-form">
-                <input type="email" placeholder="Your email address" required>
+        <section class="footer-cta">
+            <h2>Subscribe to our newsletter</h2>
+            <div class="subscribe-box">
+                <input type="email" placeholder="Enter your email">
+                <br>
                 <button type="submit">Join the Movement</button>
-            </form>
-
-            <div class="social-handle">@OnyxAdire_</div>
-            <div class="social-icons">
-                <a href="#"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
-                <a href="#"><svg viewBox="0 0 24 24"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.07-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.03-2.86-.31-4.08-1.03-2.02-1.19-3.49-3.36-3.65-5.69-.16-2.38 1.09-4.72 3.06-6.17 1.5-1.1 3.4-1.61 5.21-1.43v4.02c-.11-.04-.21-.08-.32-.12-1.12-.25-2.38-.02-3.32.6-.51.37-.88.89-1.08 1.5-.22.61-.22 1.28-.01 1.91.2.58.58 1.11 1.06 1.5.6.5 1.34.78 2.13.78 1.41-.01 2.61-1.01 2.81-2.4.1-.28.11-.58.11-.87-.02-3.45-.02-6.88-.02-10.32z"/></svg></a>
+            </div>
+            
+            <div class="social-section">
+                <span class="social-handle">@OnyxAdire_</span>
+                <span class="social-platforms">Instagram | TikTok</span>
             </div>
         </section>
     </main>
 
-    <a href="https://wa.me/234XXXXXXXXXX?text=Hello%20Onyx%E2%80%94Adire%2C%20I%20am%20interested%20in%20your%20collection." target="_blank" class="whatsapp-float">
-        <span>💬</span> Chat Via Whatsapp
+    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-link" target="_blank">
+        💬 Chat Via Whatsapp
     </a>
 
     <script>
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "280px";
-            document.getElementById("overlay").style.display = "block";
-        }
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-            document.getElementById("overlay").style.display = "none";
+        function toggleNav(isOpen) {
+            document.getElementById("mySidenav").style.width = isOpen ? "280px" : "0";
+            document.getElementById("overlay").style.display = isOpen ? "block" : "none";
         }
     </script>
 </body>
