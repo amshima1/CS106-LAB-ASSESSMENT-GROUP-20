@@ -1,11 +1,10 @@
-/* --- Global Theme & Colors --- */
+/* --- Root Variables & Branding --- */
 :root {
-    --onyx-red: #a30000;         /* Bold Nigerian Red */
-    --whatsapp-orange: #FF8C00;  /* High-visibility Orange */
+    --onyx-red: #a30000;         /* Signature Brand Red */
+    --whatsapp-orange: #FF8C00;  /* Bright Orange for CTA */
     --pure-white: #ffffff;
     --dark-text: #1a1a1a;
-    --light-bg: #fdfdfd;         /* Soft background for cards */
-    --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    --transition: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 /* --- Base Reset --- */
@@ -18,115 +17,121 @@
 
 html, body {
     width: 100%;
-    overflow-x: hidden;
+    height: 100%; /* Required for the footer to touch the bottom */
     background-color: var(--pure-white);
     color: var(--dark-text);
     font-family: 'Inter', sans-serif;
-    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
 }
 
-/* --- Fixed Header (Announcement + Logo) --- */
+/* --- Header Stays on Top (Z-Index 4000) --- */
 #main-header {
     position: sticky;
     top: 0;
     width: 100%;
-    z-index: 4000; /* Highest layer for branding */
+    z-index: 4000; 
     background: var(--pure-white);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 .announcement-bar {
     background: var(--onyx-red);
     color: var(--pure-white);
-    height: 38px;
+    height: 35px;
     display: flex;
     align-items: center;
     overflow: hidden;
-    position: relative;
 }
 
 .ticker-text {
     display: inline-block;
     white-space: nowrap;
-    padding-left: 100%;
-    animation: marquee 18s linear infinite;
+    animation: marquee 15s linear infinite;
     font-size: 11px;
     font-weight: 600;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
 }
 
 @keyframes marquee {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(-100%, 0); }
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
 }
 
 .navbar {
+    height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 15px 5%;
-    position: relative;
+    border-bottom: 1px solid #eee;
+    background: var(--pure-white);
 }
 
 .logo {
     color: var(--onyx-red) !important;
     font-family: 'Playfair Display', serif;
-    font-size: 26px;
+    font-size: 24px;
     font-weight: 700;
     font-style: italic;
     text-decoration: none;
 }
 
-/* --- White Side Menu --- */
+/* --- Hamburger Icon --- */
+.menu-icon {
+    position: absolute;
+    left: 20px;
+    cursor: pointer;
+}
+
+.bar {
+    width: 22px;
+    height: 2px;
+    background-color: var(--dark-text);
+    margin: 4px 0;
+}
+
+/* --- White Side Menu (Slides UNDER Header) --- */
 .sidenav {
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 3000; /* Below Header, above Content */
+    z-index: 3000; /* Lower than Header */
     left: 0;
     background-color: var(--pure-white);
     overflow-x: hidden;
     transition: var(--transition);
-    padding-top: 20px;
-    box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+    box-shadow: 4px 0 15px rgba(0,0,0,0.05);
 }
 
-.sidenav a {
-    padding: 20px 40px;
+.menu-links a {
+    padding: 20px 35px;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 15px;
     color: var(--dark-text);
     display: block;
     text-transform: uppercase;
     letter-spacing: 2px;
-    border-bottom: 1px solid #f2f2f2;
+    border-bottom: 1px solid #f9f9f9;
 }
 
-/* --- FULL PICTURE DISPLAY (THE FIX) --- */
-/* This ensures NO image on the page is cropped/cut off */
+/* --- Full Image Display Logic --- */
 img {
     max-width: 100%;
     height: auto;
-    object-fit: contain !important; 
+    object-fit: contain !important; /* Forces head-to-toe view */
 }
 
-/* Hero Section (Main Page Top Image) */
 .hero-section {
     width: 100%;
+    padding: 10px 0;
     background: var(--pure-white);
-    display: flex;
-    justify-content: center;
-    padding-bottom: 20px;
 }
 
 .hero-section img {
     width: 100%;
-    max-height: 85vh; /* Fits model head-to-toe on mobile */
-    display: block;
+    max-height: 80vh;
 }
 
-/* Gallery Grid (The 16 Outfits) */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -134,86 +139,82 @@ img {
     padding: 15px;
 }
 
-.gallery-card {
-    background: var(--light-bg);
-    border: 1px solid #f0f0f0;
-}
-
 .gallery-card img {
     width: 100%;
-    aspect-ratio: 3/4; /* Consistent portrait look for fashion */
-    background: #fff; /* Fills empty space if photo is thin */
+    aspect-ratio: 3/4;
+    background: #fdfdfd;
 }
 
-.card-info {
-    padding: 12px 8px;
-    text-align: center;
-}
-
-.item-name { 
-    font-size: 10px; 
-    font-weight: 600; 
-    text-transform: uppercase; 
-    letter-spacing: 0.5px;
-}
-
-.item-price { 
-    font-size: 12px; 
-    color: var(--onyx-red); 
-    font-weight: 700; 
-    margin-top: 4px;
-}
-
-/* --- Floating Orange WhatsApp --- */
+/* --- Floating Orange WhatsApp (Z-Index 5000) --- */
 .whatsapp-float {
     position: fixed;
     bottom: 25px;
     right: 20px;
     background-color: var(--whatsapp-orange) !important;
     color: white;
-    padding: 14px 22px;
+    padding: 12px 20px;
     border-radius: 50px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     text-decoration: none;
     font-weight: 600;
     font-size: 13px;
-    z-index: 5000; /* Stays on top of everything */
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    transition: transform 0.3s ease;
+    z-index: 5000; /* Stays above everything */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
 .whatsapp-float img {
-    width: 20px;
-    filter: brightness(0) invert(1); /* Makes the logo white on orange */
+    width: 18px;
+    filter: brightness(0) invert(1);
 }
 
-/* --- Recently Viewed --- */
-.recent-viewed-container {
-    padding: 40px 5%;
-    border-top: 1px solid #eee;
-}
-
-#recent-grid img {
-    height: 140px;
+/* --- Red Footer (Pinned to Bottom) --- */
+.main-footer-red {
+    margin-top: auto; /* Pushes footer to bottom of flex container */
+    background: var(--onyx-red);
+    color: var(--pure-white);
+    padding: 60px 20px;
+    text-align: center;
     width: 100%;
-    object-fit: contain; /* Full image logic applied here too */
 }
 
-/* --- Modal Popup --- */
-.modal-content {
+.subscribe-form {
+    display: flex;
+    max-width: 350px;
+    margin: 20px auto 0;
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+.subscribe-form input {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background: transparent;
+    color: white;
+}
+
+.subscribe-form button {
+    padding: 12px 20px;
     background: white;
-    border-radius: 8px;
+    color: var(--onyx-red);
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-#modalImg {
+/* --- Overlay --- */
+#overlay {
+    position: fixed;
+    display: none;
     width: 100%;
-    max-height: 70vh;
-    object-fit: contain; /* Full view in popup */
+    height: 100%;
+    top: 0; left: 0;
+    background: rgba(0,0,0,0.3);
+    z-index: 2500;
 }
 
-/* Desktop Adjustment */
+/* Responsive Desktop */
 @media (min-width: 768px) {
     .gallery-grid { grid-template-columns: repeat(4, 1fr); }
 }
