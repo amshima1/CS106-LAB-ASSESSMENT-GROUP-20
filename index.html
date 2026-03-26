@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Onyx-Adire | Haute Couture</title>
+    <title>Onyx-Adire | The Debut Edit</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
 
         :root {
             --brand-red: #b31d24;
             --onyx-black: #111111;
-            --off-white: #fdfdfd;
+            --glass-white: rgba(255, 255, 255, 0.98);
         }
 
         body, html {
             margin: 0;
             padding: 0;
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--off-white);
-            color: var(--onyx-black);
+            background-color: #fff;
+            overflow-x: hidden;
         }
 
-        /* 1. TOP HEADER SECTION */
+        /* 1. WORKING ANNOUNCEMENT BAR */
         .promo-bar {
             background-color: var(--brand-red);
             color: white;
@@ -29,201 +29,255 @@
             font-size: 11px;
             letter-spacing: 3px;
             text-transform: uppercase;
-            text-align: center;
+            overflow: hidden;
+            white-space: nowrap;
+            position: sticky;
+            top: 0;
+            z-index: 3000;
         }
 
-        nav {
+        .marquee {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+            padding-left: 100%;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* 2. NAVIGATION & LOGO */
+        header {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 25px 5%;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            position: relative;
+            padding: 20px 5%;
+            background: white;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 35px;
+            z-index: 2000;
         }
 
         .hamburger {
             position: absolute;
             left: 5%;
-            font-size: 28px;
+            font-size: 30px;
             cursor: pointer;
+            z-index: 3500;
         }
 
         .logo {
             font-family: 'Bodoni Moda', serif;
-            font-size: 36px;
+            font-size: 28px;
             font-weight: 700;
-            letter-spacing: 4px;
-            color: var(--onyx-black);
-            text-decoration: none;
-            text-transform: uppercase;
-        }
-
-        /* 2. SUPER HERO PICTURE (Full Display) */
-        .hero-section {
-            width: 100%;
-            height: auto; /* Changed from 100vh to show full image */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #000;
-            overflow: hidden;
-        }
-
-        .hero-image {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* 3. STYLISH EDITORIAL HEADING */
-        .debut-edit-container {
-            text-align: center;
-            padding: 80px 20px 40px 20px;
-        }
-
-        .debut-title {
-            font-family: 'Bodoni Moda', serif;
-            font-size: clamp(48px, 10vw, 84px); /* Fluid on mobile */
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 6px;
-            margin: 0;
-            line-height: 1.1;
-        }
-
-        .edit-subtitle {
-            font-size: 14px;
             letter-spacing: 3px;
             text-transform: uppercase;
-            color: #666;
-            margin-top: 15px;
-            display: block;
+            text-decoration: none;
+            color: var(--onyx-black);
         }
 
-        /* 4. COLLECTION GRID LAYOUT (16 Pics) */
+        /* 3. WORKING SIDE MENU */
+        .side-menu {
+            height: 100vh;
+            width: 0;
+            position: fixed;
+            z-index: 2500;
+            top: 0;
+            left: 0;
+            background-color: var(--glass-white);
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 150px;
+            box-shadow: 10px 0 30px rgba(0,0,0,0.1);
+        }
+
+        .side-menu a {
+            padding: 15px 40px;
+            text-decoration: none;
+            font-size: 22px;
+            color: var(--onyx-black);
+            font-family: 'Bodoni Moda', serif;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .side-menu a:hover { color: var(--brand-red); }
+
+        /* 4. HERO & COLLECTION */
+        .hero-section { width: 100%; text-align: center; }
+        .hero-image { width: 100%; height: auto; display: block; }
+
+        .debut-header {
+            text-align: center;
+            padding: 60px 20px 20px;
+            font-family: 'Bodoni Moda', serif;
+            font-size: 40px;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+        }
+
         .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 20px;
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 5% 100px 5%; /* Space for WhatsApp */
-            display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 per row */
-            gap: 20px;
         }
 
         .collection-item {
-            position: relative;
-            background-color: #fff;
-            border: 1px solid #f0f0f0;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            overflow: hidden;
-        }
-
-        .collection-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-
-        .collection-img {
-            width: 100%;
-            height: 350px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .item-details {
-            padding: 15px;
             text-align: center;
+            margin-bottom: 30px;
         }
 
-        .item-name {
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 500;
-            margin-bottom: 5px;
+        .collection-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 15px;
         }
 
         .item-price {
-            font-size: 12px;
-            color: #777;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            color: var(--onyx-black);
+            letter-spacing: 1px;
         }
 
-        /* 5. FLOATING RED WHATSAPP */
+        /* 5. RED FOOTER & NEWSLETTER */
+        footer {
+            background-color: var(--brand-red);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            margin-top: 50px;
+        }
+
+        .footer-title {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .newsletter-input {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid white;
+            color: white;
+            padding: 10px;
+            width: 280px;
+            margin-bottom: 30px;
+            outline: none;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* 6. FLOATING RED WHATSAPP */
         .whatsapp-float {
             position: fixed;
             width: 60px;
             height: 60px;
-            bottom: 40px;
-            right: 40px;
+            bottom: 30px;
+            right: 30px;
             background-color: var(--brand-red);
-            color: #FFF;
-            border-radius: 50px;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 15px rgba(0,0,0,0.3);
-            z-index: 2000;
+            color: white;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            transition: transform 0.3s ease;
-        }
-
-        /* Mobile Responsiveness */
-        @media (max-width: 992px) {
-            .collection-grid { grid-template-columns: repeat(2, 1fr); /* 2 per row on tablets */ }
-            .logo { font-size: 28px; }
-        }
-
-        @media (max-width: 600px) {
-            .collection-grid { grid-template-columns: 1fr; /* 1 per row on phones */ }
-            .debut-title { font-size: 40px; }
-            .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; }
+            font-size: 30px;
+            z-index: 4000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
     </style>
 </head>
 <body>
 
     <div class="promo-bar">
-        ONYX-ADIRE // The Heritage Drop
+        <div class="marquee">
+            ONYX-ADIRE HERITAGE DROP • WORLDWIDE LUXURY SHIPPING • SHOP THE DEBUT EDIT NOW • 
+        </div>
     </div>
-    <nav>
-        <div class="hamburger">☰</div>
+
+    <header>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
         <a href="#" class="logo">Onyx-Adire</a>
-    </nav>
+    </header>
+
+    <div id="mySideMenu" class="side-menu">
+        <a href="#">Home</a>
+        <a href="#">Collection</a>
+        <a href="#">Trustees</a>
+        <a href="#">Events</a>
+        <a href="#">Inquiries</a>
+    </div>
 
     <section class="hero-section">
-        <img src="Onyx-Adire18.jpg" alt="Onyx-Adire Masterpiece" class="hero-image">
+        <img src="Onyx-Adire18.jpg" alt="Onyx-Adire Full View" class="hero-image">
     </section>
 
-    <div class="debut-edit-container">
-        <h1 class="debut-title">THE DEBUT EDIT</h1>
-        <span class="edit-subtitle">A curation of hand-dyed artistry</span>
-    </div>
+    <h1 class="debut-header">THE DEBUT EDIT</h1>
 
-    <main class="collection-grid">
-        
+    <div class="collection-grid">
         <script>
+            // Sample price – you can update the numbers in the array to be specific
+            const prices = ["₦45,000", "₦52,000", "₦38,500", "₦60,000", "₦42,000", "₦55,000", "₦48,000", "₦65,000", "₦35,000", "₦50,000", "₦58,000", "₦44,500", "₦62,000", "₦39,000", "₦51,000", "₦70,000"];
+
             for (let i = 1; i <= 16; i++) {
                 document.write(`
                     <div class="collection-item">
-                        <img src="Onyx-Adire${i}.jpg" alt="Onyx-Adire Collection Item ${i}" class="collection-img">
-                        <div class="item-details">
-                            <p class="item-name">Onyx Adire Piece ${i}</p>
-                            <p class="item-price">Contact for pricing</p>
-                        </div>
+                        <img src="Onyx-Adire${i}.jpg" alt="Collection Piece ${i}">
+                        <div class="item-price">${prices[i-1]}</div>
                     </div>
                 `);
             }
         </script>
-        
-    </main>
+    </div>
 
-    <a href="https://wa.me/YOUR_PHONE_NUMBER" class="whatsapp-float" target="_blank">
-        <svg width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
-            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326z"/>
-        </svg>
+    <footer>
+        <h2 class="footer-title">Subscribe to our newsletter</h2>
+        <input type="email" placeholder="YOUR EMAIL ADDRESS" class="newsletter-input"><br>
+        <div class="social-links">
+            <a href="https://instagram.com/onyx_adire" target="_blank">Instagram</a>
+            <a href="https://tiktok.com/@onyx_adire" target="_blank">Tiktok</a>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/2340000000000" class="whatsapp-float">
+        <svg width="30" height="30" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326z"/></svg>
     </a>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("mySideMenu");
+            if (menu.style.width === "280px") {
+                menu.style.width = "0";
+            } else {
+                menu.style.width = "280px";
+            }
+        }
+    </script>
 
 </body>
 </html>
