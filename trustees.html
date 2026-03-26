@@ -14,7 +14,7 @@
             --header-height: 105px;
         }
 
-        body { margin: 0; font-family: 'Montserrat', sans-serif; background: #fff; color: var(--onyx-black); }
+        body { margin: 0; font-family: 'Montserrat', sans-serif; background: #fff; color: var(--onyx-black); overflow-x: hidden; }
 
         /* HEADER SYSTEM */
         .master-header {
@@ -44,23 +44,52 @@
         .menu-links { padding-top: 40px; }
         .menu-links a { padding: 15px 40px; display: block; font-family: 'Bodoni Moda', serif; font-size: 18px; text-decoration: none; color: var(--onyx-black); text-transform: uppercase; border-bottom: 1px solid #f9f9f9; }
 
-        /* CONTENT */
-        .trustee-hero { margin-top: var(--header-height); padding: 80px 20px 40px; text-align: center; background-color: #fcfcfc; }
-        .trustee-hero h1 { font-family: 'Bodoni Moda', serif; font-size: 32px; letter-spacing: 4px; text-transform: uppercase; }
-        .trustee-container { padding: 40px 20px; max-width: 800px; margin: 0 auto; }
-        .trustee-card { margin-bottom: 60px; text-align: center; }
-        .trustee-card img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 3px solid var(--brand-red); padding: 5px; }
-        .trustee-name { font-family: 'Bodoni Moda', serif; font-size: 22px; font-weight: 700; margin-bottom: 5px; text-transform: uppercase; }
-        .trustee-title { color: var(--brand-red); font-weight: 600; font-size: 14px; margin-bottom: 15px; letter-spacing: 1px; }
-        .trustee-bio { line-height: 1.8; color: #555; font-size: 15px; text-align: justify; }
+        /* TRUSTEE CONTENT */
+        .trustee-hero { margin-top: var(--header-height); padding: 80px 20px 40px; text-align: center; }
+        .trustee-hero h1 { font-family: 'Bodoni Moda', serif; font-size: 32px; letter-spacing: 5px; text-transform: uppercase; }
 
-        /* UPDATED FOOTER CSS */
+        /* WIDE 80% CONTAINER */
+        .trustee-container { 
+            width: 80%; 
+            margin: 0 auto; 
+            padding-bottom: 60px;
+        }
+        
+        .trustee-card { 
+            margin-bottom: 100px; 
+            text-align: center; 
+        }
+
+        /* IMAGES TOUCH SIDES OF THE 80% CONTAINER */
+        .trustee-card img { 
+            width: 100%; 
+            height: auto; 
+            display: block;
+            border-bottom: 5px solid var(--brand-red);
+            margin-bottom: 35px;
+            object-fit: cover;
+        }
+        
+        .trustee-name { font-family: 'Bodoni Moda', serif; font-size: 24px; font-weight: 700; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
+        .trustee-title { color: var(--brand-red); font-weight: 600; font-size: 12px; margin-bottom: 25px; letter-spacing: 3px; text-transform: uppercase; }
+        
+        .trustee-bio { 
+            line-height: 2.1; 
+            color: #333; 
+            font-size: 15px; 
+            text-align: justify; 
+            max-width: 100%; 
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* FOOTER */
         footer {
             background-color: var(--brand-red);
             color: white;
             text-align: center;
             padding: 80px 20px;
-            margin-top: 60px;
+            margin-top: 40px;
         }
         footer h2 {
             font-family: 'Bodoni Moda', serif;
@@ -70,7 +99,7 @@
         }
         .footer-socials a { color: white; font-size: 26px; margin: 0 20px; text-decoration: none; }
 
-        /* UPDATED RED WHATSAPP BUTTON */
+        /* RED WHATSAPP BUTTON */
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -80,21 +109,21 @@
             padding: 12px 25px;
             border-radius: 50px;
             text-decoration: none;
-            font-size: 12px;
-            font-weight: 500;
+            font-size: 11px;
+            font-weight: 600;
             z-index: 9998;
             display: flex;
-            align-items: center;
-            gap: 10px;
+            align-items: center; gap: 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             border: 1px solid rgba(255,255,255,0.2);
+            text-transform: uppercase;
         }
     </style>
 </head>
 <body>
 
     <div class="master-header">
-        <div class="promo-bar"><div class="marquee-text">ONYX-ADIRE • PRESERVING HERITAGE • EMPOWERING ARTISANS • GLOBAL VISION</div></div>
+        <div class="promo-bar"><div class="marquee-text">ONYX-ADIRE • COUTURE HERITAGE • ETHICAL LUXURY • ARTISANAL EXCELLENCE</div></div>
         <header>
             <div class="hamburger" onclick="toggleNav()">☰</div>
             <a href="index.html" class="logo">Onyx-Adire</a>
@@ -112,16 +141,29 @@
     </div>
 
     <section class="trustee-hero">
-        <h1>Our Visionaries</h1>
+        <h1>The Visionaries</h1>
     </section>
 
     <div class="trustee-container">
+        
         <div class="trustee-card">
-            <img src="Trustee1.jpg" alt="Founder"> 
+            <img src="Trustees1.jpg" alt="Creative Director Onyx-Adire">
             <div class="trustee-name">Chief Executive Officer</div>
-            <div class="trustee-title">Founder & Creative Director</div>
-            <p class="trustee-bio">Onyx-Adire was born from a singular obsession: to prove that ancient Yoruba craftsmanship belongs on the world’s most prestigious runways. Our founder envisions a world where Adire is not just a fabric, but a global language of luxury.</p>
+            <div class="trustee-title">Founder & Artistic Director</div>
+            <p class="trustee-bio">
+                At the helm of our creative atelier, our Founder oversees the artistic evolution of the Onyx-Adire house. By reinterpreting ancestral Yoruba dyeing techniques through an avant-garde lens, they have transformed Adire into a medium for high-fidelity couture. Their vision is to marry the raw soul of the Nigerian dyer with the sophisticated silhouettes demanded by the global luxury market.
+            </p>
         </div>
+
+        <div class="trustee-card">
+            <img src="Trustees2.jpg" alt="Managing Director Onyx-Adire">
+            <div class="trustee-name">Managing Director</div>
+            <div class="trustee-title">Chief of Operations & Brand Heritage</div>
+            <p class="trustee-bio">
+                Orchestrating the house’s commitment to ethical luxury, our Managing Director curates the bridge between artisanal excellence and operational scale. From textile sourcing to boutique partnerships, they protect the brand's heritage integrity, ensuring that every collection remains a sustainable, high-end tribute to the artisans of Abeokuta and Lagos.
+            </p>
+        </div>
+
     </div>
 
     <footer>
@@ -133,7 +175,7 @@
     </footer>
 
     <a href="https://wa.me/234707797XXXX" class="whatsapp-float">
-        <i class="fab fa-whatsapp"></i> Chat via WhatsApp
+        <i class="fab fa-whatsapp"></i> WhatsApp Concierge
     </a>
 
     <script>
