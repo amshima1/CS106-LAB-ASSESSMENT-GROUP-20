@@ -3,246 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trustees | Onyx—Adire</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <title>Trustees | Onyx-Adire Haute Couture</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
+
         :root {
-            --brand-red: #8B1D1D;
-            --bg-cream: #FFFBF7;
-            --whatsapp-orange: #E65137; 
-            --text-dark: #333333;
+            --brand-red: #b31d24;
+            --onyx-black: #111111;
+            --header-height: 105px;
         }
 
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-cream);
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            color: var(--brand-red);
+        body { margin: 0; font-family: 'Montserrat', sans-serif; background: #fff; color: var(--onyx-black); }
+
+        /* UNBREAKABLE HEADER (Same as Home/Collection) */
+        .master-header {
+            position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height);
+            z-index: 9999; background: white; display: flex; flex-direction: column;
+            border-bottom: 1px solid #eee;
+        }
+        .promo-bar {
+            background-color: var(--brand-red); color: white; height: 35px;
+            display: flex; align-items: center; overflow: hidden; position: relative;
+        }
+        .marquee-text {
+            position: absolute; white-space: nowrap; font-size: 10px;
+            letter-spacing: 2px; text-transform: uppercase; animation: scrolling 20s linear infinite;
+        }
+        @keyframes scrolling { 0% { transform: translateX(100vw); } 100% { transform: translateX(-100%); } }
+        header { height: 70px; display: flex; align-items: center; justify-content: center; position: relative; }
+        .hamburger { position: absolute; left: 20px; font-size: 28px; cursor: pointer; }
+        .logo { font-family: 'Bodoni Moda', serif; font-size: 24px; text-transform: uppercase; text-decoration: none; color: var(--onyx-black); letter-spacing: 4px; font-weight: 700; }
+
+        /* SIDE MENU */
+        .side-menu {
+            height: calc(100vh - var(--header-height)); width: 0; position: fixed;
+            z-index: 9000; top: var(--header-height); left: 0; background-color: white;
+            overflow-x: hidden; transition: 0.4s ease;
+        }
+        .menu-links { padding-top: 40px; }
+        .menu-links a { padding: 15px 40px; display: block; font-family: 'Bodoni Moda', serif; font-size: 18px; text-decoration: none; color: var(--onyx-black); text-transform: uppercase; }
+
+        /* TRUSTEE CONTENT */
+        .trustee-hero {
+            margin-top: var(--header-height);
+            padding: 60px 20px;
             text-align: center;
-            overflow-x: hidden;
+            background-color: #fcfcfc;
         }
+        .trustee-hero h1 { font-family: 'Bodoni Moda', serif; font-size: 32px; letter-spacing: 4px; text-transform: uppercase; }
+        
+        .trustee-container { padding: 40px 20px; max-width: 800px; margin: 0 auto; }
+        .trustee-card { margin-bottom: 60px; text-align: center; }
+        .trustee-card img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 3px solid var(--brand-red); padding: 5px; }
+        .trustee-name { font-family: 'Bodoni Moda', serif; font-size: 22px; font-weight: 700; margin-bottom: 5px; text-transform: uppercase; }
+        .trustee-title { color: var(--brand-red); font-weight: 600; font-size: 14px; margin-bottom: 15px; letter-spacing: 1px; }
+        .trustee-bio { line-height: 1.8; color: #555; font-size: 15px; text-align: justify; }
 
-        /* --- HEADER (Z-INDEX 9000: ALWAYS ON TOP) --- */
-        .header-container {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 9000; 
-            background: var(--bg-cream);
-        }
+        /* FOOTER */
+        footer { background-color: var(--brand-red); color: white; text-align: center; padding: 60px 20px; margin-top: 40px; }
 
-        .announcement-bar {
-            background-color: var(--brand-red);
-            color: white;
-            overflow: hidden;
-            white-space: nowrap;
-            padding: 10px 0;
-        }
-
-        .announcement-content {
-            display: inline-block;
-            padding-left: 100%;
-            animation: marquee 20s linear infinite;
-            font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        @keyframes marquee {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(-100%, 0); }
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px 20px;
-            border-bottom: 1px solid rgba(139, 29, 29, 0.1);
-        }
-
-        .menu-icon { width: 30px; cursor: pointer; }
-        .menu-icon div { height: 2px; width: 25px; background-color: var(--brand-red); margin: 6px 0; }
-        .logo { font-family: 'Playfair Display', serif; font-size: 24px; font-style: italic; font-weight: 700; text-decoration: none; color: var(--brand-red); }
-
-        /* --- SIDENAV (Pushed down 120px to show header) --- */
-        #mySidenav {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 8000; 
-            top: 0;
-            left: 0;
-            background-color: var(--bg-cream);
-            overflow-x: hidden;
-            transition: 0.4s ease-in-out;
-            padding-top: 120px; 
-            text-align: left;
-        }
-
-        #mySidenav a {
-            padding: 15px 32px;
-            text-decoration: none;
-            font-family: 'Playfair Display', serif;
-            font-size: 20px;
-            color: var(--brand-red);
-            display: block;
-            font-style: italic;
-        }
-
-        #overlay {
-            display: none;
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0; left: 0;
-            background: rgba(0,0,0,0.5);
-            z-index: 7500; 
-        }
-
-        /* --- TRUSTEE CONTENT --- */
-        main { padding-top: 130px; }
-        .trustee-section { width: 100%; margin-bottom: 60px; }
-        .full-width-img { width: 100vw; height: auto; display: block; object-fit: cover; }
-        .trustee-info { padding: 40px 25px; }
-        .trustee-name { font-family: 'Playfair Display', serif; font-size: 28px; font-style: italic; font-weight: bold; }
-        .trustee-title { font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-dark); display: block; margin-bottom: 15px; }
-        .inspiring-text { font-family: 'Playfair Display', serif; font-size: 18px; line-height: 1.6; font-style: italic; max-width: 600px; margin: 0 auto; }
-
-        /* --- RED FOOTER --- */
-        .footer-cta {
-            background-color: var(--brand-red);
-            color: white;
-            padding: 60px 20px 100px 20px;
-        }
-
-        .footer-cta h2 {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 24px;
-            margin-bottom: 25px;
-        }
-
-        .subscribe-box input {
-            width: 100%;
-            max-width: 300px;
-            padding: 14px;
-            border: 1px solid white;
-            background: transparent;
-            color: white;
-            text-align: center;
-            margin-bottom: 15px;
-            border-radius: 0;
-            font-family: inherit;
-        }
-
-        .subscribe-box button {
-            background: white;
-            color: var(--brand-red);
-            border: none;
-            padding: 14px;
-            font-weight: bold;
-            cursor: pointer;
-            text-transform: uppercase;
-            width: 100%;
-            max-width: 300px;
-        }
-
-        .social-section { margin-top: 40px; }
-        .social-handle { font-family: 'Playfair Display', serif; font-style: italic; font-size: 22px; display: block; margin-bottom: 10px; }
-        .social-platforms { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; opacity: 0.9; }
-
-        /* --- WHATSAPP (TOP LAYER 9999) --- */
-        .whatsapp-link {
-            position: fixed;
-            bottom: 25px;
-            right: 20px;
-            background-color: var(--whatsapp-orange);
-            color: white;
-            padding: 12px 22px;
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            text-decoration: none;
-            z-index: 9999; 
-        }
+        .whatsapp-float { position: fixed; bottom: 30px; right: 20px; background-color: var(--brand-red); color: white; padding: 12px 20px; border-radius: 30px; text-decoration: none; font-size: 13px; font-weight: 600; z-index: 9998; display: flex; align-items: center; gap: 8px; }
     </style>
 </head>
 <body>
 
-    <div class="header-container">
-        <div class="announcement-bar">
-            <div class="announcement-content">
-                ✦ TRADITION REIMAGINED &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ✦ THE ONYX—ADIRE LEADERSHIP &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ✦ BUILT ON HERITAGE
-            </div>
+    <div class="master-header">
+        <div class="promo-bar"><div class="marquee-text">ONYX-ADIRE • PRESERVING HERITAGE • EMPOWERING ARTISANS • GLOBAL VISION</div></div>
+        <header>
+            <div class="hamburger" onclick="toggleNav()">☰</div>
+            <a href="index.html" class="logo">Onyx-Adire</a>
+        </header>
+    </div>
+
+    <div id="mySideMenu" class="side-menu">
+        <div class="menu-links">
+            <a href="index.html">Home</a>
+            <a href="collection.html">Collection</a>
+            <a href="trustees.html">Trustees</a>
+            <a href="#">Events</a>
+            <a href="#">Inquiries</a>
         </div>
-        <nav>
-            <div class="menu-icon" onclick="toggleNav(true)">
-                <div></div><div></div><div></div>
-            </div>
-            <a href="index.html" class="logo">Onyx—Adire</a>
-            <div style="width: 30px;"></div> 
-        </nav>
     </div>
 
-    <div id="mySidenav">
-        <a href="javascript:void(0)" onclick="toggleNav(false)" style="font-size: 40px; text-align: right; padding-right: 30px;">&times;</a>
-        <a href="index.html">Home</a>
-        <a href="collections.html">Collections</a>
-        <a href="trustees.html">Trustees</a>
-        <a href="events.html">Events</a>
-        <a href="bookings.html">Bookings</a>
+    <section class="trustee-hero">
+        <h1>Our Visionaries</h1>
+        <p style="letter-spacing: 2px; font-size: 12px; color: #888; text-transform: uppercase;">The Leadership of Onyx-Adire</p>
+    </section>
+
+    <div class="trustee-container">
+        <div class="trustee-card">
+            <img src="Trustee1.jpg" alt="Founder"> <div class="trustee-name">Chief Executive Officer</div>
+            <div class="trustee-title">Founder & Creative Director</div>
+            <p class="trustee-bio">
+                At Onyx-Adire, our mission is to redefine African luxury by blending ancient Yoruba dyeing techniques with contemporary high-fashion silhouettes. Our leadership is dedicated to ethical craftsmanship and the global promotion of Nigerian heritage.
+            </p>
+        </div>
+
+        <div class="trustee-card">
+            <img src="Trustee2.jpg" alt="Director"> <div class="trustee-name">Executive Director</div>
+            <div class="trustee-title">Head of Heritage & Operations</div>
+            <p class="trustee-bio">
+                Ensuring that every piece of fabric maintains the soul of traditional Adire while meeting international standards of luxury. Our focus is on sustainability and supporting the local artisan communities.
+            </p>
+        </div>
     </div>
-    <div id="overlay" onclick="toggleNav(false)"></div>
 
-    <main>
-        <section class="trustee-section">
-            <img src="victor-amshima.jpg" alt="Victor Amshima" class="full-width-img">
-            <div class="trustee-info">
-                <h1 class="trustee-name">Victor Amshima</h1>
-                <span class="trustee-title">CEO OF ONYX—ADIRE</span>
-                <p class="inspiring-text">
-                    "True leadership lies in weaving the threads of our past into the canvas of our future."
-                </p>
-            </div>
-        </section>
+    <footer>
+        <p>&copy; 2024 Onyx-Adire Haute Couture</p>
+    </footer>
 
-        <section class="trustee-section">
-            <img src="paul-gbawuan.jpg" alt="Paul Gbawuan" class="full-width-img">
-            <div class="trustee-info">
-                <h2 class="trustee-name">Paul Gbawuan</h2>
-                <span class="trustee-title">Creative Director</span>
-                <p class="inspiring-text">
-                    "Creativity is the heartbeat of tradition."
-                </p>
-            </div>
-        </section>
-
-        <section class="footer-cta">
-            <h2>Subscribe to our newsletter</h2>
-            <div class="subscribe-box">
-                <input type="email" placeholder="Enter your email">
-                <br>
-                <button type="submit">Join the Movement</button>
-            </div>
-            
-            <div class="social-section">
-                <span class="social-handle">@OnyxAdire_</span>
-                <span class="social-platforms">Instagram | TikTok</span>
-            </div>
-        </section>
-    </main>
-
-    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-link" target="_blank">
-        💬 Chat Via Whatsapp
-    </a>
+    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-float"><i class="fab fa-whatsapp"></i> Contact Admin</a>
 
     <script>
-        function toggleNav(isOpen) {
-            document.getElementById("mySidenav").style.width = isOpen ? "280px" : "0";
-            document.getElementById("overlay").style.display = isOpen ? "block" : "none";
+        function toggleNav() {
+            var m = document.getElementById("mySideMenu");
+            m.style.width = (m.style.width === "280px") ? "0" : "280px";
         }
     </script>
 </body>
