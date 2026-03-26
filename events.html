@@ -25,7 +25,7 @@
         .hamburger { position: absolute; left: 20px; font-size: 28px; cursor: pointer; }
         .logo { font-family: 'Bodoni Moda', serif; font-size: 24px; text-transform: uppercase; text-decoration: none; color: var(--onyx-black); letter-spacing: 4px; font-weight: 700; }
 
-        /* SIDE MENU (CLEAN - NO X) */
+        /* SIDE MENU (NO X) */
         .side-menu { height: calc(100vh - var(--header-height)); width: 0; position: fixed; z-index: 9000; top: var(--header-height); left: 0; background-color: white; overflow-x: hidden; transition: 0.5s; box-shadow: 5px 0 15px rgba(0,0,0,0.05); }
         .menu-links { padding-top: 40px; display: flex; flex-direction: column; }
         .menu-links a { padding: 20px 40px; font-family: 'Bodoni Moda', serif; font-size: 18px; text-decoration: none; color: var(--onyx-black); text-transform: uppercase; border-bottom: 1px solid #f9f9f9; letter-spacing: 2px; }
@@ -45,29 +45,25 @@
         .right::after { left: -5px; }
 
         .content { position: relative; }
-        /* FULL IMAGE SETTINGS */
-        .content img { 
-            width: 100%; 
-            height: auto; /* Full height, no cropping */
-            display: block;
-            margin-bottom: 20px; 
-            border: 1px solid #f0f0f0;
-            transition: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-        .content img:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        
+        .content img { width: 100%; height: auto; display: block; margin-bottom: 20px; border: 1px solid #f0f0f0; transition: 0.6s; }
         .date { font-size: 11px; font-weight: 700; color: var(--brand-red); letter-spacing: 2px; margin-bottom: 8px; display: block; }
         .title { font-family: 'Bodoni Moda', serif; font-size: 20px; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 1px; }
-        .desc { font-size: 13px; line-height: 1.8; color: #555; font-weight: 300; }
+        .desc { font-size: 13px; line-height: 1.8; color: #555; }
+
+        /* JOIN ONYX CIRCLE CTA */
+        .onyx-circle-section { background: #f9f9f9; padding: 100px 20px; text-align: center; margin-top: 40px; border-top: 1px solid #eee; }
+        .onyx-circle-section h2 { font-family: 'Bodoni Moda', serif; text-transform: uppercase; letter-spacing: 6px; font-size: 26px; margin-bottom: 15px; }
+        .onyx-circle-section p { font-size: 12px; color: #666; max-width: 550px; margin: 0 auto 40px; line-height: 2; letter-spacing: 1px; }
+        .circle-btn { background: var(--onyx-black); color: white; padding: 18px 45px; text-decoration: none; text-transform: uppercase; font-size: 11px; font-weight: 700; letter-spacing: 3px; display: inline-block; transition: 0.3s; border: 1px solid var(--onyx-black); }
+        .circle-btn:hover { background: transparent; color: var(--onyx-black); }
 
         /* FOOTER */
-        footer { background-color: var(--brand-red); color: white; text-align: center; padding: 60px 20px; margin-top: 40px; }
+        footer { background-color: var(--brand-red); color: white; text-align: center; padding: 60px 20px; }
         .footer-socials a { color: white; font-size: 24px; margin: 0 15px; text-decoration: none; }
 
         /* WHATSAPP FLOAT */
         .whatsapp-float { position: fixed; bottom: 30px; right: 20px; background-color: var(--brand-red); color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-size: 11px; font-weight: 600; z-index: 9998; display: flex; align-items: center; gap: 10px; text-transform: uppercase; }
 
-        /* MOBILE ADJUSTMENTS */
         @media screen and (max-width: 768px) {
             .timeline-container::after { left: 20px; }
             .timeline-item { width: 100%; padding-left: 50px; padding-right: 10px; text-align: left !important; }
@@ -99,36 +95,33 @@
     <div class="timeline-container">
         <div class="event-header">
             <h1>Exhibitions</h1>
-            <p>The Legacy of the Hand-Dyed Thread</p>
+            <p>A Journey Through Heritage</p>
         </div>
 
         <div class="timeline-item right">
             <div class="content">
                 <span class="date">MAY 2026</span>
-                <img src="Onyx-Adire20.jpg" alt="Exhibition One">
+                <img src="Onyx-Adire20.jpg" alt="Exhibition">
                 <h2 class="title">The Silk Tunic Private View</h2>
-                <p class="desc">An intimate evening showcasing the intersection of traditional Yoruba dyeing and avant-garde luxury silk. Hosted in Lagos.</p>
+                <p class="desc">A bespoke viewing of our upcoming silk line for VIP collectors.</p>
             </div>
         </div>
 
         <div class="timeline-item left">
             <div class="content">
                 <span class="date">NOV 2025</span>
-                <img src="Onyx-Adire25.jpg" alt="Exhibition Two">
+                <img src="Onyx-Adire25.jpg" alt="Runway">
                 <h2 class="title">Abuja Heritage Runway</h2>
-                <p class="desc">A full runway showcase of the Onyx signature collection, celebrating 47 unique silhouettes crafted for the global stage.</p>
-            </div>
-        </div>
-
-        <div class="timeline-item right">
-            <div class="content">
-                <span class="date">AUGUST 2025</span>
-                <img src="Onyx-Adire30.jpg" alt="Exhibition Three">
-                <h2 class="title">Benue Artisans Gallery</h2>
-                <p class="desc">Highlighting the skilled hands behind the cloth. An exhibition focused on the sustainable process of artisanal production.</p>
+                <p class="desc">A celebration of artisanal craft at the Continental Hotel.</p>
             </div>
         </div>
     </div>
+
+    <section class="onyx-circle-section">
+        <h2>Join The Onyx Circle</h2>
+        <p>Gain priority access to limited collection drops and private invitations to our future exhibitions and runway showcases worldwide.</p>
+        <a href="inquiries.html" class="circle-btn">Inquire for Membership</a>
+    </section>
 
     <footer>
         <div class="footer-socials">
