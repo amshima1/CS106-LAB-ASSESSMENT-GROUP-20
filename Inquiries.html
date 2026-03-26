@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inquiries | Onyx-Adire Haute Couture</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
+
+        :root {
+            --brand-red: #b31d24;
+            --onyx-black: #111111;
+            --header-height: 105px;
+        }
+
+        body { margin: 0; font-family: 'Montserrat', sans-serif; background: #fff; color: var(--onyx-black); }
+
+        /* HEADER SYSTEM (Consistent with all pages) */
+        .master-header {
+            position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height);
+            z-index: 9999; background: white; display: flex; flex-direction: column;
+            border-bottom: 1px solid #eee;
+        }
+        .promo-bar {
+            background-color: var(--brand-red); color: white; height: 35px;
+            display: flex; align-items: center; overflow: hidden; position: relative;
+        }
+        .marquee-text {
+            position: absolute; white-space: nowrap; font-size: 10px;
+            letter-spacing: 2px; text-transform: uppercase; animation: scrolling 20s linear infinite;
+        }
+        @keyframes scrolling { 0% { transform: translateX(100vw); } 100% { transform: translateX(-100%); } }
+        header { height: 70px; display: flex; align-items: center; justify-content: center; position: relative; }
+        .hamburger { position: absolute; left: 20px; font-size: 28px; cursor: pointer; }
+        .logo { font-family: 'Bodoni Moda', serif; font-size: 24px; text-transform: uppercase; text-decoration: none; color: var(--onyx-black); letter-spacing: 4px; font-weight: 700; }
+
+        /* SIDE MENU */
+        .side-menu {
+            height: calc(100vh - var(--header-height)); width: 0; position: fixed;
+            z-index: 9000; top: var(--header-height); left: 0; background-color: white;
+            overflow-x: hidden; transition: 0.4s ease; box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+        }
+        .menu-links { padding-top: 40px; }
+        .menu-links a { padding: 15px 40px; display: block; font-family: 'Bodoni Moda', serif; font-size: 18px; text-decoration: none; color: var(--onyx-black); text-transform: uppercase; }
+
+        /* INQUIRIES CONTENT */
+        .inquiry-hero {
+            margin-top: var(--header-height);
+            padding: 60px 20px;
+            text-align: center;
+            background: #fcfcfc;
+        }
+        .inquiry-hero h1 { font-family: 'Bodoni Moda', serif; font-size: 32px; letter-spacing: 5px; text-transform: uppercase; }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px 100px;
+            text-align: center;
+        }
+
+        .contact-card {
+            background: white;
+            border: 1px solid #f0f0f0;
+            padding: 40px 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        .contact-card:hover { border-color: var(--brand-red); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+
+        .icon-box { font-size: 30px; color: var(--brand-red); margin-bottom: 15px; }
+        .contact-title { font-family: 'Bodoni Moda', serif; font-size: 20px; text-transform: uppercase; margin-bottom: 10px; }
+        .contact-text { font-size: 14px; color: #666; margin-bottom: 25px; line-height: 1.6; }
+
+        .contact-btn {
+            display: inline-block;
+            background: var(--onyx-black);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 4px;
+        }
+
+        .social-row { margin-top: 40px; }
+        .social-row a { font-size: 24px; color: var(--onyx-black); margin: 0 15px; }
+
+        footer { background-color: var(--brand-red); color: white; text-align: center; padding: 40px 20px; }
+
+        /* WHATSAPP FLOAT */
+        .whatsapp-float { position: fixed; bottom: 30px; right: 20px; background-color: var(--brand-red); color: white; padding: 12px 20px; border-radius: 30px; text-decoration: none; font-size: 13px; font-weight: 600; z-index: 9998; display: flex; align-items: center; gap: 8px; }
+    </style>
+</head>
+<body>
+
+    <div class="master-header">
+        <div class="promo-bar"><div class="marquee-text">ONYX-ADIRE • BESPOKE INQUIRIES • GLOBAL CLIENT SERVICES • WHATSAPP RESPONSE WITHIN 2 HOURS</div></div>
+        <header>
+            <div class="hamburger" onclick="toggleNav()">☰</div>
+            <a href="index.html" class="logo">Onyx-Adire</a>
+        </header>
+    </div>
+
+    <div id="mySideMenu" class="side-menu">
+        <div class="menu-links">
+            <a href="index.html" onclick="toggleNav()">Home</a>
+            <a href="collection.html" onclick="toggleNav()">Collection</a>
+            <a href="trustees.html" onclick="toggleNav()">Trustees</a>
+            <a href="events.html" onclick="toggleNav()">Events</a>
+            <a href="inquiries.html" onclick="toggleNav()">Inquiries</a>
+        </div>
+    </div>
+
+    <section class="inquiry-hero">
+        <h1>Connect with Us</h1>
+        <p style="letter-spacing: 2px; font-size: 11px; color: #888; text-transform: uppercase;">For Bespoke Orders & Collaborations</p>
+    </section>
+
+    <div class="contact-container">
+        
+        <div class="contact-card">
+            <div class="icon-box"><i class="fab fa-whatsapp"></i></div>
+            <h2 class="contact-title">Direct Concierge</h2>
+            <p class="contact-text">Chat with our personal shoppers for sizing advice, bespoke orders, or order tracking.</p>
+            <a href="https://wa.me/234XXXXXXXXXX" class="contact-btn">Message via WhatsApp</a>
+        </div>
+
+        <div class="contact-card">
+            <div class="icon-box"><i class="far fa-envelope"></i></div>
+            <h2 class="contact-title">Corporate Inquiries</h2>
+            <p class="contact-text">For wholesale, press collaborations, or event partnerships across Nigeria and abroad.</p>
+            <a href="mailto:info@onyxadire.com" class="contact-btn">Send an Email</a>
+        </div>
+
+        <div class="social-row">
+            <p style="font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #aaa; margin-bottom: 20px;">Follow the Heritage</p>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Onyx-Adire Haute Couture</p>
+    </footer>
+
+    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-float"><i class="fab fa-whatsapp"></i> Chat Now</a>
+
+    <script>
+        function toggleNav() {
+            var m = document.getElementById("mySideMenu");
+            m.style.width = (m.style.width === "280px") ? "0" : "280px";
+        }
+    </script>
+</body>
+</html>
