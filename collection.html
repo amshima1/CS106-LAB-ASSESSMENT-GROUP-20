@@ -39,7 +39,6 @@
         .collection-container { width: 80%; margin: 40px auto; padding-bottom: 60px; }
         .collection-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; }
         .product-card { cursor: pointer; text-align: center; margin-bottom: 20px; transition: transform 0.3s ease; }
-        .product-card:hover { transform: scale(1.02); }
         .product-card img { width: 100%; height: auto; display: block; border-bottom: 3px solid #f0f0f0; }
         .product-info { margin-top: 15px; }
         .product-name { font-family: 'Bodoni Moda', serif; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
@@ -53,12 +52,10 @@
         .modal-title { font-family: 'Bodoni Moda', serif; font-size: 26px; text-transform: uppercase; margin-bottom: 10px; }
         .modal-price { color: var(--brand-red); font-weight: 700; font-size: 20px; margin-bottom: 25px; display: block; }
         
-        /* MEASUREMENT PREVIEW BOX */
         .measure-preview { background: #fdfdfd; border: 1px solid #eee; padding: 20px; margin: 30px 0; text-align: left; }
         .measure-preview h4 { font-family: 'Bodoni Moda', serif; text-transform: uppercase; font-size: 14px; margin-top: 0; border-bottom: 1px solid var(--brand-red); padding-bottom: 8px; width: fit-content; }
         .measure-preview p { font-size: 12px; line-height: 1.8; color: #666; }
 
-        /* SLIDER COMPONENT */
         .slider-section { margin-top: 60px; text-align: left; }
         .slider-section h3 { font-family: 'Bodoni Moda', serif; text-transform: uppercase; font-size: 15px; letter-spacing: 2px; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
         .slider-row { display: flex; overflow-x: auto; gap: 15px; scrollbar-width: none; -ms-overflow-style: none; padding-bottom: 10px; }
@@ -66,14 +63,12 @@
         .slider-item { min-width: 150px; cursor: pointer; text-align: center; }
         .slider-item img { width: 100%; height: auto; margin-bottom: 10px; }
 
-        /* BUTTONS */
         .btn-black { background: var(--onyx-black); color: white; padding: 18px 30px; text-decoration: none; display: block; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; font-size: 12px; margin: 20px 0; }
         
-        /* FOOTER */
+        /* FOOTER WITHOUT COPYRIGHT */
         footer { background-color: var(--brand-red); color: white; text-align: center; padding: 80px 20px; }
         .footer-socials a { color: white; font-size: 24px; margin: 0 15px; text-decoration: none; }
 
-        /* WHATSAPP FLOAT */
         .whatsapp-float { position: fixed; bottom: 30px; right: 20px; background-color: var(--brand-red); color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-size: 11px; font-weight: 600; z-index: 9998; display: flex; align-items: center; gap: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); text-transform: uppercase; }
     </style>
 </head>
@@ -104,8 +99,7 @@
     </nav>
 
     <div class="collection-container">
-        <div class="collection-grid" id="mainGrid">
-            </div>
+        <div class="collection-grid" id="mainGrid"></div>
     </div>
 
     <div id="productModal" class="modal">
@@ -122,7 +116,7 @@
 
             <div class="measure-preview">
                 <h4>Bespoke Fit Required</h4>
-                <p>To ensure a perfect fit, please provide your <strong>Shoulder, Bust/Chest, Waist,</strong> and <strong>Length</strong> measurements via the link below.</p>
+                <p>To ensure a perfect fit, please provide your measurements via the Size Profile tool or directly via WhatsApp.</p>
             </div>
 
             <a id="orderBtn" href="#" class="btn-black"><i class="fab fa-whatsapp"></i> Order Bespoke Size</a>
@@ -145,7 +139,6 @@
             <a href="#"><i class="fab fa-instagram"></i></a>
             <a href="#"><i class="fab fa-tiktok"></i></a>
         </div>
-        <p style="font-size: 10px; margin-top: 40px; letter-spacing: 2px;">© 2026 ONYX-ADIRE HAUTE COUTURE</p>
     </footer>
 
     <a href="https://wa.me/234707797XXXX" class="whatsapp-float">
@@ -157,7 +150,6 @@
         const recentViews = [];
         const luxuryNames = ["OBA", "ADE", "OLA", "IRE", "IFE", "AMIRA", "ZARA", "DUNNI", "TITI", "KEMI", "NIKE", "SIMI"];
         
-        // Data Logic
         const itemData = Array.from({ length: totalItems }, (_, i) => {
             const id = i + 1;
             const category = (id % 2 === 0) ? 'silk' : 'heritage';
@@ -170,7 +162,6 @@
             };
         });
 
-        // Grid Rendering
         function renderGrid(filter = 'all') {
             const grid = document.getElementById('mainGrid');
             grid.innerHTML = '';
@@ -189,14 +180,12 @@
             });
         }
 
-        // Filter Function
         function filterItems(cat) {
             renderGrid(cat);
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             event.target.classList.add('active');
         }
 
-        // Modal Open Logic
         function openProduct(id) {
             const item = itemData.find(p => p.id === id);
             document.getElementById('modalImg').src = `Onyx-Adire${id}.jpg`;
@@ -219,13 +208,11 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Sliders Logic
         function updateSliders(currentId) {
             const like = document.getElementById('likeSlider');
             const recent = document.getElementById('recentSlider');
             like.innerHTML = ''; recent.innerHTML = '';
 
-            // Recommended (Random 6)
             for(let i=0; i<6; i++){
                 let rId = Math.floor(Math.random() * totalItems) + 1;
                 const rItem = itemData.find(p => p.id === rId);
@@ -237,7 +224,6 @@
                 `;
             }
 
-            // History
             recentViews.forEach(rid => {
                 const rItem = itemData.find(p => p.id === rid);
                 recent.innerHTML += `
