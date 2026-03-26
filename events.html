@@ -31,28 +31,37 @@
         .menu-links a { padding: 20px 40px; font-family: 'Bodoni Moda', serif; font-size: 18px; text-decoration: none; color: var(--onyx-black); text-transform: uppercase; border-bottom: 1px solid #f9f9f9; letter-spacing: 2px; }
 
         /* TIMELINE SECTION */
-        .timeline-container { max-width: 1000px; margin: var(--header-height) auto 0; padding: 80px 20px; position: relative; }
-        .timeline-container::after { content: ''; position: absolute; width: 2px; background: #eee; top: 120px; bottom: 80px; left: 50%; margin-left: -1px; }
+        .timeline-container { max-width: 1000px; margin: var(--header-height) auto 0; padding: 60px 20px; position: relative; }
+        .timeline-container::after { content: ''; position: absolute; width: 1px; background: #ddd; top: 150px; bottom: 80px; left: 50%; }
 
-        .event-header { text-align: center; margin-bottom: 80px; }
-        .event-header h1 { font-family: 'Bodoni Moda', serif; text-transform: uppercase; letter-spacing: 8px; font-size: 32px; }
-        .event-header p { font-size: 11px; text-transform: uppercase; letter-spacing: 3px; color: #888; margin-top: 10px; }
+        .event-header { text-align: center; margin-bottom: 60px; }
+        .event-header h1 { font-family: 'Bodoni Moda', serif; text-transform: uppercase; letter-spacing: 8px; font-size: 32px; margin-bottom: 10px; }
+        .event-header p { font-size: 10px; text-transform: uppercase; letter-spacing: 4px; color: #999; }
 
-        .timeline-item { padding: 10px 40px; position: relative; background: inherit; width: 50%; box-sizing: border-box; }
-        .timeline-item::after { content: ''; position: absolute; width: 12px; height: 12px; right: -6px; background-color: white; border: 2px solid var(--brand-red); top: 15px; border-radius: 50%; z-index: 1; }
+        .timeline-item { padding: 20px 50px; position: relative; width: 50%; box-sizing: border-box; margin-bottom: 40px; }
+        .timeline-item::after { content: ''; position: absolute; width: 10px; height: 10px; right: -5px; background-color: var(--brand-red); top: 30px; border-radius: 50%; z-index: 1; }
         .left { left: 0; text-align: right; }
         .right { left: 50%; text-align: left; }
-        .right::after { left: -6px; }
+        .right::after { left: -5px; }
 
-        .content { padding: 20px 0; position: relative; }
-        .content img { width: 100%; height: 250px; object-fit: cover; margin-bottom: 15px; filter: grayscale(100%); transition: 0.5s; }
-        .content img:hover { filter: grayscale(0%); }
-        .date { font-size: 12px; font-weight: 700; color: var(--brand-red); letter-spacing: 2px; margin-bottom: 5px; display: block; }
-        .title { font-family: 'Bodoni Moda', serif; font-size: 18px; text-transform: uppercase; margin-bottom: 10px; }
-        .desc { font-size: 13px; line-height: 1.6; color: #666; }
+        .content { position: relative; }
+        /* FULL IMAGE SETTINGS */
+        .content img { 
+            width: 100%; 
+            height: auto; /* Full height, no cropping */
+            display: block;
+            margin-bottom: 20px; 
+            border: 1px solid #f0f0f0;
+            transition: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .content img:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        
+        .date { font-size: 11px; font-weight: 700; color: var(--brand-red); letter-spacing: 2px; margin-bottom: 8px; display: block; }
+        .title { font-family: 'Bodoni Moda', serif; font-size: 20px; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 1px; }
+        .desc { font-size: 13px; line-height: 1.8; color: #555; font-weight: 300; }
 
         /* FOOTER */
-        footer { background-color: var(--brand-red); color: white; text-align: center; padding: 60px 20px; }
+        footer { background-color: var(--brand-red); color: white; text-align: center; padding: 60px 20px; margin-top: 40px; }
         .footer-socials a { color: white; font-size: 24px; margin: 0 15px; text-decoration: none; }
 
         /* WHATSAPP FLOAT */
@@ -60,9 +69,9 @@
 
         /* MOBILE ADJUSTMENTS */
         @media screen and (max-width: 768px) {
-            .timeline-container::after { left: 31px; }
-            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; text-align: left !important; }
-            .timeline-item::after { left: 25px; }
+            .timeline-container::after { left: 20px; }
+            .timeline-item { width: 100%; padding-left: 50px; padding-right: 10px; text-align: left !important; }
+            .timeline-item::after { left: 15px; }
             .right { left: 0%; }
         }
     </style>
@@ -80,7 +89,7 @@
     <div id="mySideMenu" class="side-menu">
         <div class="menu-links">
             <a href="index.html">Home</a>
-            <a href="collection.html">The Collection</a>
+            <a href="collection.html">Collection</a>
             <a href="trustees.html">Trustees</a>
             <a href="events.html">Events</a>
             <a href="inquiries.html">Inquiries</a>
@@ -90,33 +99,33 @@
     <div class="timeline-container">
         <div class="event-header">
             <h1>Exhibitions</h1>
-            <p>The Journey of the Silk Tunic</p>
+            <p>The Legacy of the Hand-Dyed Thread</p>
         </div>
 
         <div class="timeline-item right">
             <div class="content">
                 <span class="date">MAY 2026</span>
-                <img src="Onyx-Adire20.jpg" alt="Lagos Fashion Week">
-                <h2 class="title">Lagos Heritage Showcase</h2>
-                <p class="desc">A private viewing of our 'Adire Silk' collection at the Eko Hotel. Invitation only for the Onyx Circle.</p>
+                <img src="Onyx-Adire20.jpg" alt="Exhibition One">
+                <h2 class="title">The Silk Tunic Private View</h2>
+                <p class="desc">An intimate evening showcasing the intersection of traditional Yoruba dyeing and avant-garde luxury silk. Hosted in Lagos.</p>
             </div>
         </div>
 
         <div class="timeline-item left">
             <div class="content">
                 <span class="date">NOV 2025</span>
-                <img src="Onyx-Adire25.jpg" alt="Abuja Matriculation">
-                <h2 class="title">Abuja Continental Unveiling</h2>
-                <p class="desc">The grand debut of our heritage textiles at the Ladi Kwali Hall, showcasing the fusion of traditional dye and modern silhouette.</p>
+                <img src="Onyx-Adire25.jpg" alt="Exhibition Two">
+                <h2 class="title">Abuja Heritage Runway</h2>
+                <p class="desc">A full runway showcase of the Onyx signature collection, celebrating 47 unique silhouettes crafted for the global stage.</p>
             </div>
         </div>
 
         <div class="timeline-item right">
             <div class="content">
                 <span class="date">AUGUST 2025</span>
-                <img src="Onyx-Adire30.jpg" alt="Artisan Workshop">
-                <h2 class="title">The Artisans Workshop</h2>
-                <p class="desc">An educational exhibition in Benue State focusing on the 'Adire Eleko' resist-dye technique and sustainable fashion.</p>
+                <img src="Onyx-Adire30.jpg" alt="Exhibition Three">
+                <h2 class="title">Benue Artisans Gallery</h2>
+                <p class="desc">Highlighting the skilled hands behind the cloth. An exhibition focused on the sustainable process of artisanal production.</p>
             </div>
         </div>
     </div>
@@ -129,7 +138,7 @@
     </footer>
 
     <a href="https://wa.me/234707797XXXX" class="whatsapp-float">
-        <i class="fab fa-whatsapp"></i> Event Inquiries
+        <i class="fab fa-whatsapp"></i> Event Concierge
     </a>
 
     <script>
