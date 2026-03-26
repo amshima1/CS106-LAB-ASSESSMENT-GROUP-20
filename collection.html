@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collections | Onyx-Adire Haute Couture</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
+
+        :root {
+            --brand-red: #b31d24;
+            --onyx-black: #111111;
+            --header-height: 105px;
+        }
+
+        body { margin: 0; font-family: 'Montserrat', sans-serif; background: #fff; }
+
+        /* HEADER SYSTEM (Consistent with Home) */
+        .master-header {
+            position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height);
+            z-index: 9999; background: white; display: flex; flex-direction: column;
+            border-bottom: 1px solid #eee;
+        }
+        .promo-bar {
+            background-color: var(--brand-red); color: white; height: 35px;
+            display: flex; align-items: center; overflow: hidden; position: relative;
+        }
+        .marquee-text {
+            position: absolute; white-space: nowrap; font-size: 10px;
+            letter-spacing: 2px; text-transform: uppercase; animation: scrolling 20s linear infinite;
+        }
+        @keyframes scrolling { 0% { transform: translateX(100vw); } 100% { transform: translateX(-100%); } }
+        header { height: 70px; display: flex; align-items: center; justify-content: center; position: relative; }
+        .hamburger { position: absolute; left: 20px; font-size: 28px; cursor: pointer; }
+        .logo { font-family: 'Bodoni Moda', serif; font-size: 24px; text-transform: uppercase; text-decoration: none; color: var(--onyx-black); letter-spacing: 4px; font-weight: 700; }
+
+        /* CATEGORY FILTER BAR */
+        .filter-container {
+            margin-top: var(--header-height);
+            padding: 20px 0;
+            text-align: center;
+            background: #fff;
+            position: sticky;
+            top: var(--header-height);
+            z-index: 8000;
+            border-bottom: 1px solid #f5f5f5;
+        }
+        .filter-btn {
+            background: none; border: none; font-family: 'Montserrat';
+            text-transform: uppercase; font-size: 11px; letter-spacing: 2px;
+            margin: 0 10px; cursor: pointer; color: #888; transition: 0.3s;
+        }
+        .filter-btn.active { color: var(--onyx-black); font-weight: 700; border-bottom: 1px solid var(--onyx-black); }
+
+        /* GRID STYLES */
+        .collection-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 20px; }
+        .collection-item { text-align: center; margin-bottom: 30px; animation: fadeIn 0.8s ease forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .collection-item img { width: 100%; height: auto; border-radius: 2px; }
+        .item-name { font-family: 'Bodoni Moda', serif; font-size: 15px; margin: 10px 0 5px; text-transform: uppercase; }
+        .item-price { color: var(--brand-red); font-weight: 600; font-size: 13px; }
+
+        /* SIDE MENU (Hidden by default) */
+        .side-menu {
+            height: calc(100vh - var(--header-height)); width: 0; position: fixed;
+            z-index: 9000; top: var(--header-height); left: 0; background-color: white;
+            overflow-x: hidden; transition: 0.4s ease;
+        }
+        .menu-links { padding-top: 40px; }
+        .menu-links a { padding: 15px 40px; display: block; font-family: 'Bodoni Moda', serif; font-size: 18px; text-decoration: none; color: var(--onyx-black); text-transform: uppercase; }
+
+        /* WHATSAPP FLOAT */
+        .whatsapp-float { position: fixed; bottom: 30px; right: 20px; background-color: var(--brand-red); color: white; padding: 12px 20px; border-radius: 30px; text-decoration: none; font-size: 13px; font-weight: 600; z-index: 9998; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+    </style>
+</head>
+<body>
+
+    <div class="master-header">
+        <div class="promo-bar">
+            <div class="marquee-text">EXPLORE THE ONYX-ADIRE COLLECTIONS • LUXURY CRAFTSMANSHIP • WORLDWIDE DELIVERY</div>
+        </div>
+        <header>
+            <div class="hamburger" onclick="toggleNav()">☰</div>
+            <a href="index.html" class="logo">Onyx-Adire</a>
+        </header>
+    </div>
+
+    <div id="mySideMenu" class="side-menu">
+        <div class="menu-links">
+            <a href="index.html">Home</a>
+            <a href="collection.html">Collection</a>
+            <a href="#">Trustees</a>
+            <a href="#">Events</a>
+            <a href="#">Inquiries</a>
+        </div>
+    </div>
+
+    <div class="filter-container">
+        <button class="filter-btn active" onclick="filterItems('all')">All</button>
+        <button class="filter-btn" onclick="filterItems('silk')">Silk</button>
+        <button class="filter-btn" onclick="filterItems('cotton')">Cotton</button>
+        <button class="filter-btn" onclick="filterItems('heritage')">Heritage</button>
+    </div>
+
+    <div class="collection-grid" id="collGrid">
+        </div>
+
+    <a href="https://wa.me/2347077978701" class="whatsapp-float"><i class="fab fa-whatsapp"></i> Chat via WhatsApp</a>
+
+    <script>
+        const products = [
+            { id: 1, name: "Indigo Flora", price: "₦45,000", cat: "silk" },
+            { id: 2, name: "Azure Wrap", price: "₦52,000", cat: "cotton" },
+            { id: 3, name: "Onyx Silk", price: "₦38,500", cat: "silk" },
+            { id: 4, name: "Heritage Kaftan", price: "₦60,000", cat: "heritage" },
+            { id: 5, name: "Midnight Motif", price: "₦42,000", cat: "cotton" },
+            { id: 6, name: "Royal Tie-Dye", price: "₦55,000", cat: "heritage" },
+            { id: 7, name: "Earth & Sky", price: "₦48,000", cat: "silk" },
+            { id: 8, name: "Vogue Indigo", price: "₦65,000", cat: "silk" }
+        ];
+
+        function renderProducts(filter = 'all') {
+            const grid = document.getElementById('collGrid');
+            grid.innerHTML = '';
+            const filtered = filter === 'all' ? products : products.filter(p => p.cat === filter);
+            
+            filtered.forEach(p => {
+                grid.innerHTML += `
+                    <div class="collection-item">
+                        <img src="Onyx-Adire${p.id}.jpg" alt="${p.name}">
+                        <div class="item-name">${p.name}</div>
+                        <div class="item-price">${p.price}</div>
+                    </div>
+                `;
+            });
+        }
+
+        function filterItems(cat) {
+            renderProducts(cat);
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.innerText.toLowerCase() === cat) btn.classList.add('active');
+            });
+        }
+
+        function toggleNav() {
+            var m = document.getElementById("mySideMenu");
+            m.style.width = (m.style.width === "280px") ? "0" : "280px";
+        }
+
+        // Initial Load
+        renderProducts();
+    </script>
+</body>
+</html>
