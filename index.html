@@ -14,204 +14,90 @@
             --glass-white: rgba(255, 255, 255, 0.98);
         }
 
-        body, html {
-            margin: 0;
-            padding: 0;
-            font-family: 'Montserrat', sans-serif;
-            background-color: #fff;
-        }
+        body, html { margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; background-color: #fff; scroll-behavior: smooth; }
 
-        /* 1. TOP SECTION (Highest Z-Index) */
-        .header-wrapper {
-            position: sticky;
-            top: 0;
-            z-index: 6000; /* Stays above the menu */
-            background: white;
-        }
+        /* HEADER & NAV */
+        .header-wrapper { position: sticky; top: 0; z-index: 6000; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .promo-bar { background-color: var(--brand-red); color: white; padding: 10px 0; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; text-align: center;}
+        header { display: flex; align-items: center; justify-content: center; padding: 15px 5%; position: relative; }
+        .hamburger { position: absolute; left: 5%; font-size: 26px; cursor: pointer; }
+        .logo { font-family: 'Bodoni Moda', serif; font-size: 26px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; color: var(--onyx-black); }
 
-        .promo-bar {
-            background-color: var(--brand-red);
-            color: white;
-            padding: 12px 0;
-            font-size: 11px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            overflow: hidden;
-            white-space: nowrap;
-        }
+        .side-menu { height: 100vh; width: 0; position: fixed; z-index: 9000; top: 0; left: 0; background-color: var(--glass-white); overflow-x: hidden; transition: 0.5s; }
+        .close-btn-menu { position: absolute; top: 25px; right: 25px; font-size: 30px; cursor: pointer; color: var(--onyx-black); }
+        .menu-links { padding-top: 100px; }
+        .side-menu a { padding: 15px 40px; text-decoration: none; font-size: 20px; color: var(--onyx-black); font-family: 'Bodoni Moda', serif; display: block; text-transform: uppercase; letter-spacing: 2px; }
 
-        .marquee {
-            display: inline-block;
-            animation: marquee 20s linear infinite;
-        }
+        /* GRID STYLES */
+        .debut-header { text-align: center; padding: 40px 20px; font-family: 'Bodoni Moda', serif; letter-spacing: 5px; text-transform: uppercase; font-size: 24px; }
+        .collection-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 15px; }
+        .collection-item { text-align: center; margin-bottom: 30px; cursor: pointer; }
+        .collection-item img { width: 100%; height: auto; display: block; margin-bottom: 8px; border-radius: 2px; }
+        .item-name { font-family: 'Bodoni Moda', serif; font-size: 15px; text-transform: uppercase; margin-bottom: 4px; }
+        .item-price { font-size: 13px; color: var(--brand-red); font-weight: 600; }
 
-        @keyframes marquee {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
+        /* MODAL / QUICK VIEW */
+        .modal { display: none; position: fixed; z-index: 8000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); overflow-y: auto; }
+        .modal-content { background-color: #fff; margin: 20px auto; padding: 20px; width: 95%; max-width: 500px; position: relative; border-radius: 8px;}
+        .close-modal { position: absolute; top: 10px; right: 20px; font-size: 30px; cursor: pointer; z-index: 10; }
+        .modal-img { width: 100%; height: auto; margin-bottom: 15px; }
+        .modal-btn { background-color: var(--brand-red); color: white; padding: 15px; text-decoration: none; display: block; text-align: center; font-weight: 600; border-radius: 4px; margin-bottom: 30px; }
 
-        header {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px 5%;
-            border-bottom: 1px solid #eee;
-        }
+        /* RECOMMENDATIONS INSIDE MODAL */
+        .rec-title { font-family: 'Bodoni Moda', serif; font-size: 16px; border-top: 1px solid #eee; padding-top: 20px; margin-bottom: 15px; text-transform: uppercase; }
+        .rec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .rec-item img { width: 100%; height: auto; cursor: pointer; }
 
-        .hamburger {
-            position: absolute;
-            left: 5%;
-            font-size: 28px;
-            cursor: pointer;
-        }
+        /* RECENTLY VIEWED SECTION */
+        .recent-section { padding: 40px 15px; background: #f9f9f9; display: none; }
+        .recent-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+        @media (max-width: 600px) { .recent-grid { grid-template-columns: repeat(2, 1fr); } }
 
-        .logo {
-            font-family: 'Bodoni Moda', serif;
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            text-decoration: none;
-            color: var(--onyx-black);
-        }
-
-        /* 2. SIDE MENU (Starts below the header) */
-        .side-menu {
-            height: calc(100vh - 120px); /* Adjust based on header height */
-            width: 0;
-            position: fixed;
-            z-index: 4000; /* Lower than header and WhatsApp */
-            top: 110px; /* Starts exactly where header ends */
-            left: 0;
-            background-color: var(--glass-white);
-            overflow-x: hidden;
-            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 10px 0 30px rgba(0,0,0,0.05);
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 28px;
-            cursor: pointer;
-            color: var(--onyx-black);
-        }
-
-        .menu-links {
-            padding-top: 60px;
-        }
-
-        .side-menu a {
-            padding: 15px 40px;
-            text-decoration: none;
-            font-size: 20px;
-            color: var(--onyx-black);
-            font-family: 'Bodoni Moda', serif;
-            display: block;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        /* 3. COLLECTION STYLING */
-        .hero-image { width: 100%; height: auto; display: block; }
-        .debut-header { text-align: center; padding: 50px 20px; font-family: 'Bodoni Moda', serif; letter-spacing: 6px; text-transform: uppercase; }
-        
-        .collection-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            padding: 20px;
-        }
-
-        .collection-item { text-align: center; margin-bottom: 40px; }
-        .collection-item img { width: 100%; height: auto; display: block; margin-bottom: 15px; }
-        .item-name { font-family: 'Bodoni Moda', serif; font-size: 18px; text-transform: uppercase; margin-bottom: 5px; }
-        .item-price { font-size: 15px; color: #555; }
-
-        /* 4. FOOTER */
-        footer { background-color: var(--brand-red); color: white; text-align: center; padding: 60px 20px 150px 20px; }
-        .newsletter-box { background: white; padding: 5px; display: flex; width: 90%; max-width: 350px; margin: 20px auto 40px auto; }
-        .newsletter-box input { border: none; padding: 12px; flex-grow: 1; outline: none; }
+        /* FOOTER */
+        footer { background-color: var(--brand-red); color: white; text-align: center; padding: 60px 20px 120px; }
+        .newsletter-box { background: white; padding: 4px; display: flex; width: 90%; max-width: 320px; margin: 20px auto 40px; }
+        .newsletter-box input { border: none; padding: 10px; flex-grow: 1; outline: none; }
         .newsletter-box button { background: var(--onyx-black); color: white; border: none; padding: 0 15px; cursor: pointer; }
-        .social-icons a { color: white; margin: 0 15px; font-size: 26px; }
+        .social-icons a { color: white; margin: 0 15px; font-size: 24px; }
 
-        /* 5. FLOATING WHATSAPP (Highest Z-Index) */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px; 
-            right: 20px;
-            background-color: var(--brand-red);
-            color: white;
-            padding: 12px 20px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            z-index: 7000; /* Higher than everything else */
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
+        .whatsapp-float { position: fixed; bottom: 30px; right: 20px; background-color: var(--brand-red); color: white; padding: 12px 20px; border-radius: 30px; text-decoration: none; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 8px; z-index: 6500; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
     </style>
 </head>
 <body>
 
     <div class="header-wrapper">
-        <div class="promo-bar">
-            <div class="marquee">
-                ONYX-ADIRE HERITAGE DROP • LUXURY CRAFTSMANSHIP • WORLDWIDE DELIVERY • 
-            </div>
-        </div>
+        <div class="promo-bar">ONYX-ADIRE • THE LUXURY OF HERITAGE</div>
         <header>
             <div class="hamburger" onclick="openNav()">☰</div>
             <a href="#" class="logo">Onyx-Adire</a>
         </header>
     </div>
 
-    <div id="mySideMenu" class="side-menu">
-        <span class="close-btn" onclick="closeNav()">✕</span>
-        <div class="menu-links">
-            <a href="#" onclick="closeNav()">Home</a>
-            <a href="#" onclick="closeNav()">Collection</a>
-            <a href="#" onclick="closeNav()">Trustees</a>
-            <a href="#" onclick="closeNav()">Events</a>
-            <a href="#" onclick="closeNav()">Inquiries</a>
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <img id="modalImg" src="" class="modal-img">
+            <h2 id="modalName" style="font-family: 'Bodoni Moda'; margin-bottom: 5px;"></h2>
+            <p id="modalPrice" style="color: var(--brand-red); font-weight: 700; font-size: 18px; margin-top: 0;"></p>
+            <a id="modalWaLink" href="" target="_blank" class="modal-btn"><i class="fab fa-whatsapp"></i> ORDER NOW</a>
+            
+            <div class="rec-title">You May Also Like</div>
+            <div class="rec-grid" id="recGrid"></div>
         </div>
     </div>
 
-    <img src="Onyx-Adire18.jpg" alt="Hero" class="hero-image">
-
+    <img src="Onyx-Adire18.jpg" alt="Hero" style="width: 100%;">
     <h1 class="debut-header">THE DEBUT EDIT</h1>
 
-    <div class="collection-grid">
-        <script>
-            const items = [
-                { name: "Indigo Flora", price: "₦45,000" }, { name: "Azure Wrap", price: "₦52,000" },
-                { name: "Onyx Silk Adire", price: "₦38,500" }, { name: "Heritage Kaftan", price: "₦60,000" },
-                { name: "Midnight Motif", price: "₦42,000" }, { name: "Royal Tie-Dye", price: "₦55,000" },
-                { name: "Earth & Sky Set", price: "₦48,000" }, { name: "Vogue Indigo", price: "₦65,000" },
-                { name: "Modern Ancestry", price: "₦35,000" }, { name: "Silk Path Kimono", price: "₦50,000" },
-                { name: "Blue Velvet Bloom", price: "₦58,000" }, { name: "Desert Rose Adire", price: "₦44,500" },
-                { name: "Sahara Night", price: "₦62,000" }, { name: "River Essence", price: "₦39,000" },
-                { name: "Deep Sea Shift", price: "₦51,000" }, { name: "Legacy Gown", price: "₦70,000" }
-            ];
+    <div class="collection-grid" id="mainGrid"></div>
 
-            for (let i = 1; i <= 16; i++) {
-                document.write(`
-                    <div class="collection-item">
-                        <img src="Onyx-Adire${i}.jpg" alt="${items[i-1].name}">
-                        <div class="item-name">${items[i-1].name}</div>
-                        <div class="item-price">${items[i-1].price}</div>
-                    </div>
-                `);
-            }
-        </script>
+    <div class="recent-section" id="recentSection">
+        <h2 class="debut-header" style="padding: 0 0 20px 0; font-size: 18px;">Recently Viewed</h2>
+        <div class="recent-grid" id="recentGrid"></div>
     </div>
 
     <footer>
-        <h2 style="font-family: 'Bodoni Moda'; text-transform: uppercase;">Subscribe to our newsletter</h2>
+        <h2 style="font-family: 'Bodoni Moda'; text-transform: uppercase; font-size: 18px;">Join the Onyx Circle</h2>
         <div class="newsletter-box">
             <input type="email" placeholder="Email Address">
             <button>Join</button>
@@ -222,18 +108,82 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/YOURNUMBER" class="whatsapp-float">
-        <i class="fab fa-whatsapp"></i> Chat via WhatsApp
-    </a>
+    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-float"><i class="fab fa-whatsapp"></i> Chat via WhatsApp</a>
 
     <script>
-        function openNav() {
-            document.getElementById("mySideMenu").style.width = "280px";
-        }
-        function closeNav() {
-            document.getElementById("mySideMenu").style.width = "0";
-        }
-    </script>
+        const phoneNumber = "234XXXXXXXXXX"; 
+        const items = [
+            { id: 1, name: "Indigo Flora", price: "₦45,000" }, { id: 2, name: "Azure Wrap", price: "₦52,000" },
+            { id: 3, name: "Onyx Silk", price: "₦38,500" }, { id: 4, name: "Heritage Kaftan", price: "₦60,000" },
+            { id: 5, name: "Midnight Motif", price: "₦42,000" }, { id: 6, name: "Royal Tie-Dye", price: "₦55,000" },
+            { id: 7, name: "Earth & Sky", price: "₦48,000" }, { id: 8, name: "Vogue Indigo", price: "₦65,000" },
+            { id: 9, name: "Modern Ancestry", price: "₦35,000" }, { id: 10, name: "Silk Path", price: "₦50,000" },
+            { id: 11, name: "Velvet Bloom", price: "₦58,000" }, { id: 12, name: "Desert Rose", price: "₦44,500" },
+            { id: 13, name: "Sahara Night", price: "₦62,000" }, { id: 14, name: "River Essence", price: "₦39,000" },
+            { id: 15, name: "Sea Shift", price: "₦51,000" }, { id: 16, name: "Legacy Gown", price: "₦70,000" }
+        ];
 
+        let recentlyViewed = [];
+
+        // Build Main Grid
+        const mainGrid = document.getElementById('mainGrid');
+        items.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'collection-item';
+            div.onclick = () => openProduct(item);
+            div.innerHTML = `<img src="Onyx-Adire${item.id}.jpg"><div class="item-name">${item.name}</div><div class="item-price">${item.price}</div>`;
+            mainGrid.appendChild(div);
+        });
+
+        function openProduct(item) {
+            // Update Modal
+            document.getElementById('modalImg').src = `Onyx-Adire${item.id}.jpg`;
+            document.getElementById('modalName').innerText = item.name;
+            document.getElementById('modalPrice').innerText = item.price;
+            let msg = encodeURIComponent(`Hello Onyx-Adire! I want to order the ${item.name}.`);
+            document.getElementById('modalWaLink').href = `https://wa.me/${phoneNumber}?text=${msg}`;
+            
+            // Random Recommendations
+            const recGrid = document.getElementById('recGrid');
+            recGrid.innerHTML = '';
+            const shuffled = [...items].sort(() => 0.5 - Math.random()).slice(0, 3);
+            shuffled.forEach(r => {
+                const img = document.createElement('img');
+                img.src = `Onyx-Adire${r.id}.jpg`;
+                img.onclick = () => openProduct(r);
+                const rDiv = document.createElement('div');
+                rDiv.className = 'rec-item';
+                rDiv.appendChild(img);
+                recGrid.appendChild(rDiv);
+            });
+
+            // Update Recently Viewed
+            if (!recentlyViewed.find(i => i.id === item.id)) {
+                recentlyViewed.unshift(item);
+                if (recentlyViewed.length > 4) recentlyViewed.pop();
+                updateRecentDisplay();
+            }
+
+            document.getElementById('productModal').style.display = "block";
+        }
+
+        function updateRecentDisplay() {
+            const section = document.getElementById('recentSection');
+            const grid = document.getElementById('recentGrid');
+            section.style.display = "block";
+            grid.innerHTML = '';
+            recentlyViewed.forEach(item => {
+                const d = document.createElement('div');
+                d.className = 'collection-item';
+                d.onclick = () => openProduct(item);
+                d.innerHTML = `<img src="Onyx-Adire${item.id}.jpg" style="width:100%"><div class="item-name" style="font-size:12px">${item.name}</div>`;
+                grid.appendChild(d);
+            });
+        }
+
+        function closeModal() { document.getElementById('productModal').style.display = "none"; }
+        function openNav() { document.getElementById("mySideMenu").style.width = "280px"; }
+        function closeNav() { document.getElementById("mySideMenu").style.width = "0"; }
+    </script>
 </body>
 </html>
