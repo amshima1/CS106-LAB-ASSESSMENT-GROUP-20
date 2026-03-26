@@ -16,7 +16,7 @@
 
         body { margin: 0; font-family: 'Montserrat', sans-serif; background: #fff; color: var(--onyx-black); overflow-x: hidden; }
 
-        /* HEADER & NAVIGATION */
+        /* HEADER */
         .master-header { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height); z-index: 9999; background: white; border-bottom: 1px solid #eee; }
         .promo-bar { background-color: var(--brand-red); color: white; height: 35px; display: flex; align-items: center; overflow: hidden; position: relative; }
         .marquee-text { position: absolute; white-space: nowrap; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; animation: scrolling 25s linear infinite; }
@@ -25,26 +25,26 @@
         .hamburger { position: absolute; left: 20px; font-size: 28px; cursor: pointer; }
         .logo { font-family: 'Bodoni Moda', serif; font-size: 24px; text-transform: uppercase; text-decoration: none; color: var(--onyx-black); letter-spacing: 4px; font-weight: 700; }
 
-        /* SIDE MENU */
-        .side-menu { height: calc(100vh - var(--header-height)); width: 0; position: fixed; z-index: 9000; top: var(--header-height); left: 0; background-color: white; overflow-x: hidden; transition: 0.4s ease; box-shadow: 5px 0 15px rgba(0,0,0,0.1); }
-        .menu-links { padding-top: 40px; }
-        .menu-links a { padding: 15px 40px; display: block; font-family: 'Bodoni Moda', serif; font-size: 18px; text-decoration: none; color: var(--onyx-black); text-transform: uppercase; border-bottom: 1px solid #f9f9f9; }
+        /* SIDE MENU (CLEAN - NO X) */
+        .side-menu { height: calc(100vh - var(--header-height)); width: 0; position: fixed; z-index: 9000; top: var(--header-height); left: 0; background-color: white; overflow-x: hidden; transition: 0.5s; box-shadow: 5px 0 15px rgba(0,0,0,0.05); }
+        .menu-links { padding-top: 40px; display: flex; flex-direction: column; }
+        .menu-links a { padding: 20px 40px; font-family: 'Bodoni Moda', serif; font-size: 18px; text-decoration: none; color: var(--onyx-black); text-transform: uppercase; border-bottom: 1px solid #f9f9f9; letter-spacing: 2px; }
 
-        /* FILTER NAVIGATION */
+        /* FILTERS */
         .filter-nav { margin-top: var(--header-height); padding: 30px 10px; text-align: center; background: #fff; position: sticky; top: var(--header-height); z-index: 8000; border-bottom: 1px solid #f5f5f5; }
         .filter-btn { background: none; border: none; font-family: 'Montserrat'; text-transform: uppercase; font-size: 10px; letter-spacing: 2px; margin: 0 15px; cursor: pointer; color: #999; transition: 0.3s; padding-bottom: 5px; }
         .filter-btn.active { color: var(--onyx-black); border-bottom: 2px solid var(--brand-red); font-weight: 700; }
 
-        /* 80% WIDE COLLECTION GRID */
+        /* GRID SETTINGS */
         .collection-container { width: 80%; margin: 40px auto; padding-bottom: 60px; }
         .collection-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; }
-        .product-card { cursor: pointer; text-align: center; margin-bottom: 20px; transition: transform 0.3s ease; }
+        .product-card { cursor: pointer; text-align: center; margin-bottom: 20px; transition: 0.3s; }
         .product-card img { width: 100%; height: auto; display: block; border-bottom: 3px solid #f0f0f0; }
         .product-info { margin-top: 15px; }
         .product-name { font-family: 'Bodoni Moda', serif; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
         .product-price { font-size: 12px; font-weight: 600; color: var(--brand-red); margin-top: 5px; }
 
-        /* MODAL PRODUCT VIEW */
+        /* MODAL */
         .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: white; overflow-y: auto; }
         .modal-header { padding: 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background: white; border-bottom: 1px solid #eee; z-index: 10; }
         .modal-body { padding: 20px; max-width: 700px; margin: 0 auto; text-align: center; }
@@ -52,20 +52,8 @@
         .modal-title { font-family: 'Bodoni Moda', serif; font-size: 26px; text-transform: uppercase; margin-bottom: 10px; }
         .modal-price { color: var(--brand-red); font-weight: 700; font-size: 20px; margin-bottom: 25px; display: block; }
         
-        .measure-preview { background: #fdfdfd; border: 1px solid #eee; padding: 20px; margin: 30px 0; text-align: left; }
-        .measure-preview h4 { font-family: 'Bodoni Moda', serif; text-transform: uppercase; font-size: 14px; margin-top: 0; border-bottom: 1px solid var(--brand-red); padding-bottom: 8px; width: fit-content; }
-        .measure-preview p { font-size: 12px; line-height: 1.8; color: #666; }
-
-        .slider-section { margin-top: 60px; text-align: left; }
-        .slider-section h3 { font-family: 'Bodoni Moda', serif; text-transform: uppercase; font-size: 15px; letter-spacing: 2px; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        .slider-row { display: flex; overflow-x: auto; gap: 15px; scrollbar-width: none; -ms-overflow-style: none; padding-bottom: 10px; }
-        .slider-row::-webkit-scrollbar { display: none; }
-        .slider-item { min-width: 150px; cursor: pointer; text-align: center; }
-        .slider-item img { width: 100%; height: auto; margin-bottom: 10px; }
-
         .btn-black { background: var(--onyx-black); color: white; padding: 18px 30px; text-decoration: none; display: block; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; font-size: 12px; margin: 20px 0; }
         
-        /* FOOTER WITHOUT COPYRIGHT */
         footer { background-color: var(--brand-red); color: white; text-align: center; padding: 80px 20px; }
         .footer-socials a { color: white; font-size: 24px; margin: 0 15px; text-decoration: none; }
 
@@ -84,11 +72,11 @@
 
     <div id="mySideMenu" class="side-menu">
         <div class="menu-links">
-            <a href="index.html">Home</a>
-            <a href="collection.html">Collection</a>
-            <a href="trustees.html">Trustees</a>
-            <a href="size-profile.html">Size Profile</a>
-            <a href="inquiries.html">Inquiries</a>
+            <a href="index.html" onclick="toggleNav()">Home</a>
+            <a href="collection.html" onclick="toggleNav()">Collection</a>
+            <a href="trustees.html" onclick="toggleNav()">Trustees</a>
+            <a href="events.html" onclick="toggleNav()">Events</a>
+            <a href="inquiries.html" onclick="toggleNav()">Inquiries</a>
         </div>
     </div>
 
@@ -111,30 +99,12 @@
             <img id="modalImg" src="" class="modal-img">
             <h2 id="modalTitle" class="modal-title"></h2>
             <span id="modalPrice" class="modal-price"></span>
-            
-            <p style="font-size: 14px; line-height: 1.8; color: #444;">Each garment is hand-dyed using the 'Adire Eleko' method. This piece is a limited edition artisan production, designed to elevate the wearer's silhouette through heritage patterns.</p>
-
-            <div class="measure-preview">
-                <h4>Bespoke Fit Required</h4>
-                <p>To ensure a perfect fit, please provide your measurements via the Size Profile tool or directly via WhatsApp.</p>
-            </div>
-
+            <p style="font-size: 14px; line-height: 1.8; color: #444;">Each garment is hand-dyed using the 'Adire Eleko' method. A limited edition artisan production.</p>
             <a id="orderBtn" href="#" class="btn-black"><i class="fab fa-whatsapp"></i> Order Bespoke Size</a>
-
-            <div class="slider-section">
-                <h3>You May Also Like</h3>
-                <div class="slider-row" id="likeSlider"></div>
-            </div>
-
-            <div class="slider-section">
-                <h3>Recently Viewed</h3>
-                <div class="slider-row" id="recentSlider"></div>
-            </div>
         </div>
     </div>
 
     <footer>
-        <h2 style="font-family: 'Bodoni Moda'; margin-bottom: 30px;">The Onyx Circle</h2>
         <div class="footer-socials">
             <a href="#"><i class="fab fa-instagram"></i></a>
             <a href="#"><i class="fab fa-tiktok"></i></a>
@@ -147,7 +117,6 @@
 
     <script>
         const totalItems = 47;
-        const recentViews = [];
         const luxuryNames = ["OBA", "ADE", "OLA", "IRE", "IFE", "AMIRA", "ZARA", "DUNNI", "TITI", "KEMI", "NIKE", "SIMI"];
         
         const itemData = Array.from({ length: totalItems }, (_, i) => {
@@ -192,47 +161,13 @@
             document.getElementById('modalTitle').innerText = item.name;
             document.getElementById('modalPrice').innerText = item.price;
             document.getElementById('orderBtn').href = `https://wa.me/234707797XXXX?text=I'm interested in ordering ${item.name} (${item.price})`;
-
-            if (!recentViews.includes(id)) {
-                recentViews.unshift(id);
-                if (recentViews.length > 8) recentViews.pop();
-            }
-
             document.getElementById('productModal').style.display = 'block';
             document.body.style.overflow = 'hidden';
-            updateSliders(id);
         }
 
         function closeProduct() {
             document.getElementById('productModal').style.display = 'none';
             document.body.style.overflow = 'auto';
-        }
-
-        function updateSliders(currentId) {
-            const like = document.getElementById('likeSlider');
-            const recent = document.getElementById('recentSlider');
-            like.innerHTML = ''; recent.innerHTML = '';
-
-            for(let i=0; i<6; i++){
-                let rId = Math.floor(Math.random() * totalItems) + 1;
-                const rItem = itemData.find(p => p.id === rId);
-                like.innerHTML += `
-                    <div class="slider-item" onclick="openProduct(${rId})">
-                        <img src="Onyx-Adire${rId}.jpg">
-                        <div class="product-price" style="font-size:9px;">${rItem.price}</div>
-                    </div>
-                `;
-            }
-
-            recentViews.forEach(rid => {
-                const rItem = itemData.find(p => p.id === rid);
-                recent.innerHTML += `
-                    <div class="slider-item" onclick="openProduct(${rid})">
-                        <img src="Onyx-Adire${rid}.jpg">
-                        <div class="product-price" style="font-size:9px;">${rItem.price}</div>
-                    </div>
-                `;
-            });
         }
 
         function toggleNav() {
