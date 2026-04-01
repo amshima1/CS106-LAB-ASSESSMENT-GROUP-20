@@ -1,1 +1,33 @@
+/* GLOBAL STYLES - Onyx-Adire Haute Couture */
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;700&family=Montserrat:wght@300;400;600&display=swap');
+
+:root {
+    --brand-red: #b31d24;
+    --onyx-black: #111111;
+    --header-height: 105px;
+}
+
+body { margin: 0; font-family: 'Montserrat', sans-serif; background: #fff; color: var(--onyx-black); overflow-x: hidden; }
+
+[span_5](start_span)/* MARQUEE FEATURE[span_5](end_span) */
+.promo-bar { background-color: var(--brand-red); color: white; height: 35px; display: flex; align-items: center; overflow: hidden; position: relative; }
+.marquee-text { position: absolute; white-space: nowrap; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; animation: scrolling 25s linear infinite; }
+@keyframes scrolling { 0% { transform: translateX(100vw); } 100% { transform: translateX(-100%); } }
+
+[span_6](start_span)/* HEADER & NAVIGATION[span_6](end_span) */
+.master-header { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height); z-index: 9999; background: white; border-bottom: 1px solid #eee; }
+header { height: 70px; display: flex; align-items: center; justify-content: center; position: relative; }
+.logo { font-family: 'Bodoni Moda', serif; font-size: 24px; text-transform: uppercase; text-decoration: none; color: var(--onyx-black); letter-spacing: 4px; font-weight: 700; }
+.hamburger { position: absolute; left: 20px; font-size: 28px; cursor: pointer; }
+
+/* SIDE MENU (JS Controlled) */
+.side-menu { height: calc(100vh - var(--header-height)); width: 0; position: fixed; z-index: 9000; top: var(--header-height); left: 0; background-color: white; overflow-x: hidden; transition: 0.5s; border-right: 1px solid #eee; }
+.menu-links { padding-top: 40px; display: flex; flex-direction: column; }
+.menu-links a { padding: 20px 40px; font-family: 'Bodoni Moda', serif; font-size: 18px; text-decoration: none; color: var(--onyx-black); text-transform: uppercase; border-bottom: 1px solid #f9f9f9; letter-spacing: 2px; }
+
+[span_7](start_span)/* FOOTER[span_7](end_span) */
+footer { background-color: var(--brand-red); color: white; text-align: center; padding: 60px 20px; margin-top: 60px; }
+.footer-title { font-family: 'Bodoni Moda', serif; text-transform: uppercase; letter-spacing: 5px; font-size: 24px; margin-bottom: 35px; display: block; }
+.footer-socials { display: flex; justify-content: center; gap: 30px; margin-bottom: 20px; }
+.footer-socials a { color: white; font-size: 28px; text-decoration: none; }
 
