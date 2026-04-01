@@ -1,33 +1,39 @@
-/* GLOBAL STYLES */
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;700&family=Montserrat:wght@300;400;600&display=swap');
+[span_7](start_span)/* MODULE: HOME SLIDER[span_7](end_span) */
+const slides = [
+    { title: "Midnight Silk Gown", desc: "Hand-stitched premium elegance." },
+    { title: "Executive Slim-Fit", desc: "Professional elegance for the boardroom." },
+    { title: "Summer Boho Line", desc: "Lightweight and breathable fabrics." }
+];
 
-:root {
-    --brand-red: #b31d24;
-    --onyx-black: #111111;
-    --header-height: 140px;
+let currentSlide = 0;
+
+function updateSlider() {
+    const titleEl = document.getElementById('slide-title');
+    const descEl = document.getElementById('slide-desc');
+    if (titleEl && descEl) {
+        titleEl.innerText = slides[currentSlide].title;
+        descEl.innerText = slides[currentSlide].desc;
+    }
 }
 
-body { margin: 0; font-family: 'Montserrat', sans-serif; background: #fff; color: var(--onyx-black); }
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    updateSlider();
+}
 
-[span_2](start_span)/* MARQUEE FEATURE[span_2](end_span) */
-.promo-bar { background: var(--brand-red); color: white; height: 35px; display: flex; align-items: center; overflow: hidden; position: relative; }
-.marquee-text { position: absolute; white-space: nowrap; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; animation: scrolling 20s linear infinite; }
-@keyframes scrolling { 0% { transform: translateX(100vw); } 100% { transform: translateX(-100%); } }
+if (document.getElementById('slider-container')) {
+    setInterval(nextSlide, 4000); [span_8](start_span)// Auto-advance every 4s[span_8](end_span)
+}
 
-[span_3](start_span)/* HEADER & NAV[span_3](end_span) */
-.master-header { position: fixed; top: 0; width: 100%; z-index: 9999; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-header { padding: 20px; text-align: center; border-bottom: 1px solid #eee; }
-.logo { font-family: 'Bodoni Moda', serif; font-size: 28px; text-transform: uppercase; letter-spacing: 5px; font-weight: 700; color: black; text-decoration: none; }
-nav { background: #333; padding: 10px 0; text-align: center; }
-nav a { color: white; text-decoration: none; margin: 0 20px; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+[span_9](start_span)/* MODULE: STAR RATINGS[span_9](end_span) */
+function setRating(stars) {
+    alert(`Thank you! You rated this product ${stars} stars.`);
+}
 
-/* MAIN CONTENT */
-main { margin-top: var(--header-height); padding: 40px 20px; min-height: 60vh; }
-
-[span_4](start_span)/* TRUSTEE CARDS[span_4](end_span) */
-.trustee-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; max-width: 1200px; margin: auto; }
-.trustee-card { border: 1px solid #eee; padding: 15px; text-align: center; border-radius: 5px; }
-.trustee-card img { width: 100%; height: 250px; object-fit: cover; margin-bottom: 10px; }
-
-/* FOOTER */
-footer { background: #222; color: white; text-align: center; padding: 30px; font-size: 12px; }
+[span_10](start_span)/* MODULE: APPOINTMENT FORM[span_10](end_span) */
+function handleAppointment(event) {
+    event.preventDefault();
+    const name = document.getElementById('name').value;
+    alert(`Thank you ${name}! Your appointment was received.`);
+    event.target.reset();
+}
