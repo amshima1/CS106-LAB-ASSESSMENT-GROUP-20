@@ -1,85 +1,178 @@
-/* Footer Styles */
-.main-footer {
-    background-color: var(--brand-red);
-    color: var(--pure-white);
-    padding: 60px 20px 40px 20px;
-    text-align: center;
+:root {
+    --brand-red: #cc0000;
+    --pure-white: #ffffff;
+    --onyx-black: #000000;
 }
 
-.footer-container {
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--pure-white);
+    color: var(--onyx-black);
+    overflow-x: hidden;
+}
+
+/* Announcement Bar */
+.announcement-bar {
+    background-color: var(--brand-red);
+    color: var(--pure-white);
+    padding: 10px 0;
+    font-size: 0.75rem;
+    font-weight: 600;
+    z-index: 1005;
+    position: relative;
+}
+
+/* Header */
+.main-header {
+    background-color: var(--pure-white);
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    z-index: 1002; /* Keeps logo above side-menu */
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.newsletter h3 {
+.brand-logo {
     font-family: 'Cinzel', serif;
-    letter-spacing: 3px;
-    margin-bottom: 20px;
-    font-size: 1.2rem;
+    color: var(--brand-red);
+    font-size: 1.6rem;
+    letter-spacing: 5px;
+    margin: 0;
 }
 
-.newsletter-form {
+.hamburger {
+    cursor: pointer;
+}
+
+.hamburger span {
+    display: block;
+    height: 3px;
+    width: 25px;
+    background-color: var(--brand-red);
+    margin-bottom: 4px;
+}
+
+/* Side Menu */
+.side-nav {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 280px;
+    height: 100%;
+    background-color: var(--pure-white);
+    box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+    transition: 0.4s ease-in-out;
+    z-index: 1001; 
+    padding: 20px;
+}
+
+.side-nav.active {
+    left: 0;
+}
+
+.nav-close-container {
     display: flex;
-    justify-content: center;
-    margin-bottom: 40px;
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
+    justify-content: flex-end;
+}
+
+#nav-close {
+    font-size: 2.8rem;
+    color: var(--brand-red);
+    cursor: pointer;
+    line-height: 1;
+}
+
+.nav-links a {
+    display: block;
+    padding: 20px 0;
+    color: var(--onyx-black);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+/* Content Area */
+.content-area {
+    min-height: 60vh;
+}
+
+/* Footer */
+.main-footer {
+    background-color: var(--brand-red);
+    color: var(--pure-white);
+    padding: 60px 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.newsletter h3 {
+    font-family: 'Cinzel', serif;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
 }
 
 .newsletter-form input {
     padding: 12px;
-    border: 1px solid var(--pure-white);
+    border: 1px solid white;
     background: transparent;
     color: white;
-    width: 70%;
-    outline: none;
-}
-
-.newsletter-form input::placeholder {
-    color: rgba(255, 255, 255, 0.7);
+    width: 200px;
 }
 
 .newsletter-form button {
     padding: 12px 20px;
-    background-color: var(--pure-white);
+    background: white;
     color: var(--brand-red);
     border: none;
-    font-weight: 600;
+    font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
 }
 
-.newsletter-form button:hover {
-    background-color: #f0f0f0;
-}
-
-/* Social Media Handles */
 .social-links {
-    margin-bottom: 30px;
+    margin: 30px 0;
 }
 
 .social-links a {
-    color: var(--pure-white);
+    color: white;
     text-decoration: none;
     margin: 0 15px;
     font-weight: 600;
-    font-size: 0.9rem;
-    transition: 0.3s;
+    font-size: 0.8rem;
 }
 
-.social-links a:hover {
-    opacity: 0.7;
+/* WhatsApp Button */
+.whatsapp-btn-red {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--brand-red);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 1010; /* Highest priority */
+    font-weight: 600;
 }
 
-.social-links i {
-    margin-right: 5px;
-    font-size: 1.1rem;
-}
-
-.copyright {
-    font-size: 0.7rem;
-    letter-spacing: 1px;
-    opacity: 0.8;
-    margin-top: 20px;
+.whatsapp-btn-red i {
+    margin-right: 10px;
+    font-size: 1.2rem;
 }
