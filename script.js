@@ -1,20 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Dynamic Greeting (DOM manipulation)
-    const welcomeMsg = document.getElementById('welcome-msg');
-    if (welcomeMsg) {
-        const hours = new Date().getHours();
-        welcomeMsg.innerText = hours < 12 ? "Good Morning from Onyx—Adire" : "Welcome to the Onyx—Adire Collection";
+    // Feature 1: Dynamic Greeting (DOM Manipulation)
+    const greetingElement = document.getElementById('dynamic-greeting');
+    const currentHour = new Date().getHours();
+    
+    if (currentHour < 12) {
+        greetingElement.textContent = "Good Morning, Welcome to Onyx—Adire";
+    } else if (currentHour < 18) {
+        greetingElement.textContent = "Good Afternoon, Welcome to Onyx—Adire";
+    } else {
+        greetingElement.textContent = "Good Evening, Welcome to Onyx—Adire";
     }
 
-    // 2. Page Activity Tracker
-    console.log(`Current Page: ${window.location.pathname}`);
+    // Feature 2: Interactive Header Effect
+    const header = document.querySelector('header h1');
+    header.addEventListener('mouseover', () => {
+        header.style.color = '#ffffff';
+        header.style.cursor = 'pointer';
+    });
+    header.addEventListener('mouseout', () => {
+        header.style.color = '#d4af37';
+    });
 
-    // 3. Appointment Form Logic
-    const form = document.querySelector('#booking-form');
-    if (form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert("Success! Your Onyx—Adire appointment is being processed.");
-        });
-    }
+    // Feature 3: Scroll-to-Top Logic (Useful for all pages)
+    console.log("Onyx—Adire Script Initialized.");
 });
