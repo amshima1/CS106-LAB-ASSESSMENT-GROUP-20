@@ -3,17 +3,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const navClose = document.getElementById('nav-close');
     const sideMenu = document.getElementById('side-menu');
 
-    // Toggle logic for the slide-out menu
-    navOpen.onclick = () => sideMenu.classList.add('active');
-    navClose.onclick = () => sideMenu.classList.remove('active');
+    // Open Menu
+    navOpen.onclick = () => {
+        sideMenu.classList.add('active');
+    };
 
-    // Dynamic Greeting for the Home Page
+    // Close Menu
+    navClose.onclick = () => {
+        sideMenu.classList.remove('active');
+    };
+
+    // Auto-close menu when clicking a link
+    const links = document.querySelectorAll('.nav-links a');
+    links.forEach(link => {
+        link.onclick = () => sideMenu.classList.remove('active');
+    });
+
+    // Dynamic Greeting
     const greeting = document.getElementById('greeting');
     const hour = new Date().getHours();
-    
     if (greeting) {
-        if (hour < 12) greeting.innerText = "Good Morning | Onyx—Adire";
-        else if (hour < 18) greeting.innerText = "Good Afternoon | Onyx—Adire";
-        else greeting.innerText = "Good Evening | Onyx—Adire";
+        greeting.innerText = hour < 12 ? "Good Morning | Onyx—Adire" : 
+                            hour < 18 ? "Good Afternoon | Onyx—Adire" : 
+                            "Good Evening | Onyx—Adire";
     }
 });
