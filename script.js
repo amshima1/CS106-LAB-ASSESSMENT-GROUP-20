@@ -3,25 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const navClose = document.getElementById('nav-close');
     const sideMenu = document.getElementById('side-menu');
 
-    // Slide out menu
-    if (navOpen) {
-        navOpen.addEventListener('click', () => {
-            sideMenu.classList.add('active');
-        });
-    }
+    navOpen.onclick = () => sideMenu.classList.add('active');
+    navClose.onclick = () => sideMenu.classList.remove('active');
 
-    // Hide menu
-    if (navClose) {
-        navClose.addEventListener('click', () => {
-            sideMenu.classList.remove('active');
-        });
-    }
-
-    // Close menu when a link is clicked
-    const links = document.querySelectorAll('.nav-links a');
-    links.forEach(link => {
-        link.addEventListener('click', () => {
-            sideMenu.classList.remove('active');
-        });
+    // Close when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.onclick = () => sideMenu.classList.remove('active');
     });
 });
