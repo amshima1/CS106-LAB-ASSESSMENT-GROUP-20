@@ -1,82 +1,82 @@
+/* Variables for consistency */
 :root {
-    --onyx: #121212;
-    --gold: #d4af37;
-    --off-white: #f4f4f4;
+    --onyx-black: #121212;
+    --gold-accent: #d4af37;
+    --text-gray: #e0e0e0;
+    --pure-white: #ffffff;
 }
 
 body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
-    background-color: var(--off-white);
-    color: var(--onyx);
+    padding: 0;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background-color: var(--onyx-black);
+    color: var(--text-gray);
+    line-height: 1.6;
 }
 
 header {
-    background-color: var(--onyx);
-    color: var(--gold);
-    padding: 20px;
+    background-color: #000;
+    padding: 30px 0;
     text-align: center;
-    border-bottom: 3px solid var(--gold);
+    border-bottom: 2px solid var(--gold-accent);
 }
 
+header h1 {
+    color: var(--gold-accent);
+    margin: 0;
+    letter-spacing: 5px;
+    font-size: 2.5rem;
+}
+
+/* Navigation */
 nav {
     display: flex;
     justify-content: center;
     background-color: #1a1a1a;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    padding: 15px 0;
 }
 
 nav a {
-    color: white;
-    padding: 15px 25px;
+    color: var(--pure-white);
     text-decoration: none;
+    margin: 0 20px;
+    font-size: 0.9rem;
     text-transform: uppercase;
-    font-size: 13px;
-    letter-spacing: 1px;
+    transition: 0.3s;
 }
 
-nav a:hover {
-    color: var(--gold);
+nav a:hover, nav a.active {
+    color: var(--gold-accent);
 }
 
-.marquee-bar {
-    background-color: var(--gold);
-    color: var(--onyx);
-    padding: 8px 0;
+/* Marquee Styling */
+.marquee-container {
+    background-color: var(--gold-accent);
+    color: #000;
+    padding: 10px 0;
     font-weight: bold;
+    font-size: 0.85rem;
 }
 
+/* Main Container */
 .container {
-    max-width: 1100px;
-    margin: 40px auto;
+    max-width: 1000px;
+    margin: 50px auto;
     padding: 0 20px;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-}
-
-.card {
-    background: white;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     text-align: center;
-    transition: transform 0.3s;
 }
 
-.card:hover { transform: translateY(-5px); }
-
-img { max-width: 100%; border-radius: 4px; }
+.hero-image img {
+    width: 100%;
+    margin-top: 30px;
+    border-radius: 4px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
 
 footer {
-    text-align: center;
+    background: #000;
     padding: 20px;
-    background: var(--onyx);
-    color: white;
+    font-size: 0.8rem;
     margin-top: 50px;
 }
