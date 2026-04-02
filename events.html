@@ -10,26 +10,27 @@
     <style>
         :root { --onyx-red: #cc0000; }
         
-        /* 1. GLOBAL RESET & RED TEXT ENFORCEMENT */
+        /* 1. GLOBAL RESET */
         * { box-sizing: border-box; }
         body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background: #fff; overflow-x: hidden; }
 
-        /* Forces ALL text to Onyx Red across the entire document */
-        body, h1, h2, h3, h4, h5, h6, p, a, span, marquee, div, i { 
+        /* Forces ALL text to Onyx Red (Except Announcement Bar) */
+        h1, h2, h3, h4, h5, h6, p, a, span, .nav-links a, i { 
             color: var(--onyx-red) !important; 
         }
 
-        /* 2. ANNOUNCEMENT BAR */
+        /* 2. ANNOUNCEMENT BAR (Red BG, White Text) */
         .announcement-bar {
-            background: #fff; /* White background to let red text pop */
+            background: var(--onyx-red) !important;
             height: 35px; width: 100%; position: fixed; top: 0; z-index: 10001;
-            display: flex; align-items: center; border-bottom: 1px solid var(--onyx-red);
+            display: flex; align-items: center;
         }
         .announcement-bar marquee {
+            color: #ffffff !important; /* Overrides the global red for this bar */
             font-size: 0.7rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
         }
 
-        /* 3. HEADER (Lowered for Announcement Bar) */
+        /* 3. HEADER */
         .main-header { 
             position: fixed; top: 35px; width: 100%; height: 80px;
             background: rgba(255, 255, 255, 0.98); border-bottom: 1px solid #f0f0f0; z-index: 10000;
@@ -37,36 +38,28 @@
         }
         .brand-logo { font-family: 'Cinzel', serif; font-size: 1.5rem; letter-spacing: 5px; text-decoration: none; }
 
-        /* 4. MORPHING HAMBURGER */
+        /* 4. HAMBURGER & MENU */
         .hamburger {
             position: absolute; left: 25px; width: 28px; height: 18px;
             display: flex; flex-direction: column; justify-content: space-between;
             cursor: pointer; z-index: 10002;
         }
-        .hamburger span { display: block; height: 2px; width: 100%; background: var(--onyx-red) !important; transition: 0.3s ease-in-out; }
-        
-        /* Hamburger to X Animation */
+        .hamburger span { display: block; height: 2px; width: 100%; background: var(--onyx-red) !important; transition: 0.3s; }
         .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
         .hamburger.active span:nth-child(2) { opacity: 0; }
         .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-        /* 5. SIDE NAVIGATION MENU */
         .side-nav {
             position: fixed; top: 0; left: -100%; width: 100%; height: 100vh;
             background: #ffffff; z-index: 9999; transition: 0.6s cubic-bezier(0.77, 0, 0.175, 1);
             display: flex; flex-direction: column; justify-content: center; align-items: center;
         }
         .side-nav.open { left: 0; }
-        .nav-links a {
-            font-family: 'Cinzel', serif; font-size: 2rem;
-            text-decoration: none; margin: 15px 0; font-weight: 700; text-transform: uppercase; transition: 0.3s;
-        }
-        .nav-links a:hover { letter-spacing: 6px; opacity: 0.5; }
+        .nav-links a { font-family: 'Cinzel', serif; font-size: 2rem; text-decoration: none; margin: 15px 0; font-weight: 700; text-transform: uppercase; }
 
-        /* 6. CONTENT LAYOUT (Head-to-Toe Visuals) */
+        /* 5. CONTENT (Head-to-Toe) */
         .content { padding: 180px 20px 80px; max-width: 1200px; margin: 0 auto; text-align: center; }
         .event-section { margin-bottom: 150px; }
-        
         .img-frame { 
             width: 100%; height: 80vh; background: #fcfcfc; 
             display: flex; align-items: center; justify-content: center; 
@@ -76,28 +69,19 @@
         
         .event-tag { font-weight: 800; font-size: 0.75rem; letter-spacing: 5px; text-transform: uppercase; display: block; margin-bottom: 20px; }
         h3 { font-family: 'Cinzel', serif; font-size: 2.2rem; margin: 10px 0 25px; line-height: 1.2; }
-        .description { line-height: 2; max-width: 750px; margin: 0 auto; font-size: 1.05rem; font-weight: 400; opacity: 0.9; }
+        .description { line-height: 2; max-width: 750px; margin: 0 auto; font-size: 1.05rem; opacity: 0.9; }
 
-        /* 7. FLOATING WHATSAPP BUTTON */
+        /* 6. WHATSAPP */
         .whatsapp-float {
             position: fixed; bottom: 30px; right: 30px;
             background: #fff; border: 2px solid var(--onyx-red);
             padding: 12px 25px; border-radius: 50px; text-decoration: none;
             font-weight: 800; font-size: 0.75rem; z-index: 1000;
-            display: flex; align-items: center; gap: 12px; letter-spacing: 1px;
+            display: flex; align-items: center; gap: 12px;
             box-shadow: 0 10px 25px rgba(204, 0, 0, 0.1);
-            transition: 0.3s ease;
         }
         .whatsapp-float:hover { background: var(--onyx-red); }
         .whatsapp-float:hover * { color: #fff !important; }
-
-        /* MOBILE ADJUSTMENTS */
-        @media (max-width: 768px) {
-            .img-frame { height: 60vh; }
-            h3 { font-size: 1.7rem; }
-            .nav-links a { font-size: 1.5rem; }
-            .whatsapp-float { bottom: 20px; right: 20px; padding: 10px 20px; }
-        }
     </style>
 </head>
 <body>
@@ -124,13 +108,12 @@
     </nav>
 
     <main class="content">
-
         <section class="event-section">
             <div class="img-frame"><img src="Onyx-Adire-Foster.jpg" alt="Foster"></div>
             <span class="event-tag">The Visionary</span>
             <h3>Foster: Architect of Heritage</h3>
             <p class="description">
-                True luxury is found in the preservation of the soul. Foster leads Onyx—Adire with a mission to transform ancient indigo wisdom into a modern visual language. Here, every stitch is an archival act, and every pattern is a portal to the future.
+                True luxury is found in the preservation of the soul. Foster leads Onyx—Adire with a mission to transform ancient indigo wisdom into a modern visual language.
             </p>
         </section>
 
@@ -139,7 +122,7 @@
             <span class="event-tag">Institutional Keynote — 2026</span>
             <h3>Miva Open University Innovation Summit</h3>
             <p class="description">
-                Where the classroom meets the dye-pit. Our collaboration with Miva Open University explores the digitization of culture, ensuring the next generation of African designers are masters of both code and craft.
+                Where the classroom meets the dye-pit. Our collaboration with Miva Open University explores the digitization of culture.
             </p>
         </section>
 
@@ -147,20 +130,8 @@
             <div class="img-frame"><img src="Onyx-Adire10.jpg" alt="Gala"></div>
             <span class="event-tag">Archival Reveal — January 2026</span>
             <h3>The Trustees Gala</h3>
-            <p class="description">
-                The unveiling of our 'Ancestral Blueprint' series. A celebration of the guardians who keep our culture alive, curated specifically for the international stage.
-            </p>
+            <p class="description">The unveiling of our 'Ancestral Blueprint' series. A celebration of the guardians of culture.</p>
         </section>
-
-        <section class="event-section">
-            <div class="img-frame"><img src="Onyx-Adire7.jpg" alt="Workshop"></div>
-            <span class="event-tag">The Masterclass — February 2026</span>
-            <h3>The Alchemy of Indigo</h3>
-            <p class="description">
-                Indigo is a ritual. This immersive workshop explores organic chemistry and the rhythmic precision of tie-resist techniques. We don't just teach art—we transmit life.
-            </p>
-        </section>
-
     </main>
 
     <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-float" target="_blank">
@@ -168,21 +139,13 @@
         <span>INQUIRIES</span>
     </a>
 
-    <footer style="padding: 60px 20px; text-align: center; border-top: 1px solid #f0f0f0;">
-        <p style="font-size: 0.7rem; font-weight: 800; letter-spacing: 2px;">&copy; 2026 ONYX—ADIRE. ALL RIGHTS RESERVED.</p>
-    </footer>
-
     <script>
         const navToggle = document.getElementById('nav-toggle');
         const sideMenu = document.getElementById('side-menu');
-
-        // Logic for Hamburger and Menu
         navToggle.addEventListener('click', () => {
             navToggle.classList.toggle('active');
             sideMenu.classList.toggle('open');
         });
-
-        // Close menu on link click
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navToggle.classList.remove('active');
