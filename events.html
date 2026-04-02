@@ -3,137 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events & Runway | Onyx—Adire Haute Couture</title>
+    <title>Events | Onyx—Adire</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
-
-        :root {
-            --brand-red: #b31d24;
-            --onyx-black: #111111;
-            --header-height: 105px;
+        :root { --onyx-red: #cc0000; }
+        
+        /* 1. CENTERED LOGO HEADER & ANNOUNCEMENT */
+        .announcement-bar {
+            background: var(--onyx-red);
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            top: 0; width: 100%;
+            z-index: 10002;
+        }
+        .announcement-bar marquee {
+            color: #ffffff !important;
+            font-size: 0.7rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
         }
 
-        body { margin: 0; font-family: 'Montserrat', sans-serif; background: #fff; color: var(--onyx-black); overflow-x: hidden; }
+        .main-header { 
+            top: 35px; 
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid #f0f0f0;
+            position: fixed; width: 100%; z-index: 10001;
+        }
+        
+        .header-inner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            height: 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
 
-        /* HEADER & PROMO BAR */
-        .master-header { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height); z-index: 9999; background: white; border-bottom: 1px solid #eee; }
-        .promo-bar { background-color: var(--brand-red); color: white; height: 35px; display: flex; align-items: center; overflow: hidden; position: relative; }
-        .marquee-text { position: absolute; white-space: nowrap; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; animation: scrolling 25s linear infinite; }
-        @keyframes scrolling { 0% { transform: translateX(100vw); } 100% { transform: translateX(-100%); } }
-        header { height: 70px; display: flex; align-items: center; justify-content: center; position: relative; }
-        .hamburger { position: absolute; left: 20px; font-size: 28px; cursor: pointer; }
-        .logo { font-family: 'Bodoni Moda', serif; font-size: 24px; text-transform: uppercase; text-decoration: none; color: var(--onyx-black); letter-spacing: 4px; font-weight: 700; }
+        .brand-logo { font-size: 1.5rem; letter-spacing: 5px; margin: 0; }
 
-        /* SIDE MENU */
-        .side-menu { height: calc(100vh - var(--header-height)); width: 0; position: fixed; z-index: 9000; top: var(--header-height); left: 0; background-color: white; overflow-x: hidden; transition: 0.5s; box-shadow: 5px 0 15px rgba(0,0,0,0.05); }
-        .menu-links { padding-top: 40px; display: flex; flex-direction: column; }
-        .menu-links a { padding: 20px 40px; font-family: 'Bodoni Moda', serif; font-size: 18px; text-decoration: none; color: var(--onyx-black); text-transform: uppercase; border-bottom: 1px solid #f9f9f9; letter-spacing: 2px; }
+        .hamburger { position: absolute; left: 20px; cursor: pointer; }
 
-        /* TIMELINE LAYOUT */
-        .timeline-container { max-width: 1000px; margin: var(--header-height) auto 0; padding: 60px 20px; position: relative; }
-        .timeline-container::after { content: ''; position: absolute; width: 1px; background: #ddd; top: 150px; bottom: 80px; left: 50%; }
+        /* 2. GLOBAL RED TYPOGRAPHY */
+        body, h1, h2, h3, h4, h5, p, a, span { color: var(--onyx-red) !important; }
 
-        .event-header { text-align: center; margin-bottom: 60px; }
-        .event-header h1 { font-family: 'Bodoni Moda', serif; text-transform: uppercase; letter-spacing: 8px; font-size: 32px; margin-bottom: 10px; }
-        .event-header p { font-size: 10px; text-transform: uppercase; letter-spacing: 4px; color: #999; }
+        .events-container { padding: 160px 20px 80px; max-width: 1200px; margin: 0 auto; }
 
-        .timeline-item { padding: 20px 50px; position: relative; width: 50%; box-sizing: border-box; margin-bottom: 60px; }
-        .timeline-item::after { content: ''; position: absolute; width: 10px; height: 10px; right: -5px; background-color: var(--brand-red); top: 30px; border-radius: 50%; z-index: 1; }
-        .left { left: 0; text-align: right; }
-        .right { left: 50%; text-align: left; }
-        .right::after { left: -5px; }
+        .section-intro { text-align: center; margin-bottom: 60px; }
+        .section-title { font-family: 'Cinzel', serif; font-size: 2.5rem; margin-bottom: 10px; }
 
-        .content img { width: 100%; height: auto; display: block; margin-bottom: 20px; border: 1px solid #f8f8f8; }
-        .date { font-size: 11px; font-weight: 700; color: var(--brand-red); letter-spacing: 2px; margin-bottom: 8px; display: block; }
-        .title { font-family: 'Bodoni Moda', serif; font-size: 20px; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 1px; }
-        .desc { font-size: 13px; line-height: 1.8; color: #555; }
+        /* 3. EVENT CARDS */
+        .event-featured {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            background: #fff;
+            border: 1px solid #eee;
+            margin-bottom: 60px;
+            align-items: center;
+        }
 
-        /* RED FOOTER (AS PER SCREENSHOT) */
-        footer { background-color: var(--brand-red); color: white; text-align: center; padding: 70px 20px; margin-top: 40px; }
-        .footer-title { font-family: 'Bodoni Moda', serif; text-transform: uppercase; letter-spacing: 5px; font-size: 24px; margin-bottom: 35px; display: block; }
-        .footer-socials { display: flex; justify-content: center; gap: 30px; margin-bottom: 20px; }
-        .footer-socials a { color: white; font-size: 28px; text-decoration: none; }
-        .footer-whatsapp { display: flex; align-items: center; justify-content: center; gap: 8px; color: white; text-decoration: none; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+        .event-img { width: 100%; height: 500px; object-fit: cover; }
 
-        /* WHATSAPP FLOAT */
-        .whatsapp-float { position: fixed; bottom: 30px; right: 20px; background-color: var(--brand-red); color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-size: 11px; font-weight: 600; z-index: 9998; text-transform: uppercase; display: flex; align-items: center; gap: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .event-content { padding: 40px; }
+        .event-date { font-weight: 800; font-size: 0.7rem; letter-spacing: 3px; margin-bottom: 15px; display: block; }
+        .event-name { font-family: 'Cinzel', serif; font-size: 1.8rem; margin-bottom: 20px; line-height: 1.2; }
+        .event-desc { font-size: 0.9rem; line-height: 1.6; margin-bottom: 25px; opacity: 0.8; }
 
-        @media screen and (max-width: 768px) {
-            .timeline-container::after { left: 20px; }
-            .timeline-item { width: 100%; padding-left: 50px; padding-right: 10px; text-align: left !important; }
-            .timeline-item::after { left: 15px; }
-            .right { left: 0%; }
+        /* 4. EVENT LIST GRID */
+        .event-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .small-event-card {
+            border: 1px solid #eee;
+            padding: 30px;
+            transition: 0.3s;
+        }
+        .small-event-card:hover { border-color: var(--onyx-red); background: #fffcfc; }
+
+        /* 5. FOOTER & WHATSAPP */
+        .footer-red { background: var(--onyx-red) !important; padding: 60px 20px; text-align: center; margin-top: 80px; }
+        .footer-red p { color: #ffffff !important; font-size: 0.65rem; font-weight: 700; }
+        
+        .whatsapp-btn { 
+            display: flex !important; position: fixed; bottom: 25px; right: 20px;
+            background: #ffffff; padding: 12px 24px; border-radius: 50px; text-decoration: none;
+            border: 2px solid var(--onyx-red); font-weight: 800; z-index: 10001;
+        }
+
+        @media (max-width: 768px) {
+            .event-featured { grid-template-columns: 1fr; }
+            .event-img { height: 300px; }
+            .section-title { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="master-header">
-        <div class="promo-bar"><div class="marquee-text">ONYX—ADIRE • EXCLUSIVE EVENTS • RUNWAY SHOWS • ART EXHIBITIONS •</div></div>
-        <header>
-            <div class="hamburger" onclick="toggleNav()">☰</div>
-            <a href="index.html" class="logo">Onyx—Adire</a>
-        </header>
+    <div class="announcement-bar">
+        <marquee scrollamount="5">ONYX—ADIRE X MIVA OPEN UNIVERSITY: EXPLORING THE INTERSECTION OF TECH AND TRADITION.</marquee>
     </div>
 
-    <div id="mySideMenu" class="side-menu">
-        <div class="menu-links">
+    <header class="main-header">
+        <div class="header-inner">
+            <div class="hamburger" id="nav-open"><span></span><span></span><span></span></div>
+            <h1 class="brand-logo">ONYX—ADIRE</h1>
+        </div>
+    </header>
+
+    <nav id="side-menu" class="side-nav">
+        <span id="nav-close">&times;</span>
+        <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="collection.html">Collection</a>
             <a href="trustees.html">Trustees</a>
             <a href="events.html">Events</a>
-            <a href="inquiries.html">Inquiries</a>
+            <a href="contact.html">Inquiries</a>
         </div>
-    </div>
+    </nav>
 
-    <div class="timeline-container">
-        <div class="event-header">
-            <h1>Exhibitions</h1>
-            <p>A Journey Through Heritage</p>
-        </div>
-
-        <div class="timeline-item right">
-            <div class="content">
-                <span class="date">MAY 2026</span>
-                <img src="Onyx-Adire20.jpg" alt="Exhibition">
-                <h2 class="title">The Silk Tunic Private View</h2>
-                <p class="desc">A bespoke viewing of our upcoming silk line for VIP collectors.</p>
-            </div>
-        </div>
-
-        <div class="timeline-item left">
-            <div class="content">
-                <span class="date">NOV 2025</span>
-                <img src="Onyx-Adire25.jpg" alt="Runway">
-                <h2 class="title">Abuja Heritage Runway</h2>
-                <p class="desc">A celebration of artisanal craft at the Continental Hotel.</p>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <span class="footer-title">The Onyx Circle</span>
+    <main class="events-container">
         
-        <div class="footer-socials">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-tiktok"></i></a>
+        <div class="section-intro">
+            <h2 class="section-title">CHRONICLES & EVENTS</h2>
+            <p style="font-size: 0.7rem; font-weight: 800; letter-spacing: 2px;">THE JOURNEY OF THE FABRIC</p>
         </div>
 
-        <a href="https://wa.me/234707797XXXX" class="footer-whatsapp">
-            <i class="fab fa-whatsapp"></i> WhatsApp Concierge
-        </a>
+        <article class="event-featured">
+            <img src="MivaEvent.jpg" alt="Miva Open University Event" class="event-img">
+            <div class="event-content">
+                <span class="event-date">UPCOMING — 2026</span>
+                <h3 class="event-name">Miva Open University <br> Innovation Summit</h3>
+                <p class="event-desc">
+                    Onyx—Adire joins forces with Miva Open University to discuss the digitalization of indigenous textile art. We explore how modern education and technology can preserve the ancient techniques of Adire for the digital nomad.
+                </p>
+                <a href="#" style="font-weight: 800; font-size: 0.7rem; text-decoration: none; border-bottom: 2px solid var(--onyx-red); padding-bottom: 5px;">VIEW COLLABORATION DETAILS</a>
+            </div>
+        </article>
+
+        <div class="event-grid">
+            
+            <div class="small-event-card">
+                <span class="event-date">JANUARY 2026</span>
+                <h4 class="event-name" style="font-size: 1.2rem;">The Heritage Gala</h4>
+                <p class="event-desc" style="font-size: 0.8rem;">An exclusive showcase of the Archive Collection for the Board of Trustees and select patrons.</p>
+            </div>
+
+            <div class="small-event-card">
+                <span class="event-date">FEBRUARY 2026</span>
+                <h4 class="event-name" style="font-size: 1.2rem;">Indigo Workshops</h4>
+                <p class="event-desc" style="font-size: 0.8rem;">A hands-on masterclass in the art of natural dyeing and traditional pattern resist techniques.</p>
+            </div>
+
+            <div class="small-event-card">
+                <span class="event-date">MARCH 2026</span>
+                <h4 class="event-name" style="font-size: 1.2rem;">Lagos Fashion Week</h4>
+                <p class="event-desc" style="font-size: 0.8rem;">Presenting the 'Ancestral Future' runway show, blending Onyx—Adire with contemporary silhouettes.</p>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="footer-red">
+        <p>&copy; 2026 ONYX—ADIRE. ALL RIGHTS RESERVED.</p>
     </footer>
 
-    <a href="https://wa.me/234707797XXXX" class="whatsapp-float">
-        <i class="fab fa-whatsapp"></i> Event Concierge
+    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i> Chat with Onyx
     </a>
 
-    <script>
-        function toggleNav() {
-            var m = document.getElementById("mySideMenu");
-            m.style.width = (m.style.width === "280px") ? "0" : "280px";
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
