@@ -9,26 +9,43 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        /* Force Universal Red Text */
+        /* 1. Global Red Theme for Collection Page */
         :root { --onyx-red: #cc0000; }
-        * { color: #cc0000 !important; }
-
-        .announcement-bar marquee { color: #cc0000 !important; }
-        .nav-links a, #nav-close { color: #cc0000 !important; }
-        .product-info h3, .product-info p { color: #cc0000 !important; }
-        .suggestion-item p, .suggestion-title { color: #cc0000 !important; }
         
-        /* ADJUSTED FOOTER: White background so red text is visible */
-        .footer-red { 
-            background: #ffffff !important; 
-            border-top: 1px solid #eee;
+        /* Force all body text to Onyx Red */
+        body, h1, h2, h3, h4, p, a, span { color: var(--onyx-red); }
+        
+        /* Fixed Announcement Bar */
+        .announcement-bar { 
+            background: var(--onyx-red); 
+            height: 35px; 
+            line-height: 35px; 
+            position: fixed; 
+            top: 0; 
+            width: 100%; 
+            z-index: 9999; 
         }
-        .footer-red p { color: #cc0000 !important; font-weight: 700; }
+        .announcement-bar marquee { color: #ffffff !important; font-size: 0.7rem; font-weight: 700; }
 
-        .whatsapp-btn, .whatsapp-btn i { color: #cc0000 !important; }
-        .collection-subtitle { color: #cc0000 !important; opacity: 1; }
+        /* Sticky Header Positioning */
+        .main-header { 
+            background: #ffffff; 
+            position: sticky; 
+            top: 35px; 
+            z-index: 9500; 
+            border-bottom: 1px solid #eee; 
+        }
 
-        /* Horizontal Scroll Styling */
+        /* Collection Header Spacing */
+        .collection-header { padding: 60px 20px 20px; text-align: center; }
+        .collection-subtitle { font-size: 0.6rem; letter-spacing: 3px; font-weight: 800; text-transform: uppercase; }
+
+        /* Grid Item Typography */
+        .product-info h3 { font-size: 0.65rem; letter-spacing: 1px; }
+        .product-info p { font-size: 0.8rem; font-weight: 800; }
+
+        /* Recently Viewed Section */
+        .extra-section { padding: 40px 0; border-top: 1px solid #eee; }
         .horizontal-scroll { 
             display: flex; 
             overflow-x: auto; 
@@ -37,7 +54,35 @@
             scrollbar-width: none; 
         }
         .horizontal-scroll::-webkit-scrollbar { display: none; }
-        .horizontal-scroll .grid-item { min-width: 140px; }
+        .horizontal-scroll .grid-item { min-width: 150px; }
+
+        /* 2. Red Footer with White Text for Visibility */
+        .footer-red { 
+            background: var(--onyx-red) !important; 
+            padding: 60px 20px; 
+            text-align: center; 
+        }
+        .footer-red p { color: #ffffff !important; font-size: 0.65rem; letter-spacing: 1px; }
+
+        /* 3. Floating WhatsApp Button */
+        .whatsapp-btn { 
+            position: fixed; 
+            bottom: 25px; 
+            right: 20px; 
+            background: #ffffff; 
+            padding: 12px 24px; 
+            border-radius: 50px; 
+            z-index: 9000; 
+            text-decoration: none; 
+            border: 2px solid var(--onyx-red);
+            font-weight: 800; 
+            font-size: 0.8rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1); 
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .whatsapp-btn i { font-size: 1.2rem; }
     </style>
 </head>
 <body>
@@ -48,9 +93,7 @@
 
     <header class="main-header">
         <div class="header-inner">
-            <div class="hamburger" id="nav-open">
-                <span></span><span></span><span></span>
-            </div>
+            <div class="hamburger" id="nav-open"><span></span><span></span><span></span></div>
             <h1 class="brand-logo">ONYX—ADIRE</h1>
             <div class="header-spacer"></div>
         </div>
@@ -99,27 +142,41 @@
         <p>&copy; 2026 ONYX—ADIRE. ALL RIGHTS RESERVED.</p>
     </footer>
 
-    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-btn">
-        <i class="fab fa-whatsapp"></i> Order This Piece
+    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-btn" id="wa-btn">
+        <i class="fab fa-whatsapp"></i> Chat with Onyx
     </a>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const grid = document.getElementById('main-grid');
+            const waBtn = document.getElementById('wa-btn');
+            const PHONE_NUMBER = "234XXXXXXXXXX"; // Replace with your actual number
+
+            // 1. Generate the 47-item grid
             if (grid) {
                 let items = '';
                 for (let i = 1; i <= 47; i++) {
                     items += `
                         <div class="grid-item">
                             <img src="Onyx-Adire${i}.jpg" class="clickable-img" data-name="Onyx ${i}" loading="lazy">
-                            <div class="product-info">
-                                <h3>Onyx ${i}</h3>
-                                <p>₦25,000</p>
-                            </div>
+                            <div class="product-info"><h3>Onyx ${i}</h3><p>₦25,000</p></div>
                         </div>`;
                 }
                 grid.innerHTML = items;
             }
+
+            // 2. Wrap the Lightbox opener to track the item for WhatsApp
+            const originalOpenLightbox = window.openLightbox;
+            window.openLightbox = (src, name) => {
+                if (typeof originalOpenLightbox === 'function') {
+                    originalOpenLightbox(src, name);
+                }
+                // Update WhatsApp message context
+                if (waBtn) {
+                    const msg = encodeURIComponent(`Hello! I'm interested in ${name} from the collection.`);
+                    waBtn.href = `https://wa.me/${PHONE_NUMBER}?text=${msg}`;
+                }
+            };
         });
     </script>
     <script src="script.js"></script>
