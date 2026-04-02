@@ -9,31 +9,41 @@
     
     <style>
         :root { --onyx-red: #cc0000; }
+        
         * { box-sizing: border-box; }
-        body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background: #fff; overflow-x: hidden; }
+        body { 
+            margin: 0; padding: 0; font-family: 'Inter', sans-serif; 
+            background: #fff; overflow-x: hidden; 
+            display: flex; flex-direction: column; min-height: 100vh; 
+        }
 
-        h1, h2, h3, h4, h5, h6, p, a, span, i { color: var(--onyx-red); }
+        /* UNIVERSAL RED ENFORCEMENT */
+        h1, h2, h3, h4, h5, h6, p, a, span, i, marquee { 
+            color: var(--onyx-red) !important; 
+            transition: 0.3s ease; 
+        }
 
-        /* 1. ANNOUNCEMENT BAR - Highest Priority (Z-INDEX 10010) */
+        /* 1. ANNOUNCEMENT BAR */
         .announcement-bar {
             background: var(--onyx-red);
-            height: 35px; width: 100%; position: fixed; top: 0; 
-            z-index: 10010; /* Always visible on top */
+            height: 35px; width: 100%; position: fixed; top: 0; z-index: 10010;
             display: flex; align-items: center;
         }
         .announcement-bar marquee {
-            color: #ffffff !important;
-            font-size: 0.7rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
+            color: #ffffff !important; /* White for legibility on Red background */
+            font-size: 0.7rem; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase;
         }
 
-        /* 2. HEADER - Lower priority than the menu */
+        /* 2. MAIN HEADER */
         .main-header { 
             position: fixed; top: 35px; width: 100%; height: 80px;
-            background: rgba(255, 255, 255, 0.98); border-bottom: 1px solid #f0f0f0; 
-            z-index: 1000; /* Stays below the menu when it opens */
+            background: rgba(255, 255, 255, 0.98); border-bottom: 1px solid #f0f0f0; z-index: 1000;
             display: flex; justify-content: center; align-items: center;
         }
-        .brand-logo { font-family: 'Cinzel', serif; font-size: 1.5rem; letter-spacing: 5px; text-decoration: none; }
+        .brand-logo { 
+            font-family: 'Cinzel', serif; font-size: 1.5rem; letter-spacing: 5px; 
+            text-decoration: none; color: var(--onyx-red) !important; 
+        }
 
         /* 3. HAMBURGER ICON */
         .hamburger {
@@ -43,12 +53,12 @@
         }
         .hamburger span { display: block; height: 2px; width: 100%; background: var(--onyx-red); }
 
-        /* 4. SIDE NAVIGATION - (Z-INDEX 9999) */
+        /* 4. 40% SIDE NAVIGATION (Vertical) */
         .side-nav {
             position: fixed; 
-            top: 35px; /* Slides out BELOW the announcement bar */
-            left: -50%; 
-            width: 50%; 
+            top: 35px; 
+            left: -40%; 
+            width: 40%; 
             height: calc(100vh - 35px); 
             background: #ffffff; 
             z-index: 9999; 
@@ -59,45 +69,61 @@
         }
         .side-nav.open { left: 0; }
 
-        /* X BUTTON AT EDGE */
+        /* X BUTTON - PINNED TO EDGE */
         .close-menu {
             position: absolute; top: 25px; right: 25px;
-            font-size: 2.5rem; cursor: pointer; line-height: 1; font-weight: 300;
+            font-size: 2.8rem; cursor: pointer; line-height: 1; font-weight: 300;
+            color: var(--onyx-red) !important;
         }
 
-        /* LINKS ON THE SAME LINE */
-        .nav-links { 
-            display: flex; flex-direction: row; gap: 30px; justify-content: center; padding: 0 40px; 
-        }
+        .nav-links { display: flex; flex-direction: column; gap: 30px; text-align: center; }
         .nav-links a { 
-            font-family: 'Cinzel', serif; font-size: 1.1rem; text-decoration: none; 
-            font-weight: 700; text-transform: uppercase; white-space: nowrap;
+            font-family: 'Cinzel', serif; font-size: 1.4rem; text-decoration: none; 
+            font-weight: 700; text-transform: uppercase; color: var(--onyx-red) !important;
         }
 
-        /* 5. FLOATING WHATSAPP - Highest Priority (Z-INDEX 10010) */
+        /* 5. CONTENT FEED */
+        .content { flex: 1; padding: 180px 20px 120px; max-width: 1200px; margin: 0 auto; text-align: center; }
+        .event-section { margin-bottom: 150px; }
+        
+        .img-frame { 
+            width: 100%; height: 85vh; background: #fcfcfc; 
+            display: flex; align-items: center; justify-content: center; 
+            margin-bottom: 40px; border: 1px solid #f0f0f0; overflow: hidden;
+        }
+        .img-frame img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        
+        .event-tag { font-weight: 800; font-size: 0.75rem; letter-spacing: 5px; text-transform: uppercase; display: block; margin-bottom: 20px; }
+        h3 { font-family: 'Cinzel', serif; font-size: 2.5rem; margin: 10px 0 25px; line-height: 1.1; color: var(--onyx-red) !important; }
+        .description { line-height: 2.2; max-width: 800px; margin: 0 auto; font-size: 1.1rem; opacity: 0.9; color: var(--onyx-red) !important; }
+
+        /* 6. RED FOOTER */
+        .main-footer {
+            background: var(--onyx-red);
+            padding: 80px 20px; text-align: center; width: 100%; margin-top: auto;
+        }
+        .main-footer p {
+            color: #ffffff !important; /* White for legibility on Red background */
+            font-size: 0.75rem; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; margin: 0;
+        }
+
+        /* 7. FLOATING "CHAT WITH ONYX" */
         .whatsapp-float {
             position: fixed; bottom: 120px; right: 30px;
             background: #fff; border: 2px solid var(--onyx-red);
             padding: 12px 25px; border-radius: 50px; text-decoration: none;
-            font-weight: 800; font-size: 0.75rem; 
-            z-index: 10010; /* Always visible on top of the slide-out */
+            font-weight: 800; font-size: 0.75rem; z-index: 10010;
             display: flex; align-items: center; gap: 12px;
             box-shadow: 0 10px 30px rgba(204, 0, 0, 0.1);
         }
+        .whatsapp-float span, .whatsapp-float i { color: var(--onyx-red) !important; }
+        .whatsapp-float:hover { background: var(--onyx-red); }
+        .whatsapp-float:hover span, .whatsapp-float:hover i { color: #fff !important; }
 
-        /* 6. CONTENT */
-        .content { padding: 180px 20px 100px; text-align: center; }
-        .img-frame { width: 100%; height: 80vh; border: 1px solid #f0f0f0; margin-bottom: 40px; overflow: hidden; }
-        .img-frame img { width: 100%; height: 100%; object-fit: contain; }
-
-        /* 7. FOOTER */
-        .main-footer { background: var(--onyx-red); padding: 60px 20px; text-align: center; }
-        .main-footer p { color: #ffffff !important; margin: 0; font-size: 0.7rem; letter-spacing: 3px; }
-
-        @media (max-width: 1024px) {
-            .side-nav { width: 100%; left: -100%; } /* Full width on small screens to fit horizontal text */
-            .nav-links { gap: 15px; }
-            .nav-links a { font-size: 0.9rem; }
+        @media (max-width: 768px) {
+            .side-nav { width: 85%; left: -85%; }
+            .img-frame { height: 60vh; }
+            h3 { font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -128,7 +154,9 @@
     <main class="content">
         <section class="event-section">
             <div class="img-frame"><img src="Onyx-Adire-Foster.jpg" alt="Foster"></div>
-            <h3>Chronicle of Heritage</h3>
+            <span class="event-tag">The Visionary</span>
+            <h3>Foster: Architect of Heritage</h3>
+            <p class="description">Leading the preservation of West African indigo artistry for a global luxury market.</p>
         </section>
     </main>
 
