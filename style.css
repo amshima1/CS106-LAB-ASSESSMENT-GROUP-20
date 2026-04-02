@@ -1,12 +1,11 @@
 /* ONYX—ADIRE | Master Stylesheet 
-   Theme: Onyx Red (#cc0000) & White (#ffffff)
-   Configuration: Fixed Announcement Bar + Sticky Header
+   Unified Style for Home & Collection Pages
 */
 
 :root { 
     --onyx-red: #cc0000; 
     --white: #ffffff; 
-    --bar-height: 35px;
+    --bar-height: 35px; /* Height of the fixed announcement bar */
 }
 
 /* 1. UNIVERSAL RULES */
@@ -33,7 +32,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 9999; /* Always on top */
+    z-index: 9999; 
 }
 
 .announcement-bar marquee { 
@@ -41,14 +40,15 @@ body {
     font-size: 0.7rem; 
     font-weight: 700; 
     display: block;
+    text-transform: uppercase;
 }
 
-/* 3. STICKY HEADER (Adjusted for Fixed Bar) */
+/* 3. STICKY HEADER */
 .main-header { 
     background: var(--white); 
     padding: 15px 20px; 
     position: sticky; 
-    top: var(--bar-height); /* Starts below the red bar */
+    top: var(--bar-height); 
     z-index: 9500; 
     border-bottom: 1px solid #eee; 
 }
@@ -75,7 +75,7 @@ body {
     margin: 5px 0; 
 }
 
-/* 4. SIDE NAV (Locked to Viewport) */
+/* 4. SIDE NAV (Slide-out Menu) */
 .side-nav { 
     position: fixed; 
     left: -100%; 
@@ -97,7 +97,6 @@ body {
     right: 25px; 
     font-size: 2.8rem; 
     cursor: pointer; 
-    font-weight: 300;
     line-height: 1;
 }
 
@@ -111,7 +110,7 @@ body {
     border-bottom: 1px solid #f9f9f9; 
 }
 
-/* 5. HERO SLIDER */
+/* 5. HERO SLIDER (Home Page Only) */
 .hero-frame-container { 
     height: 75vh; 
     width: 100%; 
@@ -135,13 +134,29 @@ body {
     transition: opacity 1.2s ease-in-out; 
 }
 
-/* 6. COLLECTION GRID (2-Column Mobile) */
+/* 6. COLLECTION PAGE HEADER */
+.collection-header {
+    padding: 60px 20px 20px;
+    text-align: center;
+}
+
+.collection-subtitle {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-top: -10px;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+/* 7. GRID LAYOUT (2-Column Responsive) */
 .section-title { 
     font-family: 'Cinzel', serif; 
     font-size: 0.85rem; 
     text-align: center; 
     margin: 40px 0 20px; 
     letter-spacing: 3px; 
+    text-transform: uppercase;
 }
 
 .grid-container { 
@@ -151,7 +166,7 @@ body {
     padding: 12px; 
 }
 
-.grid-item { text-align: center; margin-bottom: 20px; }
+.grid-item { text-align: center; margin-bottom: 25px; }
 
 .clickable-img { 
     width: 100%; 
@@ -159,20 +174,15 @@ body {
     border: 4px solid var(--white); 
     box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
     cursor: zoom-in; 
+    transition: transform 0.2s;
 }
 
-.product-info h3 { 
-    font-size: 0.65rem; 
-    text-transform: uppercase; 
-    margin-top: 12px; 
-}
+.clickable-img:active { transform: scale(0.98); }
 
-.product-info p { 
-    font-size: 0.8rem; 
-    font-weight: 800; 
-}
+.product-info h3 { font-size: 0.65rem; text-transform: uppercase; margin-top: 12px; }
+.product-info p { font-size: 0.8rem; font-weight: 800; margin-top: 4px; }
 
-/* 7. LIGHTBOX & "YOU MAY ALSO LIKE" */
+/* 8. LIGHTBOX & RANDOMIZER */
 .lightbox { 
     display: none; 
     position: fixed; 
@@ -182,82 +192,26 @@ body {
     background: rgba(255, 255, 255, 0.98); 
     flex-direction: column; 
     align-items: center;
-    padding: 20px 10px;
+    padding: 20px;
     overflow-y: auto;
 }
 
 .lightbox-main-content { text-align: center; width: 100%; margin-top: 40px; }
+.lightbox-img { max-height: 40vh; max-width: 85%; border: 6px solid var(--white); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+.lightbox-caption { font-weight: 800; margin: 15px 0; text-transform: uppercase; }
 
-.lightbox-img { 
-    max-height: 40vh; 
-    width: auto;
-    max-width: 85%;
-    border: 6px solid var(--white); 
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
-}
+.suggestions-container { width: 100%; max-width: 450px; margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; }
+.suggestion-title { font-family: 'Cinzel', serif; font-size: 0.6rem; text-align: center; letter-spacing: 2px; margin-bottom: 15px; }
+.suggestion-grid { display: flex; justify-content: center; gap: 10px; }
+.suggestion-item { width: 75px; text-align: center; cursor: pointer; }
+.suggestion-item img { width: 100%; height: 90px; object-fit: cover; border: 1px solid #eee; }
+.suggestion-item p { font-size: 0.5rem; font-weight: 700; margin-top: 5px; text-transform: uppercase; }
 
-.lightbox-caption { 
-    font-weight: 800; 
-    margin: 15px 0; 
-    text-transform: uppercase; 
-}
+.close-lightbox { position: absolute; top: 20px; right: 25px; font-size: 2.5rem; cursor: pointer; }
 
-.suggestions-container { 
-    width: 100%; 
-    max-width: 450px; 
-    margin-top: 30px; 
-    border-top: 1px solid #eee; 
-    padding-top: 20px; 
-}
-
-.suggestion-title { 
-    font-family: 'Cinzel', serif; 
-    font-size: 0.65rem; 
-    text-align: center; 
-    letter-spacing: 2px; 
-    margin-bottom: 15px; 
-}
-
-.suggestion-grid { 
-    display: flex; 
-    justify-content: center; 
-    gap: 12px; 
-}
-
-.suggestion-item { width: 80px; text-align: center; cursor: pointer; }
-
-.suggestion-item img { 
-    width: 100%; 
-    height: 100px; 
-    object-fit: cover; 
-    border: 1px solid #eee; 
-}
-
-.suggestion-item p { 
-    font-size: 0.55rem; 
-    font-weight: 700; 
-    margin-top: 6px; 
-}
-
-.close-lightbox { 
-    position: absolute; 
-    top: 20px; 
-    right: 25px; 
-    font-size: 2.5rem; 
-    cursor: pointer; 
-}
-
-/* 8. FOOTER & FLOATING WHATSAPP */
-.footer-red { 
-    background: var(--onyx-red); 
-    padding: 60px 20px; 
-    text-align: center; 
-}
-
-.footer-red p { 
-    color: var(--white) !important; 
-    font-size: 0.65rem; 
-}
+/* 9. FOOTER & WHATSAPP */
+.footer-red { background: var(--onyx-red); padding: 60px 20px; text-align: center; margin-top: 40px; }
+.footer-red p { color: var(--white) !important; font-size: 0.65rem; }
 
 .whatsapp-btn { 
     position: fixed; 
@@ -273,11 +227,6 @@ body {
     box-shadow: 0 8px 20px rgba(0,0,0,0.1); 
 }
 
-/* Horizontal Scroll for History */
-.horizontal-scroll { 
-    display: flex; 
-    overflow-x: auto; 
-    gap: 15px; 
-    padding: 20px; 
-}
+/* History Scroll */
+.horizontal-scroll { display: flex; overflow-x: auto; gap: 15px; padding: 20px; scrollbar-width: none; }
 .horizontal-scroll::-webkit-scrollbar { display: none; }
