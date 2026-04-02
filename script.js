@@ -1,61 +1,106 @@
+/* ONYX—ADIRE | Master Script
+   Functionality: Nav Toggle, Hero Slider, Lightbox, & Recently Viewed Logic
+*/
+
 document.addEventListener('DOMContentLoaded', () => {
-    const menu = document.getElementById('side-menu');
-    const openBtn = document.getElementById('nav-open');
-    const closeBtn = document.getElementById('nav-close');
+    // 1. NAVIGATION DRAWER LOGIC
+    const sideMenu = document.getElementById('side-menu');
+    const openNav = document.getElementById('nav-open');
+    const closeNav = document.getElementById('nav-close');
 
-    // Menu Controls
-    if (openBtn) openBtn.onclick = () => menu.classList.add('active');
-    if (closeBtn) closeBtn.onclick = () => menu.classList.remove('active');
+    if (openNav && sideMenu) {
+        openNav.onclick = () => {
+            sideMenu.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scroll
+        };
+    }
 
-    // Lightbox & History Logic
+    if (closeNav && sideMenu) {
+        closeNav.onclick = () => {
+            sideMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        };
+    }
+
+    // 2. LIGHTBOX & RECENTLY VIEWED MEMORY
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.querySelector('.lightbox-img');
     const lightboxCaption = document.querySelector('.lightbox-caption');
     
+    // Load existing history from browser storage
     let recentlyViewed = JSON.parse(localStorage.getItem('onyxRecent')) || [];
 
+    // Function to render the "Recently Viewed" section
     function updateRecentUI() {
         const container = document.getElementById('recent-view-container');
         const section = document.getElementById('recent-section');
-        if (recentlyViewed.length === 0) return;
+        
+        if (!container || recentlyViewed.length === 0) return;
         
         section.style.display = 'block';
-        container.innerHTML = '';
+        container.innerHTML = ''; // Clear current list
+        
         recentlyViewed.forEach(item => {
             container.innerHTML += `
                 <div class="grid-item">
                     <img src="${item.src}" class="clickable-img" onclick="openLightbox('${item.src}', '${item.name}')">
-                    <div class="product-info"><h3 style="color:#cc0000">${item.name}</h3></div>
+                    <div class="product-info">
+                        <h3 style="color:#cc0000">${item.name}</h3>
+                    </div>
                 </div>`;
         });
     }
 
+    // Global function to open the Lightbox
     window.openLightbox = (src, name) => {
+        if (!lightbox || !lightboxImg) return;
+
         lightbox.style.display = 'flex';
         lightboxImg.src = src;
         lightboxCaption.innerText = name;
         document.body.style.overflow = 'hidden';
 
-        const exists = recentlyViewed.find(i => i.src === src);
-        if (!exists) {
+        // Add to "Recently Viewed" if not already there
+        const alreadyExists = recentlyViewed.find(i => i.src === src);
+        if (!alreadyExists) {
             recentlyViewed.unshift({ src, name });
-            if (recentlyViewed.length > 5) recentlyViewed.pop();
+            // Keep only the last 6 items
+            if (recentlyViewed.length > 6) recentlyViewed.pop();
             localStorage.setItem('onyxRecent', JSON.stringify(recentlyViewed));
             updateRecentUI();
         }
     };
 
-    document.querySelectorAll('.clickable-img').forEach(img => {
-        img.onclick = () => {
-            const name = img.nextElementSibling.querySelector('h3').innerText;
-            openLightbox(img.src, name);
-        };
+    // 3. ATTACH CLICK EVENTS TO ALL 20 IMAGES
+    const allImages = document.querySelectorAll('.clickable-img');
+    allImages.forEach(img => {
+        img.addEventListener('click', () => {
+            // Find the name in the <h3> tag directly after the image
+            const productInfo = img.nextElementSibling;
+            if (productInfo) {
+                const name = productInfo.querySelector('h3').innerText;
+                openLightbox(img.src, name);
+            }
+        });
     });
 
-    document.querySelector('.close-lightbox').onclick = () => {
-        lightbox.style.display = 'none';
-        document.body.style.overflow = 'auto';
+    // Close Lightbox on 'X' click
+    const closeLightboxBtn = document.querySelector('.close-lightbox');
+    if (closeLightboxBtn) {
+        closeLightboxBtn.onclick = () => {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        };
+    }
+
+    // Close Lightbox if user clicks outside the image
+    window.onclick = (event) => {
+        if (event.target === lightbox) {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
     };
 
+    // Initial check to show recent items on page load
     updateRecentUI();
 });
