@@ -1,26 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Feature 1: Dynamic Greeting (DOM Manipulation)
-    const greetingElement = document.getElementById('dynamic-greeting');
-    const currentHour = new Date().getHours();
+    // Feature 1: Hamburger Menu Toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const sideMenu = document.getElementById('side-menu');
+
+    menuToggle.addEventListener('click', () => {
+        sideMenu.classList.toggle('show');
+        
+        // Bonus: Hamburger to 'X' animation logic could go here
+    });
+
+    // Feature 2: Dynamic Greeting for Onyx-Adire
+    const greeting = document.getElementById('dynamic-greeting');
+    const hour = new Date().getHours();
     
-    if (currentHour < 12) {
-        greetingElement.textContent = "Good Morning, Welcome to Onyx—Adire";
-    } else if (currentHour < 18) {
-        greetingElement.textContent = "Good Afternoon, Welcome to Onyx—Adire";
-    } else {
-        greetingElement.textContent = "Good Evening, Welcome to Onyx—Adire";
-    }
+    if (hour < 12) greeting.innerText = "Good Morning | Onyx—Adire";
+    else if (hour < 18) greeting.innerText = "Good Afternoon | Onyx—Adire";
+    else greeting.innerText = "Good Evening | Onyx—Adire";
 
-    // Feature 2: Interactive Header Effect
-    const header = document.querySelector('header h1');
-    header.addEventListener('mouseover', () => {
-        header.style.color = '#ffffff';
-        header.style.cursor = 'pointer';
+    // Feature 3: Close menu when clicking a link
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => sideMenu.classList.remove('show'));
     });
-    header.addEventListener('mouseout', () => {
-        header.style.color = '#d4af37';
-    });
-
-    // Feature 3: Scroll-to-Top Logic (Useful for all pages)
-    console.log("Onyx—Adire Script Initialized.");
 });
