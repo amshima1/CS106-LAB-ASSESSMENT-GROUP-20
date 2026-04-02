@@ -11,10 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
         navClose.onclick = () => sideMenu.classList.remove('active');
     }
 
-    // Close menu when clicking outside
-    window.onclick = (event) => {
-        if (event.target == sideMenu) {
-            sideMenu.classList.remove('active');
-        }
-    };
+    // Close menu when a link is clicked
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.onclick = () => sideMenu.classList.remove('active');
+    });
 });
