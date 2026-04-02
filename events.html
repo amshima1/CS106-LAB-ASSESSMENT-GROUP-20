@@ -43,7 +43,6 @@
         }
 
         .brand-logo { font-size: 1.5rem; letter-spacing: 5px; margin: 0; }
-
         .hamburger { position: absolute; left: 20px; cursor: pointer; }
 
         /* 2. GLOBAL RED TYPOGRAPHY */
@@ -54,37 +53,47 @@
         .section-intro { text-align: center; margin-bottom: 60px; }
         .section-title { font-family: 'Cinzel', serif; font-size: 2.5rem; margin-bottom: 10px; }
 
-        /* 3. EVENT CARDS */
+        /* 3. FEATURED EVENT (Onyx-Adire18.jpg) */
         .event-featured {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 0;
             background: #fff;
             border: 1px solid #eee;
-            margin-bottom: 60px;
-            align-items: center;
+            margin-bottom: 80px;
+            align-items: stretch;
+            overflow: hidden;
         }
 
-        .event-img { width: 100%; height: 500px; object-fit: cover; }
+        .event-img-main { 
+            width: 100%; 
+            height: 600px; 
+            object-fit: cover;
+            border-right: 1px solid #eee;
+        }
 
-        .event-content { padding: 40px; }
+        .event-content { padding: 60px; display: flex; flex-direction: column; justify-content: center; }
         .event-date { font-weight: 800; font-size: 0.7rem; letter-spacing: 3px; margin-bottom: 15px; display: block; }
-        .event-name { font-family: 'Cinzel', serif; font-size: 1.8rem; margin-bottom: 20px; line-height: 1.2; }
-        .event-desc { font-size: 0.9rem; line-height: 1.6; margin-bottom: 25px; opacity: 0.8; }
+        .event-name { font-family: 'Cinzel', serif; font-size: 2rem; margin-bottom: 20px; line-height: 1.2; }
+        .event-desc { font-size: 0.9rem; line-height: 1.7; margin-bottom: 25px; opacity: 0.9; }
 
-        /* 4. EVENT LIST GRID */
+        /* 4. EVENT GRID (Onyx-Adire10.jpg & Onyx-Adire7.jpg) */
         .event-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
         }
 
-        .small-event-card {
+        .event-card-small {
+            background: #fff;
             border: 1px solid #eee;
-            padding: 30px;
-            transition: 0.3s;
+            transition: 0.4s ease;
         }
-        .small-event-card:hover { border-color: var(--onyx-red); background: #fffcfc; }
+
+        .event-card-small:hover { transform: translateY(-5px); border-color: var(--onyx-red); }
+
+        .thumb-img { width: 100%; height: 350px; object-fit: cover; border-bottom: 4px solid var(--onyx-red); }
+        .card-inner { padding: 30px; }
 
         /* 5. FOOTER & WHATSAPP */
         .footer-red { background: var(--onyx-red) !important; padding: 60px 20px; text-align: center; margin-top: 80px; }
@@ -96,17 +105,17 @@
             border: 2px solid var(--onyx-red); font-weight: 800; z-index: 10001;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             .event-featured { grid-template-columns: 1fr; }
-            .event-img { height: 300px; }
-            .section-title { font-size: 1.8rem; }
+            .event-img-main { height: 400px; border-right: none; }
+            .event-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
     <div class="announcement-bar">
-        <marquee scrollamount="5">ONYX—ADIRE X MIVA OPEN UNIVERSITY: EXPLORING THE INTERSECTION OF TECH AND TRADITION.</marquee>
+        <marquee scrollamount="5">ONYX—ADIRE X MIVA OPEN UNIVERSITY: ARCHIVING THE FUTURE OF AFRICAN TEXTILES.</marquee>
     </div>
 
     <header class="main-header">
@@ -131,39 +140,39 @@
         
         <div class="section-intro">
             <h2 class="section-title">CHRONICLES & EVENTS</h2>
-            <p style="font-size: 0.7rem; font-weight: 800; letter-spacing: 2px;">THE JOURNEY OF THE FABRIC</p>
+            <p style="font-size: 0.7rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;">A Timeline of Cultural Excellence</p>
         </div>
 
         <article class="event-featured">
-            <img src="MivaEvent.jpg" alt="Miva Open University Event" class="event-img">
+            <img src="Onyx-Adire18.jpg" alt="Miva Open University Collaboration" class="event-img-main">
             <div class="event-content">
-                <span class="event-date">UPCOMING — 2026</span>
+                <span class="event-date">FEATURED EVENT — 2026</span>
                 <h3 class="event-name">Miva Open University <br> Innovation Summit</h3>
                 <p class="event-desc">
-                    Onyx—Adire joins forces with Miva Open University to discuss the digitalization of indigenous textile art. We explore how modern education and technology can preserve the ancient techniques of Adire for the digital nomad.
+                    A historic dialogue between Onyx—Adire and Miva Open University. This summit marks the beginning of our initiative to integrate indigenous craftsmanship into digital educational frameworks, ensuring Adire remains at the forefront of global innovation.
                 </p>
-                <a href="#" style="font-weight: 800; font-size: 0.7rem; text-decoration: none; border-bottom: 2px solid var(--onyx-red); padding-bottom: 5px;">VIEW COLLABORATION DETAILS</a>
+                <a href="#" style="font-weight: 800; font-size: 0.7rem; text-decoration: none; border-bottom: 2px solid var(--onyx-red); width: fit-content; padding-bottom: 5px;">EXPLORE THE WHITE PAPER</a>
             </div>
         </article>
 
         <div class="event-grid">
             
-            <div class="small-event-card">
-                <span class="event-date">JANUARY 2026</span>
-                <h4 class="event-name" style="font-size: 1.2rem;">The Heritage Gala</h4>
-                <p class="event-desc" style="font-size: 0.8rem;">An exclusive showcase of the Archive Collection for the Board of Trustees and select patrons.</p>
+            <div class="event-card-small">
+                <img src="Onyx-Adire10.jpg" alt="Heritage Gala" class="thumb-img">
+                <div class="card-inner">
+                    <span class="event-date">JANUARY 2026</span>
+                    <h4 class="event-name" style="font-size: 1.3rem;">The Trustees Gala</h4>
+                    <p class="event-desc" style="font-size: 0.8rem;">An evening of heritage and luxury, unveiling the Archive Collection to the custodians of our vision.</p>
+                </div>
             </div>
 
-            <div class="small-event-card">
-                <span class="event-date">FEBRUARY 2026</span>
-                <h4 class="event-name" style="font-size: 1.2rem;">Indigo Workshops</h4>
-                <p class="event-desc" style="font-size: 0.8rem;">A hands-on masterclass in the art of natural dyeing and traditional pattern resist techniques.</p>
-            </div>
-
-            <div class="small-event-card">
-                <span class="event-date">MARCH 2026</span>
-                <h4 class="event-name" style="font-size: 1.2rem;">Lagos Fashion Week</h4>
-                <p class="event-desc" style="font-size: 0.8rem;">Presenting the 'Ancestral Future' runway show, blending Onyx—Adire with contemporary silhouettes.</p>
+            <div class="event-card-small">
+                <img src="Onyx-Adire7.jpg" alt="Indigo Workshop" class="thumb-img">
+                <div class="card-inner">
+                    <span class="event-date">FEBRUARY 2026</span>
+                    <h4 class="event-name" style="font-size: 1.3rem;">Mastering the Indigo</h4>
+                    <p class="event-desc" style="font-size: 0.8rem;">A deep dive into the natural fermentation process and traditional tie-dyeing methods used in our signature pieces.</p>
+                </div>
             </div>
 
         </div>
