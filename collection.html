@@ -7,33 +7,74 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
+        /* 1. ARCHIVE THEME: ALL RED TYPOGRAPHY */
         :root { --onyx-red: #cc0000; }
         body, h1, h2, h3, h4, p, a, span { color: var(--onyx-red) !important; }
-        .footer-red { background: var(--onyx-red) !important; padding: 60px 20px; text-align: center; }
-        .footer-red p { color: #fff !important; }
+
+        /* 2. PERMANENT WHATSAPP BUTTON (RED THEME) */
         .whatsapp-btn { 
-            display: flex !important; opacity: 1 !important; z-index: 10001; 
-            position: fixed; bottom: 25px; right: 20px; background: #fff;
-            padding: 12px 24px; border-radius: 50px; text-decoration: none;
-            border: 2px solid var(--onyx-red); font-weight: 800; font-size: 0.8rem;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1); align-items: center; gap: 8px;
-            animation: pulse-ring 2s infinite;
+            display: flex !important; 
+            opacity: 1 !important; 
+            pointer-events: auto !important; 
+            animation: pulse-ring 2s infinite; 
+            z-index: 10001; 
+            position: fixed;
+            bottom: 25px;
+            right: 20px;
+            background: #ffffff;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            border: 2px solid var(--onyx-red);
+            font-weight: 800;
+            font-size: 0.8rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            align-items: center;
+            gap: 8px;
         }
+
         @keyframes pulse-ring {
             0% { box-shadow: 0 0 0 0 rgba(204, 0, 0, 0.4); }
             70% { box-shadow: 0 0 0 12px rgba(204, 0, 0, 0); }
             100% { box-shadow: 0 0 0 0 rgba(204, 0, 0, 0); }
         }
+
+        /* 3. HORIZONTAL SCROLL FOR RECENT VIEWS */
+        .horizontal-scroll { 
+            display: flex; 
+            overflow-x: auto; 
+            gap: 15px; 
+            padding: 20px; 
+            scrollbar-width: none; 
+            -ms-overflow-style: none;
+        }
+        .horizontal-scroll::-webkit-scrollbar { display: none; }
+
+        /* 4. FOOTER OVERRIDE (White text for contrast) */
+        .footer-red { background: var(--onyx-red) !important; padding: 60px 20px; text-align: center; margin-top: 40px; }
+        .footer-red p { color: #ffffff !important; font-size: 0.65rem; font-weight: 700; }
+        
+        .collection-header { padding: 80px 20px 20px; text-align: center; }
+        
+        /* Lightbox specific styling to match Archive theme */
+        .lightbox-caption { color: #cc0000; font-weight: 800; font-size: 1.2rem; }
     </style>
 </head>
 <body>
-    <div class="announcement-bar"><marquee>EXPLORE THE FULL ONYX—ADIRE ARCHIVE.</marquee></div>
+
+    <div class="announcement-bar">
+        <marquee scrollamount="5" style="color: #ffffff !important;">EXPLORE THE FULL ONYX—ADIRE ARCHIVE. TRADITION IN EVERY THREAD.</marquee>
+    </div>
 
     <header class="main-header">
         <div class="header-inner">
-            <div class="hamburger" id="nav-open"><span></span><span></span><span></span></div>
+            <div class="hamburger" id="nav-open">
+                <span></span><span></span><span></span>
+            </div>
             <h1 class="brand-logo">ONYX—ADIRE</h1>
+            <div class="header-spacer"></div>
         </div>
     </header>
 
@@ -49,44 +90,127 @@
     </nav>
 
     <div id="lightbox" class="lightbox">
-        <span class="close-lightbox">&times;</span>
+        <span class="close-lightbox" style="color: #cc0000;">&times;</span>
         <div class="lightbox-main-content">
-            <img class="lightbox-img" src="">
+            <img class="lightbox-img" src="" alt="Archive Selection">
             <div class="lightbox-caption"></div>
+        </div>
+        
+        <div class="suggestions-container" style="width:100%; max-width:450px; margin:20px auto; border-top:1px solid #eee; padding-top:20px; text-align:center;">
+            <h4 style="font-size:0.6rem; letter-spacing:2px; margin-bottom:15px; color:#cc0000; font-weight:800;">YOU MAY ALSO LIKE</h4>
+            <div id="suggestion-row" style="display:flex; justify-content:center; gap:10px;"></div>
         </div>
     </div>
 
     <main class="main-content">
-        <header style="text-align:center; padding: 60px 20px 20px;">
+        <header class="collection-header">
             <h2 class="section-title">THE FULL ARCHIVE</h2>
-            <p style="font-size: 0.6rem; letter-spacing: 3px; font-weight: 800;">47 UNIQUE PIECES</p>
+            <p style="font-size: 0.6rem; letter-spacing: 3px; font-weight: 800; text-transform: uppercase;">47 UNIQUE PIECES OF ARTISAN CRAFT</p>
         </header>
-        <section class="collection-area"><div class="grid-container" id="main-grid"></div></section>
+
+        <section class="collection-area">
+            <div class="grid-container" id="main-grid"></div>
+        </section>
+
+        <section class="extra-section" id="recent-section" style="display:none; border-top:1px solid #eee; margin-top:40px; padding-bottom:40px;">
+            <h2 class="section-title">RECENTLY VIEWED</h2>
+            <div class="horizontal-scroll" id="recent-view-container"></div>
+        </section>
     </main>
 
-    <footer class="footer-red"><p>&copy; 2026 ONYX—ADIRE. ALL RIGHTS RESERVED.</p></footer>
-    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> Chat with Onyx</a>
+    <footer class="footer-red">
+        <p>&copy; 2026 ONYX—ADIRE. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i> Chat with Onyx
+    </a>
 
     <script src="script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const grid = document.getElementById('main-grid');
+            const lightbox = document.getElementById('lightbox');
+            const lbImg = document.querySelector('.lightbox-img');
+            const lbCap = document.querySelector('.lightbox-caption');
+            const sugRow = document.getElementById('suggestion-row');
+            const recentContainer = document.getElementById('recent-view-container');
+            const recentSection = document.getElementById('recent-section');
+
+            // 1. GENERATE ARCHIVE GRID (1-47)
             let items = '';
             for (let i = 1; i <= 47; i++) {
-                items += `<div class="grid-item"><img src="Onyx-Adire${i}.jpg" class="clickable-img" data-name="Onyx ${i}" loading="lazy"><div class="product-info"><h3>Onyx ${i}</h3><p>₦25,000</p></div></div>`;
+                items += `
+                <div class="grid-item">
+                    <img src="Onyx-Adire${i}.jpg" class="clickable-img" data-name="Onyx ${i}" loading="lazy">
+                    <div class="product-info"><h3>Onyx ${i}</h3><p>₦25,000</p></div>
+                </div>`;
             }
             grid.innerHTML = items;
 
-            document.addEventListener('click', (e) => {
-                if (e.target.classList.contains('clickable-img')) {
-                    document.getElementById('lightbox').style.display = 'flex';
-                    document.querySelector('.lightbox-img').src = e.target.src;
-                    document.querySelector('.lightbox-caption').innerText = e.target.getAttribute('data-name');
+            // 2. HISTORY & SUGGESTIONS LOGIC
+            let history = JSON.parse(localStorage.getItem('onyx_history')) || [];
+            
+            function updateRecentUI() {
+                if (history.length > 0) {
+                    recentSection.style.display = 'block';
+                    recentContainer.innerHTML = history.map(item => `
+                        <div class="grid-item" style="min-width:140px; text-align:center;">
+                            <img src="${item.src}" class="clickable-img" data-name="${item.name}" style="width:100%; height:auto; border: 1px solid #eee;">
+                            <p style="font-size:0.6rem; font-weight:800; margin-top:5px; color:#cc0000;">${item.name}</p>
+                        </div>
+                    `).join('');
                 }
-                if (e.target.classList.contains('close-lightbox')) {
-                    document.getElementById('lightbox').style.display = 'none';
+            }
+
+            function showSuggestions(currentSrc) {
+                sugRow.innerHTML = '';
+                let pool = [];
+                for(let i=1; i<=47; i++) { 
+                    if(!currentSrc.includes(`Onyx-Adire${i}.jpg`)) pool.push(i); 
+                }
+                // Randomize 4 suggestions
+                pool.sort(() => 0.5 - Math.random()).slice(0, 4).forEach(num => {
+                    const div = document.createElement('div');
+                    div.style.width = '70px';
+                    div.style.cursor = 'pointer';
+                    div.innerHTML = `<img src="Onyx-Adire${num}.jpg" class="clickable-img" data-name="Onyx ${num}" style="width:100%; height:80px; object-fit:cover; border:1px solid #eee;">`;
+                    sugRow.appendChild(div);
+                });
+            }
+
+            // 3. GLOBAL CLICK HANDLER
+            document.addEventListener('click', (e) => {
+                // Clicking an image
+                if (e.target.classList.contains('clickable-img')) {
+                    const src = e.target.src;
+                    const name = e.target.getAttribute('data-name');
+                    
+                    lightbox.style.display = 'flex';
+                    lbImg.src = src;
+                    lbCap.innerText = name;
+                    document.body.style.overflow = 'hidden';
+                    
+                    // Trigger dynamic suggestions
+                    showSuggestions(src);
+                    
+                    // Update Local History
+                    history = history.filter(h => h.src !== src);
+                    history.unshift({src, name});
+                    if (history.length > 8) history.pop();
+                    localStorage.setItem('onyx_history', JSON.stringify(history));
+                    updateRecentUI();
+                }
+                
+                // Closing the lightbox
+                if (e.target.classList.contains('close-lightbox') || e.target === lightbox) {
+                    lightbox.style.display = 'none';
+                    document.body.style.overflow = 'auto';
                 }
             });
+
+            // Initial UI check
+            updateRecentUI();
         });
     </script>
 </body>
