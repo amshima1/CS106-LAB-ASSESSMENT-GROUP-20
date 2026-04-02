@@ -62,11 +62,23 @@
         .content { flex: 1; padding: 180px 20px 120px; max-width: 1000px; margin: 0 auto; text-align: center; }
         
         .event-card { margin-bottom: 150px; text-align: center; }
+        
+        /* THE FRAME - defines the max visual area */
         .img-frame { 
-            width: 100%; height: 75vh; border: 1px solid #f0f0f0; margin-bottom: 30px; 
-            display: flex; align-items: center; justify-content: center; overflow: hidden; background: #fafafa;
+            width: 100%; height: 85vh; /* Increased height to show full length */
+            border: 1px solid #f0f0f0; margin-bottom: 30px; 
+            display: flex; align-items: center; justify-content: center; 
+            overflow: hidden; 
+            background: #fcfcfc; /* Very light gray background to show contained bounds */
         }
-        .img-frame img { width: 100%; height: 100%; object-fit: cover; }
+        
+        /* THE IMAGE - Updated to contain for 'head to toe' visibility */
+        .img-frame img { 
+            max-width: 100%; 
+            max-height: 100%; 
+            object-fit: contain; /* CRITICAL CHANGE: Shows full image without cropping */
+            display: block; 
+        }
         
         .event-date { font-weight: 800; font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 15px; display: block; }
         .event-card h3 { font-family: 'Cinzel', serif; font-size: 2.2rem; margin: 10px 0 20px; }
@@ -76,7 +88,7 @@
         .main-footer { background: var(--onyx-red); padding: 80px 20px; text-align: center; margin-top: auto; }
         .main-footer p { color: #ffffff !important; font-size: 0.75rem; font-weight: 800; letter-spacing: 4px; margin: 0; }
 
-        /* 7. FLOATING CHAT (ALWAYS ON TOP) */
+        /* 7. FLOATING CHAT */
         .whatsapp-float {
             position: fixed; bottom: 120px; right: 30px; background: #fff; border: 2px solid var(--onyx-red);
             padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 800; font-size: 0.75rem; 
@@ -85,7 +97,7 @@
 
         @media (max-width: 1024px) { 
             .side-nav { width: 85%; left: -85%; } 
-            .img-frame { height: 50vh; } 
+            .img-frame { height: 60vh; } /* Adjusted height for mobile */
         }
     </style>
 </head>
