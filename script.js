@@ -1,71 +1,77 @@
 /* ONYX—ADIRE | Master Script
-   Features: Hero Slider (10, 18, 39), Randomizer (1-47), & Nav Control
+   Features: 47-Item Grid, Hero Slider (10, 18, 39), & Randomizer Logic
 */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. NAVIGATION DRAWER
+    // 1. SIDE NAVIGATION (With Internal X)
     const sideMenu = document.getElementById('side-menu');
     const openBtn = document.getElementById('nav-open');
     const closeBtn = document.getElementById('nav-close');
 
-    if (openBtn) openBtn.onclick = () => sideMenu.classList.add('active');
-    if (closeBtn) closeBtn.onclick = () => sideMenu.classList.remove('active');
+    if (openBtn) {
+        openBtn.onclick = () => sideMenu.classList.add('active');
+    }
 
-    // 2. HERO SLIDER LOGIC (Specifically for 10, 18, 39)
+    if (closeBtn) {
+        closeBtn.onclick = () => sideMenu.classList.remove('active');
+    }
+
+    // 2. SUPER HERO SLIDER (Specifically for 10, 18, 39)
     const slides = document.querySelectorAll('.slide');
     let currentSlide = 0;
 
-    function nextSlide() {
+    function rotateHero() {
         if (slides.length === 0) return;
-        slides[currentSlide].style.opacity = 0;
-        currentSlide = (currentSlide + 1) % slides.length;
+        
+        // Reset all to invisible
+        slides.forEach(s => s.style.opacity = 0);
+        
+        // Show current
         slides[currentSlide].style.opacity = 1;
+        
+        // Increment
+        currentSlide = (currentSlide + 1) % slides.length;
     }
 
     if (slides.length > 0) {
-        // Set first image active
-        slides[0].style.opacity = 1;
-        setInterval(nextSlide, 4000); // 4 seconds per slide
+        rotateHero(); // Run immediately
+        setInterval(rotateHero, 4000); // Rotate every 4 seconds
     }
 
-    // 3. LIGHTBOX & RANDOMIZER (Full 47 Items)
+    // 3. LIGHTBOX & RANDOMIZER (All 47 Items)
     const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.querySelector('.lightbox-img');
-    const lightboxCaption = document.querySelector('.lightbox-caption');
-    const suggestionRow = document.getElementById('suggestion-row');
+    const lbImg = document.querySelector('.lightbox-img');
+    const lbCap = document.querySelector('.lightbox-caption');
+    const sugRow = document.getElementById('suggestion-row');
 
-    // Create the master list of 47 products
+    // Master Array for 47 Items
     const allProducts = Array.from({ length: 47 }, (_, i) => ({
         src: `Onyx-Adire${i + 1}.jpg`,
         name: `Onyx ${i + 1}`
     }));
 
-    // Function to open the Lightbox
     window.openLightbox = (src, name) => {
         if (!lightbox) return;
-        
-        lightbox.style.display = 'flex';
-        lightboxImg.src = src;
-        lightboxCaption.innerText = name;
-        document.body.style.overflow = 'hidden'; // Prevent background scrolling
 
-        // Trigger the 4-item randomizer
+        lightbox.style.display = 'flex';
+        lbImg.src = src;
+        lbCap.innerText = name;
+        document.body.style.overflow = 'hidden'; // Stop background scrolling
+
         generateRandomSuggestions(src);
-        
-        // Save to Recently Viewed
-        saveToRecent(src, name);
+        updateHistory(src, name);
     };
 
-    // The Randomizer: Picks 4 from the 46 remaining items
+    // Picks 4 random items from the 46 remaining
     function generateRandomSuggestions(currentSrc) {
-        if (!suggestionRow) return;
-        suggestionRow.innerHTML = '';
+        if (!sugRow) return;
+        sugRow.innerHTML = '';
 
-        // Remove the current image from the pool
+        // Filter out the one we are looking at
         const pool = allProducts.filter(p => !currentSrc.includes(p.src));
         
-        // Shuffle pool and take 4
+        // Shuffle and Slice
         const shuffled = pool.sort(() => 0.5 - Math.random());
         const selected = shuffled.slice(0, 4);
 
@@ -76,36 +82,37 @@ document.addEventListener('DOMContentLoaded', () => {
                 <img src="${item.src}" alt="${item.name}">
                 <p>${item.name}</p>
             `;
-            // Click suggestion to update lightbox
+            // Internal click to update lightbox without closing it
             div.onclick = (e) => {
                 e.stopPropagation();
                 openLightbox(item.src, item.name);
+                lightbox.scrollTo({ top: 0, behavior: 'smooth' });
             };
-            suggestionRow.appendChild(div);
+            sugRow.appendChild(div);
         });
     }
 
     // 4. RECENTLY VIEWED MEMORY
-    let recentlyViewed = JSON.parse(localStorage.getItem('onyxRecent')) || [];
+    let history = JSON.parse(localStorage.getItem('onyxHistory')) || [];
 
-    function saveToRecent(src, name) {
-        const exists = recentlyViewed.find(i => i.src === src);
+    function updateHistory(src, name) {
+        const exists = history.find(h => h.src === src);
         if (!exists) {
-            recentlyViewed.unshift({ src, name });
-            if (recentlyViewed.length > 6) recentlyViewed.pop();
-            localStorage.setItem('onyxRecent', JSON.stringify(recentlyViewed));
-            updateRecentUI();
+            history.unshift({ src, name });
+            if (history.length > 8) history.pop();
+            localStorage.setItem('onyxHistory', JSON.stringify(history));
+            renderHistoryUI();
         }
     }
 
-    function updateRecentUI() {
+    function renderHistoryUI() {
         const container = document.getElementById('recent-view-container');
         const section = document.getElementById('recent-section');
-        if (!container || recentlyViewed.length === 0) return;
+        if (!container || history.length === 0) return;
 
         section.style.display = 'block';
         container.innerHTML = '';
-        recentlyViewed.forEach(item => {
+        history.forEach(item => {
             container.innerHTML += `
                 <div class="grid-item">
                     <img src="${item.src}" class="clickable-img" onclick="openLightbox('${item.src}', '${item.name}')">
@@ -114,28 +121,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 5. EVENT BINDING FOR MAIN GRID
-    // We use a slight delay to ensure the HTML-generated grid is ready
-    setTimeout(() => {
-        document.querySelectorAll('.clickable-img').forEach(img => {
-            img.onclick = () => {
-                const parent = img.closest('.grid-item');
-                const title = parent ? parent.querySelector('h3').innerText : "Onyx Item";
-                openLightbox(img.src, title);
-            };
-        });
-    }, 100);
-
+    // 5. GLOBAL EVENT LISTENERS
+    
     // Close Lightbox
-    const closeLightbox = document.querySelector('.close-lightbox');
-    if (closeLightbox) {
-        closeLightbox.onclick = () => {
+    const closeLb = document.querySelector('.close-lightbox');
+    if (closeLb) {
+        closeLb.onclick = () => {
             lightbox.style.display = 'none';
             document.body.style.overflow = 'auto';
         };
     }
 
-    // Close on background click
+    // Close on dark background click
     window.onclick = (e) => {
         if (e.target === lightbox) {
             lightbox.style.display = 'none';
@@ -143,5 +140,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    updateRecentUI();
+    // Binding for the main grid items (uses Event Delegation)
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('clickable-img')) {
+            const name = e.target.getAttribute('data-name') || "Onyx Item";
+            openLightbox(e.target.src, name);
+        }
+    });
+
+    renderHistoryUI();
 });
