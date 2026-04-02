@@ -44,7 +44,6 @@
 
         .brand-logo { font-size: 1.5rem; letter-spacing: 5px; margin: 0; font-family: 'Cinzel', serif; }
 
-        /* HAMBURGER MORPHING */
         .hamburger {
             position: absolute;
             left: 20px;
@@ -56,18 +55,19 @@
             cursor: pointer;
             z-index: 11000;
         }
+
         .hamburger span {
             display: block;
             height: 2px;
             width: 100%;
             background-color: var(--onyx-red) !important;
-            transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+            transition: all 0.3s ease-in-out;
         }
+
         .hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
         .hamburger.active span:nth-child(2) { opacity: 0; }
         .hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
-        /* SIDE NAVIGATION */
         .side-nav {
             position: fixed;
             top: 0; left: -100%;
@@ -90,75 +90,68 @@
             margin: 25px 0;
             font-weight: 700;
             color: var(--onyx-red) !important;
-            transition: 0.3s;
         }
-        .nav-links a:hover { letter-spacing: 4px; padding-left: 10px; }
 
-        /* --- CONTENT STYLES --- */
+        /* --- WHATSAPP FLOATING BUTTON --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #ffffff; /* White background for luxury feel */
+            color: var(--onyx-red) !important;
+            border: 2px solid var(--onyx-red);
+            padding: 15px 25px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            z-index: 10003;
+            box-shadow: 0 10px 30px rgba(204, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            animation: pulse-red 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            background-color: var(--onyx-red);
+            color: #ffffff !important;
+            transform: translateY(-5px);
+        }
+
+        @keyframes pulse-red {
+            0% { box-shadow: 0 0 0 0 rgba(204, 0, 0, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(204, 0, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(204, 0, 0, 0); }
+        }
+
+        /* --- CONTENT & IMAGERY --- */
         body, h1, h2, h3, h4, h5, p, a, span { color: var(--onyx-red) !important; }
         .events-container { padding: 180px 20px 80px; max-width: 1200px; margin: 0 auto; }
-        .section-intro { text-align: center; margin-bottom: 80px; }
-        .section-title { font-family: 'Cinzel', serif; font-size: 3rem; margin-bottom: 10px; }
+        .section-title { font-family: 'Cinzel', serif; font-size: 3rem; text-align: center; margin-bottom: 60px; }
 
-        /* FEATURED EVENT SECTION */
-        .featured-event-block {
-            margin-bottom: 120px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 80px;
-        }
-        .full-img-frame {
+        .event-img-frame {
             width: 100%;
-            height: 85vh;
+            height: 80vh;
             background-color: #fcfcfc;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
             border: 1px solid #f0f0f0;
-        }
-        .full-img-frame img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-        .event-details {
-            text-align: center;
-            padding: 50px 0;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .event-tag { font-weight: 800; letter-spacing: 4px; font-size: 0.75rem; display: block; margin-bottom: 20px; }
-        .event-headline { font-family: 'Cinzel', serif; font-size: 2.2rem; margin-bottom: 25px; line-height: 1.2; }
-        .event-body { line-height: 1.8; font-size: 1rem; opacity: 0.9; }
-
-        /* GRID FOR MULTIPLE EVENTS */
-        .events-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 60px;
-        }
-        .grid-img-frame {
-            width: 100%;
-            height: 600px;
-            background-color: #fcfcfc;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-bottom: 5px solid var(--onyx-red);
             margin-bottom: 30px;
         }
-        .grid-img-frame img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .event-img-frame img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
         /* --- FOOTER --- */
         .footer-red { background: var(--onyx-red) !important; padding: 80px 20px; text-align: center; }
-        .footer-red p { color: #ffffff !important; font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; }
+        .footer-red p { color: #ffffff !important; font-size: 0.7rem; font-weight: 700; }
 
-        /* MOBILE FIXES */
         @media (max-width: 768px) {
-            .full-img-frame { height: 60vh; }
-            .events-grid { grid-template-columns: 1fr; }
-            .grid-img-frame { height: 450px; }
-            .section-title { font-size: 2rem; }
+            .event-img-frame { height: 50vh; }
+            .whatsapp-float { padding: 12px 20px; bottom: 20px; right: 20px; }
             .side-nav { width: 100%; }
         }
     </style>
@@ -189,66 +182,43 @@
     </nav>
 
     <main class="events-container">
-        <div class="section-intro">
-            <h2 class="section-title">CHRONICLES</h2>
-            <p style="font-weight: 800; letter-spacing: 3px; font-size: 0.7rem; text-transform: uppercase;">The Intersection of Tradition & Innovation</p>
-        </div>
+        <h2 class="section-title">CHRONICLES</h2>
 
-        <section class="featured-event-block">
-            <div class="full-img-frame">
-                <img src="Onyx-Adire18.jpg" alt="Miva Open University Collaboration">
-            </div>
-            <div class="event-details">
-                <span class="event-tag">KEYNOTE COLLABORATION — 2026</span>
-                <h3 class="event-headline">Miva Open University <br> Innovation Summit</h3>
-                <p class="event-body">
-                    A pivotal partnership exploring the digitization of indigenous craft. Onyx—Adire serves as a case study for Miva Open University students, illustrating how ancient Adire techniques can be preserved and scaled through modern technology.
-                </p>
-            </div>
-        </section>
+        <article style="margin-bottom: 100px; text-align: center;">
+            <div class="event-img-frame"><img src="Onyx-Adire18.jpg" alt="Miva Summit"></div>
+            <span style="font-weight: 800; letter-spacing: 4px; font-size: 0.75rem;">KEYNOTE — 2026</span>
+            <h3 style="font-family: 'Cinzel', serif; font-size: 2.2rem; margin: 20px 0;">Miva Open University Summit</h3>
+        </article>
 
-        <section class="events-grid">
-            
-            <article>
-                <div class="grid-img-frame">
-                    <img src="Onyx-Adire10.jpg" alt="The Trustees Gala">
-                </div>
-                <div style="text-align: center;">
-                    <span class="event-tag">JANUARY 2026</span>
-                    <h4 class="event-headline" style="font-size: 1.5rem;">The Trustees Gala</h4>
-                    <p class="event-body" style="font-size: 0.9rem;">An exclusive evening where our Board of Trustees unveiled the 'Ancestral Future' collection to international patrons.</p>
-                </div>
-            </article>
+        <article style="margin-bottom: 100px; text-align: center;">
+            <div class="event-img-frame"><img src="Onyx-Adire10.jpg" alt="Gala"></div>
+            <span style="font-weight: 800; letter-spacing: 4px; font-size: 0.75rem;">JANUARY 2026</span>
+            <h3 style="font-family: 'Cinzel', serif; font-size: 2.2rem; margin: 20px 0;">The Trustees Gala</h3>
+        </article>
 
-            <article>
-                <div class="grid-img-frame">
-                    <img src="Onyx-Adire7.jpg" alt="Indigo Masterclass">
-                </div>
-                <div style="text-align: center;">
-                    <span class="event-tag">FEBRUARY 2026</span>
-                    <h4 class="event-headline" style="font-size: 1.5rem;">Mastering the Indigo</h4>
-                    <p class="event-body" style="font-size: 0.9rem;">Our signature workshop series, teaching the meticulous art of indigo fermentation and pattern-resist craftsmanship.</p>
-                </div>
-            </article>
-
-        </section>
+        <article style="margin-bottom: 100px; text-align: center;">
+            <div class="event-img-frame"><img src="Onyx-Adire7.jpg" alt="Workshop"></div>
+            <span style="font-weight: 800; letter-spacing: 4px; font-size: 0.75rem;">FEBRUARY 2026</span>
+            <h3 style="font-family: 'Cinzel', serif; font-size: 2.2rem; margin: 20px 0;">Mastering the Indigo</h3>
+        </article>
     </main>
 
-    <footer class="footer-red">
-        <p>&copy; 2026 ONYX—ADIRE. ALL RIGHTS RESERVED.</p>
-    </footer>
+    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i>
+        <span>Chat with Onyx</span>
+    </a>
+
+    <footer class="footer-red"><p>&copy; 2026 ONYX—ADIRE. ALL RIGHTS RESERVED.</p></footer>
 
     <script>
         const navToggle = document.getElementById('nav-toggle');
         const sideMenu = document.getElementById('side-menu');
 
-        // Toggle Hamburger Animation and Menu Open
         navToggle.addEventListener('click', () => {
             navToggle.classList.toggle('active');
             sideMenu.classList.toggle('open');
         });
 
-        // Close menu on link click
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navToggle.classList.remove('active');
