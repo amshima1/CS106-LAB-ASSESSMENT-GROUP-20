@@ -9,17 +9,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* TRUSTEE SPECIFIC STYLING - FULL BODY VIEW */
-        .trustee-header {
-            padding: 100px 20px 40px;
-            text-align: center;
-            background: #fff;
+        :root { --onyx-red: #cc0000; }
+        
+        /* GLOBAL RED TYPOGRAPHY */
+        body, h1, h2, h3, h4, p, a, span, marquee { 
+            color: var(--onyx-red) !important; 
         }
+
+        .trustee-header { padding: 100px 20px 40px; text-align: center; }
 
         .trustee-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
             padding: 20px;
             max-width: 1400px;
             margin: 0 auto;
@@ -28,24 +30,22 @@
         .trustee-card {
             background: #ffffff;
             border: 1px solid #f0f0f0;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease;
             text-align: center;
             padding-bottom: 25px;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            cursor: pointer;
         }
 
         .trustee-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            box-shadow: 0 15px 40px rgba(204, 0, 0, 0.1);
         }
 
         .trustee-img-wrapper {
             width: 100%;
-            height: 650px; 
+            height: 600px; 
             overflow: hidden;
-            border-bottom: 6px solid #cc0000; 
+            border-bottom: 6px solid var(--onyx-red); 
             background-color: #f9f9f9;
             display: flex;
             align-items: center;
@@ -56,77 +56,87 @@
             max-width: 100%;
             max-height: 100%;
             object-fit: contain; 
-            transition: transform 0.6s ease-in-out;
         }
 
-        .trustee-card:hover img {
-            transform: scale(1.03);
-        }
-
-        .trustee-info {
-            padding: 25px 20px 0;
-            margin-top: auto;
-        }
+        .trustee-info { padding: 25px 20px 0; }
 
         .trustee-name {
             font-family: 'Cinzel', serif;
             font-size: 1.1rem;
-            color: #000;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
             text-transform: uppercase;
-            letter-spacing: 2px;
             font-weight: 700;
         }
 
         .trustee-role {
-            font-size: 0.75rem;
+            font-size: 0.65rem;
             font-weight: 800;
-            color: #cc0000;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
         }
 
-        /* PERMANENT PULSING WHATSAPP BUTTON */
+        /* MODAL / POP-UP STYLING */
+        .trustee-modal {
+            display: none;
+            position: fixed;
+            z-index: 20000;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background: rgba(255,255,255,0.98);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            max-width: 600px;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-quote {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            line-height: 1.4;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 30px; right: 30px;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .footer-red { background: var(--onyx-red) !important; padding: 60px 20px; text-align: center; margin-top: 80px; }
+        .footer-red p { color: #ffffff !important; font-size: 0.65rem; font-weight: 700; }
+        
         .whatsapp-btn { 
             display: flex !important; 
             position: fixed;
-            bottom: 25px;
-            right: 20px;
+            bottom: 25px; right: 20px;
             background: #ffffff;
             padding: 12px 24px;
             border-radius: 50px;
             text-decoration: none;
-            border: 2px solid #cc0000;
+            border: 2px solid var(--onyx-red);
             font-weight: 800;
-            font-size: 0.8rem;
-            color: #cc0000;
             z-index: 10001;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            align-items: center;
-            gap: 8px;
-            animation: pulse-ring 2s infinite;
-        }
-
-        @keyframes pulse-ring {
-            0% { box-shadow: 0 0 0 0 rgba(204, 0, 0, 0.4); }
-            70% { box-shadow: 0 0 0 12px rgba(204, 0, 0, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(204, 0, 0, 0); }
         }
     </style>
 </head>
 <body>
 
-    <div class="announcement-bar">
-        <marquee scrollamount="5">GUARDIANS OF THE CRAFT — MEET THE ONYX—ADIRE TRUSTEES</marquee>
-    </div>
-
     <header class="main-header">
         <div class="header-inner">
-            <div class="hamburger" id="nav-open">
-                <span></span><span></span><span></span>
-            </div>
+            <div class="hamburger" id="nav-open"><span></span><span></span><span></span></div>
             <h1 class="brand-logo">ONYX—ADIRE</h1>
-            <div class="header-spacer"></div>
         </div>
     </header>
 
@@ -143,74 +153,79 @@
 
     <main class="main-content">
         <header class="trustee-header">
-            <h2 class="section-title">THE TRUSTEES</h2>
-            <p style="font-size: 0.65rem; letter-spacing: 3px; font-weight: 800; color: #666; text-transform: uppercase;">Preserving Heritage through Leadership</p>
+            <h2 class="section-title">THE BOARD OF TRUSTEES</h2>
+            <p style="font-size: 0.6rem; letter-spacing: 2px; font-weight: 800;">CLICK TO VIEW VISION</p>
         </header>
 
         <section class="trustee-grid">
             
-            <div class="trustee-card">
-                <div class="trustee-img-wrapper">
-                    <img src="Trustees1.jpg" alt="Victor Amshima">
-                </div>
+            <div class="trustee-card" onclick="openModal('“Innovation is the thread that weaves our tradition into the future.”', 'Victor Amshima')">
+                <div class="trustee-img-wrapper"><img src="Trustees1.jpg" alt="Victor"></div>
                 <div class="trustee-info">
                     <h3 class="trustee-name">Victor Amshima</h3>
-                    <p class="trustee-role">CEO & Founder</p>
+                    <p class="trustee-role">Chief Executive Officer</p>
                 </div>
             </div>
 
-            <div class="trustee-card">
-                <div class="trustee-img-wrapper">
-                    <img src="Trustees2.jpg" alt="Paul Gbawuan">
-                </div>
+            <div class="trustee-card" onclick="openModal('“True leadership lies in preserving the soul of our craft for the next generation.”', 'Paul Gbawuan')">
+                <div class="trustee-img-wrapper"><img src="Trustees2.jpg" alt="Paul"></div>
                 <div class="trustee-info">
                     <h3 class="trustee-name">Paul Gbawuan</h3>
-                    <p class="trustee-role">Trustee</p>
+                    <p class="trustee-role">Chairman, Board of Trustees</p>
                 </div>
             </div>
 
-            <div class="trustee-card">
-                <div class="trustee-img-wrapper">
-                    <img src="Trustees3.jpg" alt="Onyekachukwu Chimbuchi Great">
-                </div>
+            <div class="trustee-card" onclick="openModal('“Excellence is not an act, but a habit of meticulous precision and art.”', 'Onyekachukwu Chimbuchi Great')">
+                <div class="trustee-img-wrapper"><img src="Trustees3.jpg" alt="Great"></div>
                 <div class="trustee-info">
                     <h3 class="trustee-name">Onyekachukwu Chimbuchi Great</h3>
-                    <p class="trustee-role">Trustee</p>
+                    <p class="trustee-role">Executive Secretary</p>
                 </div>
             </div>
 
-            <div class="trustee-card">
-                <div class="trustee-img-wrapper">
-                    <img src="Trustees4.jpg" alt="Sado Ereghese Abraham">
-                </div>
+            <div class="trustee-card" onclick="openModal('“Operations are the backbone of art; we ensure the vision reaches every corner.”', 'Sado Ereghese Abraham')">
+                <div class="trustee-img-wrapper"><img src="Trustees4.jpg" alt="Abraham"></div>
                 <div class="trustee-info">
                     <h3 class="trustee-name">Sado Ereghese Abraham</h3>
-                    <p class="trustee-role">Trustee</p>
+                    <p class="trustee-role">Director of Operations</p>
                 </div>
             </div>
 
-            <div class="trustee-card">
-                <div class="trustee-img-wrapper">
-                    <img src="Trustees5.jpg" alt="Atanunu Igbunuroghene">
-                </div>
+            <div class="trustee-card" onclick="openModal('“Sustainability and growth go hand-in-hand with our cultural heritage.”', 'Atanunu Igbunuroghene')">
+                <div class="trustee-img-wrapper"><img src="Trustees5.jpg" alt="Atanunu"></div>
                 <div class="trustee-info">
                     <h3 class="trustee-name">Atanunu Igbunuroghene</h3>
-                    <p class="trustee-role">Trustee</p>
+                    <p class="trustee-role">Director of Finance</p>
                 </div>
             </div>
 
         </section>
     </main>
 
-    <footer class="footer-red" style="background:#cc0000; padding:60px 20px; text-align:center; margin-top: 80px;">
-        <p style="color:#ffffff; font-size:0.65rem; font-weight:700;">&copy; 2026 ONYX—ADIRE. ALL RIGHTS RESERVED.</p>
-    </footer>
+    <div id="quoteModal" class="trustee-modal" onclick="closeModal()">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content">
+            <p id="modalQuote" class="modal-quote"></p>
+            <p id="modalAuthor" style="font-weight: 800; letter-spacing: 3px; font-size: 0.8rem;"></p>
+        </div>
+    </div>
 
-    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-btn">
-        <i class="fab fa-whatsapp"></i> Chat with Onyx
-    </a>
+    <footer class="footer-red"><p>&copy; 2026 ONYX—ADIRE. ALL RIGHTS RESERVED.</p></footer>
+
+    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> Chat with Onyx</a>
 
     <script src="script.js"></script>
+    <script>
+        function openModal(quote, author) {
+            document.getElementById('modalQuote').innerText = quote;
+            document.getElementById('modalAuthor').innerText = author.toUpperCase();
+            document.getElementById('quoteModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal() {
+            document.getElementById('quoteModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    </script>
 </body>
 </html>
-
