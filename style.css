@@ -2,7 +2,7 @@
     --onyx-black: #000000;
     --pure-white: #ffffff;
     --alert-red: #cc0000;
-    --wa-orange: #ff8c00; /* Orange for WhatsApp */
+    --wa-orange: #ff8c00;
 }
 
 body {
@@ -13,16 +13,17 @@ body {
     color: var(--onyx-black);
 }
 
-/* Red Top Bar */
+/* Announcement Bar: Red Background */
 .announcement-bar {
     background-color: var(--alert-red);
     color: var(--pure-white);
     padding: 10px 0;
     font-size: 0.75rem;
     font-weight: 600;
+    text-transform: uppercase;
 }
 
-/* Header Styling */
+/* Header: White Background */
 .main-header {
     background-color: var(--pure-white);
     padding: 20px;
@@ -37,7 +38,7 @@ body {
     margin: 0 auto;
 }
 
-/* Red Hamburger Icon */
+/* Red 3-Line Hamburger */
 .hamburger {
     cursor: pointer;
     width: 25px;
@@ -55,25 +56,26 @@ body {
     border-radius: 2px;
 }
 
-/* Logo: Stylish Alphabet */
+/* Centered Logo: Stylish Alphabet */
 .logo h1 {
     font-family: 'Cinzel', serif;
     font-size: 1.4rem;
     letter-spacing: 4px;
     margin: 0;
+    text-align: center;
 }
 
-.header-spacer { width: 25px; }
+.header-spacer { width: 25px; } /* Balances the hamburger on the left */
 
-/* Side Menu Slide-out */
+/* Side-Nav Slide-out */
 .side-nav {
     position: fixed;
     top: 0;
-    left: -100%; /* Hidden */
+    left: -100%;
     width: 280px;
     height: 100%;
     background-color: var(--pure-white);
-    box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+    box-shadow: 4px 0 12px rgba(0,0,0,0.1);
     z-index: 1000;
     transition: 0.4s ease-in-out;
     padding: 30px;
@@ -92,13 +94,14 @@ body {
     padding: 15px 0;
     border-bottom: 1px solid #f9f9f9;
     text-transform: uppercase;
+    font-weight: 600;
 }
 
-/* FLOATING WHATSAPP - POSITIONED BOTTOM RIGHT */
+/* WhatsApp Floating Bottom Right */
 .whatsapp-btn {
     position: fixed;
-    bottom: 30px; /* Distance from bottom */
-    right: 30px;  /* Distance from right */
+    bottom: 30px;
+    right: 30px;
     background-color: var(--wa-orange);
     color: white;
     padding: 15px 25px;
@@ -108,7 +111,4 @@ body {
     align-items: center;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     z-index: 999;
-    font-weight: 600;
 }
-
-.whatsapp-btn i { font-size: 1.5rem; margin-right: 10px; }
