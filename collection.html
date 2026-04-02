@@ -7,6 +7,35 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* Force Universal Red Text */
+        :root { --onyx-red: #cc0000; }
+        
+        * { color: #cc0000 !important; }
+
+        /* Announcement Bar Text */
+        .announcement-bar marquee { color: #cc0000 !important; }
+
+        /* Navigation Menu Links */
+        .nav-links a { color: #cc0000 !important; }
+        #nav-close { color: #cc0000 !important; }
+
+        /* Grid Item Prices and Titles */
+        .product-info h3, .product-info p { color: #cc0000 !important; }
+
+        /* Lightbox Suggestions Titles */
+        .suggestion-item p, .suggestion-title { color: #cc0000 !important; }
+
+        /* Footer Copy (Usually white on red, now red on red for consistency) */
+        .footer-red p { color: #cc0000 !important; font-weight: 700; }
+
+        /* WhatsApp Button Text & Icon */
+        .whatsapp-btn, .whatsapp-btn i { color: #cc0000 !important; }
+        
+        /* Collection Subtitle */
+        .collection-subtitle { color: #cc0000 !important; opacity: 1; }
+    </style>
 </head>
 <body>
 
@@ -28,7 +57,8 @@
         <span id="nav-close">&times;</span>
         <div class="nav-links">
             <a href="index.html">Home</a>
-            <a href="collection.html">Collection</a> <a href="trustees.html">Trustees</a>
+            <a href="collection.html">Collection</a>
+            <a href="trustees.html">Trustees</a>
             <a href="events.html">Events</a>
             <a href="contact.html">Inquiries</a>
         </div>
@@ -53,7 +83,8 @@
         </header>
 
         <section class="collection-area">
-            <div class="grid-container" id="main-grid"></div>
+            <div class="grid-container" id="main-grid">
+                </div>
         </section>
     </main>
 
@@ -74,13 +105,18 @@
                     items += `
                         <div class="grid-item">
                             <img src="Onyx-Adire${i}.jpg" class="clickable-img" data-name="Onyx ${i}" loading="lazy">
-                            <div class="product-info"><h3>Onyx ${i}</h3><p>₦25,000</p></div>
-                        </div>`;
+                            <div class="product-info">
+                                <h3>Onyx ${i}</h3>
+                                <p>₦25,000</p>
+                            </div>
+                        </div>
+                    `;
                 }
                 grid.innerHTML = items;
             }
         });
     </script>
+
     <script src="script.js"></script>
 </body>
 </html>
