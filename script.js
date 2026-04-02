@@ -3,28 +3,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const navClose = document.getElementById('nav-close');
     const sideMenu = document.getElementById('side-menu');
 
-    // Open Menu
-    navOpen.onclick = () => {
-        sideMenu.classList.add('active');
-    };
+    // Menu Interactions
+    navOpen.onclick = () => sideMenu.classList.add('active');
+    navClose.onclick = () => sideMenu.classList.remove('active');
 
-    // Close Menu
-    navClose.onclick = () => {
-        sideMenu.classList.remove('active');
-    };
-
-    // Auto-close menu when clicking a link
+    // Auto-close menu when a link is clicked
     const links = document.querySelectorAll('.nav-links a');
     links.forEach(link => {
         link.onclick = () => sideMenu.classList.remove('active');
     });
 
-    // Dynamic Greeting
-    const greeting = document.getElementById('greeting');
-    const hour = new Date().getHours();
-    if (greeting) {
-        greeting.innerText = hour < 12 ? "Good Morning | Onyx—Adire" : 
-                            hour < 18 ? "Good Afternoon | Onyx—Adire" : 
-                            "Good Evening | Onyx—Adire";
-    }
+    console.log("Onyx—Adire: Minimalist DOM Initialized.");
 });
