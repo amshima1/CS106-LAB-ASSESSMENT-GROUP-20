@@ -1,8 +1,7 @@
 :root {
     --onyx-black: #000000;
     --pure-white: #ffffff;
-    --alert-red: #cc0000;
-    --wa-orange: #ff8c00;
+    --onyx-red: #cc0000; /* Main brand color */
 }
 
 body {
@@ -13,9 +12,9 @@ body {
     color: var(--onyx-black);
 }
 
-/* Announcement Bar: Red Background */
+/* 1. Red Announcement Bar */
 .announcement-bar {
-    background-color: var(--alert-red);
+    background-color: var(--onyx-red);
     color: var(--pure-white);
     padding: 10px 0;
     font-size: 0.75rem;
@@ -23,11 +22,11 @@ body {
     text-transform: uppercase;
 }
 
-/* Header: White Background */
+/* 2. White Header & Logo */
 .main-header {
     background-color: var(--pure-white);
     padding: 20px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #f0f0f0;
 }
 
 .header-inner {
@@ -38,7 +37,16 @@ body {
     margin: 0 auto;
 }
 
-/* Red 3-Line Hamburger */
+.red-heading {
+    font-family: 'Cinzel', serif;
+    color: var(--onyx-red); /* Red Heading */
+    font-size: 1.6rem;
+    letter-spacing: 5px;
+    margin: 0;
+    text-align: center;
+}
+
+/* 3. Red Hamburger Icon */
 .hamburger {
     cursor: pointer;
     width: 25px;
@@ -52,22 +60,13 @@ body {
     display: block;
     height: 3px;
     width: 100%;
-    background-color: var(--alert-red);
+    background-color: var(--onyx-red);
     border-radius: 2px;
 }
 
-/* Centered Logo: Stylish Alphabet */
-.logo h1 {
-    font-family: 'Cinzel', serif;
-    font-size: 1.4rem;
-    letter-spacing: 4px;
-    margin: 0;
-    text-align: center;
-}
+.header-spacer { width: 25px; }
 
-.header-spacer { width: 25px; } /* Balances the hamburger on the left */
-
-/* Side-Nav Slide-out */
+/* 4. Navigation Menu */
 .side-nav {
     position: fixed;
     top: 0;
@@ -75,16 +74,13 @@ body {
     width: 280px;
     height: 100%;
     background-color: var(--pure-white);
-    box-shadow: 4px 0 12px rgba(0,0,0,0.1);
+    box-shadow: 4px 0 15px rgba(0,0,0,0.1);
     z-index: 1000;
     transition: 0.4s ease-in-out;
     padding: 30px;
 }
 
 .side-nav.active { left: 0; }
-
-.nav-header { text-align: right; margin-bottom: 40px; }
-#nav-close { color: var(--alert-red); cursor: pointer; font-weight: bold; }
 
 .nav-links a {
     display: block;
@@ -97,18 +93,20 @@ body {
     font-weight: 600;
 }
 
-/* WhatsApp Floating Bottom Right */
-.whatsapp-btn {
+/* 5. Red Floating WhatsApp (Bottom Right) */
+.whatsapp-btn-red {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    background-color: var(--wa-orange);
+    background-color: var(--onyx-red); /* Red WhatsApp */
     color: white;
     padding: 15px 25px;
     border-radius: 50px;
     text-decoration: none;
     display: flex;
     align-items: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     z-index: 999;
 }
+
+.whatsapp-btn-red i { font-size: 1.5rem; margin-right: 10px; }
