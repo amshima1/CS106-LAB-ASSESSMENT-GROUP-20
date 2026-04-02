@@ -1,12 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const navOpen = document.getElementById('nav-open');
-    const navClose = document.getElementById('nav-close');
-    const sideMenu = document.getElementById('side-menu');
-
-    navOpen.onclick = () => sideMenu.classList.add('active');
-    navClose.onclick = () => sideMenu.classList.remove('active');
-
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.onclick = () => sideMenu.classList.remove('active');
-    });
+    const menu = document.getElementById('side-menu');
+    document.getElementById('nav-open').onclick = () => menu.classList.add('active');
+    document.getElementById('nav-close').onclick = () => menu.classList.remove('active');
 });
