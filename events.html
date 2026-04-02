@@ -10,7 +10,7 @@
     <style>
         :root { --onyx-red: #cc0000; }
         
-        /* 1. LAYOUT ENGINE */
+        /* 1. ARCHITECTURE */
         * { box-sizing: border-box; }
         body { 
             margin: 0; padding: 0; font-family: 'Inter', sans-serif; 
@@ -18,10 +18,10 @@
             display: flex; flex-direction: column; min-height: 100vh; 
         }
 
-        /* Onyx Red Typography Rule */
-        h1, h2, h3, h4, h5, h6, p, a, span, i { color: var(--onyx-red); }
+        /* Onyx Red Brand Enforcement */
+        h1, h2, h3, h4, h5, h6, p, a, span, i { color: var(--onyx-red); transition: 0.3s ease; }
 
-        /* 2. UTILITY BAR (Red Background / White Text) */
+        /* 2. ANNOUNCEMENT BAR (Red BG / White Text) */
         .announcement-bar {
             background: var(--onyx-red);
             height: 35px; width: 100%; position: fixed; top: 0; z-index: 10001;
@@ -29,10 +29,10 @@
         }
         .announcement-bar marquee {
             color: #ffffff !important;
-            font-size: 0.7rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
+            font-size: 0.7rem; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase;
         }
 
-        /* 3. PRIMARY HEADER */
+        /* 3. MAIN HEADER */
         .main-header { 
             position: fixed; top: 35px; width: 100%; height: 80px;
             background: rgba(255, 255, 255, 0.98); border-bottom: 1px solid #f0f0f0; z-index: 10000;
@@ -46,35 +46,37 @@
             display: flex; flex-direction: column; justify-content: space-between;
             cursor: pointer; z-index: 10002;
         }
-        .hamburger span { display: block; height: 2px; width: 100%; background: var(--onyx-red); transition: 0.3s; }
+        .hamburger span { display: block; height: 2px; width: 100%; background: var(--onyx-red); }
 
-        /* 5. THE 50% SPLIT-MENU */
+        /* 5. 50% SIDE NAVIGATION (Slide-Out) */
         .side-nav {
             position: fixed; 
-            top: 35px; /* Aligned below announcement bar */
+            top: 35px; /* Starts exactly below utility bar */
             left: -50%; 
             width: 50%; 
             height: calc(100vh - 35px); 
             background: #ffffff; 
             z-index: 9999; 
-            transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+            transition: 0.6s cubic-bezier(0.77, 0, 0.175, 1);
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             border-right: 1px solid #f0f0f0;
             box-shadow: 10px 0 30px rgba(0, 0, 0, 0.03);
         }
         .side-nav.open { left: 0; }
 
-        /* TOP-RIGHT PANEL X */
+        /* TOP-RIGHT PANEL CLOSE */
         .close-menu {
             position: absolute; top: 20px; right: 20px;
             font-size: 2.2rem; cursor: pointer; line-height: 1; font-weight: 300;
         }
+        .close-menu:hover { opacity: 0.5; }
 
         .nav-links { display: flex; flex-direction: column; text-align: center; }
         .nav-links a { 
             font-family: 'Cinzel', serif; font-size: 1.6rem; text-decoration: none; 
             margin: 15px 0; font-weight: 700; text-transform: uppercase; 
         }
+        .nav-links a:hover { letter-spacing: 4px; opacity: 0.7; }
 
         /* 6. CONTENT CHRONICLES */
         .content { flex: 1; padding: 180px 20px 120px; max-width: 1200px; margin: 0 auto; text-align: center; }
@@ -91,20 +93,17 @@
         h3 { font-family: 'Cinzel', serif; font-size: 2.5rem; margin: 10px 0 25px; line-height: 1.1; }
         .description { line-height: 2.2; max-width: 800px; margin: 0 auto; font-size: 1.1rem; opacity: 0.9; }
 
-        /* 7. BRAND FOOTER (Red Background / White Text) */
+        /* 7. RED FOOTER (Red BG / White Text) */
         .main-footer {
             background: var(--onyx-red);
-            padding: 80px 20px;
-            text-align: center;
-            width: 100%;
-            margin-top: auto;
+            padding: 80px 20px; text-align: center; width: 100%; margin-top: auto;
         }
         .main-footer p {
             color: #ffffff !important;
             font-size: 0.75rem; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; margin: 0;
         }
 
-        /* 8. FLOATING WHATSAPP */
+        /* 8. FLOATING INQUIRY */
         .whatsapp-float {
             position: fixed; bottom: 120px; right: 30px;
             background: #fff; border: 2px solid var(--onyx-red);
@@ -112,15 +111,15 @@
             font-weight: 800; font-size: 0.75rem; z-index: 1000;
             display: flex; align-items: center; gap: 12px;
             box-shadow: 0 10px 30px rgba(204, 0, 0, 0.1);
-            transition: 0.3s;
         }
         .whatsapp-float:hover { background: var(--onyx-red); }
         .whatsapp-float:hover * { color: #fff !important; }
 
         @media (max-width: 768px) {
-            .side-nav { width: 70%; left: -70%; }
+            .side-nav { width: 80%; left: -80%; }
             .img-frame { height: 60vh; }
             h3 { font-size: 1.8rem; }
+            .nav-links a { font-size: 1.2rem; }
         }
     </style>
 </head>
@@ -155,16 +154,16 @@
             <span class="event-tag">The Visionary</span>
             <h3>Foster: Architect of Heritage</h3>
             <p class="description">
-                A leader in the preservation of West African artistry. Foster steers Onyx—Adire as a vessel for historical continuity, blending ancient techniques with high-end modern sensibilities.
+                A pioneer in the preservation of West African indigo artistry. Foster leads Onyx—Adire as a vessel for historical continuity, blending ancient resist-dyeing with the precision of modern luxury.
             </p>
         </section>
 
         <section class="event-section">
             <div class="img-frame"><img src="Onyx-Adire18.jpg" alt="Innovation Summit"></div>
-            <span class="event-tag">Collaboration — 2026</span>
+            <span class="event-tag">Keynote — 2026</span>
             <h3>The Miva Innovation Summit</h3>
             <p class="description">
-                An institutional partnership dedicated to the archival future of African textiles. We bridge the gap between traditional craft and digital excellence.
+                Bridging traditional craft with digital excellence. Our collaboration with Miva Open University establishes a new archive for the next generation of African designers.
             </p>
         </section>
 
@@ -192,6 +191,7 @@
             sideMenu.classList.remove('open');
         });
 
+        // Global link click closure
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 sideMenu.classList.remove('open');
