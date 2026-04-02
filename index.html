@@ -3,20 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Onyx—Adire | Luxury Fashion</title>
+    <title>Onyx—Adire | Luxury Heritage</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
     <div class="top-announcement">
-        <marquee behavior="scroll" direction="left">
-            LIMITED EDITION: THE "HERITAGE TECH" COLLECTION IS NOW LIVE — SHOP THE FUTURE OF ADIRE — WORLDWIDE SHIPPING AVAILABLE
-        </marquee>
+        <marquee>ONYX—ADIRE: TRADITION REIMAGINED. SHOP THE NEW COLLECTION NOW.</marquee>
     </div>
 
-    <header>
-        <div class="nav-container">
+    <header class="main-header">
+        <div class="header-content">
             <div class="hamburger" id="menu-toggle">
                 <span></span>
                 <span></span>
@@ -27,22 +26,30 @@
                 <h1>ONYX—ADIRE</h1>
             </div>
             
-            <div class="nav-spacer"></div> </div>
+            <div class="spacer"></div> </div>
 
-        <nav id="side-menu">
-            <a href="index.html" class="active">Home</a>
-            <a href="product.html">Collection</a>
-            <a href="trustees.html">Trustees</a>
-            <a href="events.html">Events</a>
-            <a href="contact.html">Booking</a>
+        <nav id="slide-menu" class="nav-overlay">
+            <div class="menu-header">
+                <span id="close-menu">&times; Close</span>
+            </div>
+            <div class="menu-links">
+                <a href="index.html">Home</a>
+                <a href="product.html">Collection</a>
+                <a href="trustees.html">Trustees</a>
+                <a href="events.html">Events</a>
+                <a href="contact.html">Inquiries</a>
+            </div>
         </nav>
     </header>
 
+    <a href="https://wa.me/YOURNUMBER" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span>Chat with us</span>
+    </a>
+
     <main class="container">
-        <section class="hero">
-            <h2 id="dynamic-greeting">Welcome</h2>
-            <p>Merging Nigerian heritage with technical precision.</p>
-        </section>
+        <h2 id="dynamic-greeting">Welcome</h2>
+        <p>Your journey into technical Adire starts here.</p>
     </main>
 
     <script src="script.js"></script>
