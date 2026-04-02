@@ -1,43 +1,41 @@
-:root { --onyx-red: #cc0000; --white: #ffffff; }
+:root { --onyx-red: #cc0000; --white: #ffffff; --light-gray: #f9f9f9; }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body { font-family: 'Inter', sans-serif; background-color: var(--white); overflow-x: hidden; }
 
-/* Announcement Bar */
+/* 1. Red Announcement Bar */
 .announcement-bar {
     background-color: var(--onyx-red);
     color: var(--white);
-    padding: 10px 0;
+    padding: 12px 0;
     font-size: 0.75rem;
-    z-index: 4000; /* Highest priority */
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    z-index: 4000;
     position: relative;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 
-/* Header & Logo Safety */
+/* 2. Header & Logo Safety (Sticky) */
 .main-header {
     background: var(--white);
     padding: 15px 20px;
     position: sticky;
     top: 0;
-    z-index: 3000; /* Stays above the sliding menu */
+    z-index: 3000; /* Stays above sliding menu */
     border-bottom: 1px solid #f0f0f0;
 }
 .header-inner { display: flex; justify-content: space-between; align-items: center; }
 .brand-logo { color: var(--onyx-red); font-family: 'Cinzel', serif; font-size: 1.2rem; letter-spacing: 2px; }
 
 .hamburger { cursor: pointer; }
-.hamburger span {
-    display: block; width: 25px; height: 3px; 
-    background: var(--onyx-red); margin: 5px 0; border-radius: 2px;
-}
+.hamburger span { display: block; width: 25px; height: 3px; background: var(--onyx-red); margin: 5px 0; border-radius: 2px; }
 
-/* Side Navigation (Slides UNDER the header) */
+/* 3. Side Navigation (Slides UNDER the Header) */
 .side-nav {
     position: fixed; left: -100%; top: 0; height: 100%; width: 280px;
-    background: var(--white); 
-    z-index: 2000; /* Lower than header and WhatsApp button */
-    transition: 0.4s ease-in-out; 
-    padding: 100px 25px 20px; /* Padding to clear the header logo */
+    background: var(--white); z-index: 2500; 
+    transition: 0.4s ease-in-out; padding: 100px 25px 20px; /* Clear header space */
     box-shadow: 5px 0 15px rgba(0,0,0,0.1);
 }
 .side-nav.active { left: 0; }
@@ -48,20 +46,19 @@ body { font-family: 'Inter', sans-serif; background-color: var(--white); overflo
 }
 .nav-links a { display: block; padding: 18px 0; color: #333; text-decoration: none; border-bottom: 1px solid #f5f5f5; font-weight: 600; }
 
-/* Hero Slider: Full Top-to-Bottom Image */
-.hero-frame-container { padding: 10px; height: 80vh; }
+/* 4. Hero Slider: Full Top-to-Bottom Frame */
+.hero-frame-container { padding: 10px; height: 80vh; margin-top: 10px; }
 .white-border-frame {
     height: 100%; position: relative;
-    border: 15px solid var(--white);
-    background: #f9f9f9;
+    border: 15px solid var(--white); /* Premium White Frame */
+    background: var(--light-gray);
     box-shadow: 0 8px 25px rgba(0,0,0,0.1);
     overflow: hidden;
 }
 .slide {
     position: absolute; width: 100%; height: 100%;
-    background-size: contain; /* Verified: Full height visibility */
-    background-position: center;
-    background-repeat: no-repeat;
+    background-size: contain; /* Verified: Full portrait visibility */
+    background-position: center; background-repeat: no-repeat;
     opacity: 0; animation: fadeEffect 12s infinite;
 }
 .slide:nth-child(1) { animation-delay: 0s; }
@@ -69,24 +66,23 @@ body { font-family: 'Inter', sans-serif; background-color: var(--white); overflo
 .slide:nth-child(3) { animation-delay: 8s; }
 @keyframes fadeEffect { 0%, 33% { opacity: 1; } 38%, 100% { opacity: 0; } }
 
-/* 2-Column Grid Area */
+/* 5. Grid: Strict 2-Column Layout */
 .collection-area { padding: 30px 10px; }
-.section-title { font-family: 'Cinzel', serif; text-align: center; margin-bottom: 25px; color: var(--onyx-red); font-size: 1rem; }
+.section-title { font-family: 'Cinzel', serif; text-align: center; margin-bottom: 25px; color: var(--onyx-red); font-size: 1rem; letter-spacing: 2px;}
 
 .grid-container {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Strict 2 columns */
+    grid-template-columns: 1fr 1fr; /* Forced 2 columns */
     gap: 12px;
 }
 .grid-item { border: 5px solid var(--white); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-.grid-item img { width: 100%; height: auto; display: block; object-fit: cover; }
+.grid-item img { width: 100%; height: auto; display: block; }
 
-/* Footer & WhatsApp (Stays on top) */
+/* 6. Footer & WhatsApp */
 .footer-red { background: var(--onyx-red); color: var(--white); text-align: center; padding: 50px 20px; }
 .whatsapp-btn {
     position: fixed; bottom: 25px; right: 20px;
     background: var(--onyx-red); color: var(--white);
-    padding: 12px 20px; border-radius: 50px; text-decoration: none;
-    z-index: 3000; /* Stays on top layer */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    padding: 12px 20px; border-radius: 50px; z-index: 3500; /* Highest layer */
+    text-decoration: none; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
