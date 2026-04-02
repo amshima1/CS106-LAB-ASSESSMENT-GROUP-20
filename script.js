@@ -3,16 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const navClose = document.getElementById('nav-close');
     const sideMenu = document.getElementById('side-menu');
 
-    // Slide-out Toggle
-    navOpen.addEventListener('click', () => {
-        sideMenu.classList.add('active');
-    });
+    // Slide-out Toggle logic
+    navOpen.onclick = () => sideMenu.classList.add('active');
+    navClose.onclick = () => sideMenu.classList.remove('active');
 
-    navClose.addEventListener('click', () => {
-        sideMenu.classList.remove('active');
-    });
-
-    // Feature: Dynamic Greeting Based on Time
+    // Greeting Feature
     const greeting = document.getElementById('greeting');
     const hour = new Date().getHours();
     
@@ -21,6 +16,4 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (hour < 18) greeting.innerText = "Good Afternoon | Onyx—Adire";
         else greeting.innerText = "Good Evening | Onyx—Adire";
     }
-
-    console.log("Onyx—Adire DOM structure initialized.");
 });
