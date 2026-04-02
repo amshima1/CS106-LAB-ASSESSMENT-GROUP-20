@@ -7,43 +7,90 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
-        /* HERO SLIDER STYLE */
+        /* 1. HERO SLIDER SYSTEM - UPDATED FOR FULL BODY VIEW */
         .white-border-frame {
-            position: relative; width: 100%; height: 500px; overflow: hidden;
-            border: 15px solid #ffffff; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            width: 100%;
+            height: 600px; /* Increased height to better accommodate full-body shots */
+            overflow: hidden;
+            border: 15px solid #ffffff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            background: #f4f4f4; /* Subtle background for areas the photo doesn't fill */
         }
-        .hero-slide {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-size: cover; background-position: center; opacity: 0;
-            transition: opacity 1.5s ease-in-out;
-        }
-        .hero-slide.active { opacity: 1; z-index: 2; }
 
-        /* WHATSAPP PULSE */
-        .whatsapp-btn { 
-            display: flex !important; opacity: 1 !important; pointer-events: auto !important; 
-            animation: pulse-ring 2s infinite; z-index: 10001; 
-            position: fixed; bottom: 25px; right: 20px; background: #fff;
-            padding: 12px 24px; border-radius: 50px; text-decoration: none;
-            border: 2px solid #cc0000; font-weight: 800; font-size: 0.8rem;
-            color: #cc0000; box-shadow: 0 8px 20px rgba(0,0,0,0.1); align-items: center; gap: 8px;
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* CHANGE: 'contain' ensures head-to-toe visibility */
+            background-size: contain; 
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            z-index: 1;
         }
+
+        .hero-slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        /* 2. PERMANENT WHATSAPP BUTTON */
+        .whatsapp-btn { 
+            display: flex !important; 
+            opacity: 1 !important; 
+            pointer-events: auto !important; 
+            animation: pulse-ring 2s infinite; 
+            z-index: 10001; 
+            position: fixed;
+            bottom: 25px;
+            right: 20px;
+            background: #ffffff;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            border: 2px solid #cc0000;
+            font-weight: 800;
+            font-size: 0.8rem;
+            color: #cc0000;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            align-items: center;
+            gap: 8px;
+        }
+
         @keyframes pulse-ring {
             0% { box-shadow: 0 0 0 0 rgba(204, 0, 0, 0.4); }
             70% { box-shadow: 0 0 0 12px rgba(204, 0, 0, 0); }
             100% { box-shadow: 0 0 0 0 rgba(204, 0, 0, 0); }
         }
-        .horizontal-scroll { display: flex; overflow-x: auto; gap: 15px; padding: 20px; scrollbar-width: none; }
+
+        /* 3. RECENTLY VIEWED SCROLL */
+        .horizontal-scroll { 
+            display: flex; 
+            overflow-x: auto; 
+            gap: 15px; 
+            padding: 20px; 
+            scrollbar-width: none; 
+        }
         .horizontal-scroll::-webkit-scrollbar { display: none; }
     </style>
 </head>
 <body>
-    <div class="announcement-bar"><marquee>ONYX—ADIRE: TRADITIONAL CRAFT MEETS TECHNICAL PRECISION.</marquee></div>
+
+    <div class="announcement-bar">
+        <marquee scrollamount="5">ONYX—ADIRE: TRADITIONAL CRAFT MEETS TECHNICAL PRECISION.</marquee>
+    </div>
 
     <header class="main-header">
         <div class="header-inner">
-            <div class="hamburger" id="nav-open"><span></span><span></span><span></span></div>
+            <div class="hamburger" id="nav-open">
+                <span></span><span></span><span></span>
+            </div>
             <h1 class="brand-logo">ONYX—ADIRE</h1>
             <div class="header-spacer"></div>
         </div>
@@ -63,11 +110,11 @@
     <div id="lightbox" class="lightbox">
         <span class="close-lightbox">&times;</span>
         <div class="lightbox-main-content">
-            <img class="lightbox-img" src="">
+            <img class="lightbox-img" src="" alt="Onyx Selection">
             <div class="lightbox-caption"></div>
         </div>
         <div class="suggestions-container" style="width:100%; max-width:450px; margin:20px auto; border-top:1px solid #eee; padding-top:20px; text-align:center;">
-            <h4 style="font-size:0.6rem; color:#cc0000; font-weight:800;">YOU MAY ALSO LIKE</h4>
+            <h4 style="font-size:0.6rem; letter-spacing:2px; margin-bottom:15px; color:#cc0000; font-weight:800;">YOU MAY ALSO LIKE</h4>
             <div id="suggestion-row" style="display:flex; justify-content:center; gap:10px;"></div>
         </div>
     </div>
@@ -86,40 +133,76 @@
             <div class="grid-container" id="main-grid"></div>
         </section>
 
-        <section class="extra-section" id="recent-section" style="display:none; border-top:1px solid #eee; margin-top:40px;">
+        <section class="extra-section" id="recent-section" style="display:none; border-top:1px solid #eee; margin-top:40px; padding-bottom:40px;">
             <h2 class="section-title">RECENTLY VIEWED</h2>
             <div class="horizontal-scroll" id="recent-view-container"></div>
         </section>
     </main>
 
     <footer class="footer-red" style="background:#cc0000; padding:60px 20px; text-align:center;">
-        <p style="color:#fff; font-size:0.65rem;">&copy; 2026 ONYX—ADIRE. ALL RIGHTS RESERVED.</p>
+        <p style="color:#ffffff; font-size:0.65rem; font-weight:700;">&copy; 2026 ONYX—ADIRE. ALL RIGHTS RESERVED.</p>
     </footer>
 
-    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> Chat with Onyx</a>
+    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i> Chat with Onyx
+    </a>
 
     <script src="script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const grid = document.getElementById('main-grid');
             const slides = document.querySelectorAll('.hero-slide');
-            let currentS = 0;
+            const sugRow = document.getElementById('suggestion-row');
+            const recentContainer = document.getElementById('recent-view-container');
+            const recentSection = document.getElementById('recent-section');
+            let currentSlide = 0;
 
-            // Slider Logic
+            // 1. HERO SLIDER AUTO-PLAY
             setInterval(() => {
-                slides[currentS].classList.remove('active');
-                currentS = (currentS + 1) % slides.length;
-                slides[currentS].classList.add('active');
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
             }, 4000);
 
-            // Grid Logic
+            // 2. GENERATE GRID (1-47)
             let items = '';
             for (let i = 1; i <= 47; i++) {
-                items += `<div class="grid-item"><img src="Onyx-Adire${i}.jpg" class="clickable-img" data-name="Onyx ${i}" loading="lazy"><div class="product-info"><h3>Onyx ${i}</h3><p>₦25,000</p></div></div>`;
+                items += `
+                <div class="grid-item">
+                    <img src="Onyx-Adire${i}.jpg" class="clickable-img" data-name="Onyx ${i}" loading="lazy">
+                    <div class="product-info"><h3>Onyx ${i}</h3><p>₦25,000</p></div>
+                </div>`;
             }
             grid.innerHTML = items;
 
-            // Global Click Logic (Suggestions/History)
+            // 3. HISTORY & SUGGESTIONS LOGIC
+            let history = JSON.parse(localStorage.getItem('onyx_history')) || [];
+            
+            function updateRecentUI() {
+                if (history.length > 0) {
+                    recentSection.style.display = 'block';
+                    recentContainer.innerHTML = history.map(item => `
+                        <div class="grid-item" style="min-width:140px; text-align:center;">
+                            <img src="${item.src}" class="clickable-img" data-name="${item.name}" style="width:100%; height:auto;">
+                            <p style="font-size:0.6rem; font-weight:800; margin-top:5px; color:#cc0000;">${item.name}</p>
+                        </div>
+                    `).join('');
+                }
+            }
+
+            function showSuggestions(currentSrc) {
+                sugRow.innerHTML = '';
+                let pool = [];
+                for(let i=1; i<=47; i++) { if(!currentSrc.includes(`Onyx-Adire${i}.jpg`)) pool.push(i); }
+                pool.sort(() => 0.5 - Math.random()).slice(0, 4).forEach(num => {
+                    const div = document.createElement('div');
+                    div.style.width = '70px';
+                    div.innerHTML = `<img src="Onyx-Adire${num}.jpg" class="clickable-img" data-name="Onyx ${num}" style="width:100%; height:80px; object-fit:cover; border:1px solid #eee; cursor:pointer;">`;
+                    sugRow.appendChild(div);
+                });
+            }
+
+            // 4. GLOBAL CLICK HANDLER
             document.addEventListener('click', (e) => {
                 if (e.target.classList.contains('clickable-img')) {
                     const src = e.target.src;
@@ -127,14 +210,24 @@
                     document.getElementById('lightbox').style.display = 'flex';
                     document.querySelector('.lightbox-img').src = src;
                     document.querySelector('.lightbox-caption').innerText = name;
+                    document.body.style.overflow = 'hidden';
                     
-                    // History/Suggestions call here (referencing script.js or internal)
+                    showSuggestions(src);
+                    
+                    // History Update
+                    history = history.filter(h => h.src !== src);
+                    history.unshift({src, name});
+                    if (history.length > 8) history.pop();
+                    localStorage.setItem('onyx_history', JSON.stringify(history));
+                    updateRecentUI();
                 }
-                if (e.target.classList.contains('close-lightbox')) {
+                if (e.target.classList.contains('close-lightbox') || e.target === document.getElementById('lightbox')) {
                     document.getElementById('lightbox').style.display = 'none';
                     document.body.style.overflow = 'auto';
                 }
             });
+
+            updateRecentUI();
         });
     </script>
 </body>
