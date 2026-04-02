@@ -1,15 +1,16 @@
 :root {
     --onyx-black: #0a0a0a;
-    --gold-accent: #d4af37;
+    --gold: #d4af37;
     --alert-red: #cc0000;
     --white: #ffffff;
+    --whatsapp-orange: #ff8c00; /* Distinct Orange */
 }
 
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
-    background-color: var(--onyx-black);
-    color: var(--white);
+    background-color: #f9f9f9;
+    color: var(--onyx-black);
 }
 
 /* Red Announcement Bar */
@@ -17,80 +18,97 @@ body {
     background-color: var(--alert-red);
     color: var(--white);
     padding: 8px 0;
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    font-size: 0.75rem;
+    font-weight: bold;
 }
 
-/* Header Layout */
-header {
-    background-color: var(--onyx-black);
-    padding: 20px 0;
-    border-bottom: 1px solid #222;
-    position: relative;
+/* White Header Section */
+.main-header {
+    background-color: var(--white);
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
-.nav-container {
+.header-content {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 25px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* Hamburger Icon */
+/* Red Hamburger Icon */
 .hamburger {
-    width: 30px;
-    height: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     cursor: pointer;
+    width: 25px;
 }
 
 .hamburger span {
     display: block;
-    height: 2px;
+    height: 3px;
     width: 100%;
-    background-color: var(--white);
+    background-color: var(--alert-red);
+    margin-bottom: 4px;
     transition: 0.3s;
 }
 
-/* Stylish Centered Logo */
 .logo h1 {
-    font-family: 'Cinzel', serif; /* Stylish Alphabet */
-    font-size: 1.8rem;
-    color: var(--gold-accent);
+    font-family: 'Cinzel', serif;
+    color: var(--onyx-black);
+    font-size: 1.5rem;
     margin: 0;
-    letter-spacing: 4px;
-    text-align: center;
+    letter-spacing: 3px;
 }
 
-.nav-spacer { width: 30px; } /* Mimics hamburger width for centering */
+.spacer { width: 25px; }
 
-/* Side Menu (Hidden by default) */
-nav {
-    display: none;
-    flex-direction: column;
-    background: #111;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    padding: 20px 0;
-    text-align: center;
-    z-index: 100;
+/* Slide-out Menu Navigation */
+.nav-overlay {
+    position: fixed;
+    top: 0;
+    left: -100%; /* Hidden off-screen */
+    width: 280px;
+    height: 100%;
+    background: var(--onyx-black);
+    z-index: 1000;
+    transition: 0.4s cubic-bezier(0.1, 0.7, 1.0, 0.1);
+    padding: 20px;
 }
 
-nav.show { display: flex; }
+.nav-overlay.show {
+    left: 0; /* Slides in */
+}
 
-nav a {
+.menu-header { text-align: right; margin-bottom: 30px; }
+#close-menu { color: var(--alert-red); cursor: pointer; font-weight: bold; }
+
+.menu-links a {
+    display: block;
     color: var(--white);
     text-decoration: none;
-    padding: 15px;
-    text-transform: uppercase;
-    font-size: 0.9rem;
+    font-size: 1.2rem;
+    padding: 15px 0;
     border-bottom: 1px solid #222;
+    text-transform: uppercase;
 }
 
-nav a:hover { color: var(--gold-accent); }
+.menu-links a:hover { color: var(--gold); }
+
+/* Floating WhatsApp Button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--whatsapp-orange);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 999;
+}
+
+.whatsapp-float i { font-size: 1.5rem; margin-right: 8px; }
