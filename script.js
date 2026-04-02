@@ -3,11 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const navClose = document.getElementById('nav-close');
     const sideMenu = document.getElementById('side-menu');
 
-    // Slide-out Toggle logic
+    // Toggle logic for the slide-out menu
     navOpen.onclick = () => sideMenu.classList.add('active');
     navClose.onclick = () => sideMenu.classList.remove('active');
 
-    // Greeting Feature
+    // Dynamic Greeting for the Home Page
     const greeting = document.getElementById('greeting');
     const hour = new Date().getHours();
     
