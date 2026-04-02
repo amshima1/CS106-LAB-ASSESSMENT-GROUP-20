@@ -1,35 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onyx—Adire | Home</title>
     <link rel="stylesheet" href="style.css">
-    <title>Onyx—Adire | Showcase</title>
 </head>
 <body>
-    <header><h1>ONYX—ADIRE</h1></header>
+
+    <header>
+        <h1>ONYX—ADIRE</h1>
+    </header>
+
     <nav>
-        <a href="index.html">Showcase</a>
+        <a href="index.html" class="active">Home</a>
+        <a href="product.html">Collection</a>
         <a href="trustees.html">Trustees</a>
         <a href="events.html">Events</a>
-        <a href="inquiries.html">Inquiries</a>
-        <a href="about.html">About</a>
+        <a href="contact.html">Booking</a>
     </nav>
-    <div class="marquee-bar"><marquee>NEW SEASON: ADIRE-TECH HYBRID DROPPING SOON — 10% OFF FIRST ORDERS</marquee></div>
 
-    <div class="container">
-        <h2 id="welcome-msg"></h2>
-        <div class="grid">
-            <div class="card">
-                <img src="https://via.placeholder.com/300x400" alt="Silk Adire">
-                <h3>Onyx Silk Robe</h3>
-                <p>₦65,000</p>
-            </div>
-            <div class="card">
-                <img src="https://via.placeholder.com/300x400" alt="Patterned Shirt">
-                <h3>Patterned Adire Shirt</h3>
-                <p>₦35,000</p>
-            </div>
-        </div>
+    <div class="marquee-container">
+        <marquee behavior="scroll" direction="left">
+            WELCOME TO ONYX—ADIRE: TRADITIONAL CRAFT MEETS MODERN PRECISION. NEXT COLLECTION DROPS JUNE 2026.
+        </marquee>
     </div>
+
+    <main class="container">
+        <section class="hero-section">
+            <h2 id="dynamic-greeting">Welcome</h2>
+            <p>Experience the fusion of deep indigo heritage and sleek, modern aesthetics. Onyx—Adire is more than a fashion house; it is a technical tribute to African craftsmanship.</p>
+            <div class="hero-image">
+                <img src="https://via.placeholder.com/800x400/1a1a1a/d4af37?text=ONYX+ADIRE+HERITAGE" alt="Onyx Adire Banner">
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Onyx—Adire Fashion House. All Rights Reserved.</p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
