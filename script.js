@@ -3,17 +3,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const navClose = document.getElementById('nav-close');
     const sideMenu = document.getElementById('side-menu');
 
-    // Open the side menu
-    navOpen.addEventListener('click', () => {
-        sideMenu.classList.add('active');
-    });
+    // 1. Open the menu
+    if (navOpen) {
+        navOpen.addEventListener('click', () => {
+            sideMenu.classList.add('active');
+        });
+    }
 
-    // Close the side menu
-    navClose.addEventListener('click', () => {
-        sideMenu.classList.remove('active');
-    });
+    // 2. Close the menu
+    if (navClose) {
+        navClose.addEventListener('click', () => {
+            sideMenu.classList.remove('active');
+        });
+    }
 
-    // Close menu if a user clicks a link
+    // 3. Close if a link is clicked
     const links = document.querySelectorAll('.nav-links a');
     links.forEach(link => {
         link.addEventListener('click', () => {
