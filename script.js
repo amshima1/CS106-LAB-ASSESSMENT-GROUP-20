@@ -3,13 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const navClose = document.getElementById('nav-close');
     const sideMenu = document.getElementById('side-menu');
 
-    if (navOpen) {
-        navOpen.onclick = () => sideMenu.classList.add('active');
-    }
-
-    if (navClose) {
-        navClose.onclick = () => sideMenu.classList.remove('active');
-    }
+    navOpen.onclick = () => sideMenu.classList.add('active');
+    navClose.onclick = () => sideMenu.classList.remove('active');
 
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.onclick = () => sideMenu.classList.remove('active');
