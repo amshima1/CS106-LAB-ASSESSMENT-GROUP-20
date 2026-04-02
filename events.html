@@ -12,7 +12,7 @@
         * { box-sizing: border-box; }
         body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background: #fff; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
 
-        /* STRICT RED TEXT */
+        /* UNIVERSAL RED ENFORCEMENT */
         h1, h2, h3, h4, h5, h6, p, a, span, i, marquee { color: var(--onyx-red) !important; }
 
         /* 1. ANNOUNCEMENT BAR */
@@ -48,7 +48,7 @@
         }
         .side-nav.open { left: 0; }
 
-        /* RED "X" AT EDGE */
+        /* RED "X" AT INTERIOR EDGE */
         .close-menu {
             position: absolute; top: 25px; right: 25px; font-size: 2.8rem; 
             cursor: pointer; line-height: 1; font-weight: 300; color: var(--onyx-red) !important;
@@ -58,10 +58,10 @@
         .nav-links { display: flex; flex-direction: column; gap: 40px; text-align: center; }
         .nav-links a { font-family: 'Cinzel', serif; font-size: 1.4rem; text-decoration: none; font-weight: 700; text-transform: uppercase; }
 
-        /* 5. CONTENT FEED (All Events) */
+        /* 5. CONTENT FEED */
         .content { flex: 1; padding: 180px 20px 120px; max-width: 1000px; margin: 0 auto; text-align: center; }
         
-        .event-card { margin-bottom: 120px; text-align: center; }
+        .event-card { margin-bottom: 150px; text-align: center; }
         .img-frame { 
             width: 100%; height: 75vh; border: 1px solid #f0f0f0; margin-bottom: 30px; 
             display: flex; align-items: center; justify-content: center; overflow: hidden; background: #fafafa;
@@ -76,14 +76,17 @@
         .main-footer { background: var(--onyx-red); padding: 80px 20px; text-align: center; margin-top: auto; }
         .main-footer p { color: #ffffff !important; font-size: 0.75rem; font-weight: 800; letter-spacing: 4px; margin: 0; }
 
-        /* 7. WHATSAPP */
+        /* 7. FLOATING CHAT (ALWAYS ON TOP) */
         .whatsapp-float {
             position: fixed; bottom: 120px; right: 30px; background: #fff; border: 2px solid var(--onyx-red);
             padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 800; font-size: 0.75rem; 
             z-index: 10010; display: flex; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(204, 0, 0, 0.1);
         }
 
-        @media (max-width: 1024px) { .side-nav { width: 85%; left: -85%; } .img-frame { height: 50vh; } }
+        @media (max-width: 1024px) { 
+            .side-nav { width: 85%; left: -85%; } 
+            .img-frame { height: 50vh; } 
+        }
     </style>
 </head>
 <body>
@@ -111,23 +114,29 @@
     <main class="content">
         <article class="event-card">
             <span class="event-date">March 2026</span>
-            <div class="img-frame"><img src="event1.jpg" alt="Miva Summit"></div>
+            <div class="img-frame">
+                <img src="Onyx-Adire10.jpg" alt="Miva Summit Exhibit">
+            </div>
             <h3>Miva Innovation Summit</h3>
-            <p>Bridging the gap between ancient textile techniques and modern academic excellence. A partnership dedicated to the digital preservation of Adire heritage.</p>
+            <p>A collaborative dialogue on the intersection of heritage textiles and modern technology, establishing new standards for cultural preservation.</p>
         </article>
 
         <article class="event-card">
             <span class="event-date">January 2026</span>
-            <div class="img-frame"><img src="event2.jpg" alt="Archiving Future"></div>
+            <div class="img-frame">
+                <img src="Onyx-Adire18.jpg" alt="Vault Archive Showcase">
+            </div>
             <h3>Archiving the Future</h3>
-            <p>An interactive showcase of the Onyx—Adire textile vault, featuring rare patterns dating back over a century, reimagined for the contemporary collector.</p>
+            <p>Exploring the Onyx—Adire vault. An exhibition dedicated to the motifs that define our identity, preserved for the next century of creators.</p>
         </article>
 
         <article class="event-card">
             <span class="event-date">November 2025</span>
-            <div class="img-frame"><img src="event3.jpg" alt="Heritage Showcase"></div>
+            <div class="img-frame">
+                <img src="Onyx-Adire7.jpg" alt="The Indigo Gala">
+            </div>
             <h3>The Indigo Gala</h3>
-            <p>A night of cultural immersion celebrating the artisans behind the dye pits. Proceeds were dedicated to the building of our new community archive center.</p>
+            <p>Celebrating the artisans and the raw artistry of the dye pits. A night of heritage, luxury, and community commitment.</p>
         </article>
     </main>
 
