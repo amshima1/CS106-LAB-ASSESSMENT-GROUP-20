@@ -4,174 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events | Onyx—Adire</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
     
     <style>
         :root { --onyx-red: #cc0000; }
-        
-        /* --- HEADER & NAVIGATION --- */
-        .announcement-bar {
-            background: var(--onyx-red);
-            padding: 10px 0;
-            text-align: center;
-            position: fixed;
-            top: 0; width: 100%;
-            z-index: 10002;
-        }
-        .announcement-bar marquee {
-            color: #ffffff !important;
-            font-size: 0.7rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
-        }
+        body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background: #fff; overflow-x: hidden; }
 
+        /* --- NAVIGATION & HEADER --- */
         .main-header { 
-            top: 35px; 
-            background: rgba(255, 255, 255, 0.98);
-            border-bottom: 1px solid #f0f0f0;
-            position: fixed; width: 100%; z-index: 10001;
-        }
-        
-        .header-inner {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            height: 80px;
-            max-width: 1400px;
-            margin: 0 auto;
+            position: fixed; top: 0; width: 100%; height: 80px;
+            background: #fff; border-bottom: 1px solid #eee; z-index: 1000;
+            display: flex; justify-content: center; align-items: center;
         }
 
-        .brand-logo { font-size: 1.5rem; letter-spacing: 5px; margin: 0; font-family: 'Cinzel', serif; }
+        .brand-logo { font-family: 'Cinzel', serif; font-size: 1.5rem; letter-spacing: 5px; color: var(--onyx-red); }
 
+        /* THE HAMBURGER BUTTON */
         .hamburger {
-            position: absolute;
-            left: 20px;
-            width: 28px;
-            height: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            cursor: pointer;
-            z-index: 11000;
+            position: absolute; left: 20px; width: 30px; height: 20px;
+            display: flex; flex-direction: column; justify-content: space-between;
+            cursor: pointer; z-index: 2000;
         }
-
         .hamburger span {
-            display: block;
-            height: 2px;
-            width: 100%;
-            background-color: var(--onyx-red) !important;
-            transition: all 0.3s ease-in-out;
+            display: block; height: 2px; width: 100%;
+            background: var(--onyx-red); transition: 0.3s;
         }
 
+        /* MORPH TO X */
         .hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
         .hamburger.active span:nth-child(2) { opacity: 0; }
         .hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
+        /* THE ACTUAL SLIDE-OUT MENU */
         .side-nav {
-            position: fixed;
-            top: 0; left: -100%;
-            width: 320px; height: 100%;
-            background: #ffffff;
-            z-index: 10500;
-            transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 60px;
-            box-shadow: 15px 0 40px rgba(0,0,0,0.05);
+            position: fixed; top: 0; left: -100%; width: 100%; height: 100vh;
+            background: #ffffff; z-index: 1500; transition: 0.5s ease;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
         }
-        .side-nav.open { left: 0; }
+        .side-nav.open { left: 0; } /* This makes it appear */
+
         .nav-links a {
-            display: block;
-            font-family: 'Cinzel', serif;
-            font-size: 1.6rem;
-            text-decoration: none;
-            margin: 25px 0;
-            font-weight: 700;
-            color: var(--onyx-red) !important;
+            font-family: 'Cinzel', serif; font-size: 2rem; color: var(--onyx-red);
+            text-decoration: none; margin: 15px 0; font-weight: 700; transition: 0.3s;
         }
+        .nav-links a:hover { letter-spacing: 5px; }
 
-        /* --- WHATSAPP FLOATING BUTTON --- */
+        /* --- CONTENT --- */
+        .content { padding: 120px 20px; max-width: 1100px; margin: 0 auto; text-align: center; }
+        .event-section { margin-bottom: 80px; }
+        .img-frame { 
+            width: 100%; height: 70vh; background: #f9f9f9; 
+            display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
+        }
+        .img-frame img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        
+        h2, h3, p { color: var(--onyx-red); }
+        .event-tag { font-weight: 800; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; }
+
+        /* --- FLOATING WHATSAPP --- */
         .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #ffffff; /* White background for luxury feel */
-            color: var(--onyx-red) !important;
-            border: 2px solid var(--onyx-red);
-            padding: 15px 25px;
-            border-radius: 50px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            z-index: 10003;
-            box-shadow: 0 10px 30px rgba(204, 0, 0, 0.15);
-            transition: all 0.3s ease;
-            animation: pulse-red 2s infinite;
-        }
-
-        .whatsapp-float:hover {
-            background-color: var(--onyx-red);
-            color: #ffffff !important;
-            transform: translateY(-5px);
-        }
-
-        @keyframes pulse-red {
-            0% { box-shadow: 0 0 0 0 rgba(204, 0, 0, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(204, 0, 0, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(204, 0, 0, 0); }
-        }
-
-        /* --- CONTENT & IMAGERY --- */
-        body, h1, h2, h3, h4, h5, p, a, span { color: var(--onyx-red) !important; }
-        .events-container { padding: 180px 20px 80px; max-width: 1200px; margin: 0 auto; }
-        .section-title { font-family: 'Cinzel', serif; font-size: 3rem; text-align: center; margin-bottom: 60px; }
-
-        .event-img-frame {
-            width: 100%;
-            height: 80vh;
-            background-color: #fcfcfc;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid #f0f0f0;
-            margin-bottom: 30px;
-        }
-        .event-img-frame img { max-width: 100%; max-height: 100%; object-fit: contain; }
-
-        /* --- FOOTER --- */
-        .footer-red { background: var(--onyx-red) !important; padding: 80px 20px; text-align: center; }
-        .footer-red p { color: #ffffff !important; font-size: 0.7rem; font-weight: 700; }
-
-        @media (max-width: 768px) {
-            .event-img-frame { height: 50vh; }
-            .whatsapp-float { padding: 12px 20px; bottom: 20px; right: 20px; }
-            .side-nav { width: 100%; }
+            position: fixed; bottom: 30px; right: 30px;
+            background: #fff; color: var(--onyx-red); border: 2px solid var(--onyx-red);
+            padding: 12px 20px; border-radius: 50px; text-decoration: none;
+            font-weight: 800; font-size: 0.8rem; z-index: 1000;
+            display: flex; align-items: center; gap: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
     </style>
 </head>
 <body>
 
-    <div class="announcement-bar">
-        <marquee scrollamount="5">ONYX—ADIRE X MIVA OPEN UNIVERSITY: ARCHIVING THE FUTURE OF AFRICAN TEXTILES.</marquee>
-    </div>
-
     <header class="main-header">
-        <div class="header-inner">
-            <div class="hamburger" id="nav-toggle">
-                <span></span><span></span><span></span>
-            </div>
-            <h1 class="brand-logo">ONYX—ADIRE</h1>
+        <div class="hamburger" id="nav-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
+        <div class="brand-logo">ONYX—ADIRE</div>
     </header>
 
-    <nav id="side-menu" class="side-nav">
+    <nav class="side-nav" id="side-menu">
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="collection.html">Collection</a>
@@ -181,44 +94,40 @@
         </div>
     </nav>
 
-    <main class="events-container">
-        <h2 class="section-title">CHRONICLES</h2>
+    <main class="content">
+        <div class="event-section">
+            <div class="img-frame"><img src="Onyx-Adire18.jpg" alt="Miva"></div>
+            <span class="event-tag">Collaboration — 2026</span>
+            <h3>Miva Open University Summit</h3>
+        </div>
 
-        <article style="margin-bottom: 100px; text-align: center;">
-            <div class="event-img-frame"><img src="Onyx-Adire18.jpg" alt="Miva Summit"></div>
-            <span style="font-weight: 800; letter-spacing: 4px; font-size: 0.75rem;">KEYNOTE — 2026</span>
-            <h3 style="font-family: 'Cinzel', serif; font-size: 2.2rem; margin: 20px 0;">Miva Open University Summit</h3>
-        </article>
+        <div class="event-section">
+            <div class="img-frame"><img src="Onyx-Adire10.jpg" alt="Gala"></div>
+            <span class="event-tag">January 2026</span>
+            <h3>The Trustees Gala</h3>
+        </div>
 
-        <article style="margin-bottom: 100px; text-align: center;">
-            <div class="event-img-frame"><img src="Onyx-Adire10.jpg" alt="Gala"></div>
-            <span style="font-weight: 800; letter-spacing: 4px; font-size: 0.75rem;">JANUARY 2026</span>
-            <h3 style="font-family: 'Cinzel', serif; font-size: 2.2rem; margin: 20px 0;">The Trustees Gala</h3>
-        </article>
-
-        <article style="margin-bottom: 100px; text-align: center;">
-            <div class="event-img-frame"><img src="Onyx-Adire7.jpg" alt="Workshop"></div>
-            <span style="font-weight: 800; letter-spacing: 4px; font-size: 0.75rem;">FEBRUARY 2026</span>
-            <h3 style="font-family: 'Cinzel', serif; font-size: 2.2rem; margin: 20px 0;">Mastering the Indigo</h3>
-        </article>
+        <div class="event-section">
+            <div class="img-frame"><img src="Onyx-Adire7.jpg" alt="Workshop"></div>
+            <span class="event-tag">February 2026</span>
+            <h3>Indigo Masterclass</h3>
+        </div>
     </main>
 
-    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i>
-        <span>Chat with Onyx</span>
+    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i> CHAT WITH ONYX
     </a>
-
-    <footer class="footer-red"><p>&copy; 2026 ONYX—ADIRE. ALL RIGHTS RESERVED.</p></footer>
 
     <script>
         const navToggle = document.getElementById('nav-toggle');
         const sideMenu = document.getElementById('side-menu');
 
         navToggle.addEventListener('click', () => {
-            navToggle.classList.toggle('active');
-            sideMenu.classList.toggle('open');
+            navToggle.classList.toggle('active'); // Morphs the lines to X
+            sideMenu.classList.toggle('open');    // Slides the menu into view
         });
 
+        // Close menu when a link is clicked
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navToggle.classList.remove('active');
