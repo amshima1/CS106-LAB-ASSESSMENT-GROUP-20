@@ -11,14 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (openNav && sideMenu) {
         openNav.onclick = () => {
             sideMenu.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent background scroll
+            // Note: We don't lock body scroll here to ensure the sticky header 
+            // stays interactive and visible as requested.
         };
     }
 
     if (closeNav && sideMenu) {
         closeNav.onclick = () => {
             sideMenu.classList.remove('active');
-            document.body.style.overflow = 'auto';
         };
     }
 
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const lightboxImg = document.querySelector('.lightbox-img');
     const lightboxCaption = document.querySelector('.lightbox-caption');
     
-    // Load existing history from browser storage
+    // Load history from browser storage
     let recentlyViewed = JSON.parse(localStorage.getItem('onyxRecent')) || [];
 
     // Function to render the "Recently Viewed" section
@@ -38,14 +38,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!container || recentlyViewed.length === 0) return;
         
         section.style.display = 'block';
-        container.innerHTML = ''; // Clear current list
+        container.innerHTML = ''; 
         
         recentlyViewed.forEach(item => {
             container.innerHTML += `
                 <div class="grid-item">
                     <img src="${item.src}" class="clickable-img" onclick="openLightbox('${item.src}', '${item.name}')">
                     <div class="product-info">
-                        <h3 style="color:#cc0000">${item.name}</h3>
+                        <h3 style="color:#cc0000; font-size: 0.7rem; text-transform: uppercase;">${item.name}</h3>
                     </div>
                 </div>`;
         });
@@ -58,21 +58,20 @@ document.addEventListener('DOMContentLoaded', () => {
         lightbox.style.display = 'flex';
         lightboxImg.src = src;
         lightboxCaption.innerText = name;
-        document.body.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden'; // Lock scroll only when looking at a photo
 
-        // Add to "Recently Viewed" if not already there
+        // Add to "Recently Viewed" logic
         const alreadyExists = recentlyViewed.find(i => i.src === src);
         if (!alreadyExists) {
             recentlyViewed.unshift({ src, name });
-            // Keep only the last 6 items
-            if (recentlyViewed.length > 6) recentlyViewed.pop();
+            if (recentlyViewed.length > 6) recentlyViewed.pop(); // Keep list short
             localStorage.setItem('onyxRecent', JSON.stringify(recentlyViewed));
             updateRecentUI();
         }
     };
 
-    // 3. ATTACH CLICK EVENTS TO ALL 20 IMAGES
-    const allImages = document.querySelectorAll('.clickable-img');
+    // 3. ATTACH CLICK EVENTS TO ALL 20 COLLECTION IMAGES
+    const allImages = document.querySelectorAll('.main-content .clickable-img');
     allImages.forEach(img => {
         img.addEventListener('click', () => {
             // Find the name in the <h3> tag directly after the image
@@ -93,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
-    // Close Lightbox if user clicks outside the image
+    // Close Lightbox if user clicks on the black background
     window.onclick = (event) => {
         if (event.target === lightbox) {
             lightbox.style.display = 'none';
@@ -101,6 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Initial check to show recent items on page load
+    // Initialize UI
     updateRecentUI();
 });
