@@ -28,8 +28,7 @@
         <span id="nav-close">&times;</span>
         <div class="nav-links">
             <a href="index.html">Home</a>
-            <a href="product.html">Collection</a>
-            <a href="trustees.html">Trustees</a>
+            <a href="collection.html">Collection</a> <a href="trustees.html">Trustees</a>
             <a href="events.html">Events</a>
             <a href="contact.html">Inquiries</a>
         </div>
@@ -43,8 +42,7 @@
         </div>
         <div class="suggestions-container">
             <h4 class="suggestion-title">YOU MAY ALSO LIKE</h4>
-            <div id="suggestion-row" class="suggestion-grid">
-                </div>
+            <div id="suggestion-row" class="suggestion-grid"></div>
         </div>
     </div>
 
@@ -59,8 +57,7 @@
 
         <section class="collection-area">
             <h2 class="section-title">THE FULL COLLECTION</h2>
-            <div class="grid-container" id="main-grid">
-                </div>
+            <div class="grid-container" id="main-grid"></div>
         </section>
 
         <section class="extra-section" id="recent-section" style="display:none;">
@@ -86,18 +83,13 @@
                     items += `
                         <div class="grid-item">
                             <img src="Onyx-Adire${i}.jpg" class="clickable-img" data-name="Onyx ${i}" loading="lazy">
-                            <div class="product-info">
-                                <h3>Onyx ${i}</h3>
-                                <p>₦25,000</p>
-                            </div>
-                        </div>
-                    `;
+                            <div class="product-info"><h3>Onyx ${i}</h3><p>₦25,000</p></div>
+                        </div>`;
                 }
                 grid.innerHTML = items;
             }
         });
     </script>
-
     <script src="script.js"></script>
 </body>
 </html>
