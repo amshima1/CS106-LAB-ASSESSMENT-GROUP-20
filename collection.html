@@ -3,176 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Collections | Onyx—Adire Haute Couture</title>
+    <title>The Archive | Onyx—Adire</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
-
-        :root {
-            --brand-red: #b31d24;
-            --onyx-black: #111111;
-            --header-height: 105px;
-        }
-
-        body { margin: 0; font-family: 'Montserrat', sans-serif; background: #fff; color: var(--onyx-black); overflow-x: hidden; }
-
-        /* HEADER & PROMO BAR */
-        .master-header { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height); z-index: 9999; background: white; border-bottom: 1px solid #eee; }
-        .promo-bar { background-color: var(--brand-red); color: white; height: 35px; display: flex; align-items: center; overflow: hidden; position: relative; }
-        .marquee-text { position: absolute; white-space: nowrap; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; animation: scrolling 25s linear infinite; }
-        @keyframes scrolling { 0% { transform: translateX(100vw); } 100% { transform: translateX(-100%); } }
-        header { height: 70px; display: flex; align-items: center; justify-content: center; position: relative; }
-        .hamburger { position: absolute; left: 20px; font-size: 28px; cursor: pointer; }
-        .logo { font-family: 'Bodoni Moda', serif; font-size: 24px; text-transform: uppercase; text-decoration: none; color: var(--onyx-black); letter-spacing: 4px; font-weight: 700; }
-
-        /* SIDE MENU (CLEAN) */
-        .side-menu { height: calc(100vh - var(--header-height)); width: 0; position: fixed; z-index: 9000; top: var(--header-height); left: 0; background-color: white; overflow-x: hidden; transition: 0.5s; box-shadow: 5px 0 15px rgba(0,0,0,0.05); }
-        .menu-links { padding-top: 40px; display: flex; flex-direction: column; }
-        .menu-links a { padding: 20px 40px; font-family: 'Bodoni Moda', serif; font-size: 18px; text-decoration: none; color: var(--onyx-black); text-transform: uppercase; border-bottom: 1px solid #f9f9f9; letter-spacing: 2px; }
-
-        /* FILTERS */
-        .filter-nav { margin-top: var(--header-height); padding: 30px 10px; text-align: center; background: #fff; position: sticky; top: var(--header-height); z-index: 8000; border-bottom: 1px solid #f5f5f5; }
-        .filter-btn { background: none; border: none; font-family: 'Montserrat'; text-transform: uppercase; font-size: 10px; letter-spacing: 2px; margin: 0 15px; cursor: pointer; color: #999; transition: 0.3s; padding-bottom: 5px; }
-        .filter-btn.active { color: var(--onyx-black); border-bottom: 2px solid var(--brand-red); font-weight: 700; }
-
-        /* COLLECTION GRID */
-        .collection-container { width: 90%; margin: 40px auto; }
-        .collection-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-        .product-card { cursor: pointer; text-align: center; margin-bottom: 35px; }
-        .product-card img { width: 100%; height: auto; display: block; border: 1px solid #f8f8f8; }
-        .product-name { font-size: 10px; text-transform: uppercase; margin-top: 15px; letter-spacing: 2px; color: #999; }
-        .product-price { font-size: 11px; font-weight: 600; color: var(--onyx-black); margin-top: 5px; }
-
-        /* RED FOOTER (MATCHING SCREENSHOT) */
-        footer { background-color: var(--brand-red); color: white; text-align: center; padding: 70px 20px; margin-top: 60px; }
-        .footer-title { font-family: 'Bodoni Moda', serif; text-transform: uppercase; letter-spacing: 5px; font-size: 24px; margin-bottom: 35px; display: block; }
-        .footer-socials { display: flex; justify-content: center; gap: 30px; margin-bottom: 20px; }
-        .footer-socials a { color: white; font-size: 28px; text-decoration: none; transition: 0.3s; }
-        .footer-whatsapp { display: flex; align-items: center; justify-content: center; gap: 8px; color: white; text-decoration: none; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
-
-        /* PRODUCT MODAL */
-        .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: white; overflow-y: auto; }
-        .modal-body { padding: 40px 20px; max-width: 600px; margin: 0 auto; text-align: center; }
-        .modal-img { width: 100%; height: auto; margin-bottom: 25px; border-bottom: 4px solid var(--brand-red); }
-        .modal-title { font-family: 'Bodoni Moda', serif; font-size: 22px; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 2px; }
-        .modal-price { font-weight: 700; color: var(--brand-red); font-size: 18px; margin-bottom: 30px; display: block; }
-        .close-modal { font-size: 45px; cursor: pointer; float: right; line-height: 20px; }
-        .order-btn { background: black; color: white; padding: 18px; display: block; text-decoration: none; text-transform: uppercase; font-size: 11px; letter-spacing: 3px; font-weight: 700; }
-
-        /* WHATSAPP FLOAT */
-        .whatsapp-float { position: fixed; bottom: 30px; right: 20px; background-color: var(--brand-red); color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-size: 11px; font-weight: 600; z-index: 9998; text-transform: uppercase; display: flex; align-items: center; gap: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
-    </style>
 </head>
 <body>
 
-    <div class="master-header">
-        <div class="promo-bar"><div class="marquee-text">ONYX—ADIRE • COUTURE HERITAGE • WORLDWIDE SHIPPING • ARTISANAL LUXURY •</div></div>
-        <header>
-            <div class="hamburger" onclick="toggleNav()">☰</div>
-            <a href="index.html" class="logo">Onyx—Adire</a>
-        </header>
+    <div class="announcement-bar">
+        <marquee scrollamount="5">EXPLORE THE FULL ONYX—ADIRE ARCHIVE. TRADITION IN EVERY THREAD.</marquee>
     </div>
 
-    <div id="mySideMenu" class="side-menu">
-        <div class="menu-links">
-            <a href="index.html">Home</a>
-            <a href="collection.html">Collection</a>
-            <a href="trustees.html">Trustees</a>
-            <a href="events.html">Events</a>
-            <a href="inquiries.html">Inquiries</a>
+    <header class="main-header">
+        <div class="header-inner">
+            <div class="hamburger" id="nav-open">
+                <span></span><span></span><span></span>
+            </div>
+            <h1 class="brand-logo">ONYX—ADIRE</h1>
+            <div class="header-spacer"></div>
         </div>
-    </div>
+    </header>
 
-    <nav class="filter-nav">
-        <button class="filter-btn active" onclick="filterItems('all')">View All</button>
-        <button class="filter-btn" onclick="filterItems('silk')">Silk Couture</button>
-        <button class="filter-btn" onclick="filterItems('heritage')">Heritage Adire</button>
+    <nav id="side-menu" class="side-nav">
+        <span id="nav-close">&times;</span>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="collection.html">Collection</a> <a href="trustees.html">Trustees</a>
+            <a href="events.html">Events</a>
+            <a href="contact.html">Inquiries</a>
+        </div>
     </nav>
 
-    <div class="collection-container">
-        <div class="collection-grid" id="mainGrid"></div>
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <div class="lightbox-main-content">
+            <img class="lightbox-img" src="" alt="Onyx Gallery">
+            <div class="lightbox-caption"></div>
+        </div>
+        <div class="suggestions-container">
+            <h4 class="suggestion-title">YOU MAY ALSO LIKE</h4>
+            <div id="suggestion-row" class="suggestion-grid"></div>
+        </div>
     </div>
 
-    <footer>
-        <span class="footer-title">The Onyx Circle</span>
-        
-        <div class="footer-socials">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-tiktok"></i></a>
-        </div>
+    <main class="main-content">
+        <header class="collection-header">
+            <h2 class="section-title">THE FULL ARCHIVE</h2>
+            <p class="collection-subtitle">47 UNIQUE PIECES OF ARTISAN CRAFT</p>
+        </header>
 
-        <a href="https://wa.me/234707797XXXX" class="footer-whatsapp">
-            <i class="fab fa-whatsapp"></i> WhatsApp Concierge
-        </a>
+        <section class="collection-area">
+            <div class="grid-container" id="main-grid"></div>
+        </section>
+    </main>
+
+    <footer class="footer-red">
+        <p>&copy; 2026 ONYX—ADIRE. ALL RIGHTS RESERVED.</p>
     </footer>
 
-    <div id="productModal" class="modal">
-        <div class="modal-body">
-            <span class="close-modal" onclick="closeProduct()">&times;</span>
-            <div style="clear: both;"></div>
-            <img id="modalImg" src="" class="modal-img">
-            <h2 id="modalTitle" class="modal-title"></h2>
-            <span id="modalPrice" class="modal-price"></span>
-            <a id="orderBtn" href="#" class="order-btn">Inquire via WhatsApp</a>
-        </div>
-    </div>
-
-    <a href="https://wa.me/234707797XXXX" class="whatsapp-float">
-        <i class="fab fa-whatsapp"></i> WhatsApp Concierge
+    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i> Order This Piece
     </a>
 
     <script>
-        const totalItems = 47; // Sustained catalog logic
-        const luxuryNames = ["OBA", "ADE", "OLA", "IRE", "IFE", "AMIRA", "ZARA", "DUNNI", "TITI", "KEMI", "NIKE", "SIMI"];
-        
-        const itemData = Array.from({ length: totalItems }, (_, i) => {
-            const id = i + 1;
-            const category = (id % 2 === 0) ? 'silk' : 'heritage';
-            const price = (category === 'silk') ? 95000 + (id * 200) : 55000 + (id * 150);
-            return { id, name: `${luxuryNames[i % luxuryNames.length]} № ${id}`, price: `₦${price.toLocaleString()}`, category };
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('main-grid');
+            if (grid) {
+                let items = '';
+                for (let i = 1; i <= 47; i++) {
+                    items += `
+                        <div class="grid-item">
+                            <img src="Onyx-Adire${i}.jpg" class="clickable-img" data-name="Onyx ${i}" loading="lazy">
+                            <div class="product-info"><h3>Onyx ${i}</h3><p>₦25,000</p></div>
+                        </div>`;
+                }
+                grid.innerHTML = items;
+            }
         });
-
-        function renderGrid(filter = 'all') {
-            const grid = document.getElementById('mainGrid');
-            grid.innerHTML = '';
-            const filtered = filter === 'all' ? itemData : itemData.filter(p => p.category === filter);
-            filtered.forEach(item => {
-                grid.innerHTML += `
-                    <div class="product-card" onclick="openProduct(${item.id})">
-                        <img src="Onyx-Adire${item.id}.jpg">
-                        <div class="product-name">Collection Piece № ${item.id}</div>
-                        <div class="product-price">${item.price}</div>
-                    </div>`;
-            });
-        }
-
-        function filterItems(cat) {
-            renderGrid(cat);
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            event.target.classList.add('active');
-        }
-
-        function openProduct(id) {
-            const item = itemData.find(p => p.id === id);
-            document.getElementById('modalImg').src = `Onyx-Adire${id}.jpg`;
-            document.getElementById('modalTitle').innerText = item.name;
-            document.getElementById('modalPrice').innerText = item.price;
-            document.getElementById('orderBtn').href = `https://wa.me/234707797XXXX?text=I'm inquiring about ${item.name}`;
-            document.getElementById('productModal').style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeProduct() { 
-            document.getElementById('productModal').style.display = 'none'; 
-            document.body.style.overflow = 'auto';
-        }
-
-        function toggleNav() {
-            var m = document.getElementById("mySideMenu");
-            m.style.width = (m.style.width === "280px") ? "0" : "280px";
-        }
-
-        renderGrid();
     </script>
+    <script src="script.js"></script>
 </body>
 </html>
