@@ -3,10 +3,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const navClose = document.getElementById('nav-close');
     const sideMenu = document.getElementById('side-menu');
 
-    navOpen.onclick = () => sideMenu.classList.add('active');
-    navClose.onclick = () => sideMenu.classList.remove('active');
+    if (navOpen) {
+        navOpen.onclick = () => sideMenu.classList.add('active');
+    }
 
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.onclick = () => sideMenu.classList.remove('active');
-    });
+    if (navClose) {
+        navClose.onclick = () => sideMenu.classList.remove('active');
+    }
+
+    // Close menu when clicking outside
+    window.onclick = (event) => {
+        if (event.target == sideMenu) {
+            sideMenu.classList.remove('active');
+        }
+    };
 });
