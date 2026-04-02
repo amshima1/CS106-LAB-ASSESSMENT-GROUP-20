@@ -11,30 +11,33 @@
     <style>
         /* Force Universal Red Text */
         :root { --onyx-red: #cc0000; }
-        
         * { color: #cc0000 !important; }
 
-        /* Announcement Bar Text */
         .announcement-bar marquee { color: #cc0000 !important; }
-
-        /* Navigation Menu Links */
-        .nav-links a { color: #cc0000 !important; }
-        #nav-close { color: #cc0000 !important; }
-
-        /* Grid Item Prices and Titles */
+        .nav-links a, #nav-close { color: #cc0000 !important; }
         .product-info h3, .product-info p { color: #cc0000 !important; }
-
-        /* Lightbox Suggestions Titles */
         .suggestion-item p, .suggestion-title { color: #cc0000 !important; }
-
-        /* Footer Copy (Usually white on red, now red on red for consistency) */
+        
+        /* ADJUSTED FOOTER: White background so red text is visible */
+        .footer-red { 
+            background: #ffffff !important; 
+            border-top: 1px solid #eee;
+        }
         .footer-red p { color: #cc0000 !important; font-weight: 700; }
 
-        /* WhatsApp Button Text & Icon */
         .whatsapp-btn, .whatsapp-btn i { color: #cc0000 !important; }
-        
-        /* Collection Subtitle */
         .collection-subtitle { color: #cc0000 !important; opacity: 1; }
+
+        /* Horizontal Scroll Styling */
+        .horizontal-scroll { 
+            display: flex; 
+            overflow-x: auto; 
+            gap: 15px; 
+            padding: 20px; 
+            scrollbar-width: none; 
+        }
+        .horizontal-scroll::-webkit-scrollbar { display: none; }
+        .horizontal-scroll .grid-item { min-width: 140px; }
     </style>
 </head>
 <body>
@@ -83,8 +86,12 @@
         </header>
 
         <section class="collection-area">
-            <div class="grid-container" id="main-grid">
-                </div>
+            <div class="grid-container" id="main-grid"></div>
+        </section>
+
+        <section class="extra-section" id="recent-section" style="display:none;">
+            <h2 class="section-title">RECENTLY VIEWED</h2>
+            <div class="horizontal-scroll" id="recent-view-container"></div>
         </section>
     </main>
 
@@ -109,14 +116,12 @@
                                 <h3>Onyx ${i}</h3>
                                 <p>₦25,000</p>
                             </div>
-                        </div>
-                    `;
+                        </div>`;
                 }
                 grid.innerHTML = items;
             }
         });
     </script>
-
     <script src="script.js"></script>
 </body>
 </html>
