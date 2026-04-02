@@ -7,125 +7,41 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
     <style>
-        /* 1. Global Red Theme for Collection Page */
         :root { --onyx-red: #cc0000; }
+        body, h1, h2, h3, h4, p, a { color: var(--onyx-red); }
         
-        /* Force all body text to Onyx Red */
-        body, h1, h2, h3, h4, p, a, span { color: var(--onyx-red); }
-        
-        /* Fixed Announcement Bar */
-        .announcement-bar { 
-            background: var(--onyx-red); 
-            height: 35px; 
-            line-height: 35px; 
-            position: fixed; 
-            top: 0; 
-            width: 100%; 
-            z-index: 9999; 
-        }
-        .announcement-bar marquee { color: #ffffff !important; font-size: 0.7rem; font-weight: 700; }
-
-        /* Sticky Header Positioning */
-        .main-header { 
-            background: #ffffff; 
-            position: sticky; 
-            top: 35px; 
-            z-index: 9500; 
-            border-bottom: 1px solid #eee; 
-        }
-
-        /* Collection Header Spacing */
-        .collection-header { padding: 60px 20px 20px; text-align: center; }
-        .collection-subtitle { font-size: 0.6rem; letter-spacing: 3px; font-weight: 800; text-transform: uppercase; }
-
-        /* Grid Item Typography */
-        .product-info h3 { font-size: 0.65rem; letter-spacing: 1px; }
-        .product-info p { font-size: 0.8rem; font-weight: 800; }
-
-        /* Recently Viewed Section */
-        .extra-section { padding: 40px 0; border-top: 1px solid #eee; }
-        .horizontal-scroll { 
-            display: flex; 
-            overflow-x: auto; 
-            gap: 15px; 
-            padding: 20px; 
-            scrollbar-width: none; 
-        }
-        .horizontal-scroll::-webkit-scrollbar { display: none; }
-        .horizontal-scroll .grid-item { min-width: 150px; }
-
-        /* 2. Red Footer with White Text for Visibility */
-        .footer-red { 
-            background: var(--onyx-red) !important; 
-            padding: 60px 20px; 
-            text-align: center; 
-        }
-        .footer-red p { color: #ffffff !important; font-size: 0.65rem; letter-spacing: 1px; }
-
-        /* 3. Floating WhatsApp Button */
+        /* Permanent Visible State with Pulse */
         .whatsapp-btn { 
-            position: fixed; 
-            bottom: 25px; 
-            right: 20px; 
-            background: #ffffff; 
-            padding: 12px 24px; 
-            border-radius: 50px; 
-            z-index: 9000; 
-            text-decoration: none; 
-            border: 2px solid var(--onyx-red);
-            font-weight: 800; 
-            font-size: 0.8rem;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1); 
+            opacity: 1 !important; 
+            transform: translateY(0) !important; 
+            pointer-events: auto !important; 
             display: flex;
             align-items: center;
             gap: 8px;
+            animation: pulse-ring 2s infinite;
+            z-index: 10001;
         }
-        .whatsapp-btn i { font-size: 1.2rem; }
+
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(204, 0, 0, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(204, 0, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(204, 0, 0, 0); }
+        }
+
+        .footer-red { background: var(--onyx-red) !important; padding: 60px 20px; text-align: center; }
+        .footer-red p { color: #ffffff !important; }
     </style>
 </head>
 <body>
-
     <div class="announcement-bar">
-        <marquee scrollamount="5">EXPLORE THE FULL ONYX—ADIRE ARCHIVE. TRADITION IN EVERY THREAD.</marquee>
-    </div>
-
-    <header class="main-header">
-        <div class="header-inner">
-            <div class="hamburger" id="nav-open"><span></span><span></span><span></span></div>
-            <h1 class="brand-logo">ONYX—ADIRE</h1>
-            <div class="header-spacer"></div>
-        </div>
-    </header>
-
-    <nav id="side-menu" class="side-nav">
-        <span id="nav-close">&times;</span>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="collection.html">Collection</a>
-            <a href="trustees.html">Trustees</a>
-            <a href="events.html">Events</a>
-            <a href="contact.html">Inquiries</a>
-        </div>
-    </nav>
-
-    <div id="lightbox" class="lightbox">
-        <span class="close-lightbox">&times;</span>
-        <div class="lightbox-main-content">
-            <img class="lightbox-img" src="" alt="Onyx Gallery">
-            <div class="lightbox-caption"></div>
-        </div>
-        <div class="suggestions-container">
-            <h4 class="suggestion-title">YOU MAY ALSO LIKE</h4>
-            <div id="suggestion-row" class="suggestion-grid"></div>
-        </div>
+        <marquee scrollamount="5">EXPLORE THE FULL ONYX—ADIRE ARCHIVE.</marquee>
     </div>
 
     <main class="main-content">
-        <header class="collection-header">
+        <header class="collection-header" style="text-align: center; padding: 60px 20px 20px;">
             <h2 class="section-title">THE FULL ARCHIVE</h2>
-            <p class="collection-subtitle">47 UNIQUE PIECES OF ARTISAN CRAFT</p>
+            <p style="font-size: 0.6rem; letter-spacing: 3px; font-weight: 800;">47 UNIQUE PIECES</p>
         </header>
 
         <section class="collection-area">
@@ -142,43 +58,25 @@
         <p>&copy; 2026 ONYX—ADIRE. ALL RIGHTS RESERVED.</p>
     </footer>
 
-    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-btn" id="wa-btn">
+    <a href="https://wa.me/234XXXXXXXXXX?text=Hello%20Onyx-Adire!" class="whatsapp-btn">
         <i class="fab fa-whatsapp"></i> Chat with Onyx
     </a>
 
+    <script src="script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const grid = document.getElementById('main-grid');
-            const waBtn = document.getElementById('wa-btn');
-            const PHONE_NUMBER = "234XXXXXXXXXX"; // Replace with your actual number
-
-            // 1. Generate the 47-item grid
             if (grid) {
                 let items = '';
                 for (let i = 1; i <= 47; i++) {
-                    items += `
-                        <div class="grid-item">
-                            <img src="Onyx-Adire${i}.jpg" class="clickable-img" data-name="Onyx ${i}" loading="lazy">
-                            <div class="product-info"><h3>Onyx ${i}</h3><p>₦25,000</p></div>
-                        </div>`;
+                    items += `<div class="grid-item">
+                        <img src="Onyx-Adire${i}.jpg" class="clickable-img" data-name="Onyx ${i}" onclick="openLightbox('Onyx-Adire${i}.jpg', 'Onyx ${i}')" loading="lazy">
+                        <div class="product-info"><h3>Onyx ${i}</h3><p>₦25,000</p></div>
+                    </div>`;
                 }
                 grid.innerHTML = items;
             }
-
-            // 2. Wrap the Lightbox opener to track the item for WhatsApp
-            const originalOpenLightbox = window.openLightbox;
-            window.openLightbox = (src, name) => {
-                if (typeof originalOpenLightbox === 'function') {
-                    originalOpenLightbox(src, name);
-                }
-                // Update WhatsApp message context
-                if (waBtn) {
-                    const msg = encodeURIComponent(`Hello! I'm interested in ${name} from the collection.`);
-                    waBtn.href = `https://wa.me/${PHONE_NUMBER}?text=${msg}`;
-                }
-            };
         });
     </script>
-    <script src="script.js"></script>
 </body>
 </html>
