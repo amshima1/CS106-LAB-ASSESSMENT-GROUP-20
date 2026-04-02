@@ -14,7 +14,6 @@
         * { box-sizing: border-box; }
         body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background: #fff; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
 
-        /* Global Red Text Enforcement */
         h1, h2, h3, h4, h5, h6, p, a, span, i { color: var(--onyx-red); }
 
         /* 2. ANNOUNCEMENT BAR */
@@ -48,27 +47,37 @@
         .hamburger.active span:nth-child(2) { opacity: 0; }
         .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-        /* 5. SIDE NAVIGATION WITH TOP-RIGHT X */
+        /* 5. HALF-SCREEN SIDE NAVIGATION */
         .side-nav {
-            position: fixed; top: 0; left: -100%; width: 100%; height: 100vh;
-            background: #ffffff; z-index: 9999; transition: 0.6s cubic-bezier(0.77, 0, 0.175, 1);
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            position: fixed; 
+            top: 35px; /* Starts exactly below the announcement bar */
+            left: -50%; /* Hidden off-screen (Half width) */
+            width: 50%; /* Only half screen width */
+            height: calc(100vh - 35px); /* Full height minus announcement bar */
+            background: #ffffff; 
+            z-index: 9999; 
+            transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center;
+            box-shadow: 10px 0 30px rgba(0,0,0,0.05); /* Soft shadow on the right edge */
+            border-right: 1px solid #f0f0f0;
         }
         .side-nav.open { left: 0; }
 
-        /* THE X ON THE TOP RIGHT EDGE */
+        /* CLOSE BUTTON - TOP RIGHT OF THE HALF-SCREEN */
         .close-menu {
-            position: absolute; top: 40px; right: 30px;
-            font-size: 2rem; cursor: pointer; font-weight: 400;
-            line-height: 1; transition: 0.3s;
+            position: absolute; top: 20px; right: 20px;
+            font-size: 1.8rem; cursor: pointer; line-height: 1; transition: 0.3s;
         }
-        .close-menu:hover { transform: rotate(90deg); opacity: 0.6; }
 
         .nav-links { display: flex; flex-direction: column; text-align: center; }
         .nav-links a { 
-            font-family: 'Cinzel', serif; font-size: 2rem; text-decoration: none; 
+            font-family: 'Cinzel', serif; font-size: 1.4rem; text-decoration: none; 
             margin: 15px 0; font-weight: 700; text-transform: uppercase; 
         }
+        .nav-links a:hover { letter-spacing: 3px; }
 
         /* 6. CONTENT AREA */
         .content { flex: 1; padding: 180px 20px 100px; max-width: 1200px; margin: 0 auto; text-align: center; }
@@ -81,7 +90,6 @@
         .img-frame img { max-width: 100%; max-height: 100%; object-fit: contain; }
         
         h3 { font-family: 'Cinzel', serif; font-size: 2.2rem; }
-        .description { line-height: 2; max-width: 750px; margin: 0 auto; opacity: 0.9; }
 
         /* 7. WHATSAPP & FOOTER */
         .whatsapp-float {
@@ -92,13 +100,18 @@
             display: flex; align-items: center; gap: 12px;
             box-shadow: 0 10px 25px rgba(204, 0, 0, 0.1);
         }
-        .whatsapp-float:hover { background: var(--onyx-red); }
-        .whatsapp-float:hover * { color: #fff !important; }
 
         .main-footer {
             background: var(--onyx-red); padding: 60px 20px; text-align: center; width: 100%; margin-top: auto;
         }
         .main-footer p { color: #ffffff !important; font-size: 0.75rem; font-weight: 800; letter-spacing: 3px; margin: 0; }
+
+        /* Responsive Fix for Mobile */
+        @media (max-width: 768px) {
+            .side-nav { width: 80%; left: -80%; } /* Slightly wider on mobile for readability */
+            .side-nav.open { left: 0; }
+            .img-frame { height: 60vh; }
+        }
     </style>
 </head>
 <body>
@@ -133,7 +146,7 @@
             <h3>Foster: Architect of Heritage</h3>
             <p class="description">True luxury is found in the preservation of the soul. Foster leads Onyx—Adire with a mission to transform ancient indigo wisdom into a modern visual language.</p>
         </section>
-        </main>
+    </main>
 
     <footer class="main-footer">
         <p>&copy; 2026 ONYX—ADIRE. ALL RIGHTS RESERVED.</p>
@@ -149,19 +162,16 @@
         const navClose = document.getElementById('nav-close');
         const sideMenu = document.getElementById('side-menu');
 
-        // Open Menu
         navToggle.addEventListener('click', () => {
             navToggle.classList.add('active');
             sideMenu.classList.add('open');
         });
 
-        // Close Menu (via X Button)
         navClose.addEventListener('click', () => {
             navToggle.classList.remove('active');
             sideMenu.classList.remove('open');
         });
 
-        // Close menu on link click
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navToggle.classList.remove('active');
