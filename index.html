@@ -35,8 +35,13 @@
         </div>
     </nav>
 
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-img" src="" alt="">
+        <div class="lightbox-caption"></div>
+    </div>
+
     <main class="main-content">
-        
         <section class="hero-frame-container">
             <div class="white-border-frame">
                 <div class="slide" style="background-image: url('Onyx-Adire10.jpg');"></div>
@@ -48,26 +53,41 @@
         <section class="collection-area">
             <h2 class="section-title">OUR COLLECTION</h2>
             <div class="grid-container">
-                <div class="grid-item"><img src="Onyx-Adire1.jpg" alt="1"></div>
-                <div class="grid-item"><img src="Onyx-Adire2.jpg" alt="2"></div>
-                <div class="grid-item"><img src="Onyx-Adire3.jpg" alt="3"></div>
-                <div class="grid-item"><img src="Onyx-Adire4.jpg" alt="4"></div>
-                <div class="grid-item"><img src="Onyx-Adire5.jpg" alt="5"></div>
-                <div class="grid-item"><img src="Onyx-Adire6.jpg" alt="6"></div>
-                <div class="grid-item"><img src="Onyx-Adire7.jpg" alt="7"></div>
-                <div class="grid-item"><img src="Onyx-Adire8.jpg" alt="8"></div>
-                <div class="grid-item"><img src="Onyx-Adire9.jpg" alt="9"></div>
-                <div class="grid-item"><img src="Onyx-Adire10.jpg" alt="10"></div>
-                <div class="grid-item"><img src="Onyx-Adire11.jpg" alt="11"></div>
-                <div class="grid-item"><img src="Onyx-Adire12.jpg" alt="12"></div>
-                <div class="grid-item"><img src="Onyx-Adire13.jpg" alt="13"></div>
-                <div class="grid-item"><img src="Onyx-Adire14.jpg" alt="14"></div>
-                <div class="grid-item"><img src="Onyx-Adire15.jpg" alt="15"></div>
-                <div class="grid-item"><img src="Onyx-Adire16.jpg" alt="16"></div>
-                <div class="grid-item"><img src="Onyx-Adire17.jpg" alt="17"></div>
-                <div class="grid-item"><img src="Onyx-Adire18.jpg" alt="18"></div>
-                <div class="grid-item"><img src="Onyx-Adire19.jpg" alt="19"></div>
-                <div class="grid-item"><img src="Onyx-Adire20.jpg" alt="20"></div>
+                <div class="grid-item">
+                    <img src="Onyx-Adire1.jpg" alt="Onyx Classic" class="clickable-img">
+                    <div class="product-info">
+                        <h3>Onyx Classic</h3>
+                        <p>₦25,000</p>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <img src="Onyx-Adire2.jpg" alt="Adire Vest" class="clickable-img">
+                    <div class="product-info">
+                        <h3>Adire Vest</h3>
+                        <p>₦18,500</p>
+                    </div>
+                </div>
+                </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <section class="extra-section" id="recent-section" style="display:none;">
+            <h2 class="section-title">RECENTLY VIEWED</h2>
+            <div class="horizontal-scroll" id="recent-view-container"></div>
+        </section>
+
+        <section class="extra-section">
+            <h2 class="section-title">YOU MAY ALSO LIKE</h2>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <img src="Onyx-Adire5.jpg" alt="Urban Tunic" class="clickable-img">
+                    <div class="product-info"><h3>Urban Tunic</h3><p>₦15,000</p></div>
+                </div>
+                <div class="grid-item">
+                    <img src="Onyx-Adire12.jpg" alt="Heritage Set" class="clickable-img">
+                    <div class="product-info"><h3>Heritage Set</h3><p>₦32,000</p></div>
+                </div>
             </div>
         </section>
     </main>
