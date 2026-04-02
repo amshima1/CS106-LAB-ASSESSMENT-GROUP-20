@@ -1,33 +1,82 @@
-/* GLOBAL STYLES - Onyx-Adire Haute Couture */
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;700&family=Montserrat:wght@300;400;600&display=swap');
-
 :root {
-    --brand-red: #b31d24;
-    --onyx-black: #111111;
-    --header-height: 105px;
+    --onyx: #121212;
+    --gold: #d4af37;
+    --off-white: #f4f4f4;
 }
 
-body { margin: 0; font-family: 'Montserrat', sans-serif; background: #fff; color: var(--onyx-black); overflow-x: hidden; }
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    background-color: var(--off-white);
+    color: var(--onyx);
+}
 
-[span_5](start_span)/* MARQUEE FEATURE[span_5](end_span) */
-.promo-bar { background-color: var(--brand-red); color: white; height: 35px; display: flex; align-items: center; overflow: hidden; position: relative; }
-.marquee-text { position: absolute; white-space: nowrap; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; animation: scrolling 25s linear infinite; }
-@keyframes scrolling { 0% { transform: translateX(100vw); } 100% { transform: translateX(-100%); } }
+header {
+    background-color: var(--onyx);
+    color: var(--gold);
+    padding: 20px;
+    text-align: center;
+    border-bottom: 3px solid var(--gold);
+}
 
-[span_6](start_span)/* HEADER & NAVIGATION[span_6](end_span) */
-.master-header { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height); z-index: 9999; background: white; border-bottom: 1px solid #eee; }
-header { height: 70px; display: flex; align-items: center; justify-content: center; position: relative; }
-.logo { font-family: 'Bodoni Moda', serif; font-size: 24px; text-transform: uppercase; text-decoration: none; color: var(--onyx-black); letter-spacing: 4px; font-weight: 700; }
-.hamburger { position: absolute; left: 20px; font-size: 28px; cursor: pointer; }
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: #1a1a1a;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 
-/* SIDE MENU (JS Controlled) */
-.side-menu { height: calc(100vh - var(--header-height)); width: 0; position: fixed; z-index: 9000; top: var(--header-height); left: 0; background-color: white; overflow-x: hidden; transition: 0.5s; border-right: 1px solid #eee; }
-.menu-links { padding-top: 40px; display: flex; flex-direction: column; }
-.menu-links a { padding: 20px 40px; font-family: 'Bodoni Moda', serif; font-size: 18px; text-decoration: none; color: var(--onyx-black); text-transform: uppercase; border-bottom: 1px solid #f9f9f9; letter-spacing: 2px; }
+nav a {
+    color: white;
+    padding: 15px 25px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
 
-[span_7](start_span)/* FOOTER[span_7](end_span) */
-footer { background-color: var(--brand-red); color: white; text-align: center; padding: 60px 20px; margin-top: 60px; }
-.footer-title { font-family: 'Bodoni Moda', serif; text-transform: uppercase; letter-spacing: 5px; font-size: 24px; margin-bottom: 35px; display: block; }
-.footer-socials { display: flex; justify-content: center; gap: 30px; margin-bottom: 20px; }
-.footer-socials a { color: white; font-size: 28px; text-decoration: none; }
+nav a:hover {
+    color: var(--gold);
+}
 
+.marquee-bar {
+    background-color: var(--gold);
+    color: var(--onyx);
+    padding: 8px 0;
+    font-weight: bold;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.card:hover { transform: translateY(-5px); }
+
+img { max-width: 100%; border-radius: 4px; }
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: var(--onyx);
+    color: white;
+    margin-top: 50px;
+}
