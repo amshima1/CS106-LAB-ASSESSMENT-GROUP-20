@@ -3,85 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events | Onyx—Adire</title>
+    <title>Chronicles | Onyx—Adire</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         :root { --onyx-red: #cc0000; }
+        
+        /* 1. GLOBAL RESET & RED TEXT ENFORCEMENT */
+        * { box-sizing: border-box; }
         body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background: #fff; overflow-x: hidden; }
 
-        /* --- NAVIGATION & HEADER --- */
+        /* Forces ALL text to Onyx Red across the entire document */
+        body, h1, h2, h3, h4, h5, h6, p, a, span, marquee, div, i { 
+            color: var(--onyx-red) !important; 
+        }
+
+        /* 2. ANNOUNCEMENT BAR */
+        .announcement-bar {
+            background: #fff; /* White background to let red text pop */
+            height: 35px; width: 100%; position: fixed; top: 0; z-index: 10001;
+            display: flex; align-items: center; border-bottom: 1px solid var(--onyx-red);
+        }
+        .announcement-bar marquee {
+            font-size: 0.7rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
+        }
+
+        /* 3. HEADER (Lowered for Announcement Bar) */
         .main-header { 
-            position: fixed; top: 0; width: 100%; height: 80px;
-            background: #fff; border-bottom: 1px solid #eee; z-index: 1000;
+            position: fixed; top: 35px; width: 100%; height: 80px;
+            background: rgba(255, 255, 255, 0.98); border-bottom: 1px solid #f0f0f0; z-index: 10000;
             display: flex; justify-content: center; align-items: center;
         }
+        .brand-logo { font-family: 'Cinzel', serif; font-size: 1.5rem; letter-spacing: 5px; text-decoration: none; }
 
-        .brand-logo { font-family: 'Cinzel', serif; font-size: 1.5rem; letter-spacing: 5px; color: var(--onyx-red); }
-
-        /* THE HAMBURGER BUTTON */
+        /* 4. MORPHING HAMBURGER */
         .hamburger {
-            position: absolute; left: 20px; width: 30px; height: 20px;
+            position: absolute; left: 25px; width: 28px; height: 18px;
             display: flex; flex-direction: column; justify-content: space-between;
-            cursor: pointer; z-index: 2000;
+            cursor: pointer; z-index: 10002;
         }
-        .hamburger span {
-            display: block; height: 2px; width: 100%;
-            background: var(--onyx-red); transition: 0.3s;
-        }
-
-        /* MORPH TO X */
-        .hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+        .hamburger span { display: block; height: 2px; width: 100%; background: var(--onyx-red) !important; transition: 0.3s ease-in-out; }
+        
+        /* Hamburger to X Animation */
+        .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
         .hamburger.active span:nth-child(2) { opacity: 0; }
-        .hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+        .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-        /* THE ACTUAL SLIDE-OUT MENU */
+        /* 5. SIDE NAVIGATION MENU */
         .side-nav {
             position: fixed; top: 0; left: -100%; width: 100%; height: 100vh;
-            background: #ffffff; z-index: 1500; transition: 0.5s ease;
+            background: #ffffff; z-index: 9999; transition: 0.6s cubic-bezier(0.77, 0, 0.175, 1);
             display: flex; flex-direction: column; justify-content: center; align-items: center;
         }
-        .side-nav.open { left: 0; } /* This makes it appear */
-
+        .side-nav.open { left: 0; }
         .nav-links a {
-            font-family: 'Cinzel', serif; font-size: 2rem; color: var(--onyx-red);
-            text-decoration: none; margin: 15px 0; font-weight: 700; transition: 0.3s;
+            font-family: 'Cinzel', serif; font-size: 2rem;
+            text-decoration: none; margin: 15px 0; font-weight: 700; text-transform: uppercase; transition: 0.3s;
         }
-        .nav-links a:hover { letter-spacing: 5px; }
+        .nav-links a:hover { letter-spacing: 6px; opacity: 0.5; }
 
-        /* --- CONTENT --- */
-        .content { padding: 120px 20px; max-width: 1100px; margin: 0 auto; text-align: center; }
-        .event-section { margin-bottom: 80px; }
+        /* 6. CONTENT LAYOUT (Head-to-Toe Visuals) */
+        .content { padding: 180px 20px 80px; max-width: 1200px; margin: 0 auto; text-align: center; }
+        .event-section { margin-bottom: 150px; }
+        
         .img-frame { 
-            width: 100%; height: 70vh; background: #f9f9f9; 
-            display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
+            width: 100%; height: 80vh; background: #fcfcfc; 
+            display: flex; align-items: center; justify-content: center; 
+            margin-bottom: 40px; border: 1px solid #f0f0f0; overflow: hidden;
         }
         .img-frame img { max-width: 100%; max-height: 100%; object-fit: contain; }
         
-        h2, h3, p { color: var(--onyx-red); }
-        .event-tag { font-weight: 800; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; }
+        .event-tag { font-weight: 800; font-size: 0.75rem; letter-spacing: 5px; text-transform: uppercase; display: block; margin-bottom: 20px; }
+        h3 { font-family: 'Cinzel', serif; font-size: 2.2rem; margin: 10px 0 25px; line-height: 1.2; }
+        .description { line-height: 2; max-width: 750px; margin: 0 auto; font-size: 1.05rem; font-weight: 400; opacity: 0.9; }
 
-        /* --- FLOATING WHATSAPP --- */
+        /* 7. FLOATING WHATSAPP BUTTON */
         .whatsapp-float {
             position: fixed; bottom: 30px; right: 30px;
-            background: #fff; color: var(--onyx-red); border: 2px solid var(--onyx-red);
-            padding: 12px 20px; border-radius: 50px; text-decoration: none;
-            font-weight: 800; font-size: 0.8rem; z-index: 1000;
-            display: flex; align-items: center; gap: 10px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            background: #fff; border: 2px solid var(--onyx-red);
+            padding: 12px 25px; border-radius: 50px; text-decoration: none;
+            font-weight: 800; font-size: 0.75rem; z-index: 1000;
+            display: flex; align-items: center; gap: 12px; letter-spacing: 1px;
+            box-shadow: 0 10px 25px rgba(204, 0, 0, 0.1);
+            transition: 0.3s ease;
+        }
+        .whatsapp-float:hover { background: var(--onyx-red); }
+        .whatsapp-float:hover * { color: #fff !important; }
+
+        /* MOBILE ADJUSTMENTS */
+        @media (max-width: 768px) {
+            .img-frame { height: 60vh; }
+            h3 { font-size: 1.7rem; }
+            .nav-links a { font-size: 1.5rem; }
+            .whatsapp-float { bottom: 20px; right: 20px; padding: 10px 20px; }
         }
     </style>
 </head>
 <body>
 
+    <div class="announcement-bar">
+        <marquee scrollamount="6">ONYX—ADIRE X MIVA OPEN UNIVERSITY: ARCHIVING THE FUTURE OF AFRICAN TEXTILES.</marquee>
+    </div>
+
     <header class="main-header">
         <div class="hamburger" id="nav-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </div>
-        <div class="brand-logo">ONYX—ADIRE</div>
+        <a href="index.html" class="brand-logo">ONYX—ADIRE</a>
     </header>
 
     <nav class="side-nav" id="side-menu">
@@ -95,39 +124,65 @@
     </nav>
 
     <main class="content">
-        <div class="event-section">
-            <div class="img-frame"><img src="Onyx-Adire18.jpg" alt="Miva"></div>
-            <span class="event-tag">Collaboration — 2026</span>
-            <h3>Miva Open University Summit</h3>
-        </div>
 
-        <div class="event-section">
+        <section class="event-section">
+            <div class="img-frame"><img src="Onyx-Adire-Foster.jpg" alt="Foster"></div>
+            <span class="event-tag">The Visionary</span>
+            <h3>Foster: Architect of Heritage</h3>
+            <p class="description">
+                True luxury is found in the preservation of the soul. Foster leads Onyx—Adire with a mission to transform ancient indigo wisdom into a modern visual language. Here, every stitch is an archival act, and every pattern is a portal to the future.
+            </p>
+        </section>
+
+        <section class="event-section">
+            <div class="img-frame"><img src="Onyx-Adire18.jpg" alt="Miva Summit"></div>
+            <span class="event-tag">Institutional Keynote — 2026</span>
+            <h3>Miva Open University Innovation Summit</h3>
+            <p class="description">
+                Where the classroom meets the dye-pit. Our collaboration with Miva Open University explores the digitization of culture, ensuring the next generation of African designers are masters of both code and craft.
+            </p>
+        </section>
+
+        <section class="event-section">
             <div class="img-frame"><img src="Onyx-Adire10.jpg" alt="Gala"></div>
-            <span class="event-tag">January 2026</span>
+            <span class="event-tag">Archival Reveal — January 2026</span>
             <h3>The Trustees Gala</h3>
-        </div>
+            <p class="description">
+                The unveiling of our 'Ancestral Blueprint' series. A celebration of the guardians who keep our culture alive, curated specifically for the international stage.
+            </p>
+        </section>
 
-        <div class="event-section">
+        <section class="event-section">
             <div class="img-frame"><img src="Onyx-Adire7.jpg" alt="Workshop"></div>
-            <span class="event-tag">February 2026</span>
-            <h3>Indigo Masterclass</h3>
-        </div>
+            <span class="event-tag">The Masterclass — February 2026</span>
+            <h3>The Alchemy of Indigo</h3>
+            <p class="description">
+                Indigo is a ritual. This immersive workshop explores organic chemistry and the rhythmic precision of tie-resist techniques. We don't just teach art—we transmit life.
+            </p>
+        </section>
+
     </main>
 
-    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-float">
-        <i class="fab fa-whatsapp"></i> CHAT WITH ONYX
+    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span>INQUIRIES</span>
     </a>
+
+    <footer style="padding: 60px 20px; text-align: center; border-top: 1px solid #f0f0f0;">
+        <p style="font-size: 0.7rem; font-weight: 800; letter-spacing: 2px;">&copy; 2026 ONYX—ADIRE. ALL RIGHTS RESERVED.</p>
+    </footer>
 
     <script>
         const navToggle = document.getElementById('nav-toggle');
         const sideMenu = document.getElementById('side-menu');
 
+        // Logic for Hamburger and Menu
         navToggle.addEventListener('click', () => {
-            navToggle.classList.toggle('active'); // Morphs the lines to X
-            sideMenu.classList.toggle('open');    // Slides the menu into view
+            navToggle.classList.toggle('active');
+            sideMenu.classList.toggle('open');
         });
 
-        // Close menu when a link is clicked
+        // Close menu on link click
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navToggle.classList.remove('active');
