@@ -11,7 +11,7 @@
     <style>
         :root { --onyx-red: #cc0000; }
         
-        /* 1. HEADER & CENTERED LOGO */
+        /* --- HEADER & NAVIGATION --- */
         .announcement-bar {
             background: var(--onyx-red);
             padding: 10px 0;
@@ -44,7 +44,7 @@
 
         .brand-logo { font-size: 1.5rem; letter-spacing: 5px; margin: 0; font-family: 'Cinzel', serif; }
 
-        /* HAMBURGER STYLING */
+        /* HAMBURGER MORPHING */
         .hamburger {
             position: absolute;
             left: 20px;
@@ -54,9 +54,8 @@
             flex-direction: column;
             justify-content: space-between;
             cursor: pointer;
-            z-index: 11000; /* Above the side-nav */
+            z-index: 11000;
         }
-
         .hamburger span {
             display: block;
             height: 2px;
@@ -64,8 +63,6 @@
             background-color: var(--onyx-red) !important;
             transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
         }
-
-        /* TRANSFORMATION TO X */
         .hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
         .hamburger.active span:nth-child(2) { opacity: 0; }
         .hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
@@ -74,48 +71,96 @@
         .side-nav {
             position: fixed;
             top: 0; left: -100%;
-            width: 300px; height: 100%;
+            width: 320px; height: 100%;
             background: #ffffff;
             z-index: 10500;
-            transition: 0.5s;
+            transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 50px;
-            box-shadow: 10px 0 30px rgba(0,0,0,0.05);
+            padding: 60px;
+            box-shadow: 15px 0 40px rgba(0,0,0,0.05);
         }
-
         .side-nav.open { left: 0; }
-
         .nav-links a {
             display: block;
             font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             text-decoration: none;
-            margin: 20px 0;
+            margin: 25px 0;
             font-weight: 700;
+            color: var(--onyx-red) !important;
             transition: 0.3s;
         }
+        .nav-links a:hover { letter-spacing: 4px; padding-left: 10px; }
 
-        .nav-links a:hover { letter-spacing: 3px; }
-
-        /* 2. PAGE CONTENT */
+        /* --- CONTENT STYLES --- */
+        body, h1, h2, h3, h4, h5, p, a, span { color: var(--onyx-red) !important; }
         .events-container { padding: 180px 20px 80px; max-width: 1200px; margin: 0 auto; }
-        .section-title { font-family: 'Cinzel', serif; font-size: 2.5rem; text-align: center; margin-bottom: 50px; }
+        .section-intro { text-align: center; margin-bottom: 80px; }
+        .section-title { font-family: 'Cinzel', serif; font-size: 3rem; margin-bottom: 10px; }
 
-        .event-img-frame {
-            width: 100%; height: 750px; 
-            background-color: #fcfcfc;
-            display: flex; align-items: center; justify-content: center;
-            border: 1px solid #eee;
-            margin-bottom: 20px;
+        /* FEATURED EVENT SECTION */
+        .featured-event-block {
+            margin-bottom: 120px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 80px;
         }
+        .full-img-frame {
+            width: 100%;
+            height: 85vh;
+            background-color: #fcfcfc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 1px solid #f0f0f0;
+        }
+        .full-img-frame img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        .event-details {
+            text-align: center;
+            padding: 50px 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .event-tag { font-weight: 800; letter-spacing: 4px; font-size: 0.75rem; display: block; margin-bottom: 20px; }
+        .event-headline { font-family: 'Cinzel', serif; font-size: 2.2rem; margin-bottom: 25px; line-height: 1.2; }
+        .event-body { line-height: 1.8; font-size: 1rem; opacity: 0.9; }
 
-        .event-img-main { max-width: 100%; max-height: 100%; object-fit: contain; }
+        /* GRID FOR MULTIPLE EVENTS */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 60px;
+        }
+        .grid-img-frame {
+            width: 100%;
+            height: 600px;
+            background-color: #fcfcfc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 5px solid var(--onyx-red);
+            margin-bottom: 30px;
+        }
+        .grid-img-frame img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
-        /* 3. FOOTER */
-        .footer-red { background: var(--onyx-red) !important; padding: 60px 20px; text-align: center; }
-        .footer-red p { color: #ffffff !important; font-size: 0.65rem; font-weight: 700; }
+        /* --- FOOTER --- */
+        .footer-red { background: var(--onyx-red) !important; padding: 80px 20px; text-align: center; }
+        .footer-red p { color: #ffffff !important; font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; }
+
+        /* MOBILE FIXES */
+        @media (max-width: 768px) {
+            .full-img-frame { height: 60vh; }
+            .events-grid { grid-template-columns: 1fr; }
+            .grid-img-frame { height: 450px; }
+            .section-title { font-size: 2rem; }
+            .side-nav { width: 100%; }
+        }
     </style>
 </head>
 <body>
@@ -127,9 +172,7 @@
     <header class="main-header">
         <div class="header-inner">
             <div class="hamburger" id="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </div>
             <h1 class="brand-logo">ONYX—ADIRE</h1>
         </div>
@@ -146,33 +189,66 @@
     </nav>
 
     <main class="events-container">
-        <h2 class="section-title">CHRONICLES & EVENTS</h2>
+        <div class="section-intro">
+            <h2 class="section-title">CHRONICLES</h2>
+            <p style="font-weight: 800; letter-spacing: 3px; font-size: 0.7rem; text-transform: uppercase;">The Intersection of Tradition & Innovation</p>
+        </div>
 
-        <article>
-            <div class="event-img-frame">
-                <img src="Onyx-Adire18.jpg" alt="Miva Open University Collaboration" class="event-img-main">
+        <section class="featured-event-block">
+            <div class="full-img-frame">
+                <img src="Onyx-Adire18.jpg" alt="Miva Open University Collaboration">
             </div>
-            <div style="text-align: center; padding: 40px;">
-                <span style="font-weight: 800; letter-spacing: 3px; font-size: 0.7rem;">FEATURED — 2026</span>
-                <h3 style="font-family: 'Cinzel', serif; font-size: 2rem; margin: 15px 0;">Miva Open University Summit</h3>
-                <p style="max-width: 700px; margin: 0 auto; line-height: 1.8; opacity: 0.9;">Integrating indigenous craftsmanship into digital educational frameworks.</p>
+            <div class="event-details">
+                <span class="event-tag">KEYNOTE COLLABORATION — 2026</span>
+                <h3 class="event-headline">Miva Open University <br> Innovation Summit</h3>
+                <p class="event-body">
+                    A pivotal partnership exploring the digitization of indigenous craft. Onyx—Adire serves as a case study for Miva Open University students, illustrating how ancient Adire techniques can be preserved and scaled through modern technology.
+                </p>
             </div>
-        </article>
+        </section>
+
+        <section class="events-grid">
+            
+            <article>
+                <div class="grid-img-frame">
+                    <img src="Onyx-Adire10.jpg" alt="The Trustees Gala">
+                </div>
+                <div style="text-align: center;">
+                    <span class="event-tag">JANUARY 2026</span>
+                    <h4 class="event-headline" style="font-size: 1.5rem;">The Trustees Gala</h4>
+                    <p class="event-body" style="font-size: 0.9rem;">An exclusive evening where our Board of Trustees unveiled the 'Ancestral Future' collection to international patrons.</p>
+                </div>
+            </article>
+
+            <article>
+                <div class="grid-img-frame">
+                    <img src="Onyx-Adire7.jpg" alt="Indigo Masterclass">
+                </div>
+                <div style="text-align: center;">
+                    <span class="event-tag">FEBRUARY 2026</span>
+                    <h4 class="event-headline" style="font-size: 1.5rem;">Mastering the Indigo</h4>
+                    <p class="event-body" style="font-size: 0.9rem;">Our signature workshop series, teaching the meticulous art of indigo fermentation and pattern-resist craftsmanship.</p>
+                </div>
+            </article>
+
+        </section>
     </main>
 
-    <footer class="footer-red"><p>&copy; 2026 ONYX—ADIRE. ALL RIGHTS RESERVED.</p></footer>
+    <footer class="footer-red">
+        <p>&copy; 2026 ONYX—ADIRE. ALL RIGHTS RESERVED.</p>
+    </footer>
 
     <script>
         const navToggle = document.getElementById('nav-toggle');
         const sideMenu = document.getElementById('side-menu');
 
-        // Logic to toggle hamburger active state and open the menu
+        // Toggle Hamburger Animation and Menu Open
         navToggle.addEventListener('click', () => {
             navToggle.classList.toggle('active');
             sideMenu.classList.toggle('open');
         });
 
-        // Close menu if a user clicks a link
+        // Close menu on link click
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navToggle.classList.remove('active');
