@@ -3,11 +3,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const openBtn = document.getElementById('nav-open');
     const closeBtn = document.getElementById('nav-close');
 
-    // Toggle Menu
-    openBtn.onclick = () => menu.classList.add('active');
-    closeBtn.onclick = () => menu.classList.remove('active');
+    // Open/Close Side Menu
+    if (openBtn) {
+        openBtn.onclick = () => menu.classList.add('active');
+    }
+    if (closeBtn) {
+        closeBtn.onclick = () => menu.classList.remove('active');
+    }
 
-    // Auto-close menu on link click
+    // Auto-close menu when clicking a link
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.onclick = () => menu.classList.remove('active');
     });
