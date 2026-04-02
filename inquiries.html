@@ -10,10 +10,16 @@
     <style>
         :root { --onyx-red: #cc0000; }
         * { box-sizing: border-box; }
-        body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background: #fff; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
+        body { 
+            margin: 0; padding: 0; font-family: 'Inter', sans-serif; 
+            background: #fff; overflow-x: hidden; 
+            display: flex; flex-direction: column; min-height: 100vh; 
+        }
 
-        /* STRICT RED TEXT */
-        h1, h2, h3, h4, h5, h6, p, a, span, i, marquee, label, input, textarea { color: var(--onyx-red) !important; }
+        /* STRICT RED TEXT ENFORCEMENT */
+        h1, h2, h3, h4, h5, h6, p, a, span, i, marquee, label, input, textarea { 
+            color: var(--onyx-red) !important; 
+        }
 
         /* 1. ANNOUNCEMENT BAR */
         .announcement-bar {
@@ -21,7 +27,10 @@
             height: 35px; width: 100%; position: fixed; top: 0; z-index: 10010;
             display: flex; align-items: center;
         }
-        .announcement-bar marquee { color: #ffffff !important; font-size: 0.7rem; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; }
+        .announcement-bar marquee { 
+            color: #ffffff !important; 
+            font-size: 0.7rem; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; 
+        }
 
         /* 2. MAIN HEADER */
         .main-header { 
@@ -41,64 +50,91 @@
 
         /* 4. 30% SIDE NAVIGATION */
         .side-nav {
-            position: fixed; top: 35px; left: -30%; width: 30%; height: calc(100vh - 35px); 
-            background: #ffffff; z-index: 9999; transition: 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+            position: fixed; 
+            top: 35px; 
+            left: -30%; 
+            width: 30%; 
+            height: calc(100vh - 35px); 
+            background: #ffffff; 
+            z-index: 9999; 
+            transition: 0.6s cubic-bezier(0.77, 0, 0.175, 1);
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            border-right: 1px solid #f0f0f0; box-shadow: 15px 0 40px rgba(0, 0, 0, 0.05);
+            border-right: 1px solid #f0f0f0;
+            box-shadow: 15px 0 40px rgba(0, 0, 0, 0.05);
         }
         .side-nav.open { left: 0; }
 
         /* RED "X" AT INTERIOR EDGE */
         .close-menu {
-            position: absolute; top: 25px; right: 25px; font-size: 2.8rem; 
-            cursor: pointer; line-height: 1; font-weight: 300; color: var(--onyx-red) !important;
+            position: absolute; top: 25px; right: 25px;
+            font-size: 2.8rem; cursor: pointer; line-height: 1; font-weight: 300;
+            color: var(--onyx-red) !important;
         }
 
         /* VERTICAL STRAIGHT LINE LINKS */
         .nav-links { display: flex; flex-direction: column; gap: 40px; text-align: center; }
-        .nav-links a { font-family: 'Cinzel', serif; font-size: 1.4rem; text-decoration: none; font-weight: 700; text-transform: uppercase; }
+        .nav-links a { 
+            font-family: 'Cinzel', serif; font-size: 1.4rem; text-decoration: none; 
+            font-weight: 700; text-transform: uppercase; 
+        }
 
-        /* 5. INQUIRY FORM CONTENT */
-        .content { flex: 1; padding: 180px 20px 120px; max-width: 800px; margin: 0 auto; text-align: center; }
+        /* 5. INQUIRY CONTENT */
+        .content { 
+            flex: 1; padding: 180px 20px 120px; 
+            max-width: 800px; margin: 0 auto; text-align: center; 
+        }
         
         .contact-header { margin-bottom: 60px; }
-        .contact-header h2 { font-family: 'Cinzel', serif; font-size: 2.5rem; margin-bottom: 10px; }
-        .contact-header p { font-size: 0.9rem; letter-spacing: 3px; font-weight: 600; text-transform: uppercase; }
+        .contact-header h2 { font-family: 'Cinzel', serif; font-size: 2.8rem; margin-bottom: 10px; }
+        .contact-header p { font-size: 0.8rem; letter-spacing: 4px; font-weight: 700; text-transform: uppercase; }
 
+        /* FORM STYLING */
         .form-container { text-align: left; }
-        .form-group { margin-bottom: 35px; position: relative; }
+        .form-group { margin-bottom: 40px; }
         
-        label { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 10px; }
+        label { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 10px; }
         
         input, textarea {
             width: 100%; padding: 15px 0; background: transparent; border: none;
-            border-bottom: 1px solid rgba(204, 0, 0, 0.3); font-family: 'Inter', sans-serif;
-            font-size: 1rem; outline: none; transition: 0.4s ease;
+            border-bottom: 1px solid rgba(204, 0, 0, 0.2); 
+            font-family: 'Inter', sans-serif; font-size: 1rem; outline: none; 
+            transition: border-color 0.4s ease;
         }
         input:focus, textarea:focus { border-bottom: 1px solid var(--onyx-red); }
 
         .submit-btn {
             background: var(--onyx-red); color: #fff !important; border: none;
-            padding: 20px 60px; font-family: 'Inter', sans-serif; font-weight: 800;
-            text-transform: uppercase; letter-spacing: 4px; font-size: 0.8rem;
-            cursor: pointer; margin-top: 20px; width: 100%; transition: 0.4s ease;
+            padding: 22px; width: 100%; cursor: pointer;
+            font-family: 'Inter', sans-serif; font-weight: 800; 
+            text-transform: uppercase; letter-spacing: 5px; font-size: 0.85rem;
+            margin-top: 20px; transition: 0.4s ease;
         }
-        .submit-btn:hover { letter-spacing: 6px; background: #990000; }
+        .submit-btn:hover { background: #990000; letter-spacing: 7px; }
 
         /* 6. RED FOOTER */
-        .main-footer { background: var(--onyx-red); padding: 80px 20px; text-align: center; margin-top: auto; }
-        .main-footer p { color: #ffffff !important; font-size: 0.75rem; font-weight: 800; letter-spacing: 4px; margin: 0; }
-
-        /* 7. WHATSAPP */
-        .whatsapp-float {
-            position: fixed; bottom: 120px; right: 30px; background: #fff; border: 2px solid var(--onyx-red);
-            padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 800; font-size: 0.75rem; 
-            z-index: 10010; display: flex; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(204, 0, 0, 0.1);
+        .main-footer {
+            background: var(--onyx-red);
+            padding: 80px 20px; text-align: center; width: 100%; margin-top: auto;
+        }
+        .main-footer p { 
+            color: #ffffff !important; 
+            font-size: 0.75rem; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; margin: 0; 
         }
 
-        @media (max-width: 1024px) { 
-            .side-nav { width: 85%; left: -85%; } 
-            .content { padding-top: 150px; }
+        /* 7. WHATSAPP FLOAT */
+        .whatsapp-float {
+            position: fixed; bottom: 120px; right: 30px;
+            background: #fff; border: 2px solid var(--onyx-red);
+            padding: 12px 25px; border-radius: 50px; text-decoration: none;
+            font-weight: 800; font-size: 0.75rem; z-index: 10010;
+            display: flex; align-items: center; gap: 12px;
+            box-shadow: 0 10px 30px rgba(204, 0, 0, 0.1);
+        }
+
+        @media (max-width: 1024px) {
+            .side-nav { width: 85%; left: -85%; }
+            .content { padding-top: 140px; }
+            .contact-header h2 { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -115,12 +151,14 @@
             <a href="collection.html">Collection</a>
             <a href="trustees.html">Trustees</a>
             <a href="events.html">Events</a>
-            <a href="contact.html">Inquiries</a>
+            <a href="inquiries.html">Inquiries</a>
         </div>
     </nav>
 
     <header class="main-header">
-        <div class="hamburger" id="nav-toggle"><span></span><span></span><span></span></div>
+        <div class="hamburger" id="nav-toggle">
+            <span></span><span></span><span></span>
+        </div>
         <a href="index.html" class="brand-logo">ONYX—ADIRE</a>
     </header>
 
@@ -134,12 +172,12 @@
             <form action="#">
                 <div class="form-group">
                     <label>Full Name</label>
-                    <input type="text" placeholder="Your name" required>
+                    <input type="text" placeholder="Entry name" required>
                 </div>
                 
                 <div class="form-group">
                     <label>Email Address</label>
-                    <input type="email" placeholder="email@address.com" required>
+                    <input type="email" placeholder="archive@onyx-adire.com" required>
                 </div>
 
                 <div class="form-group">
@@ -148,8 +186,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Your Message</label>
-                    <textarea rows="4" placeholder="How can we assist you?"></textarea>
+                    <label>Message</label>
+                    <textarea rows="4" placeholder="Briefly describe your interest..."></textarea>
                 </div>
 
                 <button type="submit" class="submit-btn">Send Inquiry</button>
@@ -162,7 +200,8 @@
     </footer>
 
     <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i><span>CHAT WITH ONYX</span>
+        <i class="fab fa-whatsapp"></i>
+        <span>CHAT WITH ONYX</span>
     </a>
 
     <script>
@@ -172,6 +211,8 @@
 
         navToggle.addEventListener('click', () => { sideMenu.classList.add('open'); });
         navClose.addEventListener('click', () => { sideMenu.classList.remove('open'); });
+        
+        // Close menu on link click
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => { sideMenu.classList.remove('open'); });
         });
