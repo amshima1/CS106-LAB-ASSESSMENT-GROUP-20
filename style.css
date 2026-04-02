@@ -1,74 +1,253 @@
-:root { --onyx-red: #cc0000; --white: #ffffff; }
-* { box-sizing: border-box; margin: 0; padding: 0; }
+/* ONYX—ADIRE MASTER STYLE SHEET 
+   Color Palette: Onyx Red (#cc0000), White (#ffffff)
+*/
 
-body { font-family: 'Inter', sans-serif; background-color: var(--white); overflow-x: hidden; }
-
-/* Announcement Bar */
-.announcement-bar { background: var(--onyx-red); color: #fff; padding: 12px 0; font-size: 0.75rem; text-align: center; z-index: 4000; position: relative; }
-
-/* Header */
-.main-header { background: var(--white); padding: 15px 20px; position: sticky; top: 0; z-index: 3000; border-bottom: 1px solid #f0f0f0; }
-.header-inner { display: flex; justify-content: space-between; align-items: center; }
-.brand-logo { color: var(--onyx-red); font-family: 'Cinzel', serif; font-size: 1.2rem; letter-spacing: 2px; }
-.hamburger span { display: block; width: 25px; height: 3px; background: var(--onyx-red); margin: 5px 0; }
-
-/* 3. SIDE NAV: All Elements in Onyx Red */
-.side-nav { 
-    position: fixed; left: -100%; top: 0; height: 100%; width: 280px; 
-    background: var(--white); z-index: 5000; transition: 0.4s; 
-    padding: 100px 25px; box-shadow: 5px 0 15px rgba(0,0,0,0.1); 
+:root { 
+    --onyx-red: #cc0000; 
+    --white: #ffffff; 
 }
+
+/* 1. GLOBAL RESET & UNIVERSAL RED ALPHABET */
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+    color: var(--onyx-red); /* Forces all text to Red */
+    -webkit-tap-highlight-color: transparent;
+}
+
+body { 
+    font-family: 'Inter', sans-serif; 
+    background-color: var(--white); 
+    overflow-x: hidden; 
+    line-height: 1.5;
+}
+
+/* 2. ANNOUNCEMENT BAR (Exception: White Text) */
+.announcement-bar { 
+    background: var(--onyx-red); 
+    padding: 12px 0; 
+    text-align: center; 
+    position: relative; 
+    z-index: 4000; 
+}
+
+.announcement-bar marquee { 
+    color: var(--white); 
+    font-size: 0.75rem; 
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* 3. STICKY HEADER & LOGO */
+.main-header { 
+    background: var(--white); 
+    padding: 15px 20px; 
+    position: sticky; 
+    top: 0; 
+    z-index: 3000; 
+    border-bottom: 1px solid #f0f0f0; 
+}
+
+.header-inner { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.brand-logo { 
+    font-family: 'Cinzel', serif; 
+    font-size: 1.2rem; 
+    letter-spacing: 2px; 
+    font-weight: 700;
+}
+
+.hamburger { cursor: pointer; padding: 5px; }
+.hamburger span { 
+    display: block; 
+    width: 25px; 
+    height: 3px; 
+    background: var(--onyx-red); 
+    margin: 5px 0; 
+    transition: 0.3s;
+}
+
+/* 4. SIDE NAVIGATION (Hidden Alphabets & Red X) */
+.side-nav { 
+    position: fixed; 
+    left: -100%; 
+    top: 0; 
+    height: 100%; 
+    width: 280px; 
+    background: var(--white); 
+    z-index: 5000; 
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+    padding: 80px 25px; 
+    box-shadow: 10px 0 30px rgba(0,0,0,0.1); 
+}
+
 .side-nav.active { left: 0; }
 
 #nav-close { 
-    position: absolute; top: 15px; right: 20px; 
-    font-size: 3rem; color: var(--onyx-red); /* Red X Close Button */
-    cursor: pointer; line-height: 1; 
+    position: absolute; 
+    top: 15px; 
+    right: 20px; 
+    font-size: 3rem; 
+    cursor: pointer; 
+    line-height: 1;
 }
 
 .nav-links a { 
-    display: block; padding: 18px 0; 
-    color: var(--onyx-red); /* All hidden text in Red */
-    text-decoration: none; font-weight: 700; 
-    text-transform: uppercase; letter-spacing: 1.5px;
+    display: block; 
+    padding: 18px 0; 
+    text-decoration: none; 
+    font-weight: 700; 
+    text-transform: uppercase; 
+    letter-spacing: 1px;
     border-bottom: 1px solid #f5f5f5; 
 }
 
-/* 6. Product Info: Red Names & Prices */
-.product-info { padding: 12px 5px; }
-.product-info h3 { 
-    font-size: 0.75rem; 
-    text-transform: uppercase; 
-    color: var(--onyx-red); /* Name in Red */
-    font-weight: 600; 
-    margin-bottom: 4px; 
+/* 5. HERO SLIDER FIX (Fills space properly) */
+.hero-frame-container { 
+    padding: 10px; 
+    height: 65vh; 
+    width: 100%; 
 }
+
+.white-border-frame { 
+    height: 100%; 
+    border: 12px solid var(--white); 
+    position: relative; 
+    overflow: hidden; 
+    background: #f9f9f9; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.slide { 
+    position: absolute; 
+    width: 100%; 
+    height: 100%; 
+    background-size: cover; /* Important: fills the frame */
+    background-position: center; 
+    opacity: 0; 
+    animation: fadeEffect 12s infinite; 
+}
+
+@keyframes fadeEffect { 
+    0%, 33% { opacity: 1; } 
+    38%, 100% { opacity: 0; } 
+}
+
+/* 6. COLLECTION GRID (Locked 2-Column) */
+.section-title { 
+    font-family: 'Cinzel', serif; 
+    font-size: 0.9rem; 
+    text-align: center; 
+    margin: 35px 0 15px; 
+    letter-spacing: 2px; 
+    text-transform: uppercase;
+}
+
+.grid-container { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 15px; 
+    padding: 15px; 
+}
+
+.grid-item { 
+    background: var(--white); 
+    text-align: center; 
+    transition: transform 0.2s;
+}
+
+.clickable-img { 
+    width: 100%; 
+    height: auto; 
+    border: 4px solid var(--white); 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08); 
+    cursor: zoom-in; 
+    display: block;
+}
+
+.product-info { padding: 12px 0; }
+.product-info h3 { 
+    font-size: 0.7rem; 
+    text-transform: uppercase; 
+    font-weight: 600; 
+    margin-bottom: 4px;
+}
+
 .product-info p { 
     font-size: 0.85rem; 
-    color: var(--onyx-red); /* Price in Red */
-    font-weight: 700; 
+    font-weight: 800; 
 }
 
-/* Grid & Other Styles */
-.grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 10px; }
-.grid-item { background: #fff; border: 5px solid #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.05); text-align: center; }
-.clickable-img { width: 100%; cursor: zoom-in; }
+/* 7. RECENTLY VIEWED (Horizontal Scroll) */
+.horizontal-scroll { 
+    display: flex; 
+    overflow-x: auto; 
+    gap: 15px; 
+    padding: 15px; 
+    scrollbar-width: none; 
+}
 
-/* Horizontal Scroll for Recent */
-.horizontal-scroll { display: flex; overflow-x: auto; gap: 15px; padding: 10px; scrollbar-width: none; }
+.horizontal-scroll::-webkit-scrollbar { display: none; }
 .horizontal-scroll .grid-item { min-width: 160px; }
 
-/* Lightbox */
-.lightbox { display: none; position: fixed; z-index: 6000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); justify-content: center; align-items: center; flex-direction: column; }
-.lightbox-img { max-width: 90%; max-height: 80%; border: 5px solid white; }
-.close-lightbox { position: absolute; top: 30px; right: 30px; color: white; font-size: 3rem; cursor: pointer; }
-.lightbox-caption { color: var(--white); margin-top: 15px; font-family: 'Cinzel', serif; }
+/* 8. LIGHTBOX & FOOTER (Exceptions: White/Red balance) */
+.lightbox { 
+    display: none; 
+    position: fixed; 
+    z-index: 6000; 
+    top: 0; left: 0; 
+    width: 100%; height: 100%; 
+    background: rgba(0,0,0,0.95); 
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: column; 
+}
 
-/* Slider & Footer */
-.hero-frame-container { padding: 10px; height: 75vh; }
-.white-border-frame { height: 100%; border: 15px solid #fff; position: relative; overflow: hidden; background: #f9f9f9; }
-.slide { position: absolute; width: 100%; height: 100%; background-size: contain; background-position: center; background-repeat: no-repeat; opacity: 0; animation: fadeEffect 12s infinite; }
-@keyframes fadeEffect { 0%, 33% { opacity: 1; } 38%, 100% { opacity: 0; } }
+.lightbox-img { 
+    max-width: 90%; 
+    max-height: 80%; 
+    border: 4px solid var(--white); 
+}
 
-.footer-red { background: var(--onyx-red); color: #fff; text-align: center; padding: 40px; margin-top: 40px; }
-.whatsapp-btn { position: fixed; bottom: 25px; right: 20px; background: var(--onyx-red); color: #fff; padding: 12px 20px; border-radius: 50px; z-index: 4000; text-decoration: none; }
+.close-lightbox { 
+    position: absolute; 
+    top: 25px; right: 25px; 
+    color: var(--white) !important; /* Force white for visibility */
+    font-size: 3rem; 
+    cursor: pointer; 
+}
+
+.footer-red { 
+    background: var(--onyx-red); 
+    padding: 50px 20px; 
+    text-align: center; 
+}
+
+.footer-red p { 
+    color: var(--white) !important; /* Force white on red background */
+    font-size: 0.7rem; 
+    letter-spacing: 1px;
+}
+
+/* 9. WHATSAPP BUTTON (White Background to show Red Text) */
+.whatsapp-btn { 
+    position: fixed; 
+    bottom: 25px; 
+    right: 20px; 
+    background: var(--white); 
+    padding: 12px 22px; 
+    border-radius: 50px; 
+    z-index: 4000; 
+    text-decoration: none; 
+    border: 2px solid var(--onyx-red);
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    font-size: 0.85rem;
+}
+
+.whatsapp-btn i { margin-right: 8px; }
