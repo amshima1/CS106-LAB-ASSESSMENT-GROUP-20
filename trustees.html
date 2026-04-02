@@ -1,15 +1,205 @@
-<div class="container">
-    <h2>Board of Trustees</h2>
-    <div class="grid">
-        <div class="card">
-            <img src="https://via.placeholder.com/200" alt="Trustee">
-            <h3>[Name 1]</h3>
-            <p>Creative Director</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Trustees | Onyx—Adire</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* TRUSTEE SPECIFIC STYLING */
+        .trustee-header {
+            padding: 100px 20px 40px;
+            text-align: center;
+            background: #fff;
+        }
+
+        .trustee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .trustee-card {
+            background: #ffffff;
+            border: 1px solid #eee;
+            transition: transform 0.3s ease;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+
+        .trustee-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .trustee-img-wrapper {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-bottom: 5px solid #cc0000; /* Onyx Red accent */
+        }
+
+        .trustee-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures head-to-shoulder or full body fits well */
+            transition: transform 0.5s ease;
+        }
+
+        .trustee-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .trustee-info {
+            padding: 20px;
+        }
+
+        .trustee-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: #000;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .trustee-role {
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: #cc0000;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        /* WHATSAPP BUTTON */
+        .whatsapp-btn { 
+            display: flex !important; 
+            position: fixed;
+            bottom: 25px;
+            right: 20px;
+            background: #ffffff;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            border: 2px solid #cc0000;
+            font-weight: 800;
+            font-size: 0.8rem;
+            color: #cc0000;
+            z-index: 10001;
+            animation: pulse-ring 2s infinite;
+            align-items: center;
+            gap: 8px;
+        }
+
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(204, 0, 0, 0.4); }
+            70% { box-shadow: 0 0 0 12px rgba(204, 0, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(204, 0, 0, 0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="announcement-bar">
+        <marquee scrollamount="5">GUARDIANS OF THE CRAFT — MEET THE ONYX—ADIRE TRUSTEES</marquee>
+    </div>
+
+    <header class="main-header">
+        <div class="header-inner">
+            <div class="hamburger" id="nav-open">
+                <span></span><span></span><span></span>
+            </div>
+            <h1 class="brand-logo">ONYX—ADIRE</h1>
+            <div class="header-spacer"></div>
         </div>
-        <div class="card">
-            <img src="https://via.placeholder.com/200" alt="Trustee">
-            <h3>[Name 2]</h3>
-            <p>Technical Lead</p>
+    </header>
+
+    <nav id="side-menu" class="side-nav">
+        <span id="nav-close">&times;</span>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="collection.html">Collection</a>
+            <a href="trustees.html">Trustees</a>
+            <a href="events.html">Events</a>
+            <a href="contact.html">Inquiries</a>
         </div>
-        </div>
-</div>
+    </nav>
+
+    <main class="main-content">
+        <header class="trustee-header">
+            <h2 class="section-title">THE TRUSTEES</h2>
+            <p style="font-size: 0.6rem; letter-spacing: 3px; font-weight: 800; color: #666; text-transform: uppercase;">Preserving Heritage through Leadership</p>
+        </header>
+
+        <section class="trustee-grid">
+            
+            <div class="trustee-card">
+                <div class="trustee-img-wrapper">
+                    <img src="Trustees1.jpg" alt="Trustee">
+                </div>
+                <div class="trustee-info">
+                    <h3 class="trustee-name">Trustee Name I</h3>
+                    <p class="trustee-role">Founding Member</p>
+                </div>
+            </div>
+
+            <div class="trustee-card">
+                <div class="trustee-img-wrapper">
+                    <img src="Trustees2.jpg" alt="Trustee">
+                </div>
+                <div class="trustee-info">
+                    <h3 class="trustee-name">Trustee Name II</h3>
+                    <p class="trustee-role">Creative Director</p>
+                </div>
+            </div>
+
+            <div class="trustee-card">
+                <div class="trustee-img-wrapper">
+                    <img src="Trustees3.jpg" alt="Trustee">
+                </div>
+                <div class="trustee-info">
+                    <h3 class="trustee-name">Trustee Name III</h3>
+                    <p class="trustee-role">Cultural Consultant</p>
+                </div>
+            </div>
+
+            <div class="trustee-card">
+                <div class="trustee-img-wrapper">
+                    <img src="Trustees4.jpg" alt="Trustee">
+                </div>
+                <div class="trustee-info">
+                    <h3 class="trustee-name">Trustee Name IV</h3>
+                    <p class="trustee-role">Operations Lead</p>
+                </div>
+            </div>
+
+            <div class="trustee-card">
+                <div class="trustee-img-wrapper">
+                    <img src="Trustees5.jpg" alt="Trustee">
+                </div>
+                <div class="trustee-info">
+                    <h3 class="trustee-name">Trustee Name V</h3>
+                    <p class="trustee-role">Brand Ambassador</p>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer class="footer-red" style="background:#cc0000; padding:60px 20px; text-align:center; margin-top: 60px;">
+        <p style="color:#ffffff; font-size:0.65rem; font-weight:700;">&copy; 2026 ONYX—ADIRE. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i> Chat with Onyx
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
