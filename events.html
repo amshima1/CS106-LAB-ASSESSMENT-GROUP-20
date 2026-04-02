@@ -9,31 +9,28 @@
     
     <style>
         :root { --onyx-red: #cc0000; }
-        
         * { box-sizing: border-box; }
-        body { 
-            margin: 0; padding: 0; font-family: 'Inter', sans-serif; 
-            background: #fff; overflow-x: hidden; 
-            display: flex; flex-direction: column; min-height: 100vh; 
-        }
+        body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background: #fff; overflow-x: hidden; }
 
         h1, h2, h3, h4, h5, h6, p, a, span, i { color: var(--onyx-red); }
 
-        /* 1. ANNOUNCEMENT BAR */
+        /* 1. ANNOUNCEMENT BAR - Highest Priority (Z-INDEX 10010) */
         .announcement-bar {
             background: var(--onyx-red);
-            height: 35px; width: 100%; position: fixed; top: 0; z-index: 10001;
+            height: 35px; width: 100%; position: fixed; top: 0; 
+            z-index: 10010; /* Always visible on top */
             display: flex; align-items: center;
         }
         .announcement-bar marquee {
             color: #ffffff !important;
-            font-size: 0.7rem; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase;
+            font-size: 0.7rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
         }
 
-        /* 2. MAIN HEADER */
+        /* 2. HEADER - Lower priority than the menu */
         .main-header { 
             position: fixed; top: 35px; width: 100%; height: 80px;
-            background: rgba(255, 255, 255, 0.98); border-bottom: 1px solid #f0f0f0; z-index: 10000;
+            background: rgba(255, 255, 255, 0.98); border-bottom: 1px solid #f0f0f0; 
+            z-index: 1000; /* Stays below the menu when it opens */
             display: flex; justify-content: center; align-items: center;
         }
         .brand-logo { font-family: 'Cinzel', serif; font-size: 1.5rem; letter-spacing: 5px; text-decoration: none; }
@@ -46,75 +43,62 @@
         }
         .hamburger span { display: block; height: 2px; width: 100%; background: var(--onyx-red); }
 
-        /* 4. 50% SIDE NAVIGATION (Bar-to-Bottom) */
+        /* 4. SIDE NAVIGATION - (Z-INDEX 9999) */
         .side-nav {
             position: fixed; 
-            top: 35px; 
+            top: 35px; /* Slides out BELOW the announcement bar */
             left: -50%; 
             width: 50%; 
             height: calc(100vh - 35px); 
             background: #ffffff; 
             z-index: 9999; 
             transition: 0.6s cubic-bezier(0.77, 0, 0.175, 1);
-            display: flex; 
-            justify-content: center; 
-            align-items: center;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
             border-right: 1px solid #f0f0f0;
             box-shadow: 15px 0 40px rgba(0, 0, 0, 0.05);
         }
         .side-nav.open { left: 0; }
 
-        /* THE X - PINNED TO TOP RIGHT EDGE OF THE SLIDE-OUT */
+        /* X BUTTON AT EDGE */
         .close-menu {
-            position: absolute; 
-            top: 25px; 
-            right: 25px; /* Pinned 25px from the right edge of the 50% panel */
-            font-size: 2.5rem; 
-            cursor: pointer; 
-            line-height: 1; 
-            font-weight: 300;
-            transition: 0.3s;
+            position: absolute; top: 25px; right: 25px;
+            font-size: 2.5rem; cursor: pointer; line-height: 1; font-weight: 300;
         }
-        .close-menu:hover { opacity: 0.5; transform: rotate(90deg); }
 
-        /* TEXT ON THE SAME LINE */
+        /* LINKS ON THE SAME LINE */
         .nav-links { 
-            display: flex; 
-            flex-direction: row; /* Horizontal alignment */
-            gap: 30px; 
-            flex-wrap: wrap; /* Wraps only if container is too narrow */
-            justify-content: center;
-            padding: 0 50px;
+            display: flex; flex-direction: row; gap: 30px; justify-content: center; padding: 0 40px; 
         }
         .nav-links a { 
             font-family: 'Cinzel', serif; font-size: 1.1rem; text-decoration: none; 
             font-weight: 700; text-transform: uppercase; white-space: nowrap;
         }
-        .nav-links a:hover { letter-spacing: 3px; }
 
-        /* 5. CONTENT & FOOTER */
-        .content { flex: 1; padding: 180px 20px 120px; max-width: 1200px; margin: 0 auto; text-align: center; }
-        .img-frame { width: 100%; height: 85vh; border: 1px solid #f0f0f0; margin-bottom: 40px; }
-
-        .main-footer { background: var(--onyx-red); padding: 80px 20px; text-align: center; margin-top: auto; }
-        .main-footer p { color: #ffffff !important; font-size: 0.75rem; font-weight: 800; letter-spacing: 4px; margin: 0; }
-
-        /* 6. WHATSAPP (High Z-Index) */
+        /* 5. FLOATING WHATSAPP - Highest Priority (Z-INDEX 10010) */
         .whatsapp-float {
             position: fixed; bottom: 120px; right: 30px;
             background: #fff; border: 2px solid var(--onyx-red);
             padding: 12px 25px; border-radius: 50px; text-decoration: none;
-            font-weight: 800; font-size: 0.75rem; z-index: 10005;
+            font-weight: 800; font-size: 0.75rem; 
+            z-index: 10010; /* Always visible on top of the slide-out */
             display: flex; align-items: center; gap: 12px;
             box-shadow: 0 10px 30px rgba(204, 0, 0, 0.1);
         }
 
+        /* 6. CONTENT */
+        .content { padding: 180px 20px 100px; text-align: center; }
+        .img-frame { width: 100%; height: 80vh; border: 1px solid #f0f0f0; margin-bottom: 40px; overflow: hidden; }
+        .img-frame img { width: 100%; height: 100%; object-fit: contain; }
+
+        /* 7. FOOTER */
+        .main-footer { background: var(--onyx-red); padding: 60px 20px; text-align: center; }
+        .main-footer p { color: #ffffff !important; margin: 0; font-size: 0.7rem; letter-spacing: 3px; }
+
         @media (max-width: 1024px) {
-            .side-nav { width: 80%; left: -80%; } /* Slightly wider on mid-size screens for horizontal text */
+            .side-nav { width: 100%; left: -100%; } /* Full width on small screens to fit horizontal text */
             .nav-links { gap: 15px; }
             .nav-links a { font-size: 0.9rem; }
         }
-    </media>
     </style>
 </head>
 <body>
@@ -123,16 +107,8 @@
         <marquee scrollamount="6">ONYX—ADIRE X MIVA OPEN UNIVERSITY: ARCHIVING THE FUTURE OF AFRICAN TEXTILES.</marquee>
     </div>
 
-    <header class="main-header">
-        <div class="hamburger" id="nav-toggle">
-            <span></span><span></span><span></span>
-        </div>
-        <a href="index.html" class="brand-logo">ONYX—ADIRE</a>
-    </header>
-
     <nav class="side-nav" id="side-menu">
         <div class="close-menu" id="nav-close">&times;</div>
-        
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="collection.html">Collection</a>
@@ -142,10 +118,16 @@
         </div>
     </nav>
 
+    <header class="main-header">
+        <div class="hamburger" id="nav-toggle">
+            <span></span><span></span><span></span>
+        </div>
+        <a href="index.html" class="brand-logo">ONYX—ADIRE</a>
+    </header>
+
     <main class="content">
         <section class="event-section">
-            <div class="img-frame">
-                </div>
+            <div class="img-frame"><img src="Onyx-Adire-Foster.jpg" alt="Foster"></div>
             <h3>Chronicle of Heritage</h3>
         </section>
     </main>
